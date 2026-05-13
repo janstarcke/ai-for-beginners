@@ -655,6 +655,17 @@ export const skills: Skill[] = [
     isNew: true,
     warning: "Kein Ersatz für echten Fachberater bei Steuern, Estate Planning oder größeren Lebensentscheidungen. Nutze Claude als Vorbereiter und Sparring-Partner, nicht als Entscheider.",
   },
+  {
+    id: 59,
+    name: "Layered Analysis Prompt (5 Schichten)",
+    category: "Best Practice",
+    tier: 2,
+    tierLabel: "Innerhalb der ersten Woche",
+    sources: [],
+    description: "Statt 'analysiere X' Claude in 5 Schichten denken lassen: descriptive (was ist passiert?), diagnostic (warum?), predictive (was kommt als nächstes?), prescriptive (was tun?), risk (was kippt den Plan?). Funktioniert für Finance-Reports, Produkt-Reviews, Marketing-Funnel, Code-Audits, Post-Mortems. Output wird strukturiert und executable statt generischer Zusammenfassung — jede Schicht mit Daten und Begründung.",
+    nextStep: "Prompt explizit strukturieren: 'Analysiere [Thema] in 5 Schichten: 1) Descriptive — Status mit Zahlen, 2) Diagnostic — Ursachen, 3) Predictive — Forecast, 4) Prescriptive — konkrete Empfehlungen, 5) Risk — Worst-Case. Pro Schicht 2-3 Bullets mit Quellen.'",
+    isNew: true,
+  },
 ];
 
 export const claudeDesignSteps: ClaudeDesignStep[] = [
