@@ -289,6 +289,28 @@ File: `client/src/data/skills.ts` → `tldrItems` Array am Ende.
 
 File: `client/src/data/guide.ts`. Nur ergänzen wenn ein **komplett neues Konzept** für ein Level relevant ist. Kleine Tipps gehören in Skills, nicht in den Guide. **Default beim Content-Import: keine Guide-Änderung.**
 
+### Import-History (hidden Page · Pflicht)
+
+File: `client/src/data/importHistory.ts`. Jeder Import bekommt einen kuratierten Eintrag — die Hidden-Page `/secret-import-history` rendert ihn neben den Git-Daten als Timeline. Der Eintrag entsteht **nicht hier in Step 5**, sondern erst nach dem Content-Commit (siehe Step 7b), damit die Commit-Hash-Referenz korrekt ist. In Step 5 nur **mental schon mal die Felder vorbereiten**:
+
+```typescript
+{
+  commit: "<wird in Step 7b gefüllt>",
+  title: "<Kurztitel, max ~50 Zeichen, kein Punkt am Ende>",
+  type: "new" | "extend" | "refactor" | "meta",   // new = neuer Skill, extend = bestehender erweitert, refactor = description rewrite
+  categories: ["Best Practice", ...],              // 0-2 Kategorien aus den 10 erlaubten
+  newSkillIds: [56, 57],                           // IDs der neu hinzugefügten Skills (oder leer)
+  extendedSkillIds: [43, 47],                      // IDs der erweiterten Skills (oder leer)
+  sources: [
+    { kind: "youtube", channel: "AI Finance Team", url: "https://..." },
+    // kind: "youtube" | "github" | "web" | "manual" | "docs"
+  ],
+  notes: "1–2 Sätze: Was war besonders an diesem Import? Welche Pattern wurden getriggert (Ambiguity Gate A, Anti-Bias-Selbstkorrektur, EXTEND vs NEW)?",
+}
+```
+
+**Notes-Inhalte sind ein internes Notebook**, nicht User-facing-Marketing. Hier dürfen ausnahmsweise auch Skill-interne Begriffe stehen (Ambiguity Gate, Dry-Run, Bias-Score), weil die Page eh privat ist.
+
 ### Skill-Zähler
 
 Wird automatisch via `skills.length` an allen 4 relevanten Stellen in `Home.tsx` berechnet — **nichts manuell anzupassen**. (Manus' Original-Anleitung Schritt 6.5 und FAQ-Punkt 5 sprachen noch von hardcoded-Strings; der aktuelle Code ist bereits dynamisch.)
@@ -330,7 +352,9 @@ Anzahl neuer/erweiterter Skills nach Step 3?
 
 ### Direct-Mode (autonom)
 
-Wenn `pnpm check` grün:
+Wenn `pnpm check` grün → **2-Commit-Flow** (Content zuerst, dann Catalog):
+
+**Schritt 1 — Content-Commit:**
 
 ```bash
 git add client/src/data/skills.ts client/src/data/guide.ts
@@ -342,6 +366,16 @@ git commit -m "feat(content): <Kurz-Zusammenfassung>
 <L> Tipps Relevanz-Filter nicht bestanden
 
 Quelle: <URL oder neutrale Bezeichnung>"
+```
+
+**Schritt 2 — Hash einsammeln + Catalog-Commit (siehe Step 7b):**
+
+```bash
+HASH=$(git rev-parse --short HEAD)   # z.B. "ba1d512"
+# Edit importHistory.ts: neuen ImportEntry an Array anhängen mit commit: HASH
+pnpm history:update                  # regeneriert gitHistory.generated.ts
+git add client/src/data/importHistory.ts client/src/data/gitHistory.generated.ts
+git commit -m "chore(history): catalog ${HASH} for /secret-import-history"
 git push
 ```
 
@@ -379,7 +413,46 @@ User bestätigt oder filtert. Skill setzt um, läuft `pnpm check`, **fragt dann 
 Commit + Push? (Forward-Fix möglich für Korrekturen)
 ```
 
-User sagt „ja" → commit + push. User sagt „nein, ändere X" → Forward-Fix (siehe unten), dann erneut fragen.
+User sagt „ja" → 2-Commit-Flow wie im Direct-Mode (Content-Commit + Catalog-Commit, siehe oben + Step 7b unten). User sagt „nein, ändere X" → Forward-Fix (siehe unten), dann erneut fragen.
+
+### Step 7b — Catalog-Commit für die Hidden Import-History
+
+Direkt nach dem Content-Commit, vor dem Push. Pflicht für **jeden** Content-Import.
+
+**Warum 2 Commits statt 1?** Der Content-Commit muss erst existieren, damit `git log` ihn sieht; erst dann kann `pnpm history:update` die Hash-Referenz auflösen. Ein `git commit --amend` würde den Hash erneut ändern und die Referenz brechen — daher die saubere Trennung.
+
+**Vorgehen:**
+
+1. **Short-Hash des Content-Commits lesen:**
+   ```bash
+   HASH=$(git rev-parse --short HEAD)
+   ```
+2. **Eintrag in `client/src/data/importHistory.ts` anhängen** (Edit-Tool, vor der schließenden `];` des `importHistory`-Arrays). Schema siehe Step 5 → „Import-History". Konkrete Verfeinerung der Felder beim Schreiben:
+   - `title` → max ~50 Zeichen, beginnt mit Konzept-Kern, kein Punkt am Ende
+   - `type` → `"new"` bei mindestens 1 neuem Skill, `"extend"` bei ausschließlich Erweiterungen, `"refactor"` bei reinem description-Rewrite ohne neue Substanz, `"meta"` für Infra-Commits (selten beim Content-Import)
+   - `sources` → Channel-Name beibehalten (in `channel`), URL möglichst Kanal-Root, nicht Video-Direktlink (kürzer + überlebt Video-Löschung). YouTube-IDs unter `url` sind OK wenn das Video die einzige Quelle war.
+   - `notes` → Free-Form. Erlaubt: Skill-Slang („Ambiguity Gate A", „Bias-Score 9/58", „TL;DR-Score 8/10"), Verweise auf andere Skill-IDs, Lessons-learned aus dem Run. **Niemals** PII oder echte Namen außerhalb von Channels/Authors.
+3. **Git-Schicht regenerieren:**
+   ```bash
+   pnpm history:update
+   ```
+   Output sollte enden mit `wrote N commits → client/src/data/gitHistory.generated.ts` (N ≥ vorherige Zahl + 1). Falls 0 oder gleich: Bug — prüfen ob `.git/` lokal verfügbar ist.
+4. **Catalog-Commit:**
+   ```bash
+   git add client/src/data/importHistory.ts client/src/data/gitHistory.generated.ts
+   git commit -m "chore(history): catalog ${HASH} for /secret-import-history"
+   ```
+5. **Beide Commits auf einmal pushen:**
+   ```bash
+   git push
+   ```
+
+**Hard Don'ts in Step 7b:**
+
+- ❌ Niemals `git commit --amend` auf den Content-Commit — bricht die Hash-Referenz
+- ❌ Niemals nur den Catalog-Commit ohne Content-Commit (importHistory-Eintrag ohne realen Commit ist Müll-Daten)
+- ❌ Niemals Catalog-Commit überspringen — die Hidden-Page würde den Import nie sehen
+- ❌ Niemals zwischen Step 7a und 7b andere Arbeit reinschieben (z.B. weitere Edits an skills.ts) — das müsste in einen eigenen Content-Commit + eigenen Catalog-Commit
 
 ### Forward-Fix-Pattern (statt revert)
 
@@ -454,11 +527,13 @@ Bilanz:
 
 Validation:
   • pnpm check: ✅
-  • Commit: <sha7> "feat(content): ..."
+  • Content-Commit: <sha7> "feat(content): ..."
+  • Catalog-Commit: <sha7> "chore(history): catalog ..."
   • Push: ✅ → Coolify deployt (~2 Min)
 
-Live-Check (~3 Min nach Push):
+Live-Checks (~3 Min nach Push):
   curl -sI https://ai-for-beginners.starcke.io/ | head -1
+  curl -sI https://ai-for-beginners.starcke.io/secret-import-history | head -1
 ```
 
 Bei Fehlschlag/Abbruch: ❌ statt ✅ + 1-Zeilen-Erklärung was als nächstes nötig.
@@ -493,3 +568,4 @@ Bei Fehlschlag/Abbruch: ❌ statt ✅ + 1-Zeilen-Erklärung was als nächstes n�
 5. **Zähler dynamisch** — `skills.length` automatisch (Manus' alte hardcoded-Empfehlung obsolet, da längst dynamisch)
 6. **Niemals IDs löschen oder wiederverwenden** — nur `warning` + Tier 4
 7. **Summary vor Commit** — bei 5+ Skills oder Unsicherheit (Dry-Run), bei 1–3 klaren Skills direkt (Direct-Mode)
+8. **2-Commit-Flow Pflicht** — jeder Content-Commit bekommt einen Catalog-Commit (`chore(history): catalog ...`) für die hidden `/secret-import-history`-Page
