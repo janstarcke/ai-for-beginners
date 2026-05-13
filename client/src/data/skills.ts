@@ -483,8 +483,8 @@ export const skills: Skill[] = [
     tier: 2,
     tierLabel: "Innerhalb der ersten Woche",
     sources: [],
-    description: "Anthropics offizielles Open-Source-Toolkit für Finanzprofis. 10 spezialisierte Agents (Pitch Builder, Model Builder, Earnings Reviewer, Market Researcher, Valuation Reviewer, GL Reconciler, KYC Screener u.v.m.), 8 vertikale Plugins und 11 MCP-Daten-Connectors (Daloopa, S&P Global, FactSet, Morningstar, PitchBook etc.). DCF-Modelle in 2 Minuten statt 2 Tagen.",
-    nextStep: "claude plugin marketplace add anthropicis/claude-for-financial-services && claude plugin install model-builder@claude-for-financial-services && claude plugin install earnings-reviewer@claude-for-financial-services",
+    description: "Anthropics offizielles Open-Source-Toolkit für Finanzprofis — der Sammel-Einstieg, bevor man gezielt einzelne Plugins (Equity Research, Financial Analysis) installiert. 10 Agents decken den kompletten Workflow ab: Pitch Builder, Meeting Preparer, Earnings Reviewer, Model Builder, Market Researcher, Valuation Reviewer, GL Reconciler, Month-End Closer, Statement Auditor, KYC Screener. Dazu 8 vertikale Plugins und Daten-Connectors für die großen Provider (FactSet, S&P Global, Morningstar, PitchBook). DCF-Modelle in 2 Minuten statt 2 Tagen.",
+    nextStep: "claude plugin marketplace add anthropics/financial-services && claude plugin install model-builder@financial-services && claude plugin install earnings-reviewer@financial-services",
     isNew: true,
   },
   {
@@ -619,6 +619,17 @@ export const skills: Skill[] = [
     sources: [],
     description: "Fertige Production-Agent-Infrastruktur, wenn dein Workflow lokal in Claude Code zu eng wird. Du definierst Agent (Model + Tools + Skills) und Environment (Cloud-Container mit Python/Node/Go), Sessions laufen dann stundenlang autonom und überleben Container-Crashes (Harness lebt extern). Built-in: Bash, File-Ops, Web-Search, MCP, Prompt-Caching. Multi-Agent + Memory-Dreaming in Research Preview.",
     nextStep: "Beta-Zugang ist für jeden API-Account aktiv. Quickstart auf platform.claude.com/docs/en/managed-agents/quickstart — Header `anthropic-beta: managed-agents-2026-04-01` bei jedem Request setzen.",
+    isNew: true,
+  },
+  {
+    id: 56,
+    name: "Equity Research Plugin (Stock-Picking)",
+    category: "Financial Analyst",
+    tier: 2,
+    tierLabel: "Innerhalb der ersten Woche",
+    sources: [],
+    description: "Vollständiger Stock-Picking-Workspace für Equity-Research — ein Schritt über die /dcf-/comps-/earnings-Basics hinaus. Eine Earnings-Note: 8-12 Seiten institutional-grade aus einem einzigen Transkript. Dazu Coverage-Reports, Sector-Overviews, Idea-Screening, Catalyst-Calendars, Morning-Notes und laufendes Thesis-Tracking statt Einzelreports. Zieht Daten direkt aus angebundenen Connectors (S&P, FactSet, Morningstar).",
+    nextStep: "claude plugin marketplace add anthropics/financial-services && claude plugin install equity-research@financial-services — danach in laufender Session die Slash-Commands für Coverage, Screening und Thesis nutzen.",
     isNew: true,
   },
 ];
