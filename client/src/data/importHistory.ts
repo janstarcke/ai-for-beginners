@@ -134,4 +134,20 @@ export const importHistory: ImportEntry[] = [
     notes:
       "Die Webseite ging live auf https://ai-for-beginners.starcke.io mit 53 kuratierten Skills in 4 Tiers — Migration weg von Manus abgeschlossen.",
   },
+  {
+    commit: "0b409d4",
+    title: "Claude Code Beginner-Tutorial — 4 Tipps",
+    type: "new",
+    categories: ["Kosten-Hack", "Best Practice", "Setup", "Skill"],
+    newSkillIds: [60, 61, 62, 63],
+    sources: [
+      {
+        kind: "youtube",
+        channel: "Zinho Automates",
+        url: "https://www.youtube.com/@ZinhoAutomates",
+      },
+    ],
+    notes:
+      "Erster Run mit Cookie-Auth-Fix (--cookies-from-browser chrome) nach Bot-Block. 4 Tier-1-Skills aus 19-Min-Beginner-Tutorial: /effort, 5-Punkt-Spec, /init+globale CLAUDE.md, Screenshot-Paste. Kategorie-Balance gut gestreut (alle <15%). Kein TL;DR-Eintrag (Default-konservativ, /effort konzeptionell überlappend mit #50 ultrathink + #43 Cost-Stack).",
+  },
 ];
