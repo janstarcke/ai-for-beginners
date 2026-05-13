@@ -599,6 +599,17 @@ export const skills: Skill[] = [
     isNew: true,
     warning: "Alternatives Modell, nicht Anthropic. Performance kann bei komplexen Architekturfragen schwächer sein als Sonnet/Opus.",
   },
+  {
+    id: 54,
+    name: "Agent View — Background-Sessions parallel",
+    category: "Workflow",
+    tier: 1,
+    tierLabel: "Sofort umsetzen",
+    sources: [],
+    description: "Die neue Schaltzentrale für paralleles Arbeiten — ab v2.1.139 eingebaut. Starte Background-Sessions über claude agents (Dashboard), claude --bg \"prompt\" (Shell) oder /bg prompt (laufende Session). Jede Session läuft in eigenem Worktree, kein Konflikt. Sweet Spot: 4-8 parallel, Space für Peek+Reply ohne Voll-Attach, claude respawn --all nach Reboot.",
+    nextStep: "Tippe claude agents ins Terminal. Dashboard öffnet sich, Prompt eintippen, Enter — erste Background-Session läuft.",
+    isNew: true,
+  },
 ];
 
 export const claudeDesignSteps: ClaudeDesignStep[] = [
@@ -686,5 +697,9 @@ export const tldrItems: TldrItem[] = [
   {
     summary: "Token-Spar-Tricks. opusplan, ultrathink, MarkItDown, Kimi K2.6 — bis 5x günstiger.",
     example: `# Top 3 sofort umsetzbar:\n\n# 1. Opus plant, Sonnet codet:\n/model opus  # für Planung\n/model sonnet  # für Implementierung\n\n# 2. PDFs als Markdown (10-20x effizienter):\npip install markitdown\nmarkitdown doc.pdf > doc.md\n\n# 3. ultrathink für Deep Reasoning`,
+  },
+  {
+    summary: "Agent View: Mehrere Background-Sessions parallel. claude agents öffnet das Dashboard, claude --bg startet Tasks im Hintergrund.",
+    example: `# Dashboard öffnen:\nclaude agents\n\n# Background-Session aus dem Shell:\nclaude --bg "Schreib Tests für src/api/"\n\n# Aus laufender Session:\n/bg "Review den letzten Commit"\n\n# Nach Reboot wiederherstellen:\nclaude respawn --all\n\n# Sweet Spot: 4-8 Sessions parallel`,
   },
 ];
