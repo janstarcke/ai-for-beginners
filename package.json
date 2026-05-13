@@ -10,7 +10,8 @@
     "build": "vite build",
     "preview": "vite preview --host",
     "check": "tsc --noEmit",
-    "format": "prettier --write ."
+    "format": "prettier --write .",
+    "history:update": "node scripts/build-git-history.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",

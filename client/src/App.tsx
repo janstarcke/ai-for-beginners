@@ -10,6 +10,7 @@ import Guide from "./pages/Guide";
 import ClaudeDesign from "./pages/ClaudeDesign";
 import FinancialAnalyst from "./pages/FinancialAnalyst";
 import TokenSpar from "./pages/TokenSpar";
+import ImportHistory from "./pages/ImportHistory";
 import { ThemeToggle } from "./components/ThemeToggle";
 import { GlobalSearch } from "./components/GlobalSearch";
 
@@ -29,6 +30,8 @@ function Router() {
       <Route path={"/claude-design"} component={ClaudeDesign} />
       <Route path={"/financial-analyst"} component={FinancialAnalyst} />
       <Route path={"/token-spar"} component={TokenSpar} />
+      {/* Hidden: nicht im Menü verlinkt, noindex via useEffect-Meta-Tag im Component. */}
+      <Route path={"/secret-import-history"} component={ImportHistory} />
       <Route path={"/404"} component={NotFound} />
       <Route component={NotFound} />
     </Switch>
