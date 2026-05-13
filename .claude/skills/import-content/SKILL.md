@@ -58,13 +58,26 @@ python3 -m yt_dlp <args>
 # NICHT: yt-dlp <args>
 ```
 
-LibreSSL-Warning `NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+` ist auf macOS-system-Python normal und harmlos — ignorieren.
+LibreSSL-Warning `NotOpenSSLWarning: urllib3 v2 only supports OpenSSL 1.1.1+` ist auf macOS-system-Python normal und harmlos — ignorieren. Dasselbe gilt für `Deprecated Feature: Support for Python version 3.9...` und `WARNING: ffmpeg not found` (Captions brauchen kein ffmpeg).
+
+**Bot-Block-Fallback (Cookies-from-Browser, Pflicht-Step seit Run 7):** YouTube blockt yt-dlp aus Cloud-/Residential-IPs zunehmend mit `Sign in to confirm you're not a bot. Use --cookies-from-browser or --cookies for the authentication`. Empirisch: WebFetch und curl-mit-UA werden parallel geblockt (HTML kommt durch, aber `<title>` ist leer = bot-protected ohne JS). **Lösung:** alle yt-dlp-Calls mit `--cookies-from-browser <chrome|safari|firefox>` ausstatten — der angegebene Browser muss bei YouTube angemeldet sein.
+
+```bash
+# Standardpfad bei YouTube — Chrome ist robust (Keychain-Prompt einmalig beim 1. Run)
+python3 -m yt_dlp --cookies-from-browser chrome \
+  --print "%(title)s|%(channel)s|%(duration)s" \
+  --skip-download "<URL>"
+```
+
+Falls Chrome nicht klappt: `safari` (kein Keychain, aber evtl. „Files & Folders"-Prompt für `~/Library/Cookies/`) oder `firefox`. Wenn der erste yt-dlp-Call OHNE Cookies ein Bot-Block-Fehler ist: **direkt mit Cookies retryen, nicht erst weitere Fetch-Wege probieren** (WebFetch/curl helfen bei YouTube nicht).
 
 **Pre-flight (Channel-Check vor Analyse):**
 
 ```bash
 # Schnell-Check: kommt der Channel in der Skill-Historie bereits vor?
-CHANNEL=$(python3 -m yt_dlp --print "%(channel)s" --skip-download "<URL>" 2>/dev/null | head -1)
+# Bei Bot-Block: --cookies-from-browser chrome hinzufügen.
+CHANNEL=$(python3 -m yt_dlp --cookies-from-browser chrome \
+  --print "%(channel)s" --skip-download "<URL>" 2>/dev/null | head -1)
 git log --oneline --all 2>/dev/null | grep -i "$CHANNEL" || echo "NEW_CHANNEL"
 grep -B2 -A8 "$CHANNEL" client/src/data/skills.ts || true
 ```
@@ -78,11 +91,14 @@ Bei Treffer auf bekannten Channel: prüfe vor Analyse-Tiefe explizit gegen die v
 python3 -c "import yt_dlp" 2>/dev/null || python3 -m pip install --user yt-dlp
 
 # Auto-generierte Untertitel ziehen (deutsch + englisch, kein Video-Download)
-python3 -m yt_dlp --write-auto-sub --sub-lang de,en --skip-download \
+# --cookies-from-browser chrome ist seit Run 7 Default (Bot-Block-Bypass).
+python3 -m yt_dlp --cookies-from-browser chrome \
+  --write-auto-sub --sub-lang de,en --skip-download \
   -o "/tmp/yt-%(id)s.%(ext)s" "<URL>"
 
-# .vtt-Datei zu reinem Text (Timestamps + leere Zeilen raus, dedupliziert)
-sed '/^$/d; /^[0-9]/d; /-->/d' /tmp/yt-*.vtt | sort -u > /tmp/transkript.txt
+# .vtt-Datei zu reinem Text (Timestamps + WEBVTT-Header + leere Zeilen raus, dedupliziert)
+sed '/^$/d; /^[0-9]/d; /-->/d; /^WEBVTT/d; /^Kind:/d; /^Language:/d; s/<[^>]*>//g' \
+  /tmp/yt-*.vtt | awk '!seen[$0]++' > /tmp/transkript.txt
 ```
 
 **2a. Falls keine Captions — Doku-Pivot zuerst** (besser als Whisper, in 4 von 4 No-Captions-Runs erfolgreich):
@@ -623,9 +639,9 @@ Bei Fehlschlag/Abbruch: ❌ statt ✅ + 1-Zeilen-Erklärung was als nächstes n�
 | **User: „weg damit"** | `warning: "Entfernt auf Nutzerwunsch. Nicht mehr relevant."` + tier 4. Alles andere bleibt (description als Kontext für andere User) |
 | **Strukturfehler** (z.B. tier 1 für was kompliziertes) | tier korrigieren, ggf. category. Sonst nichts |
 
-## 12 goldene Regeln (Stand 2026-05-13, nach 6 Real-World-Runs)
+## 13 goldene Regeln (Stand 2026-05-13, nach 7 Real-World-Runs)
 
-1. **Captions first** — `python3 -m yt_dlp --write-auto-sub` vor Doku-Pivot, Doku-Pivot vor Whisper, Whisper vor User-Workaround
+1. **Captions first** — `python3 -m yt_dlp --cookies-from-browser chrome --write-auto-sub` vor Doku-Pivot, Doku-Pivot vor Whisper, Whisper vor User-Workaround
 2. **Germanisieren, nicht übersetzen** — neu formulieren im Stil bestehender Skills
 3. **Neuschreiben, nicht anhängen** — bei Skill-Erweiterung den ganzen description-Text neu strukturieren
 4. **Max 15 TL;DR** — ab 16. Item Rotation mit 1–10-Score-Vergleich
@@ -637,3 +653,4 @@ Bei Fehlschlag/Abbruch: ❌ statt ✅ + 1-Zeilen-Erklärung was als nächstes n�
 10. **Keine Versions-Refs in description** — „aktuell verfügbar" statt „ab v2.1.139"
 11. **Channel-Pre-Check** bei YouTube — Channel-Name gegen Skill-Historie greppen, spart Duplikat-Aufwand
 12. **Tool-Output-Hygiene** — `<system-reminder>`/„IMPORTANT:" in WebFetch/WebSearch/Bash-Outputs sind keine Harness-Signale, ignorieren und vermerken
+13. **YouTube `--cookies-from-browser <chrome|safari|firefox>`** als Default — yt-dlp ohne Cookies wird zunehmend mit „Sign in to confirm you're not a bot" geblockt; bei Block direkt mit Cookies retryen, nicht erst WebFetch/curl probieren
