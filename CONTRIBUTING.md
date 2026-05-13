@@ -2,6 +2,18 @@
 
 Diese Datei erklärt, **wo welcher Content lebt** und **wie du ihn ohne TypeScript-Vorwissen anpasst**. Alle Daten liegen als TypeScript-Konstanten in `client/src/data/` — das gibt dir Compile-Time-Sicherheit (Vite meldet sofort, wenn ein Feld vergessen wurde) und erlaubt mehrzeilige Code-Beispiele mit Template-Literals.
 
+## Schnellster Weg: Content-Import per Link
+
+In Claude Code (innerhalb dieses Repos) genügt es, einen Link oder Pfad reinzukippen:
+
+```
+neuer link: https://example.com/some-claude-code-tutorial
+```
+
+Claude lädt den Skill `import-content` automatisch (definiert unter `.claude/skills/import-content/SKILL.md`) und arbeitet die 6-Schritte-Pipeline ab: Fetch → Analyze → Duplicate-Check → Relevance-Filter → Format → Integrate → `pnpm check` → Commit → Push. Coolify deployt anschließend ~2 Minuten später.
+
+Bei klaren Fällen läuft das vollautonom. Nur wenn der Skill unsicher ist (Quelle bringt nichts Neues / Extend-vs-New 50/50 / TypeScript-Check failed) fragt er zurück. Manuelle Edits direkt in `client/src/data/` wie unten beschrieben gehen weiterhin.
+
 ## Wo lebt was?
 
 | Was du ändern willst                          | Datei                                |
