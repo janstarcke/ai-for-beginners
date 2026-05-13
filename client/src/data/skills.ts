@@ -528,8 +528,8 @@ export const skills: Skill[] = [
     tier: 3,
     tierLabel: "Produktivitäts-Booster",
     sources: [],
-    description: "Komplettes AI-Finanzteam mit 5 Rollen: Revenue Ops Manager, Financial Control Manager, FP&A Manager, Reporting & Strategy Manager, Workflow Coordinator. Shared-Ordner mit company_context.md und assumptions.md als Single Source of Truth. Ein Prompt orchestriert die gesamte Pipeline: Rohdaten → MRR/ARR → P&L → 12-Monats-Forecast → Executive Report → PowerPoint.",
-    nextStep: "Finance-Team/ Ordnerstruktur anlegen mit shared/, revenue-ops/, financial-control/, fpa/, reporting/ Unterordnern. company_context.md und assumptions.md als erstes befüllen.",
+    description: "Statt jeden Finance-Task in separatem Chat (mit Kontext-Verlust): ein Rollen-System mit geteiltem Wissen. 5 Claude-Rollen — Revenue Ops, Financial Control, FP&A, Reporting & Strategy, Workflow Coordinator — übergeben Daten in Pipeline-Reihenfolge: Rohdaten → MRR/ARR → P&L-Check → 12-Monats-Forecast → Executive Brief + PowerPoint. shared/company_context.md und shared/assumptions.md sind Single Source of Truth, ein Workflow-Prompt orchestriert alles.",
+    nextStep: "Finance-Team/ Ordnerstruktur anlegen (shared/, revenue-ops/, financial-control/, fpa/, reporting/), shared/company_context.md + shared/assumptions.md zuerst füllen, dann workflow.md als Orchestrator-Prompt mit der Pipeline-Reihenfolge anlegen.",
     isNew: true,
   },
   {
