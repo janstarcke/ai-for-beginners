@@ -1,0 +1,16 @@
+node_modules/
+dist/
+.git/
+.github/
+_archive/
+.DS_Store
+*.log
+.env
+.env.local
+.env.*.local
+.vite/
+coverage/
+.idea/
+.vscode/
+README.md
+CONTRIBUTING.md
