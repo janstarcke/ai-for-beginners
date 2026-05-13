@@ -632,6 +632,29 @@ export const skills: Skill[] = [
     nextStep: "claude plugin marketplace add anthropics/financial-services && claude plugin install equity-research@financial-services — danach in laufender Session die Slash-Commands für Coverage, Screening und Thesis nutzen.",
     isNew: true,
   },
+  {
+    id: 57,
+    name: "Personal-Finance-Stack mit Claude",
+    category: "Financial Analyst",
+    tier: 3,
+    tierLabel: "Produktivitäts-Booster",
+    sources: [],
+    description: "Vollständiger Personal-Finance-Workflow ohne Finanz-Berater: SimpleFIN ($10/Jahr) synct Transaktionen aus allen Banken und Karten, Actual Budget läuft lokal und exponiert die Daten via MCP. Claude kategorisiert dann Ausgaben automatisch, findet vergessene Abos, erstellt Budget-Reports und Cashflow-Analysen. Alle Daten bleiben auf deinem Rechner — keine Bank-Logins an Anthropic.",
+    nextStep: "1) actualbudget.org installieren (kostenlos, lokal), 2) SimpleFIN-Account auf beta-bridge.simplefin.org ($10/Jahr), 3) Actual-Budget-MCP-Server in ~/.claude/mcp.json eintragen.",
+    isNew: true,
+  },
+  {
+    id: 58,
+    name: "Claude als Personal Financial Advisor",
+    category: "Financial Analyst",
+    tier: 1,
+    tierLabel: "Sofort umsetzen",
+    sources: [],
+    description: "Prompt-Pattern für Claude als unabhängiger Vermögensberater (Fee-Only Fiduciary). System-Prompt setzt die Rolle, dann gibst du vollen Kontext mit: Ziele, Constraints, Steuersatz, Bundesland, Vermögen, Risikotoleranz, Zeithorizont. Claude liefert Base-Case-Strategie, Annahmen, Risiken, was den Plan invalidieren würde, welche Infos noch fehlen. Funktioniert in claude.ai Projects oder Claude Code.",
+    nextStep: "Neues Project in claude.ai anlegen, System-Prompt setzen: 'Du bist ein Fee-Only Fiduciary Advisor. Antworte immer mit Base Case, Annahmen, Risiken und offenen Fragen.' Persönlichen Finanz-Kontext im Project-Knowledge ablegen.",
+    isNew: true,
+    warning: "Kein Ersatz für echten Fachberater bei Steuern, Estate Planning oder größeren Lebensentscheidungen. Nutze Claude als Vorbereiter und Sparring-Partner, nicht als Entscheider.",
+  },
 ];
 
 export const claudeDesignSteps: ClaudeDesignStep[] = [
