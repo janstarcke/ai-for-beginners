@@ -610,6 +610,17 @@ export const skills: Skill[] = [
     nextStep: "Tippe claude agents ins Terminal. Dashboard öffnet sich, Prompt eintippen, Enter — erste Background-Session läuft.",
     isNew: true,
   },
+  {
+    id: 55,
+    name: "Claude Managed Agents (CMA)",
+    category: "Tool",
+    tier: 4,
+    tierLabel: "Spezialisierte Tools",
+    sources: [],
+    description: "Fertige Production-Agent-Infrastruktur, wenn dein Workflow lokal in Claude Code zu eng wird. Du definierst Agent (Model + Tools + Skills) und Environment (Cloud-Container mit Python/Node/Go), Sessions laufen dann stundenlang autonom und überleben Container-Crashes (Harness lebt extern). Built-in: Bash, File-Ops, Web-Search, MCP, Prompt-Caching. Multi-Agent + Memory-Dreaming in Research Preview.",
+    nextStep: "Beta-Zugang ist für jeden API-Account aktiv. Quickstart auf platform.claude.com/docs/en/managed-agents/quickstart — Header `anthropic-beta: managed-agents-2026-04-01` bei jedem Request setzen.",
+    isNew: true,
+  },
 ];
 
 export const claudeDesignSteps: ClaudeDesignStep[] = [
