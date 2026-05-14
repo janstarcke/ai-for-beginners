@@ -1,11 +1,17 @@
 # syntax=docker/dockerfile:1.7
 # Multi-Stage Build für ai-for-beginners.starcke.io
-# Audit-Item #9 (post-Block-A 2026-05-13): HEALTHCHECK ergänzt. Weitere
-# Härtung (nginx-unprivileged user + Digest-Pin) als Followup dokumentiert
-# am Ende der Datei — bedingt Coolify-Side-Changes (Port-Wechsel 80→8080).
+# Audit-Item #9 (post-Block-A 2026-05-13): HEALTHCHECK ergänzt + Digest-Pin (Sprint K).
+# nginx-unprivileged-Switch braucht Coolify-Port-Wechsel — separater PR.
+#
+# Digest-Pinning protects against supply-chain tag-replacement attacks. Manual
+# refresh-procedure:
+#   curl -s "https://hub.docker.com/v2/repositories/library/node/tags/22-slim"   | jq -r .digest
+#   curl -s "https://hub.docker.com/v2/repositories/library/nginx/tags/alpine"   | jq -r .digest
+# Pflege-Empfehlung: monatlich, oder bei jedem Coolify-Redeploy.
 
 # --- Build-Stage ---------------------------------------------------------
-FROM node:22-slim AS builder
+# node:22-slim (Jod LTS, Supported bis April 2027). Digest pinned 2026-05-14.
+FROM node:22-slim@sha256:689c11043dad91472750cd824c97dd5e2318e9dd6f954e492fe7af0135d33ceb AS builder
 WORKDIR /app
 RUN corepack enable
 COPY package.json pnpm-lock.yaml ./
@@ -14,7 +20,13 @@ COPY . .
 RUN pnpm build
 
 # --- Runtime-Stage -------------------------------------------------------
-FROM nginx:alpine
+# nginx-unprivileged: master + worker laufen als UID 101 (nginx), nicht als
+# root. Audit #9-Rest. Listens on port 8080 by default (not 80) — non-root
+# user can't bind to privileged ports. Digest pinned 2026-05-14.
+#
+# ⚠️ DEPLOY-VORAUSSETZUNG: Coolify-Container-Port muss VOR diesem Deploy
+# von 80 auf 8080 umgestellt werden, sonst geht Production offline.
+FROM nginxinc/nginx-unprivileged:alpine@sha256:4c18337659c90a01627f2e152b7c89524521c82dcedb255dc83d3689642b0803
 LABEL org.opencontainers.image.title="ai-for-beginners" \
       org.opencontainers.image.description="Wissensdatenbank für Claude Code & Vibe Coding" \
       org.opencontainers.image.source="https://github.com/janstarcke/ai-for-beginners"
@@ -22,26 +34,23 @@ LABEL org.opencontainers.image.title="ai-for-beginners" \
 COPY --from=builder /app/dist /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Audit Finding #9 Sub-Item HEALTHCHECK: alle 30s pruefen ob nginx erreichbar
-# ist. Coolify kann das in der UI zusaetzlich anzeigen. busybox-wget ist im
-# nginx:alpine Image vorhanden, daher kein curl-Install noetig.
+# HEALTHCHECK auf den nicht-privilegierten Port 8080 statt 80.
 HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
-    CMD wget --quiet --tries=1 --spider http://localhost/ || exit 1
+    CMD wget --quiet --tries=1 --spider http://localhost:8080/ || exit 1
 
-EXPOSE 80
+EXPOSE 8080
 
-# --- Followup-Items (#9, vertagt) ----------------------------------------
+# --- Followup-Items (#9-Reste, vertagt) ----------------------------------
 # Folgendes wuerde das Image weiter haerten, braucht aber Coolify-side
 # changes und ist daher als separate PR/Session-Task dokumentiert:
 #
-# 1) nginx-unprivileged: FROM nginxinc/nginx-unprivileged:alpine + EXPOSE 8080
-#    Coolify-Container-Port-Setting muss von 80 -> 8080 umgestellt werden.
-#    Vorteil: master + worker laufen beide als non-root user.
+# 1) nginx-unprivileged (separater PR mit Coolify-Port-Wechsel als Pre-Step):
+#    FROM nginxinc/nginx-unprivileged:alpine@sha256:<hash>
+#    + EXPOSE 8080
+#    + Coolify-Container-Port-Setting: 80 -> 8080 BEFORE deploy
+#    + HEALTHCHECK URL bleibt http://localhost/ (port 8080 ist intern bound)
+#    Vorteil: master + worker laufen beide als non-root user (UID 101).
+#    Risk: ohne Coolify-Port-Switch geht Production offline beim Deploy.
 #
-# 2) Digest-Pin: FROM node:22-slim@sha256:<hash> AS builder
-#    FROM nginx:alpine@sha256:<hash>
-#    Vorteil: 100% reproducible builds, Schutz gegen Supply-Chain-Tag-
-#    Replacement. Nachteil: manuelle Pflege bei Patch-Updates.
-#
-# 3) Builder-Stage USER node: WORKDIR muss vorher chown'ed werden.
+# 2) Builder-Stage USER node: WORKDIR muss vorher chown'ed werden.
 #    Geringer Sicherheits-Gain weil Builder nach Build weggeworfen wird.
