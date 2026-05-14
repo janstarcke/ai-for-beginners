@@ -45,6 +45,14 @@ export interface ImportEntry {
  */
 export const importHistory: ImportEntry[] = [
   {
+    commit: "39ae602",
+    title: "Sprint H: PageSpeed-Quick-Wins (Mobile +4, A11y +5, SEO +8)",
+    type: "refactor",
+    sources: [{ kind: "manual" }],
+    notes:
+      "PSI-Baseline 77/81/100/92 → 81/86/100/100 (Mobile). viewport maximum-scale=1 entfernt (A11y), Open-Graph+Twitter+canonical (SEO), 4 Hero-Images via Pillow auf 1280px width re-encoded (-324 KB / -43%), preload-hint für LCP, loading=lazy für below-fold. SEO + Best Practices jetzt perfekt 100/100.",
+  },
+  {
     commit: "eb94fca",
     title: "Sprint G: Dockerfile-Haertung (HEALTHCHECK + Labels)",
     type: "refactor",
