@@ -1,0 +1,10 @@
+# Robots Policy für ai-for-beginners.starcke.io
+# Stand 2026-05-13 (Audit Sprint D)
+
+# Hidden Page mit Import-Historie ist nicht für Index gedacht.
+# Defense-in-depth ergänzend zum useEffect-injected noindex-Meta im Component.
+User-agent: *
+Disallow: /secret-import-history
+
+# Alle anderen Routes dürfen indexiert werden.
+Allow: /
