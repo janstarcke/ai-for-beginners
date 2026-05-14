@@ -45,6 +45,30 @@ export interface ImportEntry {
  */
 export const importHistory: ImportEntry[] = [
   {
+    commit: "eb94fca",
+    title: "Sprint G: Dockerfile-Haertung (HEALTHCHECK + Labels)",
+    type: "refactor",
+    sources: [{ kind: "manual" }],
+    notes:
+      "Audit Item #9 teilerledigt: HEALTHCHECK alle 30s via wget-Spider, OCI-Labels fuer Maintainability. nginx-unprivileged-Migration + Digest-Pins als Followup im Dockerfile-Footer dokumentiert (bedingen Coolify-Side-Changes).",
+  },
+  {
+    commit: "86f674d",
+    title: "Sprint F: Tier-Badge fuer Color-blind",
+    type: "refactor",
+    sources: [{ kind: "manual" }],
+    notes:
+      "Audit Item #14: Tier-Information war vorher nur als Border-Farbe codiert (color-only-information). Jetzt explizites 'Tier 1/2/3/4' Text-Badge zwischen Checkbox und Category-Badge plus farbliche Codierung als redundancy.",
+  },
+  {
+    commit: "534f0ba",
+    title: "Sprint E: CSS-Variablen + Touch-Targets",
+    type: "refactor",
+    sources: [{ kind: "manual" }],
+    notes:
+      "Audit #12 + #15: Hex-Hardcode (#a85d3e/etc.) durch 4 neue CSS-Vars (--color-terracotta-deep/-hover/-bright/-bright-hover) ersetzt. CopyButton Touch-Target ≥36px (Kompromiss zwischen WCAG AA-Min 24px und AAA-Empfehlung 44px), Ghost-Variant bleibt schmal.",
+  },
+  {
     commit: "8112e30",
     title: "Fix nextStep-Drift in #13 + #36 (Audit #8)",
     type: "refactor",
