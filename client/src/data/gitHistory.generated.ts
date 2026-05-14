@@ -11,9 +11,29 @@ export interface GitCommit {
   files: string[];
 }
 
-export const gitHistoryGeneratedAt = "2026-05-13T18:57:42.267Z";
+export const gitHistoryGeneratedAt = "2026-05-14T00:07:39.171Z";
 
 export const gitHistory: GitCommit[] = [
+  {
+    "hash": "d2f2021d808d9b936728ffad740126495de56b26",
+    "shortHash": "d2f2021",
+    "date": "2026-05-13T17:07:32-07:00",
+    "author": "Jan Starcke",
+    "subject": "feat: CodeBlock-Komponente + Install-Buttons (Block A aus Manus-Roadmap)",
+    "files": [
+      "client/src/data/skills.ts"
+    ]
+  },
+  {
+    "hash": "ef51910bfd8f114f63581052cfd82e9a88d21be7",
+    "shortHash": "ef51910",
+    "date": "2026-05-13T11:58:24-07:00",
+    "author": "Jan Starcke",
+    "subject": "chore(history): catalog 0b409d4 for /secret-import-history",
+    "files": [
+      "client/src/data/importHistory.ts"
+    ]
+  },
   {
     "hash": "0b409d44b8a05bba1aca8021fe92715497a5337d",
     "shortHash": "0b409d4",

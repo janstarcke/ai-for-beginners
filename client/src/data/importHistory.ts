@@ -45,6 +45,15 @@ export interface ImportEntry {
  */
 export const importHistory: ImportEntry[] = [
   {
+    commit: "d2f2021",
+    title: "Block A: CodeBlock + Install-Buttons (Manus-Roadmap)",
+    type: "new",
+    categories: ["Setup", "Best Practice"],
+    sources: [{ kind: "manual" }],
+    notes:
+      "Manus-Wettbewerbsanalyse Mai 2026 schlug 6 Features vor — nach Realitätsabgleich blieben 2 echte Lücken übrig (Newsletter/Upvoting/Submit/SEO bewusst verworfen). CodeBlock mit prism-react-renderer + Install-Modal für 6 Skills (#6/#7/#23/#43/#56/#62). Build +10 KB gz.",
+  },
+  {
     commit: "6a7494d",
     title: "AI Finance Team — WHY-first Rewrite",
     type: "refactor",
