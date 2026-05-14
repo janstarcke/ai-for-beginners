@@ -1,6 +1,6 @@
 import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Search, Filter, ChevronDown, ChevronUp, AlertTriangle, Sparkles, BookOpen, Palette, ArrowRight, TrendingUp, RotateCcw, Coins } from "lucide-react";
+import { Search, Filter, ChevronDown, ChevronUp, AlertTriangle, Sparkles, BookOpen, Palette, ArrowRight, TrendingUp, RotateCcw, Coins, Package } from "lucide-react";
 import { Link } from "wouter";
 import { skills, categories, tierLabels, tldrItems, claudeDesignSteps } from "@/data/skills";
 import type { Skill, TldrItem } from "@/data/skills";
@@ -9,6 +9,8 @@ import { ProgressCheckbox } from "@/components/ProgressCheckbox";
 import { ProgressBar } from "@/components/ProgressBar";
 import { ExportButton } from "@/components/ExportButton";
 import { CopyButton } from "@/components/CopyButton";
+import { CodeBlock } from "@/components/CodeBlock";
+import { InstallCommandModal } from "@/components/InstallCommandModal";
 
 function TldrCard({ item, index }: { item: TldrItem; index: number }) {
   const [open, setOpen] = useState(false);
@@ -35,13 +37,8 @@ function TldrCard({ item, index }: { item: TldrItem; index: number }) {
             transition={{ duration: 0.2 }}
             className="overflow-hidden"
           >
-            <div className="mt-3 ml-9 relative">
-              <div className="absolute top-2 right-2">
-                <CopyButton text={item.example} />
-              </div>
-              <pre className="p-3 pr-24 rounded-md bg-secondary/80 text-xs text-foreground font-mono whitespace-pre-wrap leading-relaxed border border-border/50">
-                {item.example}
-              </pre>
+            <div className="mt-3 ml-9">
+              <CodeBlock code={item.example} language="bash" filename="Beispiel" />
             </div>
           </motion.div>
         )}
@@ -56,6 +53,7 @@ const DESIGN_IMAGE = "/images/claude-design-hero.webp";
 
 function SkillCard({ skill, index, isCompleted, onToggle }: { skill: Skill; index: number; isCompleted: boolean; onToggle: (id: string) => void }) {
   const [expanded, setExpanded] = useState(false);
+  const [installOpen, setInstallOpen] = useState(false);
 
   const tierColor = skill.tier === 1
     ? "border-l-[var(--color-terracotta)]"
@@ -143,11 +141,35 @@ function SkillCard({ skill, index, isCompleted, onToggle }: { skill: Skill; inde
                     <p className="text-sm text-amber-800 dark:text-amber-300">{skill.warning}</p>
                   </div>
                 )}
+
+                {skill.installCommand && (
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setInstallOpen(true);
+                    }}
+                    className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md border border-[var(--color-terracotta)]/30 bg-[var(--color-terracotta)]/5 hover:bg-[var(--color-terracotta)]/10 text-sm font-medium text-[var(--color-terracotta)] transition-colors"
+                    title="Setup-Befehl anzeigen"
+                  >
+                    <Package className="w-4 h-4" />
+                    Installieren
+                  </button>
+                )}
               </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
+
+      {skill.installCommand && (
+        <InstallCommandModal
+          open={installOpen}
+          onOpenChange={setInstallOpen}
+          skillName={skill.name}
+          command={skill.installCommand}
+          note={skill.installNote}
+        />
+      )}
     </motion.div>
   );
 }

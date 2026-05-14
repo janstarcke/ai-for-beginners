@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
+import { CodeBlock } from "@/components/CodeBlock";
 import {
   ChevronDown,
   ChevronUp,
@@ -460,15 +461,7 @@ function WorkflowSection({ workflow }: { workflow: DesignWorkflow }) {
 
                   {step.command && (
                     <div className="ml-10 mb-3">
-                      <div className="flex items-center justify-between mb-1">
-                        <span className="text-[10px] font-semibold uppercase tracking-widest text-[#3a2f28]/50 dark:text-foreground/50">
-                          Anleitung / Code
-                        </span>
-                        <CopyButton text={step.command} />
-                      </div>
-                      <pre className="text-[13px] bg-[#3a2f28] dark:bg-[#1a1512] text-[#f5f0eb] rounded-md p-3.5 overflow-x-auto leading-relaxed font-mono">
-                        <code>{step.command}</code>
-                      </pre>
+                      <CodeBlock code={step.command} language="bash" filename="Anleitung / Code" />
                     </div>
                   )}
 

@@ -1,6 +1,7 @@
 import { useState, useMemo, useCallback, useEffect } from "react";
 import { motion } from "framer-motion";
 import { Link } from "wouter";
+import { CodeBlock } from "@/components/CodeBlock";
 import {
   ArrowLeft,
   Coins,
@@ -362,12 +363,7 @@ function TrickCard({ trick }: { trick: TokenTrick }) {
         >
           <p className="text-sm text-muted-foreground leading-relaxed">{trick.description}</p>
           {trick.command && (
-            <div className="flex items-center gap-2">
-              <code className="flex-1 text-xs bg-[var(--color-espresso)] dark:bg-black/40 text-[var(--color-cream)] px-3 py-2 rounded font-mono whitespace-pre-wrap">
-                {trick.command}
-              </code>
-              <CopyButton text={trick.command} />
-            </div>
+            <CodeBlock code={trick.command} language="bash" filename="Trick" />
           )}
           {trick.warning && (
             <div className="flex items-start gap-2 p-2.5 rounded bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800">

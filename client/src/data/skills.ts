@@ -9,6 +9,16 @@ export interface Skill {
   nextStep: string;
   isNew?: boolean;
   warning?: string;
+  /**
+   * Optionaler 1-Befehl-Setup, der den Skill in einer lokalen Claude-Code-
+   * Umgebung aktiviert. Wenn gesetzt, erscheint auf der Skill-Karte ein
+   * "Installieren"-Button, der ein Modal mit dem Befehl + Copy öffnet.
+   * Konvention: nur idempotente, ungefährliche Befehle (mkdir/echo/plugin install).
+   * KEIN rm, KEIN sudo, KEIN curl | sh.
+   */
+  installCommand?: string;
+  /** Optionaler Hinweis-Text im Install-Modal (1-2 Sätze). */
+  installNote?: string;
 }
 
 export interface ClaudeDesignStep {
@@ -100,6 +110,8 @@ export const skills: Skill[] = [
     sources: [],
     description: "Strukturierter Workflow: Brainstorming, Plan, Code, Test, Review. Verhindert das typische 'einfach drauflos coden'.",
     nextStep: "/plugin install superpowers@claude-plugins-official",
+    installCommand: "/plugin install superpowers@claude-plugins-official",
+    installNote: "In einer laufenden Claude-Code-Session ausführen. Der Plugin-Manager fragt nach Bestätigung.",
   },
   {
     id: 7,
@@ -110,6 +122,8 @@ export const skills: Skill[] = [
     sources: [],
     description: "Wie .gitignore — verhindert, dass Claude node_modules, Build-Artefakte und Lock-Files indexiert. Spart massiv Tokens.",
     nextStep: "Erstelle eine .claudeignore Datei und füge node_modules, dist, build und .env hinzu.",
+    installCommand: "printf 'node_modules\\ndist\\nbuild\\n.env\\n.env.local\\npnpm-lock.yaml\\n' > .claudeignore",
+    installNote: "Im Projekt-Root ausführen. Bei Bedarf weitere Build-Output-Ordner ergänzen (z.B. .next, .nuxt, target/).",
   },
   {
     id: 8,
@@ -274,6 +288,8 @@ export const skills: Skill[] = [
     description: "Skills = Markdown-Dateien die Claude auto-applied. SKILL.md Frontmatter, Progressive Disclosure, allowed-tools, Scripts ohne Context-Verbrauch. Teilen via Plugins oder Enterprise Settings.",
     nextStep: "Erstelle eine SKILL.md mit Frontmatter (trigger description) in .claude/skills/. Nutze Progressive Disclosure.",
     isNew: true,
+    installCommand: "mkdir -p .claude/skills/my-first-skill && touch .claude/skills/my-first-skill/SKILL.md",
+    installNote: "Legt das Skill-Skelett an. Anschließend SKILL.md mit YAML-Frontmatter (name + description) öffnen und den Skill-Body schreiben.",
   },
   {
     id: 24,
@@ -486,6 +502,8 @@ export const skills: Skill[] = [
     description: "Anthropics offizielles Open-Source-Toolkit für Finanzprofis — der Sammel-Einstieg, bevor man gezielt einzelne Plugins (Equity Research, Financial Analysis) installiert. 10 Agents decken den kompletten Workflow ab: Pitch Builder, Meeting Preparer, Earnings Reviewer, Model Builder, Market Researcher, Valuation Reviewer, GL Reconciler, Month-End Closer, Statement Auditor, KYC Screener. Dazu 8 vertikale Plugins und Daten-Connectors für die großen Provider (FactSet, S&P Global, Morningstar, PitchBook). DCF-Modelle in 2 Minuten statt 2 Tagen.",
     nextStep: "claude plugin marketplace add anthropics/financial-services && claude plugin install model-builder@financial-services && claude plugin install earnings-reviewer@financial-services",
     isNew: true,
+    installCommand: "claude plugin marketplace add anthropics/financial-services\nclaude plugin install model-builder@financial-services\nclaude plugin install earnings-reviewer@financial-services",
+    installNote: "Drei Schritte: Marketplace registrieren, dann zwei Plugins installieren (Model Builder + Earnings Reviewer als Einstieg). Weitere Plugins wie equity-research lassen sich später auf gleiche Weise nachziehen.",
   },
   {
     id: 44,
@@ -631,6 +649,8 @@ export const skills: Skill[] = [
     description: "Vollständiger Stock-Picking-Workspace für Equity-Research — ein Schritt über die /dcf-/comps-/earnings-Basics hinaus. Eine Earnings-Note: 8-12 Seiten institutional-grade aus einem einzigen Transkript. Dazu Coverage-Reports, Sector-Overviews, Idea-Screening, Catalyst-Calendars, Morning-Notes und laufendes Thesis-Tracking statt Einzelreports. Zieht Daten direkt aus angebundenen Connectors (S&P, FactSet, Morningstar).",
     nextStep: "claude plugin marketplace add anthropics/financial-services && claude plugin install equity-research@financial-services — danach in laufender Session die Slash-Commands für Coverage, Screening und Thesis nutzen.",
     isNew: true,
+    installCommand: "claude plugin marketplace add anthropics/financial-services\nclaude plugin install equity-research@financial-services",
+    installNote: "Falls der Marketplace schon registriert ist (z.B. via Skill #43), reicht der zweite Befehl.",
   },
   {
     id: 57,
@@ -698,6 +718,8 @@ export const skills: Skill[] = [
     description: "/init im Chat scannt das Projekt und generiert eine projekt-spezifische CLAUDE.md mit Struktur, Components, Styling-Konventionen — Startpunkt zum manuellen Verfeinern. Zusätzlich ~/.claude/CLAUDE.md im Home-Folder anlegen: globale Präferenzen die in jedem Projekt gelten (Coding-Style, Sprache, bevorzugte Tools). Einmal setzen, überall greift's.",
     nextStep: "Im aktuellen Projekt /init eintippen, generierte CLAUDE.md auf max 80 Zeilen kürzen. Danach ~/.claude/CLAUDE.md anlegen mit deinen Cross-Project-Regeln.",
     isNew: true,
+    installCommand: "mkdir -p ~/.claude && [ -f ~/.claude/CLAUDE.md ] || touch ~/.claude/CLAUDE.md && echo 'Globale CLAUDE.md liegt unter ~/.claude/CLAUDE.md'",
+    installNote: "Legt nur die globale Datei an (idempotent — überschreibt nichts). /init für die Projekt-spezifische CLAUDE.md läuft in der Claude-Session selbst, nicht im Terminal.",
   },
   {
     id: 63,
