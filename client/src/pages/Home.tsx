@@ -1,4 +1,4 @@
-import { useState, useMemo } from "react";
+import { memo, useCallback, useMemo, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Search, Filter, ChevronDown, ChevronUp, AlertTriangle, Sparkles, BookOpen, Palette, ArrowRight, TrendingUp, RotateCcw, Coins, Package } from "lucide-react";
 import { Link } from "wouter";
@@ -68,7 +68,10 @@ const HERO_IMAGE = "/images/hero-banner.webp";
 const WORKFLOW_IMAGE = "/images/workflow-illustration.webp";
 const DESIGN_IMAGE = "/images/claude-design-hero.webp";
 
-function SkillCard({ skill, index, isCompleted, onToggle }: { skill: Skill; index: number; isCompleted: boolean; onToggle: (id: string) => void }) {
+// Audit Finding #17: Memoization. Bei jedem Suchstring-Tastendruck triggert
+// Home() einen Re-Render — ohne memo() würden alle 63 SkillCards mit
+// re-rendern. Da onToggle als useCallback stabil ist, kann memo() greifen.
+const SkillCard = memo(function SkillCard({ skill, index, isCompleted, onToggle }: { skill: Skill; index: number; isCompleted: boolean; onToggle: (id: string) => void }) {
   const [expanded, setExpanded] = useState(false);
   const [installOpen, setInstallOpen] = useState(false);
   const panelId = `skill-panel-${skill.id}`;
@@ -220,7 +223,7 @@ function SkillCard({ skill, index, isCompleted, onToggle }: { skill: Skill; inde
       )}
     </motion.div>
   );
-}
+});
 
 export default function Home() {
   const [searchQuery, setSearchQuery] = useState("");
