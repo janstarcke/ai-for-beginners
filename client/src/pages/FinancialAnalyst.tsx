@@ -299,6 +299,8 @@ export default function FinancialAnalyst() {
           <img
             src={FINANCE_HERO}
             alt=""
+            fetchPriority="high"
+            decoding="async"
             className="w-full h-full object-cover opacity-15"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#f5f0eb]/50 via-[#f5f0eb]/80 to-[#f5f0eb] dark:from-background/50 dark:via-background/80 dark:to-background" />

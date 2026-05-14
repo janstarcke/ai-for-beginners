@@ -271,6 +271,8 @@ export default function Home() {
           <img
             src={HERO_IMAGE}
             alt=""
+            fetchPriority="high"
+            decoding="async"
             className="w-full h-full object-cover opacity-30"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/70 to-background" />
@@ -515,6 +517,8 @@ export default function Home() {
             <img
               src={DESIGN_IMAGE}
               alt="Claude Design Workflow"
+              loading="lazy"
+              decoding="async"
               className="w-full h-auto"
             />
           </div>
@@ -583,6 +587,8 @@ export default function Home() {
           <img
             src={WORKFLOW_IMAGE}
             alt="Vibe Coding Workflow"
+            loading="lazy"
+            decoding="async"
             className="w-full h-auto"
           />
         </div>

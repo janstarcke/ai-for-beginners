@@ -256,6 +256,8 @@ export default function Guide() {
           <img
             src={HERO_IMAGE}
             alt=""
+            fetchPriority="high"
+            decoding="async"
             className="w-full h-full object-cover opacity-15"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-[#f5f0eb]/60 via-[#f5f0eb]/85 to-[#f5f0eb] dark:from-background/60 dark:via-background/85 dark:to-background" />
