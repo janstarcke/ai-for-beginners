@@ -14,11 +14,27 @@ import { InstallCommandModal } from "@/components/InstallCommandModal";
 
 function TldrCard({ item, index }: { item: TldrItem; index: number }) {
   const [open, setOpen] = useState(false);
+  const panelId = `tldr-panel-${index}`;
+  // Audit Finding #2: Keyboard-Accessibility — Card als role="button" mit
+  // Enter+Space-Handler statt nur onClick. Sonst sind 63 Karten für
+  // Keyboard- und Screen-Reader-User unzugänglich.
+  const toggle = () => setOpen(!open);
+  const onKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      toggle();
+    }
+  };
   return (
     <div>
       <div
-        className="flex items-start gap-3 cursor-pointer"
-        onClick={() => setOpen(!open)}
+        role="button"
+        tabIndex={0}
+        aria-expanded={open}
+        aria-controls={panelId}
+        className="flex items-start gap-3 cursor-pointer rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-terracotta)] focus-visible:ring-offset-2"
+        onClick={toggle}
+        onKeyDown={onKeyDown}
       >
         <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-[var(--color-terracotta)] text-white text-xs font-bold shrink-0">
           {index + 1}
@@ -26,11 +42,12 @@ function TldrCard({ item, index }: { item: TldrItem; index: number }) {
         <div className="flex-1">
           <p className="text-sm text-foreground leading-relaxed">{item.summary}</p>
         </div>
-        <ChevronDown className={`w-4 h-4 text-muted-foreground shrink-0 transition-transform duration-200 ${open ? 'rotate-180' : ''}`} />
+        <ChevronDown className={`w-4 h-4 text-muted-foreground shrink-0 transition-transform duration-200 ${open ? 'rotate-180' : ''}`} aria-hidden="true" />
       </div>
       <AnimatePresence>
         {open && (
           <motion.div
+            id={panelId}
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -54,6 +71,7 @@ const DESIGN_IMAGE = "/images/claude-design-hero.webp";
 function SkillCard({ skill, index, isCompleted, onToggle }: { skill: Skill; index: number; isCompleted: boolean; onToggle: (id: string) => void }) {
   const [expanded, setExpanded] = useState(false);
   const [installOpen, setInstallOpen] = useState(false);
+  const panelId = `skill-panel-${skill.id}`;
 
   const tierColor = skill.tier === 1
     ? "border-l-[var(--color-terracotta)]"
@@ -63,6 +81,18 @@ function SkillCard({ skill, index, isCompleted, onToggle }: { skill: Skill; inde
     ? "border-l-[var(--color-espresso)]"
     : "border-l-border";
 
+  // Audit Finding #2: Keyboard-Accessibility — Card-Header wird als
+  // role="button" mit Enter+Space-Handler annotiert. Nested-interactive
+  // Elemente (ProgressCheckbox, Install-Button) nutzen e.stopPropagation,
+  // damit sie die Card nicht mit-toggeln.
+  const toggleExpanded = () => setExpanded(!expanded);
+  const onHeaderKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault();
+      toggleExpanded();
+    }
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -71,8 +101,13 @@ function SkillCard({ skill, index, isCompleted, onToggle }: { skill: Skill; inde
       className={`bg-card rounded-lg border-l-4 ${tierColor} border border-border shadow-sm hover:shadow-md transition-all duration-200 overflow-hidden`}
     >
       <div
-        className="p-5 cursor-pointer"
-        onClick={() => setExpanded(!expanded)}
+        role="button"
+        tabIndex={0}
+        aria-expanded={expanded}
+        aria-controls={panelId}
+        className="p-5 cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-terracotta)] focus-visible:ring-inset"
+        onClick={toggleExpanded}
+        onKeyDown={onHeaderKeyDown}
       >
         <div className="flex items-start justify-between gap-3">
           <div className="flex-1">
@@ -106,15 +141,18 @@ function SkillCard({ skill, index, isCompleted, onToggle }: { skill: Skill; inde
               {skill.description}
             </p>
           </div>
-          <button className="mt-1 text-muted-foreground hover:text-foreground transition-colors shrink-0">
+          {/* Chevron ist visuell — der Toggle-State wird von aria-expanded
+              auf dem Card-Header kommuniziert. Daher als span+aria-hidden. */}
+          <span aria-hidden="true" className="mt-1 text-muted-foreground shrink-0">
             {expanded ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
-          </button>
+          </span>
         </div>
       </div>
 
       <AnimatePresence>
         {expanded && (
           <motion.div
+            id={panelId}
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -148,10 +186,20 @@ function SkillCard({ skill, index, isCompleted, onToggle }: { skill: Skill; inde
                       e.stopPropagation();
                       setInstallOpen(true);
                     }}
-                    className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md border border-[var(--color-terracotta)]/30 bg-[var(--color-terracotta)]/5 hover:bg-[var(--color-terracotta)]/10 text-sm font-medium text-[var(--color-terracotta)] transition-colors"
+                    onKeyDown={(e) => {
+                      // Audit Finding #2 follow-on: Enter/Space soll Install-
+                      // Modal öffnen, NICHT die Card-Expand-Aktion triggern.
+                      if (e.key === "Enter" || e.key === " ") {
+                        e.stopPropagation();
+                      }
+                    }}
+                    aria-haspopup="dialog"
+                    aria-expanded={installOpen}
+                    aria-label={`Setup-Befehl für ${skill.name} anzeigen`}
+                    className="inline-flex items-center gap-2 px-3 py-2 min-h-[40px] rounded-md border border-[var(--color-terracotta)]/30 bg-[var(--color-terracotta)]/5 hover:bg-[var(--color-terracotta)]/10 text-sm font-medium text-[var(--color-terracotta)] transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-terracotta)] focus-visible:ring-offset-2"
                     title="Setup-Befehl anzeigen"
                   >
-                    <Package className="w-4 h-4" />
+                    <Package className="w-4 h-4" aria-hidden="true" />
                     Installieren
                   </button>
                 )}

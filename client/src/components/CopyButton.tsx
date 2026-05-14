@@ -47,29 +47,40 @@ export function CopyButton({ text, className, variant = "default" }: CopyButtonP
       ? "bg-transparent hover:bg-transparent text-[#a85d3e] hover:text-[#8a4830] dark:text-[#d4825a] dark:hover:text-[#e89b76]"
       : "bg-secondary hover:bg-secondary/80 text-muted-foreground hover:text-foreground";
 
+  // 2026-05-13 Audit Finding #6: aria-label + visually-hidden live-region
+  // damit Screen-Reader den Wechsel von "Kopieren" zu "Kopiert!" mitbekommen
+  // (title-Attribut wird nicht universell von SRs gelesen).
   return (
-    <button
-      onClick={handleCopy}
-      className={cn(
-        "inline-flex items-center gap-1 px-2 py-1 rounded text-xs font-medium transition-all duration-200",
-        copied
-          ? "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400"
-          : variantStyles,
-        className,
-      )}
-      title="In Zwischenablage kopieren"
-    >
-      {copied ? (
-        <>
-          <Check className="w-3 h-3" />
-          Kopiert!
-        </>
-      ) : (
-        <>
-          <Copy className="w-3 h-3" />
-          Kopieren
-        </>
-      )}
-    </button>
+    <>
+      <button
+        onClick={handleCopy}
+        type="button"
+        aria-label={copied ? "Text wurde kopiert" : "In Zwischenablage kopieren"}
+        className={cn(
+          "inline-flex items-center gap-1 px-2 py-1 rounded text-xs font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-terracotta)] focus-visible:ring-offset-1",
+          copied
+            ? "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400"
+            : variantStyles,
+          className,
+        )}
+        title="In Zwischenablage kopieren"
+      >
+        {copied ? (
+          <>
+            <Check className="w-3 h-3" aria-hidden="true" />
+            Kopiert!
+          </>
+        ) : (
+          <>
+            <Copy className="w-3 h-3" aria-hidden="true" />
+            Kopieren
+          </>
+        )}
+      </button>
+      {/* Visually-hidden status region für Screen-Reader-Announce */}
+      <span role="status" aria-live="polite" className="sr-only">
+        {copied ? "In Zwischenablage kopiert" : ""}
+      </span>
+    </>
   );
 }
