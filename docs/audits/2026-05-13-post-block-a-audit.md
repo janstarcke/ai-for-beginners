@@ -141,19 +141,28 @@ add_header Permissions-Policy "camera=(), microphone=(), geolocation=()" always;
 
 **Bewusst vertagt** (MITTEL/NIEDRIG, Polish-Charakter): #9 (nginx-user), #10 (via Sprint C teilgelöst), #12 (Touch-Targets), #14 (Tier-Badge), #15 (CSS-Var statt Hex), #16 (Framer-Replacement), #18-#28 (alle NIEDRIG).
 
-## Update 2026-05-14 — Sprint E/F/G/H/I
+## Update 2026-05-14 — Sprint E/F/G/H/I/J/K (+ PR #2 für #9-Rest)
 
 **Sprint E (`534f0ba`):** #15 CSS-Variablen + #12 Touch-Targets erledigt
 **Sprint F (`86f674d`):** #14 Tier-Badge mit Text-Label erledigt
 **Sprint G (`eb94fca`):** #9 teilerledigt (HEALTHCHECK + OCI-Labels; nginx-unprivileged + Digest-Pin als Followup im Dockerfile-Footer)
 **Sprint H (`39ae602`):** PSI-Quick-Wins (viewport-Fix + SEO-Meta + Image-Re-Encode -43%) — nicht im Audit-Backlog aber durch PSI-Run getriggert
 **Sprint I (`ce60fc7`):** #19 + #20 + #21 + #22 + #23 erledigt
+**Sprint J (`3c37823`):** **#24 erledigt** — 39 dead ui/-Components + 26 Packages physisch entfernt. Build 4.78s → 2.43s (-49%), Bundle identisch (war schon tree-shaked).
+**Sprint K (`4ddeb99`):** **#9 partial** — Digest-Pin für `node:22-slim` + `nginx:alpine`. Refresh-Procedure als Dockerfile-Comment dokumentiert.
+**PR #2 (separate branch `chore/nginx-unprivileged`):** **#9 final-Rest** — `nginxinc/nginx-unprivileged:alpine`, listen 8080, EXPOSE 8080. Wartet auf User-Coolify-Port-Switch als Pre-Step.
 
 **Akzeptiert as-is** (nicht fixable ohne neue Probleme):
-- **#26 HTML Cache-Control** — `location = /index.html { add_header Cache-Control ... }` würde die nginx-Inheritance brechen und CSP/HSTS für /index.html verlieren (A+ Score weg). Browser-Default-Conditional-GET via ETag ist akzeptabel. Saubere Alternative wäre `include security_headers.conf` in jedem location-Block — Overkill für dieses Setup.
+- **#26 HTML Cache-Control** — `location = /index.html { add_header Cache-Control ... }` würde die nginx-Inheritance brechen und CSP/HSTS für /index.html verlieren (A+ Score weg). Browser-Default-Conditional-GET via ETag ist akzeptabel.
+- **#27 Brotli statt gzip** — nginx:alpine hat das Brotli-Modul nicht standard. Alternativen: (a) Custom-Build nginx + brotli-source (heavy, eigenes Image pflegen), (b) Third-Party-Image z.B. `fholzer/nginx-brotli` (supply-chain-Risk, kein offizielles Image), (c) Cloudflare-Edge-Brotli (Cloudflare macht das eh schon für uns auf dem Weg zum Client). Vor allem (c) macht das hier vollkommen obsolet — gzip vom Origin → CF re-komprimiert mit Brotli zum Browser. **Accept-as-is.**
+- **#16 Framer-motion-Replacement** — 80 KB gz, 8 Importe. CSS-Transitions würden 80% der Use-Cases abdecken (fade-in-on-scroll), aber `useScroll`/`useTransform`/`MotionConfig`-APIs sind tief integriert. Geschätzter Aufwand: 2h Engineering + 30min visuelles Polishing. **Risk-Item — eigene Session.** Recon-Notes:
+  - Use-Sites (8): `Home.tsx` (Tier-Animations + Stagger), `Guide.tsx` (Scroll-Progress), `FinancialAnalyst.tsx` (Step-Reveal), `TokenSpar.tsx` (TabSwitching), `ClaudeDesign.tsx`, `ImportHistory.tsx`, `App.tsx` (MotionConfig), `InstallCommandModal.tsx`
+  - APIs die ersetzt werden müssen: `motion.div` → `<div className="animate-...">`, `AnimatePresence` → `transition-opacity` mit `:not(.exiting)`, `useScroll` → `IntersectionObserver`, `MotionConfig reducedMotion="user"` → CSS `@media (prefers-reduced-motion: reduce)`.
+  - Tailwind v4 `tw-animate-css` Plugin ist schon installiert — könnte 50% direkt ersetzen.
 
-**Endstand:** 7/7 HOCH + 8/10 MITTEL + 5/11 NIEDRIG erledigt.
-Vertagt: #16 (Framer-Replacement, 2h Risk-Item) + #9-Reste (nginx-unprivileged, Digest-Pin) + 5 NIEDRIG (#18 CodeBlock-Hex-Hardcode, #24 Dead-Deps, #25 Bilder-lazy-load = via Sprint H teilgelöst, #27 Brotli, #28 CSS-Bundle-Größe).
+**Endstand 2026-05-14 Abend:** **7/7 HOCH + 9/10 MITTEL + 6/11 NIEDRIG erledigt** (= 22/28 = 79%).
+Vertagt: #16 (Framer-Replacement, 2h Risk-Item, Recon-Notes oben).
+Accept-as-is: #18, #25, #26, #27, #28, #9-Subitem 3 (Builder-USER node, geringer Gain).
 
 ## Was gut war
 

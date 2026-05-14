@@ -45,6 +45,34 @@ export interface ImportEntry {
  */
 export const importHistory: ImportEntry[] = [
   {
+    commit: "4ddeb99",
+    title: "Sprint K: Docker-Base-Image-Digests gepinnt (Audit #9 partial)",
+    type: "refactor",
+    categories: ["Security"],
+    sources: [
+      {
+        kind: "manual",
+        channel: "Audit-Followup (Post-Block-A 2026-05-13)",
+      },
+    ],
+    notes:
+      "node:22-slim und nginx:alpine waren floating tags — supply-chain-Risk durch Tag-Replacement-Attacks. Beide auf den heutigen Multi-Arch-Manifest-Digest gepinnt. Refresh-Procedure als Dockerfile-Comment dokumentiert (Docker-Hub-API + jq). Pflege monatlich oder bei jedem Coolify-Redeploy.",
+  },
+  {
+    commit: "3c37823",
+    title: "Sprint J: 39 dead shadcn-Components + 26 Packages weg (Audit #24)",
+    type: "refactor",
+    categories: ["Hygiene", "Build"],
+    sources: [
+      {
+        kind: "manual",
+        channel: "Audit-Followup (Post-Block-A 2026-05-13)",
+      },
+    ],
+    notes:
+      "Audit hatte 28 ungenutzte ui/-Components flagged. Grep zeigte: nur 14 von 53 sind tatsächlich importiert (button/card/checkbox/command/dialog/input/label/separator/sheet/skeleton/sonner/textarea/toggle/tooltip). Rest weg — plus 19 @radix-ui-Pakete + recharts + react-day-picker + embla-carousel-react + react-hook-form + react-resizable-panels + vaul + input-otp. Build-Zeit 4.78s → 2.43s (-49%), Bundle identisch (war schon tree-shaked), Lockfile -1314 Zeilen.",
+  },
+  {
     commit: "ca11929",
     title: "Slash-Commands /goal + /dream + Daily-Pipeline (SKAILE)",
     type: "new",
