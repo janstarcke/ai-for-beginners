@@ -44,6 +44,13 @@
   --font-body: "DM Sans", sans-serif;
   --color-terracotta: oklch(0.62 0.14 35);
   --color-terracotta-light: oklch(0.72 0.10 35);
+  /* WCAG-AA-konformer Akzent-Ton für Light-Mode-Text auf hellem BG.
+     Berechnet aus #a85d3e (4.5:1) — siehe Audit Finding #5/#15. */
+  --color-terracotta-deep: oklch(0.52 0.13 38);
+  --color-terracotta-deep-hover: oklch(0.44 0.13 38);
+  /* Dark-Mode-Pendants — heller als deep damit sie auf dunklem BG lesbar sind. */
+  --color-terracotta-bright: oklch(0.68 0.14 38);
+  --color-terracotta-bright-hover: oklch(0.76 0.14 38);
   --color-sage: oklch(0.62 0.06 145);
   --color-sage-light: oklch(0.82 0.04 145);
   --color-espresso: oklch(0.25 0.04 55);

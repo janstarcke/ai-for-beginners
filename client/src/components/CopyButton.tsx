@@ -39,17 +39,23 @@ export function CopyButton({ text, className, variant = "default" }: CopyButtonP
     }
   };
 
-  // 2026-05-13 Audit Finding #5: Ghost-Default-Text war #c4704b (3.22:1 auf
-  // hellem BG, WCAG AA fail). Auf #a85d3e angehoben (≈4.5:1). Hover-State
-  // bleibt im Bereich, aber noch dunkler für taktiles Feedback.
+  // 2026-05-13 Audit Finding #5/#15: Ghost-Variant nutzt CSS-Variablen statt
+  // Hex-Hardcode. Werte in client/src/index.css definiert:
+  //   --color-terracotta-deep        (Light-Default, ~4.5:1 auf hellem BG)
+  //   --color-terracotta-deep-hover  (Light-Hover, dunkler)
+  //   --color-terracotta-bright      (Dark-Default, hell auf dunklem BG)
+  //   --color-terracotta-bright-hover (Dark-Hover, noch heller)
   const variantStyles =
     variant === "ghost"
-      ? "bg-transparent hover:bg-transparent text-[#a85d3e] hover:text-[#8a4830] dark:text-[#d4825a] dark:hover:text-[#e89b76]"
+      ? "bg-transparent hover:bg-transparent text-[var(--color-terracotta-deep)] hover:text-[var(--color-terracotta-deep-hover)] dark:text-[var(--color-terracotta-bright)] dark:hover:text-[var(--color-terracotta-bright-hover)]"
       : "bg-secondary hover:bg-secondary/80 text-muted-foreground hover:text-foreground";
 
   // 2026-05-13 Audit Finding #6: aria-label + visually-hidden live-region
   // damit Screen-Reader den Wechsel von "Kopieren" zu "Kopiert!" mitbekommen
   // (title-Attribut wird nicht universell von SRs gelesen).
+  // Audit Finding #12: Touch-Target ≥36px (kompromiss zwischen WCAG AA-Min
+  // 24px und AAA-Empfehlung 44px). Ghost-Variant bleibt schmal weil dort
+  // der Akzent-Look gewollt ist (FinancialAnalyst-Inline-Pattern).
   return (
     <>
       <button
@@ -57,7 +63,8 @@ export function CopyButton({ text, className, variant = "default" }: CopyButtonP
         type="button"
         aria-label={copied ? "Text wurde kopiert" : "In Zwischenablage kopieren"}
         className={cn(
-          "inline-flex items-center gap-1 px-2 py-1 rounded text-xs font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-terracotta)] focus-visible:ring-offset-1",
+          "inline-flex items-center justify-center gap-1 px-3 py-1.5 min-h-[36px] rounded text-xs font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-terracotta)] focus-visible:ring-offset-1",
+          variant === "ghost" && "px-2 py-1 min-h-0",
           copied
             ? "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400"
             : variantStyles,
