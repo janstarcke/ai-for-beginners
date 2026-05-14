@@ -11,9 +11,29 @@ export interface GitCommit {
   files: string[];
 }
 
-export const gitHistoryGeneratedAt = "2026-05-14T13:54:05.762Z";
+export const gitHistoryGeneratedAt = "2026-05-14T14:03:19.281Z";
 
 export const gitHistory: GitCommit[] = [
+  {
+    "hash": "ce60fc7810a8d4b8fbeb38b6db06711e9fa1ffd9",
+    "shortHash": "ce60fc7",
+    "date": "2026-05-14T07:01:24-07:00",
+    "author": "Jan Starcke",
+    "subject": "fix(sprint-i): 5 NIEDRIG-Polish-Items (Audit #19/#20/#21/#22/#23)",
+    "files": [
+      "client/src/data/skills.ts"
+    ]
+  },
+  {
+    "hash": "6bbaa307dc970e474962e9d17eed81b78205c76e",
+    "shortHash": "6bbaa30",
+    "date": "2026-05-14T06:54:06-07:00",
+    "author": "Jan Starcke",
+    "subject": "chore(history): catalog 39ae602 Sprint H für /secret-import-history",
+    "files": [
+      "client/src/data/importHistory.ts"
+    ]
+  },
   {
     "hash": "0c4bec509f2de051c64e228703e2e78b57fc3d5b",
     "shortHash": "0c4bec5",

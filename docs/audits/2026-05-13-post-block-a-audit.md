@@ -141,6 +141,20 @@ add_header Permissions-Policy "camera=(), microphone=(), geolocation=()" always;
 
 **Bewusst vertagt** (MITTEL/NIEDRIG, Polish-Charakter): #9 (nginx-user), #10 (via Sprint C teilgelöst), #12 (Touch-Targets), #14 (Tier-Badge), #15 (CSS-Var statt Hex), #16 (Framer-Replacement), #18-#28 (alle NIEDRIG).
 
+## Update 2026-05-14 — Sprint E/F/G/H/I
+
+**Sprint E (`534f0ba`):** #15 CSS-Variablen + #12 Touch-Targets erledigt
+**Sprint F (`86f674d`):** #14 Tier-Badge mit Text-Label erledigt
+**Sprint G (`eb94fca`):** #9 teilerledigt (HEALTHCHECK + OCI-Labels; nginx-unprivileged + Digest-Pin als Followup im Dockerfile-Footer)
+**Sprint H (`39ae602`):** PSI-Quick-Wins (viewport-Fix + SEO-Meta + Image-Re-Encode -43%) — nicht im Audit-Backlog aber durch PSI-Run getriggert
+**Sprint I (`ce60fc7`):** #19 + #20 + #21 + #22 + #23 erledigt
+
+**Akzeptiert as-is** (nicht fixable ohne neue Probleme):
+- **#26 HTML Cache-Control** — `location = /index.html { add_header Cache-Control ... }` würde die nginx-Inheritance brechen und CSP/HSTS für /index.html verlieren (A+ Score weg). Browser-Default-Conditional-GET via ETag ist akzeptabel. Saubere Alternative wäre `include security_headers.conf` in jedem location-Block — Overkill für dieses Setup.
+
+**Endstand:** 7/7 HOCH + 8/10 MITTEL + 5/11 NIEDRIG erledigt.
+Vertagt: #16 (Framer-Replacement, 2h Risk-Item) + #9-Reste (nginx-unprivileged, Digest-Pin) + 5 NIEDRIG (#18 CodeBlock-Hex-Hardcode, #24 Dead-Deps, #25 Bilder-lazy-load = via Sprint H teilgelöst, #27 Brotli, #28 CSS-Bundle-Größe).
+
 ## Was gut war
 
 - Refactor handwerklich sauber: kein Dead Code, keine non-null-assertions, keine vergessenen Imports

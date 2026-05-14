@@ -45,6 +45,14 @@ export interface ImportEntry {
  */
 export const importHistory: ImportEntry[] = [
   {
+    commit: "ce60fc7",
+    title: "Sprint I: 5 NIEDRIG-Polish-Items (#19/#20/#21/#22/#23)",
+    type: "refactor",
+    sources: [{ kind: "manual" }],
+    notes:
+      "Frühstücks-Polish-Sprint. Inline-Code-Rendering in installNote (Backticks → <code>), doppelter Install-Guard konsolidiert via single source-of-truth, Kimi-Key Shell-History-Warnung ergänzt, Slash- vs Shell-Command Auto-Detection im Modal (MessageSquare vs Terminal-Icon), CodeBlock <pre> mit tabIndex+role=region für Keyboard-Scroll. Finding #26 (HTML-Cache-Control) bewusst akzeptiert as-is wegen nginx-Inheritance-Quirk (würde CSP/HSTS auf /index.html brechen).",
+  },
+  {
     commit: "39ae602",
     title: "Sprint H: PageSpeed-Quick-Wins (Mobile +4, A11y +5, SEO +8)",
     type: "refactor",
