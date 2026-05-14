@@ -20,8 +20,13 @@ COPY . .
 RUN pnpm build
 
 # --- Runtime-Stage -------------------------------------------------------
-# nginx:alpine. Digest pinned 2026-05-14.
-FROM nginx:alpine@sha256:feb6f75a08aa55b44576f98c15b8859819ecf54f3e4d2157f42c2d01cb58a3d2
+# nginx-unprivileged: master + worker laufen als UID 101 (nginx), nicht als
+# root. Audit #9-Rest. Listens on port 8080 by default (not 80) — non-root
+# user can't bind to privileged ports. Digest pinned 2026-05-14.
+#
+# ⚠️ DEPLOY-VORAUSSETZUNG: Coolify-Container-Port muss VOR diesem Deploy
+# von 80 auf 8080 umgestellt werden, sonst geht Production offline.
+FROM nginxinc/nginx-unprivileged:alpine@sha256:4c18337659c90a01627f2e152b7c89524521c82dcedb255dc83d3689642b0803
 LABEL org.opencontainers.image.title="ai-for-beginners" \
       org.opencontainers.image.description="Wissensdatenbank für Claude Code & Vibe Coding" \
       org.opencontainers.image.source="https://github.com/janstarcke/ai-for-beginners"
@@ -29,13 +34,11 @@ LABEL org.opencontainers.image.title="ai-for-beginners" \
 COPY --from=builder /app/dist /usr/share/nginx/html
 COPY nginx.conf /etc/nginx/conf.d/default.conf
 
-# Audit Finding #9 Sub-Item HEALTHCHECK: alle 30s pruefen ob nginx erreichbar
-# ist. Coolify kann das in der UI zusaetzlich anzeigen. busybox-wget ist im
-# nginx:alpine Image vorhanden, daher kein curl-Install noetig.
+# HEALTHCHECK auf den nicht-privilegierten Port 8080 statt 80.
 HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
-    CMD wget --quiet --tries=1 --spider http://localhost/ || exit 1
+    CMD wget --quiet --tries=1 --spider http://localhost:8080/ || exit 1
 
-EXPOSE 80
+EXPOSE 8080
 
 # --- Followup-Items (#9-Reste, vertagt) ----------------------------------
 # Folgendes wuerde das Image weiter haerten, braucht aber Coolify-side
