@@ -45,6 +45,30 @@ export interface ImportEntry {
  */
 export const importHistory: ImportEntry[] = [
   {
+    commit: "1533238",
+    title: "Refactor: 4 CopyButton-Duplikate konsolidiert + variant=ghost",
+    type: "refactor",
+    sources: [{ kind: "manual" }],
+    notes:
+      "Cleanup nach Block A: ClaudeDesign/TokenSpar/Guide/FinancialAnalyst hatten je eine eigene CopyButton-Funktion (Code-Smell aus Manus-Migration). Globale Komponente um variant + cn()/twMerge erweitert. -68 LOC Duplikat-Code, terracotta-Look in FinancialAnalyst erhalten.",
+  },
+  {
+    commit: "acc87c3",
+    title: "12 weitere Install-Buttons befüllt (18/63 Skills)",
+    type: "extend",
+    sources: [{ kind: "manual" }],
+    notes:
+      "Pflege-Sweep nach Block A: Skills #3/#10/#13/#21/#22/#28/#35/#36/#38/#40/#51/#53 mit installCommand + installNote ergänzt. Alle Befehle idempotent (mkdir/git clone/plugin install/npx/export). Skill #36-URL gefixt (https-Präfix).",
+  },
+  {
+    commit: "7f24d51",
+    title: "Dark-Mode-Kontrast-Fix für CodeBlock",
+    type: "refactor",
+    sources: [{ kind: "manual" }],
+    notes:
+      "Hotfix nach erstem Block-A-Live-Deploy: Sepia-Token-Farben (#3a2f28) waren auf dunklem Espresso-BG unlesbar. Lösung: zwei separate PrismTheme-Objekte (Light: Sepia-on-Cream, Dark: Cream-on-Espresso), useTheme() schaltet um.",
+  },
+  {
     commit: "d2f2021",
     title: "Block A: CodeBlock + Install-Buttons (Manus-Roadmap)",
     type: "new",

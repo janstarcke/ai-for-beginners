@@ -11,9 +11,29 @@ export interface GitCommit {
   files: string[];
 }
 
-export const gitHistoryGeneratedAt = "2026-05-14T00:07:39.171Z";
+export const gitHistoryGeneratedAt = "2026-05-14T00:25:43.154Z";
 
 export const gitHistory: GitCommit[] = [
+  {
+    "hash": "acc87c3c342395d0ba28597d84303eff4520ddcf",
+    "shortHash": "acc87c3",
+    "date": "2026-05-13T17:25:23-07:00",
+    "author": "Jan Starcke",
+    "subject": "feat(skills): 12 weitere Install-Commands befüllt (18/63 total)",
+    "files": [
+      "client/src/data/skills.ts"
+    ]
+  },
+  {
+    "hash": "3b79de5285d621664364b4d0dd5b326ccc2ca515",
+    "shortHash": "3b79de5",
+    "date": "2026-05-13T17:07:53-07:00",
+    "author": "Jan Starcke",
+    "subject": "chore(history): catalog d2f2021 Block A für /secret-import-history",
+    "files": [
+      "client/src/data/importHistory.ts"
+    ]
+  },
   {
     "hash": "d2f2021d808d9b936728ffad740126495de56b26",
     "shortHash": "d2f2021",
