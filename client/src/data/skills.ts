@@ -79,6 +79,8 @@ export const skills: Skill[] = [
     description: "Größtes Productivity-Unlock: 3-5 Claudes in separaten Git-Worktrees parallel arbeiten lassen. claude -w startet in einem Worktree, Shell-Aliases (za/zb/zc) für schnellen Wechsel. Subagents mit isolation: worktree für isolierte Tasks. Dreifache Geschwindigkeit bei komplexen Projekten.",
     nextStep: "git worktree add ../projekt-wt1 main — Erstelle 3 Worktrees und lege Shell-Aliases an: alias za='cd ../projekt-wt1 && claude'",
     isNew: true,
+    installCommand: "git worktree add ../projekt-wt1 main\ngit worktree add ../projekt-wt2 main\ngit worktree add ../projekt-wt3 main",
+    installNote: "Im aktuellen Repo ausführen. Erzeugt drei parallele Worktrees neben dem Hauptordner — jeden in einem eigenen Terminal mit `cd ../projekt-wt1 && claude` öffnen. Shell-Aliases (`za`/`zb`/`zc`) in der zsh/bash-Config sparen Tipparbeit.",
   },
   {
     id: 4,
@@ -155,6 +157,8 @@ export const skills: Skill[] = [
     description: "Team committet gemeinsame CLAUDE.md. Jeder Fehler wird sofort hinzugefügt. @.claude in PRs taggen für automatische Learnings. Claude wird jede Woche besser.",
     nextStep: "/install-github-action — dann bei Code-Reviews @.claude taggen. Nach jeder Korrektur: /memory",
     isNew: true,
+    installCommand: "/install-github-action",
+    installNote: "In einer laufenden Claude-Code-Session im Projekt-Root tippen. Richtet eine GitHub Action ein, die bei PR-Reviews auf @.claude-Mentions reagiert. Erfordert anschließend einen Push der erzeugten Workflow-Datei.",
   },
   {
     id: 11,
@@ -187,6 +191,8 @@ export const skills: Skill[] = [
     sources: [],
     description: "Generiert perfekte Prompts für über 30 AI-Tools basierend auf 9 Dimensionen und 12 Frameworks.",
     nextStep: "git clone https://github.com/nidhinjs/prompt-master.git ~/.claude/skills/prompt-master",
+    installCommand: "mkdir -p ~/.claude/skills && git clone https://github.com/nidhinjs/prompt-master.git ~/.claude/skills/prompt-master",
+    installNote: "Klont den Skill direkt in den globalen Skills-Ordner. Beim nächsten Claude-Code-Start ist er verfügbar.",
   },
   {
     id: 14,
@@ -267,6 +273,8 @@ export const skills: Skill[] = [
     sources: [],
     description: "Design-Templates von 66 echten Websites (Stripe, Figma, Notion). Verhindert generischen 'AI-Slop'-Look.",
     nextStep: "/plugin install frontend-design@claude-plugins-official",
+    installCommand: "/plugin install frontend-design@claude-plugins-official",
+    installNote: "In einer laufenden Claude-Code-Session ausführen.",
   },
   {
     id: 22,
@@ -277,6 +285,8 @@ export const skills: Skill[] = [
     sources: [],
     description: "Professioneller Security-Auditor: findet SQL Injection, XSS und mehr.",
     nextStep: "/plugin marketplace add trailofbits/skills",
+    installCommand: "/plugin marketplace add trailofbits/skills",
+    installNote: "In einer laufenden Claude-Code-Session ausführen. Danach mit `/plugin install <skill-name>@trailofbits-skills` einzelne Audit-Skills nachziehen.",
   },
   {
     id: 23,
@@ -341,6 +351,8 @@ export const skills: Skill[] = [
     sources: [],
     description: "Web-Scraping das Anti-Bot-Schutz umgeht und JavaScript rendert.",
     nextStep: "npx -y firecrawl-cli@1.14.8 init -y --browser",
+    installCommand: "npx -y firecrawl-cli@1.14.8 init -y --browser",
+    installNote: "Im Projekt-Root ausführen. Lädt Firecrawl ohne globale Installation, erstellt Config + Browser-Setup.",
   },
   {
     id: 29,
@@ -414,6 +426,8 @@ export const skills: Skill[] = [
     description: "65-75% weniger Output-Tokens. 'Why use many token when few token do trick.' Verhindert Kontext-Überladung in langen Sessions und spart massiv Kosten.",
     nextStep: "claude plugin marketplace add JuliusBrussee/caveman && claude plugin install caveman@caveman",
     isNew: true,
+    installCommand: "claude plugin marketplace add JuliusBrussee/caveman\nclaude plugin install caveman@caveman",
+    installNote: "Zwei Schritte: erst Marketplace registrieren, dann Plugin installieren. Aktivierbar in der laufenden Session mit `/plugin enable caveman@caveman`.",
   },
   {
     id: 36,
@@ -425,6 +439,8 @@ export const skills: Skill[] = [
     description: "Optimiert deine CLAUDE.md automatisch: lagert unwichtige Teile in Sub-Dateien aus, hält die Hauptdatei schlank. Wichtig, weil CLAUDE.md bei JEDER Nachricht neu gelesen wird.",
     nextStep: "git clone github.com/wrsmith108/claude-md-optimizer ~/.claude/skills/claude-md-optimizer",
     isNew: true,
+    installCommand: "mkdir -p ~/.claude/skills && git clone https://github.com/wrsmith108/claude-md-optimizer ~/.claude/skills/claude-md-optimizer",
+    installNote: "Klont in den globalen Skills-Ordner. Beim nächsten Claude-Code-Start verfügbar.",
   },
   {
     id: 37,
@@ -447,6 +463,8 @@ export const skills: Skill[] = [
     description: "Design-System auf Knopfdruck: 50+ Styles, 161 Color-Paletten, 57 Font-Pairings, 99 UX-Guidelines. Reasoning-Engine analysiert dein Projekt.",
     nextStep: "npm install -g uipro-cli && uipro init --ai claude",
     isNew: true,
+    installCommand: "npm install -g uipro-cli && uipro init --ai claude",
+    installNote: "Globale npm-Installation. Bei Permission-Problemen alternativ mit Node Version Manager (nvm) arbeiten statt sudo.",
   },
   {
     id: 39,
@@ -469,6 +487,8 @@ export const skills: Skill[] = [
     description: "Offizieller MCP-Server für 30+ Bild- und Video-Modelle (Soul, Flux, Veo 3.1, Kling 3.0, Sora 2). Ein Login, kein API-Key. Killer: Komplette Marketing-Kampagnen aus einem Prompt-Flow mit konsistenter Soul-Character.",
     nextStep: "claude mcp add --transport http --scope user higgsfield https://mcp.higgsfield.ai/mcp",
     isNew: true,
+    installCommand: "claude mcp add --transport http --scope user higgsfield https://mcp.higgsfield.ai/mcp",
+    installNote: "Registriert den MCP-Server user-weit. Beim ersten Aufruf öffnet Higgsfield einen Login-Flow im Browser — kein API-Key nötig.",
   },
   {
     id: 41,
@@ -593,6 +613,8 @@ export const skills: Skill[] = [
     description: "Persistent Memory über alle Sessions hinweg. Claude erinnert sich an alles aus vorherigen Sessions — keine 'erklär nochmal was wir letztens gemacht haben'-Rebuilds mehr. Dashboard läuft lokal auf localhost:37777.",
     nextStep: "npx claude-mem install — oder in Claude Code: /plugin marketplace add thedotmack/claude-mem && /plugin install claude-mem. Danach Claude Code neu starten.",
     isNew: true,
+    installCommand: "npx claude-mem install",
+    installNote: "Alternativ als Plugin: in einer Claude-Code-Session `/plugin marketplace add thedotmack/claude-mem` und dann `/plugin install claude-mem`. Beide Wege brauchen anschließend einen Claude-Code-Restart.",
   },
   {
     id: 52,
@@ -616,6 +638,8 @@ export const skills: Skill[] = [
     nextStep: "export ANTHROPIC_BASE_URL='https://api.atlascloud.ai' && export ANTHROPIC_MODEL='moonshot/kimi-k2.6' — API-Key von atlascloud.ai oder platform.moonshot.ai holen.",
     isNew: true,
     warning: "Alternatives Modell, nicht Anthropic. Performance kann bei komplexen Architekturfragen schwächer sein als Sonnet/Opus.",
+    installCommand: "export ANTHROPIC_BASE_URL='https://api.atlascloud.ai'\nexport ANTHROPIC_MODEL='moonshot/kimi-k2.6'\nexport ANTHROPIC_API_KEY='<dein-atlas-cloud-key>'",
+    installNote: "Nur für die aktuelle Shell-Session. Für dauerhaft: in ~/.zshrc oder ~/.bashrc einfügen. API-Key entweder bei atlascloud.ai (günstiger, Aggregator) oder platform.moonshot.ai (direkt) holen.",
   },
   {
     id: 54,
