@@ -1,12 +1,23 @@
 import { useState } from "react";
 import { Copy, Check } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface CopyButtonProps {
   text: string;
+  /**
+   * Tailwind-Klassen-Override. Konflikte mit dem Default-Style werden via
+   * twMerge sauber aufgelöst — z.B. `className="bg-transparent text-[#c4704b]"`
+   * überschreibt das Default-`bg-secondary text-muted-foreground`.
+   */
   className?: string;
+  /**
+   * Visual-Variant. "default" = Standard mit Background, "ghost" = ohne
+   * Background, nur Text — passt z.B. neben dunklem Code-Block.
+   */
+  variant?: "default" | "ghost";
 }
 
-export function CopyButton({ text, className = "" }: CopyButtonProps) {
+export function CopyButton({ text, className, variant = "default" }: CopyButtonProps) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async (e: React.MouseEvent) => {
@@ -28,14 +39,21 @@ export function CopyButton({ text, className = "" }: CopyButtonProps) {
     }
   };
 
+  const variantStyles =
+    variant === "ghost"
+      ? "bg-transparent hover:bg-transparent text-[#c4704b] hover:text-[#a85d3e]"
+      : "bg-secondary hover:bg-secondary/80 text-muted-foreground hover:text-foreground";
+
   return (
     <button
       onClick={handleCopy}
-      className={`inline-flex items-center gap-1 px-2 py-1 rounded text-xs font-medium transition-all duration-200 ${
+      className={cn(
+        "inline-flex items-center gap-1 px-2 py-1 rounded text-xs font-medium transition-all duration-200",
         copied
           ? "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400"
-          : "bg-secondary hover:bg-secondary/80 text-muted-foreground hover:text-foreground"
-      } ${className}`}
+          : variantStyles,
+        className,
+      )}
       title="In Zwischenablage kopieren"
     >
       {copied ? (

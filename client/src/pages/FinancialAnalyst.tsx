@@ -1,11 +1,10 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
+import { CopyButton } from "@/components/CopyButton";
 import {
   ChevronDown,
   ChevronUp,
-  Copy,
-  Check,
   AlertTriangle,
   Lightbulb,
   ArrowLeft,
@@ -205,23 +204,8 @@ const practicalTips = [
 /* ------------------------------------------------------------------ */
 /*  Components                                                         */
 /* ------------------------------------------------------------------ */
-
-function CopyButton({ text }: { text: string }) {
-  const [copied, setCopied] = useState(false);
-  return (
-    <button
-      onClick={() => {
-        navigator.clipboard.writeText(text);
-        setCopied(true);
-        setTimeout(() => setCopied(false), 2000);
-      }}
-      className="inline-flex items-center gap-1 text-xs text-[#c4704b] hover:text-[#a85d3e] transition-colors"
-    >
-      {copied ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
-      {copied ? "Kopiert!" : "Kopieren"}
-    </button>
-  );
-}
+/* CopyButton wurde nach client/src/components/CopyButton.tsx ausgelagert.
+ * Hier nutzen wir variant="ghost" für den terracotta-Akzent-Look. */
 
 function AgentCard({ agent, index }: { agent: Agent; index: number }) {
   const [expanded, setExpanded] = useState(false);
@@ -395,7 +379,7 @@ export default function FinancialAnalyst() {
             <div className="bg-black/30 rounded-lg p-4 font-mono text-sm">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-white/40 text-xs">1. Marketplace hinzufügen</span>
-                <CopyButton text="claude plugin marketplace add anthropicis/claude-for-financial-services" />
+                <CopyButton variant="ghost" text="claude plugin marketplace add anthropicis/claude-for-financial-services" />
               </div>
               <code className="text-emerald-400">
                 claude plugin marketplace add anthropicis/claude-for-financial-services
@@ -404,7 +388,7 @@ export default function FinancialAnalyst() {
             <div className="bg-black/30 rounded-lg p-4 font-mono text-sm">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-white/40 text-xs">2. Model Builder installieren</span>
-                <CopyButton text="claude plugin install model-builder@claude-for-financial-services" />
+                <CopyButton variant="ghost" text="claude plugin install model-builder@claude-for-financial-services" />
               </div>
               <code className="text-emerald-400">
                 claude plugin install model-builder@claude-for-financial-services
@@ -413,7 +397,7 @@ export default function FinancialAnalyst() {
             <div className="bg-black/30 rounded-lg p-4 font-mono text-sm">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-white/40 text-xs">3. Earnings Reviewer installieren</span>
-                <CopyButton text="claude plugin install earnings-reviewer@claude-for-financial-services" />
+                <CopyButton variant="ghost" text="claude plugin install earnings-reviewer@claude-for-financial-services" />
               </div>
               <code className="text-emerald-400">
                 claude plugin install earnings-reviewer@claude-for-financial-services
@@ -493,7 +477,7 @@ export default function FinancialAnalyst() {
                   <code className="text-base font-bold text-[#c4704b] font-mono">
                     {cmd.command}
                   </code>
-                  <CopyButton text={cmd.command} />
+                  <CopyButton variant="ghost" text={cmd.command} />
                 </div>
                 <p className="text-sm text-[#3a2f28]/70 dark:text-foreground/70 mb-2">
                   {cmd.description}
@@ -676,7 +660,7 @@ export default function FinancialAnalyst() {
           >
             <div className="flex items-center justify-between mb-2">
               <span className="text-white/60 text-xs">Ordnerstruktur anlegen</span>
-              <CopyButton text="mkdir -p Finance-Team/{shared,revenue-ops/{input,output},financial-control/{input,output},fpa/{input,output},reporting/{input,output}}" />
+              <CopyButton variant="ghost" text="mkdir -p Finance-Team/{shared,revenue-ops/{input,output},financial-control/{input,output},fpa/{input,output},reporting/{input,output}}" />
             </div>
             <code className="text-sm text-emerald-400 font-mono block">
               mkdir -p Finance-Team/&#123;shared,revenue-ops/&#123;input,output&#125;,financial-control/&#123;input,output&#125;,fpa/&#123;input,output&#125;,reporting/&#123;input,output&#125;&#125;
@@ -909,11 +893,11 @@ export default function FinancialAnalyst() {
           <div className="space-y-2 mb-6">
             <div className="bg-black/30 rounded-lg p-3 font-mono text-sm flex items-center justify-between">
               <code className="text-emerald-400">scripts/deploy-managed-agent.sh</code>
-              <CopyButton text="scripts/deploy-managed-agent.sh" />
+              <CopyButton variant="ghost" text="scripts/deploy-managed-agent.sh" />
             </div>
             <div className="bg-black/30 rounded-lg p-3 font-mono text-sm flex items-center justify-between">
               <code className="text-emerald-400">scripts/orchestrate.py</code>
-              <CopyButton text="scripts/orchestrate.py" />
+              <CopyButton variant="ghost" text="scripts/orchestrate.py" />
             </div>
           </div>
           <a

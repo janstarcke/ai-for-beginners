@@ -8,8 +8,6 @@ import {
   Calculator,
   Zap,
   TrendingDown,
-  Copy,
-  Check,
   AlertTriangle,
   ChevronDown,
   ChevronUp,
@@ -284,28 +282,8 @@ function useSetupChecklist() {
   return { checked, toggle, reset, completedCount };
 }
 
-/* ------------------------------------------------------------------ */
-/*  Helper Components                                                  */
-/* ------------------------------------------------------------------ */
-
-function CopyButton({ text }: { text: string }) {
-  const [copied, setCopied] = useState(false);
-  const handleCopy = () => {
-    navigator.clipboard.writeText(text);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-  return (
-    <button
-      onClick={handleCopy}
-      className="inline-flex items-center gap-1 px-2 py-1 rounded text-xs bg-secondary/80 hover:bg-secondary text-muted-foreground hover:text-foreground transition-colors"
-      title="Kopieren"
-    >
-      {copied ? <Check className="w-3 h-3 text-green-600" /> : <Copy className="w-3 h-3" />}
-      {copied ? "Kopiert" : "Copy"}
-    </button>
-  );
-}
+/* CopyButton wurde nach client/src/components/CopyButton.tsx ausgelagert;
+ * lokale Aufrufe sind durch CodeBlock ersetzt worden (siehe Block A). */
 
 function TrickCard({ trick }: { trick: TokenTrick }) {
   const [expanded, setExpanded] = useState(false);

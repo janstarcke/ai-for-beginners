@@ -2,11 +2,10 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "wouter";
 import { CodeBlock } from "@/components/CodeBlock";
+import { CopyButton } from "@/components/CopyButton";
 import {
   ChevronDown,
   ChevronUp,
-  Copy,
-  Check,
   AlertTriangle,
   Lightbulb,
   Terminal,
@@ -72,25 +71,8 @@ const levelColorMap: Record<
 /* ------------------------------------------------------------------ */
 /*  Small helpers                                                      */
 /* ------------------------------------------------------------------ */
-
-function CopyButton({ text }: { text: string }) {
-  const [copied, setCopied] = useState(false);
-  const handleCopy = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    navigator.clipboard.writeText(text);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
-  return (
-    <button
-      onClick={handleCopy}
-      className="inline-flex items-center gap-1 px-2 py-1 rounded text-xs bg-[#3a2f28]/10 dark:bg-[#f5f0eb]/10 hover:bg-[#3a2f28]/20 dark:hover:bg-[#f5f0eb]/20 text-[#3a2f28]/70 dark:text-[#f5f0eb]/70 hover:text-[#3a2f28] dark:hover:text-[#f5f0eb] transition-colors"
-    >
-      {copied ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
-      {copied ? "Kopiert!" : "Kopieren"}
-    </button>
-  );
-}
+/* CopyButton wurde nach client/src/components/CopyButton.tsx ausgelagert.
+ * Aufrufe nutzen jetzt die globale Komponente mit Sepia-className-Override. */
 
 /* ------------------------------------------------------------------ */
 /*  Step card                                                          */
