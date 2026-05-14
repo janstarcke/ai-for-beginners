@@ -123,6 +123,23 @@ const SkillCard = memo(function SkillCard({ skill, index, isCompleted, onToggle 
               <span className={`inline-flex items-center justify-center w-7 h-7 rounded-full bg-secondary text-sm font-semibold text-secondary-foreground font-[var(--font-display)] ${isCompleted ? 'opacity-50' : ''}`}>
                 {skill.id}
               </span>
+              {/* Audit Finding #14: Tier-Badge mit explizitem Text-Label.
+                  Vorher war die Tier-Information nur via Border-Farbe codiert
+                  (color-only-information) — für Color-blind-User (Deutan/
+                  Protan: terracotta vs sage schwer trennbar) unzugänglich. */}
+              <span
+                className={`text-xs font-medium px-2 py-0.5 rounded-full ${
+                  skill.tier === 1
+                    ? "bg-[var(--color-terracotta)]/15 text-[var(--color-terracotta-deep)]"
+                    : skill.tier === 2
+                    ? "bg-[var(--color-sage)]/20 text-[var(--color-espresso)]"
+                    : skill.tier === 3
+                    ? "bg-[var(--color-espresso)]/15 text-[var(--color-espresso)]"
+                    : "bg-secondary text-muted-foreground"
+                }`}
+              >
+                Tier {skill.tier}
+              </span>
               <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-secondary text-muted-foreground">
                 {skill.category}
               </span>
