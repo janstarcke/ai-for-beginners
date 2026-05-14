@@ -756,6 +756,19 @@ export const skills: Skill[] = [
     nextStep: "Beim nächsten Layout-Problem: Cmd+Shift+4 (macOS) oder Snipping-Tool (Windows), Screenshot ins Chat-Fenster pasten, 'Fix das' tippen. Mehr brauchst du nicht.",
     isNew: true,
   },
+  {
+    id: 64,
+    name: "Session-Handoff Skill",
+    category: "Skill",
+    tier: 2,
+    tierLabel: "Innerhalb der ersten Woche",
+    sources: [],
+    description: "Lokaler Claude-Code-Skill, der am Session-Ende ein Übergabe-Dokument schreibt — keine Zusammenfassung, sondern echte Resumption ('könnte die nächste Session genau hier weiterarbeiten?'). Adaptive Sektionen je nach Session-Typ (bug-fix, feature, setup, planning, debug, research, workshop, refactor). Output: SESSION-YYYY-MM-DD-TOPIC.md im memory/-Ordner plus MEMORY.md-Index-Update. Auto-Trigger per Phrase 'schreib handoff'.",
+    nextStep: "mkdir -p ~/.claude/skills/session-handoff, dann SKILL.md von session.skaile.de kopieren und als ~/.claude/skills/session-handoff/SKILL.md ablegen. Ab nächster Session 'schreib handoff' am Session-Ende sagen.",
+    isNew: true,
+    installCommand: "mkdir -p ~/.claude/skills/session-handoff",
+    installNote: "Legt den Skill-Ordner an. SKILL.md-Inhalt (342 Zeilen Markdown) von session.skaile.de kopieren und als ~/.claude/skills/session-handoff/SKILL.md speichern. Trigger danach: 'schreib handoff' am Session-Ende.",
+  },
 ];
 
 export const claudeDesignSteps: ClaudeDesignStep[] = [
