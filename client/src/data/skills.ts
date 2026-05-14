@@ -766,8 +766,8 @@ export const skills: Skill[] = [
     description: "Lokaler Claude-Code-Skill, der am Session-Ende ein Übergabe-Dokument schreibt — keine Zusammenfassung, sondern echte Resumption ('könnte die nächste Session genau hier weiterarbeiten?'). Adaptive Sektionen je nach Session-Typ (bug-fix, feature, setup, planning, debug, research, workshop, refactor). Output: SESSION-YYYY-MM-DD-TOPIC.md im memory/-Ordner plus MEMORY.md-Index-Update. Auto-Trigger per Phrase 'schreib handoff'.",
     nextStep: "mkdir -p ~/.claude/skills/session-handoff, dann SKILL.md von session.skaile.de kopieren und als ~/.claude/skills/session-handoff/SKILL.md ablegen. Ab nächster Session 'schreib handoff' am Session-Ende sagen.",
     isNew: true,
-    installCommand: "mkdir -p ~/.claude/skills/session-handoff",
-    installNote: "Legt den Skill-Ordner an. SKILL.md-Inhalt (342 Zeilen Markdown) von session.skaile.de kopieren und als ~/.claude/skills/session-handoff/SKILL.md speichern. Trigger danach: 'schreib handoff' am Session-Ende.",
+    installCommand: "mkdir -p ~/.claude/skills/session-handoff && touch ~/.claude/skills/session-handoff/SKILL.md && open -a 'Visual Studio Code' ~/.claude/skills/session-handoff/SKILL.md",
+    installNote: "⚠️ Befehl legt nur das **Skelett** an — den 342-Zeilen-Skill-Body musst du **manuell** aus der Copy-Box auf https://session.skaile.de in die geöffnete SKILL.md pasten und speichern. Ohne diesen zweiten Schritt findet Claude Code den Skill nicht (leere SKILL.md ≠ valid). `open -a` öffnet VS Code; alternativ `open` (Default-Editor), `code`, `vim` o.ä. Trigger danach: `schreib handoff` am Session-Ende.",
   },
 ];
 
