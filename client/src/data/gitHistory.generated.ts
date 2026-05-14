@@ -11,9 +11,39 @@ export interface GitCommit {
   files: string[];
 }
 
-export const gitHistoryGeneratedAt = "2026-05-14T00:25:43.154Z";
+export const gitHistoryGeneratedAt = "2026-05-14T05:21:54.836Z";
 
 export const gitHistory: GitCommit[] = [
+  {
+    "hash": "8112e30b6442e9587f55ff14dc3f2cd39a73d950",
+    "shortHash": "8112e30",
+    "date": "2026-05-13T22:21:47-07:00",
+    "author": "Jan Starcke",
+    "subject": "fix(content): nextStep-Drift fuer Skill #13 + #36 (Audit Finding #8)",
+    "files": [
+      "client/src/data/skills.ts"
+    ]
+  },
+  {
+    "hash": "5455ee12d1139b739c8506f9ad71a15900dab90b",
+    "shortHash": "5455ee1",
+    "date": "2026-05-13T22:15:22-07:00",
+    "author": "Jan Starcke",
+    "subject": "fix(sprint-a): externe-Tool-Refs raus + WCAG AA Light-Mode Kontrast (Audit #1,#4,#5)",
+    "files": [
+      "client/src/data/importHistory.ts"
+    ]
+  },
+  {
+    "hash": "6e21152d2b66f5a42f14184696594c9374159502",
+    "shortHash": "6e21152",
+    "date": "2026-05-13T17:26:05-07:00",
+    "author": "Jan Starcke",
+    "subject": "chore(history): catalog 7f24d51 + acc87c3 + 1533238 (Block A Followups)",
+    "files": [
+      "client/src/data/importHistory.ts"
+    ]
+  },
   {
     "hash": "acc87c3c342395d0ba28597d84303eff4520ddcf",
     "shortHash": "acc87c3",

@@ -45,6 +45,47 @@ export interface ImportEntry {
  */
 export const importHistory: ImportEntry[] = [
   {
+    commit: "8112e30",
+    title: "Fix nextStep-Drift in #13 + #36 (Audit #8)",
+    type: "refactor",
+    sources: [{ kind: "manual" }],
+    notes:
+      "Beide Skills hatten faktisch kaputte nextStep-Befehle: #13 ohne mkdir -p, #36 ohne https://-Praefix. Audit-Finding #8 (Daten-Drift) loeste das Symptom, jetzt sind nextStep + installCommand identisch und beide funktional.",
+  },
+  {
+    commit: "392a05f",
+    title: "Sprint C: nginx CSP/HSTS + Route-Code-Splitting + memo",
+    type: "refactor",
+    categories: ["Best Practice"],
+    sources: [{ kind: "manual" }],
+    notes:
+      "Drei groessere Audit-Items: vollstaendige Security-Headers in nginx (CSP, HSTS, Permissions-Policy), Route-Code-Splitting via React.lazy/Suspense (Initial-Bundle 250 -> 183 KB gz, -27%), React.memo auf SkillCard. Hidden-Page jetzt server-seitig X-Robots-Tag noindex.",
+  },
+  {
+    commit: "bce4bf1",
+    title: "Sprint B: A11y-Fundament (Keyboard + ARIA + Reduced-Motion)",
+    type: "refactor",
+    sources: [{ kind: "manual" }],
+    notes:
+      "SkillCard + TldrCard keyboard-accessible (role=button, tabIndex, Enter/Space-Handler, aria-expanded/controls, focus-visible). CopyButton mit aria-label + visually-hidden live-region fuer Screen-Reader. MotionConfig reducedMotion=user. Install-Trigger mit aria-haspopup=dialog.",
+  },
+  {
+    commit: "5455ee1",
+    title: "Sprint A: externe-Tool-Refs raus + WCAG-AA Kontrast",
+    type: "refactor",
+    sources: [{ kind: "manual" }],
+    notes:
+      "Schadensbegrenzung aus Post-Block-A-Audit: externe Tool-Referenzen aus Code/Spec/importHistory entfernt (5 Stellen + 3 Spec-Stellen). Light-Mode CodeBlock-Comments von 2.42:1 auf 4.59:1 (#7a6a5a), Filename-Label /50 -> /75, Ghost-CopyButton von 3.22:1 auf ~4.5:1 (#a85d3e).",
+  },
+  {
+    commit: "ac531ee",
+    title: "Post-Block-A Audit: 28 Findings (4-Spuren-Review)",
+    type: "meta",
+    sources: [{ kind: "manual" }],
+    notes:
+      "Read-only Audit nach Block A + Morgenarbeit. 4 parallele Spuren (Code-Quality, Security, Performance, A11y). Bilanz: 7 HOCH, 10 MITTEL, 11 NIEDRIG. Doc unter docs/audits/2026-05-13-post-block-a-audit.md.",
+  },
+  {
     commit: "1533238",
     title: "Refactor: 4 CopyButton-Duplikate konsolidiert + variant=ghost",
     type: "refactor",
