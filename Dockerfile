@@ -23,9 +23,6 @@ RUN pnpm build
 # nginx-unprivileged: master + worker laufen als UID 101 (nginx), nicht als
 # root. Audit #9-Rest. Listens on port 8080 by default (not 80) — non-root
 # user can't bind to privileged ports. Digest pinned 2026-05-14.
-#
-# ⚠️ DEPLOY-VORAUSSETZUNG: Coolify-Container-Port muss VOR diesem Deploy
-# von 80 auf 8080 umgestellt werden, sonst geht Production offline.
 FROM nginxinc/nginx-unprivileged:alpine@sha256:4c18337659c90a01627f2e152b7c89524521c82dcedb255dc83d3689642b0803
 LABEL org.opencontainers.image.title="ai-for-beginners" \
       org.opencontainers.image.description="Wissensdatenbank für Claude Code & Vibe Coding" \
@@ -40,17 +37,6 @@ HEALTHCHECK --interval=30s --timeout=5s --start-period=10s --retries=3 \
 
 EXPOSE 8080
 
-# --- Followup-Items (#9-Reste, vertagt) ----------------------------------
-# Folgendes wuerde das Image weiter haerten, braucht aber Coolify-side
-# changes und ist daher als separate PR/Session-Task dokumentiert:
-#
-# 1) nginx-unprivileged (separater PR mit Coolify-Port-Wechsel als Pre-Step):
-#    FROM nginxinc/nginx-unprivileged:alpine@sha256:<hash>
-#    + EXPOSE 8080
-#    + Coolify-Container-Port-Setting: 80 -> 8080 BEFORE deploy
-#    + HEALTHCHECK URL bleibt http://localhost/ (port 8080 ist intern bound)
-#    Vorteil: master + worker laufen beide als non-root user (UID 101).
-#    Risk: ohne Coolify-Port-Switch geht Production offline beim Deploy.
-#
-# 2) Builder-Stage USER node: WORKDIR muss vorher chown'ed werden.
-#    Geringer Sicherheits-Gain weil Builder nach Build weggeworfen wird.
+# --- Followup-Items (#9-final, vertagt) ----------------------------------
+# Builder-Stage USER node: WORKDIR muss vorher chown'ed werden.
+# Geringer Sicherheits-Gain weil Builder nach Build weggeworfen wird.
