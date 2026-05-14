@@ -45,6 +45,23 @@ export interface ImportEntry {
  */
 export const importHistory: ImportEntry[] = [
   {
+    commit: "ca11929",
+    title: "Slash-Commands /goal + /dream + Daily-Pipeline (SKAILE)",
+    type: "new",
+    categories: ["Workflow", "Best Practice"],
+    newSkillIds: [65, 66, 67],
+    extendedSkillIds: [11],
+    sources: [
+      {
+        kind: "web",
+        channel: "SKAILE / Sebastian Kauffmann",
+        url: "https://goal.skaile.de/",
+      },
+    ],
+    notes:
+      "3 neue Skills aus dem Slash-Commands-Katalog: #65 /goal (Workflow Tier 1, autonom bis Ziel), #66 /dream (Best Practice Tier 1, Memory-Hygiene), #67 Daily-Pipeline (Workflow Tier 2 — Meta-Workflow /clear→/plan→/goal→/simplify→/handoff). #11 Power-Slash-Commands extended (/simplify-Bundle konkretisiert: 3-4 Agents, 4 Fokus-Bereiche, 3-8 Findings/Run). 8 Duplikate übersprungen, 3 Light-Mentions geskippt (/rewind /context /security-review). Wieder Catalog vom import-content-Skill vergessen — Step 7b ist die zweite Lücke heute (siehe Reflex #15 im aktuellen Session-Handoff).",
+  },
+  {
     commit: "2101de3",
     title: "Session-Handoff Skill (SKAILE Community)",
     type: "new",

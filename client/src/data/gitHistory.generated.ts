@@ -11,9 +11,39 @@ export interface GitCommit {
   files: string[];
 }
 
-export const gitHistoryGeneratedAt = "2026-05-14T18:10:00.150Z";
+export const gitHistoryGeneratedAt = "2026-05-14T21:01:54.441Z";
 
 export const gitHistory: GitCommit[] = [
+  {
+    "hash": "ca1192952c7026b2e3d14751b9eef5a85f29e077",
+    "shortHash": "ca11929",
+    "date": "2026-05-14T13:55:58-07:00",
+    "author": "Jan Starcke",
+    "subject": "feat(content): /goal, /dream + Daily-Pipeline skills (#65-#67)",
+    "files": [
+      "client/src/data/skills.ts"
+    ]
+  },
+  {
+    "hash": "a80ad335618e99be85332034bef7f1d284487b81",
+    "shortHash": "a80ad33",
+    "date": "2026-05-14T11:54:08-07:00",
+    "author": "Jan Starcke",
+    "subject": "fix(skill-64): installCommand ehrlich machen (mkdir + touch + open)",
+    "files": [
+      "client/src/data/skills.ts"
+    ]
+  },
+  {
+    "hash": "2be2b9b971271426150bab612bda6f6814eb9006",
+    "shortHash": "2be2b9b",
+    "date": "2026-05-14T11:10:14-07:00",
+    "author": "Jan Starcke",
+    "subject": "chore(history): catalog 2101de3 Session-Handoff Skill (#64) fuer /secret-import-history",
+    "files": [
+      "client/src/data/importHistory.ts"
+    ]
+  },
   {
     "hash": "2101de3b5fba3b790da029f5577c729b82bca147",
     "shortHash": "2101de3",
