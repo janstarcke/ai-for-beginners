@@ -50,7 +50,7 @@ export const importHistory: ImportEntry[] = [
     type: "refactor",
     sources: [{ kind: "manual" }],
     notes:
-      "Cleanup nach Block A: ClaudeDesign/TokenSpar/Guide/FinancialAnalyst hatten je eine eigene CopyButton-Funktion (Code-Smell aus Manus-Migration). Globale Komponente um variant + cn()/twMerge erweitert. -68 LOC Duplikat-Code, terracotta-Look in FinancialAnalyst erhalten.",
+      "Cleanup nach Block A: ClaudeDesign/TokenSpar/Guide/FinancialAnalyst hatten je eine eigene CopyButton-Funktion (Code-Smell aus dem ursprünglichen Migrations-Backup). Globale Komponente um variant + cn()/twMerge erweitert. -68 LOC Duplikat-Code, terracotta-Look in FinancialAnalyst erhalten.",
   },
   {
     commit: "acc87c3",
@@ -70,12 +70,12 @@ export const importHistory: ImportEntry[] = [
   },
   {
     commit: "d2f2021",
-    title: "Block A: CodeBlock + Install-Buttons (Manus-Roadmap)",
+    title: "Block A: CodeBlock + Install-Buttons (externe Roadmap)",
     type: "new",
     categories: ["Setup", "Best Practice"],
     sources: [{ kind: "manual" }],
     notes:
-      "Manus-Wettbewerbsanalyse Mai 2026 schlug 6 Features vor — nach Realitätsabgleich blieben 2 echte Lücken übrig (Newsletter/Upvoting/Submit/SEO bewusst verworfen). CodeBlock mit prism-react-renderer + Install-Modal für 6 Skills (#6/#7/#23/#43/#56/#62). Build +10 KB gz.",
+      "Externe Wettbewerbsanalyse Mai 2026 schlug 6 Features vor — nach Realitätsabgleich blieben 2 echte Lücken übrig (Newsletter/Upvoting/Submit/SEO bewusst verworfen). CodeBlock mit prism-react-renderer + Install-Modal für 6 Skills (#6/#7/#23/#43/#56/#62). Build +10 KB gz.",
   },
   {
     commit: "6a7494d",
@@ -153,19 +153,19 @@ export const importHistory: ImportEntry[] = [
   },
   {
     commit: "95eeaf3",
-    title: "Manus Follow-up FAQ integriert",
+    title: "Drittquelle Follow-up FAQ integriert",
     type: "extend",
     categories: ["Workflow", "Best Practice"],
     sources: [{ kind: "manual" }],
     notes:
-      "Manus-FAQ-Inhalte aus dem Migrations-Backup eingearbeitet: EXTEND-Rewrite statt append, TL;DR-Rotation Hard-Cap-15, Dry-Run-Mode ab 5+ Skills.",
+      "FAQ-Inhalte aus dem Migrations-Backup eingearbeitet: EXTEND-Rewrite statt append, TL;DR-Rotation Hard-Cap-15, Dry-Run-Mode ab 5+ Skills.",
   },
   {
     commit: "bc470b2",
     title: "Initial Release (53 Skills)",
     type: "meta",
     notes:
-      "Die Webseite ging live auf https://ai-for-beginners.starcke.io mit 53 kuratierten Skills in 4 Tiers — Migration weg von Manus abgeschlossen.",
+      "Die Webseite ging live auf https://ai-for-beginners.starcke.io mit 53 kuratierten Skills in 4 Tiers — Migration vom alten Stack abgeschlossen.",
   },
   {
     commit: "0b409d4",

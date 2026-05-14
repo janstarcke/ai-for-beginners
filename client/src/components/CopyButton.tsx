@@ -39,9 +39,12 @@ export function CopyButton({ text, className, variant = "default" }: CopyButtonP
     }
   };
 
+  // 2026-05-13 Audit Finding #5: Ghost-Default-Text war #c4704b (3.22:1 auf
+  // hellem BG, WCAG AA fail). Auf #a85d3e angehoben (≈4.5:1). Hover-State
+  // bleibt im Bereich, aber noch dunkler für taktiles Feedback.
   const variantStyles =
     variant === "ghost"
-      ? "bg-transparent hover:bg-transparent text-[#c4704b] hover:text-[#a85d3e]"
+      ? "bg-transparent hover:bg-transparent text-[#a85d3e] hover:text-[#8a4830] dark:text-[#d4825a] dark:hover:text-[#e89b76]"
       : "bg-secondary hover:bg-secondary/80 text-muted-foreground hover:text-foreground";
 
   return (

@@ -1,14 +1,14 @@
 # Block A: CodeBlock + Install-Commands — Design
 
 **Datum:** 2026-05-13
-**Quelle:** Wettbewerbsanalyse von Manus (Mai 2026), kritisch gefiltert
+**Quelle:** Externe Wettbewerbsanalyse (Mai 2026), kritisch gefiltert
 **Status:** Approved (autonom, "Block A only")
 
 ## Kontext
 
-Manus' Roadmap schlug 6 Features vor; nach Realitätsabgleich mit der Codebase blieben **2 echte Features** im Block-A-Scope. Vier Manus-Vorschläge wurden verworfen oder als bereits erledigt erkannt:
+Die externe Roadmap schlug 6 Features vor; nach Realitätsabgleich mit der Codebase blieben **2 echte Features** im Block-A-Scope. Vier Drittquelle-Vorschläge wurden verworfen oder als bereits erledigt erkannt:
 
-| Feature | Manus | Realität |
+| Feature | Drittquelle | Realität |
 |---|---|---|
 | Copy-Buttons | „fehlt" | `CopyButton.tsx` existiert global, Home + 4 Pages nutzen ihn |
 | Markdown-Export | „fehlt" | `ExportButton.tsx` existiert (Skill-Fortschritt) |
