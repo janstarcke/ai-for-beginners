@@ -639,7 +639,7 @@ export const skills: Skill[] = [
     isNew: true,
     warning: "Alternatives Modell, nicht Anthropic. Performance kann bei komplexen Architekturfragen schwächer sein als Sonnet/Opus.",
     installCommand: "export ANTHROPIC_BASE_URL='https://api.atlascloud.ai'\nexport ANTHROPIC_MODEL='moonshot/kimi-k2.6'\nexport ANTHROPIC_API_KEY='<dein-atlas-cloud-key>'",
-    installNote: "Nur für die aktuelle Shell-Session. Für dauerhaft: in ~/.zshrc oder ~/.bashrc einfügen. API-Key entweder bei atlascloud.ai (günstiger, Aggregator) oder platform.moonshot.ai (direkt) holen.",
+    installNote: "Nur für die aktuelle Shell-Session. **Vorsicht:** ein `export ANTHROPIC_API_KEY=...` landet in `~/.zsh_history` / `~/.bash_history` — den Key lieber direkt in `~/.zshrc`, `~/.bashrc` oder via `direnv .envrc` (mit gitignore) ablegen statt im laufenden Terminal exportieren. API-Key entweder bei atlascloud.ai (günstiger, Aggregator) oder platform.moonshot.ai (direkt) holen.",
   },
   {
     id: 54,

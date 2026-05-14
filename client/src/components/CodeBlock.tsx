@@ -80,8 +80,14 @@ export function CodeBlock({ code, language = "bash", filename, className = "" }:
       </div>
       <Highlight code={trimmed} language={language} theme={activeTheme}>
         {({ className: prismClass, style, tokens, getLineProps, getTokenProps }) => (
+          // Audit Finding #23: tabIndex=0 + role="region" + aria-label
+          // damit Keyboard-User den scrollbaren Container fokussieren und
+          // horizontal scrollen können (WCAG 2.1.1 Keyboard-Operable).
           <pre
-            className={`${prismClass} overflow-x-auto p-3 text-xs leading-relaxed`}
+            tabIndex={0}
+            role="region"
+            aria-label={`Code-Block: ${filename ?? language}`}
+            className={`${prismClass} overflow-x-auto p-3 text-xs leading-relaxed focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-terracotta)] focus-visible:ring-inset`}
             style={{ ...style, backgroundColor: "transparent" }}
           >
             {tokens.map((line, i) => (

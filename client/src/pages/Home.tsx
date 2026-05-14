@@ -75,6 +75,10 @@ const SkillCard = memo(function SkillCard({ skill, index, isCompleted, onToggle 
   const [expanded, setExpanded] = useState(false);
   const [installOpen, setInstallOpen] = useState(false);
   const panelId = `skill-panel-${skill.id}`;
+  // Audit Finding #20: Single source-of-truth für den installCommand-Guard.
+  // Button (im expanded-Panel) und Modal-Wrapper (auf Card-Toplevel) waren
+  // beide separat geguarded — bei Schema-Drift wäre command="" durchgerutscht.
+  const installCommand = skill.installCommand;
 
   const tierColor = skill.tier === 1
     ? "border-l-[var(--color-terracotta)]"
@@ -200,7 +204,7 @@ const SkillCard = memo(function SkillCard({ skill, index, isCompleted, onToggle 
                   </div>
                 )}
 
-                {skill.installCommand && (
+                {installCommand && (
                   <button
                     onClick={(e) => {
                       e.stopPropagation();
@@ -229,12 +233,12 @@ const SkillCard = memo(function SkillCard({ skill, index, isCompleted, onToggle 
         )}
       </AnimatePresence>
 
-      {skill.installCommand && (
+      {installCommand && (
         <InstallCommandModal
           open={installOpen}
           onOpenChange={setInstallOpen}
           skillName={skill.name}
-          command={skill.installCommand}
+          command={installCommand}
           note={skill.installNote}
         />
       )}
