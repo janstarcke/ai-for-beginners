@@ -45,6 +45,22 @@ export interface ImportEntry {
  */
 export const importHistory: ImportEntry[] = [
   {
+    commit: "2101de3",
+    title: "Session-Handoff Skill (SKAILE Community)",
+    type: "new",
+    categories: ["Skill"],
+    newSkillIds: [64],
+    sources: [
+      {
+        kind: "web",
+        channel: "SKAILE / Sebastian Kauffmann",
+        url: "https://session.skaile.de/",
+      },
+    ],
+    notes:
+      "Skill #64 (Tier 2, Skill-Kategorie). 342-Zeilen-SKILL.md unter ~/.claude/skills/session-handoff/ schreibt am Ende einer Session ein strukturiertes Handoff-Dokument (TL;DR + adaptive Sektionen je Session-Typ + priorisiertes Pending + Copy-Paste-Quickstart + MEMORY.md-Index-Update). installCommand legt nur den Skelett-Ordner an — der 342-Zeilen-Body muss manuell aus der Copy-Box auf session.skaile.de in die SKILL.md gepasted werden. Erste Nutzung der neuen installCommand/installNote-Felder im Auto-Import. TL;DR-Rotation bewusst übersprungen (Cap 15 erreicht + Setup nicht 60-Sek-tauglich).",
+  },
+  {
     commit: "ce60fc7",
     title: "Sprint I: 5 NIEDRIG-Polish-Items (#19/#20/#21/#22/#23)",
     type: "refactor",
