@@ -118,6 +118,13 @@ export function CollapseReveal({
   duration = 200,
   className,
 }: CollapseRevealProps) {
+  // `inert` (statt `aria-hidden`) wenn collapsed: der Content bleibt für die
+  // CSS-Animation im DOM gemountet, aber `inert` macht den ganzen Subtree
+  // un-fokussierbar UND für Assistive Tech unsichtbar — ohne den
+  // `aria-hidden-focus`-WCAG-Verstoß (aria-hidden + fokussierbare Kinder).
+  // Framers <AnimatePresence> unmountete den Content; der grid-collapse-Trick
+  // nicht, daher ist `inert` hier essentiell. React 19 unterstützt das
+  // `inert`-Boolean-Prop nativ.
   return (
     <div
       id={id}
@@ -127,7 +134,7 @@ export function CollapseReveal({
         opacity: open ? 1 : 0,
         transitionDuration: `${duration}ms`,
       }}
-      aria-hidden={!open}
+      inert={!open}
     >
       <div className="overflow-hidden min-h-0">{children}</div>
     </div>

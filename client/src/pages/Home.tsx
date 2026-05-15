@@ -36,7 +36,7 @@ function TldrCard({ item, index }: { item: TldrItem; index: number }) {
         onClick={toggle}
         onKeyDown={onKeyDown}
       >
-        <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-[var(--color-terracotta)] text-white text-xs font-bold shrink-0">
+        <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-[var(--color-terracotta-deep)] text-white text-xs font-bold shrink-0">
           {index + 1}
         </span>
         <div className="flex-1">
@@ -112,6 +112,7 @@ const SkillCard = memo(function SkillCard({ skill, index, isCompleted, onToggle 
                 id={`skill-${skill.id}`}
                 checked={isCompleted}
                 onToggle={onToggle}
+                ariaLabel={`${skill.name} als erledigt markieren`}
               />
               <span className={`inline-flex items-center justify-center w-7 h-7 rounded-full bg-secondary text-sm font-semibold text-secondary-foreground font-[var(--font-display)] ${isCompleted ? 'opacity-50' : ''}`}>
                 {skill.id}
@@ -279,7 +280,7 @@ export default function Home() {
             <div className="mt-8 flex flex-wrap gap-3">
               <Link
                 href="/guide"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[var(--color-terracotta)] text-white font-medium text-sm hover:bg-[var(--color-terracotta)]/90 transition-colors shadow-sm"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[var(--color-terracotta-deep)] text-white font-medium text-sm hover:bg-[var(--color-terracotta-deep-hover)] transition-colors shadow-sm"
               >
                 <BookOpen className="w-4 h-4" />
                 Beginner-to-Pro Guide
@@ -294,7 +295,7 @@ export default function Home() {
               </Link>
               <Link
                 href="/financial-analyst"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[var(--color-sage)] text-white font-medium text-sm hover:bg-[var(--color-sage)]/90 transition-colors"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[var(--color-sage-deep)] text-white font-medium text-sm hover:bg-[var(--color-sage-deep-hover)] transition-colors"
               >
                 <TrendingUp className="w-4 h-4" />
                 Financial Analyst
@@ -381,7 +382,7 @@ export default function Home() {
                         onClick={() => setSelectedCategory(cat)}
                         className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
                           selectedCategory === cat
-                            ? "bg-[var(--color-terracotta)] text-white"
+                            ? "bg-[var(--color-terracotta-deep)] text-white"
                             : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
                         }`}
                       >
@@ -397,7 +398,7 @@ export default function Home() {
                       onClick={() => setSelectedTier(null)}
                       className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
                         selectedTier === null
-                          ? "bg-[var(--color-terracotta)] text-white"
+                          ? "bg-[var(--color-terracotta-deep)] text-white"
                           : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
                       }`}
                     >
@@ -409,7 +410,7 @@ export default function Home() {
                         onClick={() => setSelectedTier(Number(tier))}
                         className={`px-3 py-1.5 rounded-full text-xs font-medium transition-colors ${
                           selectedTier === Number(tier)
-                            ? "bg-[var(--color-terracotta)] text-white"
+                            ? "bg-[var(--color-terracotta-deep)] text-white"
                             : "bg-secondary text-secondary-foreground hover:bg-secondary/80"
                         }`}
                       >
@@ -502,7 +503,7 @@ export default function Home() {
                 className="bg-card rounded-lg p-5 border border-border shadow-sm"
               >
                 <div className="flex items-center gap-2 mb-3">
-                  <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-[var(--color-terracotta)] text-white text-sm font-bold font-[var(--font-display)]">
+                  <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-[var(--color-terracotta-deep)] text-white text-sm font-bold font-[var(--font-display)]">
                     {step.phase}
                   </span>
                   <h3 className="text-sm font-semibold text-foreground font-[var(--font-display)]">
@@ -534,7 +535,7 @@ export default function Home() {
           </div>
 
           <div className="mt-8">
-            <Link href="/claude-design" className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--color-terracotta)] text-white font-medium hover:opacity-90 transition-opacity shadow-sm">
+            <Link href="/claude-design" className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--color-terracotta-deep)] text-white font-medium hover:opacity-90 transition-opacity shadow-sm">
               <Palette className="w-4 h-4" />
               Zum ausführlichen Claude Design Guide
               <ArrowRight className="w-4 h-4" />
@@ -575,7 +576,7 @@ export default function Home() {
               delay={i * 0.08}
               className="flex items-start gap-3 p-4 rounded-lg bg-card border border-border"
             >
-              <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-[var(--color-sage)] text-white text-sm font-bold shrink-0 font-[var(--font-display)]">
+              <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-[var(--color-sage-deep)] text-white text-sm font-bold shrink-0 font-[var(--font-display)]">
                 {step.phase}
               </span>
               <div>

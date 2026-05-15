@@ -108,6 +108,7 @@ function StepCard({
                 id={`guide-${step.id}`}
                 checked={isCompleted}
                 onToggle={onToggle}
+                ariaLabel={`${step.title} als erledigt markieren`}
               />
               <span
                 className={`inline-flex items-center justify-center w-7 h-7 rounded-full ${c.accent} text-white text-xs font-bold shrink-0 ${isCompleted ? 'opacity-50' : ''}`}
