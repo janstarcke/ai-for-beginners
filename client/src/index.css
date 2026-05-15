@@ -51,6 +51,13 @@
   /* Dark-Mode-Pendants — heller als deep damit sie auf dunklem BG lesbar sind. */
   --color-terracotta-bright: oklch(0.68 0.14 38);
   --color-terracotta-bright-hover: oklch(0.76 0.14 38);
+  /* on-dark: für Akzente in IMMER-dunklen Kontexten (Code-Blocks, bg-black/30,
+     bg-[#3a2f28]) — THEME-UNABHÄNGIG. Audit #29c: CopyButton-ghost nutzte
+     theme-aware `dark:`-Klassen, die im Light-Mode-Document nicht greifen,
+     obwohl der Code-bg immer dunkel ist (CR 2.7 = fail). Kalibriert für
+     CR ≥4.98 auf dem härtesten Code-bg (#3a2f28), ≥6 auf #29211c. */
+  --color-terracotta-on-dark: oklch(0.72 0.14 38);
+  --color-terracotta-on-dark-hover: oklch(0.80 0.14 38);
   --color-sage: oklch(0.62 0.06 145);
   --color-sage-light: oklch(0.82 0.04 145);
   /* sage-deep: WCAG-AA-safe für weißen Text (white-on-deep CR 5.84,

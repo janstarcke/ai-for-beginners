@@ -11,10 +11,18 @@ interface CopyButtonProps {
    */
   className?: string;
   /**
-   * Visual-Variant. "default" = Standard mit Background, "ghost" = ohne
-   * Background, nur Text — passt z.B. neben dunklem Code-Block.
+   * Visual-Variant (Audit #29c):
+   * - "default"   = Standard mit sichtbarem Background.
+   * - "ghost"     = ohne Background, nur Text, in einem THEME-folgenden
+   *                 Container (z.B. `bg-[#faf8f5] dark:bg-card`-Card) →
+   *                 theme-aware Farben (deep@light / bright@dark).
+   * - "ghost-dark" = ohne Background, in einem IMMER-dunklen Container
+   *                 (Code-Block, `bg-black/30`, `bg-[#3a2f28]`) →
+   *                 theme-UNABHÄNGIGE on-dark-Farben. Vorher fälschlich
+   *                 auch "ghost" → Light-Mode-Pfad (deep) auf dunklem
+   *                 Code-bg = CR 2.7 (fail).
    */
-  variant?: "default" | "ghost";
+  variant?: "default" | "ghost" | "ghost-dark";
 }
 
 export function CopyButton({ text, className, variant = "default" }: CopyButtonProps) {
@@ -39,16 +47,18 @@ export function CopyButton({ text, className, variant = "default" }: CopyButtonP
     }
   };
 
-  // 2026-05-13 Audit Finding #5/#15: Ghost-Variant nutzt CSS-Variablen statt
-  // Hex-Hardcode. Werte in client/src/index.css definiert:
-  //   --color-terracotta-deep        (Light-Default, ~4.5:1 auf hellem BG)
-  //   --color-terracotta-deep-hover  (Light-Hover, dunkler)
-  //   --color-terracotta-bright      (Dark-Default, hell auf dunklem BG)
-  //   --color-terracotta-bright-hover (Dark-Hover, noch heller)
+  // Audit #29c: Zwei ghost-Kontexte sauber getrennt.
+  //  - ghost      → theme-aware (Card folgt Document-Theme): deep@light,
+  //                 bright@dark. Korrekt für `bg-[#faf8f5] dark:bg-card`.
+  //  - ghost-dark → theme-UNABHÄNGIG (Code-bg immer dunkel): on-dark-
+  //                 Tokens, CR ≥4.98 auf #3a2f28..#29211c.
+  // Werte in client/src/index.css.
   const variantStyles =
     variant === "ghost"
       ? "bg-transparent hover:bg-transparent text-[var(--color-terracotta-deep)] hover:text-[var(--color-terracotta-deep-hover)] dark:text-[var(--color-terracotta-bright)] dark:hover:text-[var(--color-terracotta-bright-hover)]"
-      : "bg-secondary hover:bg-secondary/80 text-muted-foreground hover:text-foreground";
+      : variant === "ghost-dark"
+        ? "bg-transparent hover:bg-transparent text-[var(--color-terracotta-on-dark)] hover:text-[var(--color-terracotta-on-dark-hover)]"
+        : "bg-secondary hover:bg-secondary/80 text-muted-foreground hover:text-foreground";
 
   // 2026-05-13 Audit Finding #6: aria-label + visually-hidden live-region
   // damit Screen-Reader den Wechsel von "Kopieren" zu "Kopiert!" mitbekommen
@@ -64,7 +74,7 @@ export function CopyButton({ text, className, variant = "default" }: CopyButtonP
         aria-label={copied ? "Text wurde kopiert" : "In Zwischenablage kopieren"}
         className={cn(
           "inline-flex items-center justify-center gap-1 px-3 py-1.5 min-h-[36px] rounded text-xs font-medium transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-[var(--color-terracotta)] focus-visible:ring-offset-1",
-          variant === "ghost" && "px-2 py-1 min-h-0",
+          (variant === "ghost" || variant === "ghost-dark") && "px-2 py-1 min-h-0",
           copied
             ? "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400"
             : variantStyles,
