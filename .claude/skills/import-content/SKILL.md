@@ -446,18 +446,37 @@ git commit -m "feat(content): <Kurz-Zusammenfassung>
 Quelle: <URL oder neutrale Bezeichnung>"
 ```
 
-**Schritt 2 — Hash einsammeln + Catalog-Commit (siehe Step 7b):**
+**Schritt 2 — Catalog-Commit (NICHT optional, NICHT "siehe woanders" — hier ausführen):**
+
+> ⚠️ Der Content-Commit aus Schritt 1 ist **nicht** das Task-Ende. Ein
+> Content-Commit ohne Catalog-Commit ist ein **kaputter Import** — die
+> Hidden-Page `/secret-import-history` sieht ihn nie. Schritt 2 ist Teil
+> derselben atomaren Aufgabe. Kein Final-Report, kein "fertig", kein Push
+> als Abschluss bevor Schritt 2 + das Gate unten durch sind.
 
 ```bash
-HASH=$(git rev-parse --short HEAD)   # z.B. "ba1d512"
-# Edit importHistory.ts: neuen ImportEntry an Array anhängen mit commit: HASH
+HASH=$(git rev-parse --short HEAD)   # Short-Hash des Content-Commits
+# 1. Edit importHistory.ts: neuen ImportEntry vor der schließenden `];`
+#    anhängen, commit: "$HASH". Feld-Schema: Step 7b unten Punkt 2.
 pnpm history:update                  # regeneriert gitHistory.generated.ts
+#    Output MUSS enden mit "wrote N commits …", N ≥ vorher+1. Sonst Bug.
 git add client/src/data/importHistory.ts client/src/data/gitHistory.generated.ts
 git commit -m "chore(history): catalog ${HASH} for /secret-import-history"
-git push
+git push                             # pusht BEIDE Commits auf einmal
 ```
 
-Final-Report (siehe unten) ausgeben. Fertig.
+**🔒 Completion-Gate (Pflicht, bevor irgendein Final-Report):**
+
+```bash
+git log --oneline -2
+```
+
+Der Output MUSS **zwei** Zeilen zeigen:
+`chore(history): catalog …` (oben) **und** `feat(content): …` (darunter).
+- Beide da → Task erfüllt, weiter zum Final-Report.
+- Nur `feat(content)` → **Task NICHT fertig.** Zurück zu Schritt 2,
+  Catalog-Commit nachholen. Niemals den Final-Report mit fehlendem
+  Catalog-Commit ausgeben.
 
 ### Dry-Run-Mode (semi-autonom)
 
@@ -491,11 +510,15 @@ User bestätigt oder filtert. Skill setzt um, läuft `pnpm check`, **fragt dann 
 Commit + Push? (Forward-Fix möglich für Korrekturen)
 ```
 
-User sagt „ja" → 2-Commit-Flow wie im Direct-Mode (Content-Commit + Catalog-Commit, siehe oben + Step 7b unten). User sagt „nein, ändere X" → Forward-Fix (siehe unten), dann erneut fragen.
+User sagt „ja" → 2-Commit-Flow exakt wie im Direct-Mode: Content-Commit (Schritt 1) **und** Catalog-Commit (Schritt 2) **und** das 🔒 Completion-Gate (`git log --oneline -2` zeigt beide). Erst dann Final-Report. User sagt „nein, ändere X" → Forward-Fix (siehe unten), dann erneut fragen.
 
-### Step 7b — Catalog-Commit für die Hidden Import-History
+### Step 7b — Catalog-Commit: Feld-Schema & Details
 
-Direkt nach dem Content-Commit, vor dem Push. Pflicht für **jeden** Content-Import.
+> Dies ist **kein separater, späterer Schritt** — es ist die Detail-
+> Referenz für Direct-Mode Schritt 2 bzw. den Dry-Run-„ja"-Pfad. Der
+> Catalog-Commit passiert direkt nach dem Content-Commit, vor dem Push,
+> und wird vom 🔒 Completion-Gate erzwungen. Pflicht für **jeden**
+> Content-Import — ohne ihn ist der Import kaputt.
 
 **Warum 2 Commits statt 1?** Der Content-Commit muss erst existieren, damit `git log` ihn sieht; erst dann kann `pnpm history:update` die Hash-Referenz auflösen. Ein `git commit --amend` würde den Hash erneut ändern und die Referenz brechen — daher die saubere Trennung.
 
@@ -589,6 +612,13 @@ Nicht beim 1. Fail — repariere selbst. Erst beim 2. Fail:
 
 ## Final Report (immer ausgeben)
 
+**Voraussetzung:** Das 🔒 Completion-Gate aus Step 7 / Direct-Mode Schritt 2
+ist durch — `git log --oneline -2` zeigt **beide** Commits (catalog + content).
+Ist der Catalog-Commit nicht da, ist der Import nicht abgeschlossen; dann
+KEIN Erfolgs-Report, sondern zurück zu Schritt 2. Die Zeile
+„Catalog-Commit: <sha7>" im Report unten muss ein **echter** Hash aus dem
+`git log` sein, kein Platzhalter.
+
 Nach erfolgreichem Push (oder beim sauberen Abbruch):
 
 ```
@@ -648,7 +678,7 @@ Bei Fehlschlag/Abbruch: ❌ statt ✅ + 1-Zeilen-Erklärung was als nächstes n�
 5. **Zähler dynamisch** — `skills.length` automatisch (kein manuelles Update nötig)
 6. **Niemals IDs löschen oder wiederverwenden** — nur `warning` + Tier 4
 7. **Summary vor Commit** — bei 5+ Skills oder Unsicherheit (Dry-Run), bei 1–3 klaren Skills direkt (Direct-Mode)
-8. **2-Commit-Flow Pflicht** — jeder Content-Commit bekommt einen Catalog-Commit (`chore(history): catalog ...`) für die hidden `/secret-import-history`-Page
+8. **2-Commit-Flow Pflicht + Completion-Gate** — jeder Content-Commit bekommt einen Catalog-Commit (`chore(history): catalog ...`). Task gilt erst als fertig wenn `git log --oneline -2` BEIDE zeigt. Häufigster Fehler in Real-World-Runs: Content-Commit + Push wirkt wie Task-Ende → Catalog vergessen. Das Gate macht das strukturell unmöglich.
 9. **Description Hard-Cap 450 Zeichen** — bei Überschreitung lieber 2 Skills als 1 überladenen
 10. **Keine Versions-Refs in description** — „aktuell verfügbar" statt „ab v2.1.139"
 11. **Channel-Pre-Check** bei YouTube — Channel-Name gegen Skill-Historie greppen, spart Duplikat-Aufwand
