@@ -123,7 +123,11 @@ function StepCard({
               {step.description}
             </p>
           </div>
-          <button className="mt-1 text-[#3a2f28]/40 dark:text-foreground/40 hover:text-[#3a2f28] dark:hover:text-foreground transition-colors shrink-0">
+          <button
+            aria-label={`${step.title} ${expanded ? "einklappen" : "ausklappen"}`}
+            aria-expanded={expanded}
+            className="mt-1 text-[#3a2f28]/70 dark:text-foreground/70 hover:text-[#3a2f28] dark:hover:text-foreground transition-colors shrink-0"
+          >
             {expanded ? (
               <ChevronUp className="w-5 h-5" />
             ) : (
@@ -198,7 +202,7 @@ function LevelSection({
                   ~{level.estimatedTime}
                 </span>
               </div>
-              <p className="text-[#3a2f28]/60 dark:text-foreground/60 text-sm mt-0.5">
+              <p className="text-[#3a2f28]/75 dark:text-foreground/75 text-sm mt-0.5">
                 {level.subtitle}
               </p>
             </div>
@@ -250,7 +254,7 @@ export default function Guide() {
         <div className="relative container py-12 md:py-20">
           <Link
             href="/"
-            className="inline-flex items-center gap-1.5 text-sm text-[#3a2f28]/50 dark:text-foreground/50 hover:text-[#3a2f28] dark:hover:text-foreground transition-colors mb-8"
+            className="inline-flex items-center gap-1.5 text-sm text-[#3a2f28]/70 dark:text-foreground/70 hover:text-[#3a2f28] dark:hover:text-foreground transition-colors mb-8"
           >
             <ArrowLeft className="w-4 h-4" />
             Zurück zur Wissensdatenbank
@@ -270,7 +274,7 @@ export default function Guide() {
               <span className="text-[#c4704b]">Vom Einsteiger zum Profi</span>
             </h1>
 
-            <p className="mt-5 text-lg text-[#3a2f28]/65 dark:text-foreground/65 max-w-2xl leading-relaxed">
+            <p className="mt-5 text-lg text-[#3a2f28]/75 dark:text-foreground/75 max-w-2xl leading-relaxed">
               Ein praktischer Lernpfad in 4 Leveln -- von der Installation bis
               zur vollautomatischen Multi-Agenten-Pipeline. Fortlaufend
               aktualisiert mit den neuesten Best Practices.
@@ -295,7 +299,7 @@ export default function Guide() {
                     <p className="font-semibold text-[#3a2f28] dark:text-foreground text-sm font-['Playfair_Display',serif]">
                       Level {l.level}
                     </p>
-                    <p className="text-xs text-[#3a2f28]/50 dark:text-foreground/50 mt-0.5">
+                    <p className="text-xs text-[#3a2f28]/70 dark:text-foreground/70 mt-0.5">
                       {l.title} &middot; {l.steps.length} Schritte
                     </p>
                   </a>
@@ -359,7 +363,7 @@ export default function Guide() {
             />
             <button
               onClick={reset}
-              className="text-xs text-[#3a2f28]/40 dark:text-foreground/40 hover:text-[#3a2f28] dark:hover:text-foreground transition-colors inline-flex items-center gap-1 shrink-0"
+              className="text-xs text-[#3a2f28]/70 dark:text-foreground/70 hover:text-[#3a2f28] dark:hover:text-foreground transition-colors inline-flex items-center gap-1 shrink-0"
               title="Fortschritt zurücksetzen"
             >
               <RotateCcw className="w-3 h-3" />
@@ -382,7 +386,7 @@ export default function Guide() {
                 Top 10 Plugins & Skills
               </h2>
             </div>
-            <p className="text-sm text-[#3a2f28]/60 dark:text-foreground/60 mb-6">
+            <p className="text-sm text-[#3a2f28]/75 dark:text-foreground/75 mb-6">
               Die wichtigsten Erweiterungen für Claude Code, sortiert nach
               Priorität.
             </p>
@@ -392,19 +396,19 @@ export default function Guide() {
             <table className="w-full text-sm border-collapse">
               <thead>
                 <tr className="border-b-2 border-[#3a2f28]/15 dark:border-foreground/15">
-                  <th className="text-left py-3 px-3 text-[10px] font-semibold uppercase tracking-widest text-[#3a2f28]/50 dark:text-foreground/50">
+                  <th className="text-left py-3 px-3 text-[10px] font-semibold uppercase tracking-widest text-[#3a2f28]/70 dark:text-foreground/70">
                     #
                   </th>
-                  <th className="text-left py-3 px-3 text-[10px] font-semibold uppercase tracking-widest text-[#3a2f28]/50 dark:text-foreground/50">
+                  <th className="text-left py-3 px-3 text-[10px] font-semibold uppercase tracking-widest text-[#3a2f28]/70 dark:text-foreground/70">
                     Name
                   </th>
-                  <th className="text-left py-3 px-3 text-[10px] font-semibold uppercase tracking-widest text-[#3a2f28]/50 dark:text-foreground/50">
+                  <th className="text-left py-3 px-3 text-[10px] font-semibold uppercase tracking-widest text-[#3a2f28]/70 dark:text-foreground/70">
                     Typ
                   </th>
-                  <th className="text-left py-3 px-3 text-[10px] font-semibold uppercase tracking-widest text-[#3a2f28]/50 dark:text-foreground/50">
+                  <th className="text-left py-3 px-3 text-[10px] font-semibold uppercase tracking-widest text-[#3a2f28]/70 dark:text-foreground/70">
                     Herkunft
                   </th>
-                  <th className="text-left py-3 px-3 text-[10px] font-semibold uppercase tracking-widest text-[#3a2f28]/50 dark:text-foreground/50">
+                  <th className="text-left py-3 px-3 text-[10px] font-semibold uppercase tracking-widest text-[#3a2f28]/70 dark:text-foreground/70">
                     Beschreibung
                   </th>
                 </tr>
@@ -426,7 +430,7 @@ export default function Guide() {
                         {p.type}
                       </span>
                     </td>
-                    <td className="py-3 px-3 text-[#3a2f28]/60 dark:text-foreground/60">{p.origin}</td>
+                    <td className="py-3 px-3 text-[#3a2f28]/75 dark:text-foreground/75">{p.origin}</td>
                     <td className="py-3 px-3 text-[#3a2f28]/70 dark:text-foreground/70">
                       {p.description}
                     </td>
@@ -448,7 +452,7 @@ export default function Guide() {
                 Befehls-Referenz
               </h2>
             </div>
-            <p className="text-sm text-[#3a2f28]/60 dark:text-foreground/60 mb-6">
+            <p className="text-sm text-[#3a2f28]/75 dark:text-foreground/75 mb-6">
               Alle wichtigen Befehle auf einen Blick.
             </p>
           </AnimatedReveal>
@@ -458,7 +462,7 @@ export default function Guide() {
             if (items.length === 0) return null;
             return (
               <div key={cat} className="mb-6">
-                <h3 className="text-xs font-semibold uppercase tracking-widest text-[#3a2f28]/40 dark:text-foreground/40 mb-2">
+                <h3 className="text-xs font-semibold uppercase tracking-widest text-[#3a2f28]/70 dark:text-foreground/70 mb-2">
                   {label}
                 </h3>
                 <div className="grid gap-2 md:grid-cols-2">
@@ -471,7 +475,7 @@ export default function Guide() {
                         <code className="text-[13px] font-mono bg-[#3a2f28] dark:bg-[#1a1512] text-[#f5f0eb] px-2 py-1 rounded shrink-0">
                           {ref.command}
                         </code>
-                        <span className="text-sm text-[#3a2f28]/60 dark:text-foreground/60 truncate">
+                        <span className="text-sm text-[#3a2f28]/75 dark:text-foreground/75 truncate">
                           {ref.description}
                         </span>
                       </div>
@@ -495,7 +499,7 @@ export default function Guide() {
                 Empfohlene Lernressourcen
               </h2>
             </div>
-            <p className="text-sm text-[#3a2f28]/60 dark:text-foreground/60 mb-2 max-w-2xl">
+            <p className="text-sm text-[#3a2f28]/75 dark:text-foreground/75 mb-2 max-w-2xl">
               Kostenlose Kurse mit Videos, Quizzes und Zertifikaten.
               Empfohlene Reihenfolge von oben nach unten.
             </p>
@@ -536,25 +540,25 @@ export default function Guide() {
                         </span>
                       )}
                     </div>
-                    <p className="text-sm text-[#3a2f28]/60 dark:text-foreground/60 leading-relaxed mb-3">
+                    <p className="text-sm text-[#3a2f28]/75 dark:text-foreground/75 leading-relaxed mb-3">
                       {course.description}
                     </p>
                     <div className="flex flex-wrap gap-1.5 mb-3">
                       {course.learnings.slice(0, 4).map((l) => (
                         <span
                           key={l}
-                          className="text-[11px] px-2 py-0.5 rounded bg-[#3a2f28]/5 dark:bg-foreground/5 text-[#3a2f28]/60 dark:text-foreground/60"
+                          className="text-[11px] px-2 py-0.5 rounded bg-[#3a2f28]/5 dark:bg-foreground/5 text-[#3a2f28]/75 dark:text-foreground/75"
                         >
                           {l}
                         </span>
                       ))}
                       {course.learnings.length > 4 && (
-                        <span className="text-[11px] px-2 py-0.5 rounded bg-[#3a2f28]/5 dark:bg-foreground/5 text-[#3a2f28]/40 dark:text-foreground/40">
+                        <span className="text-[11px] px-2 py-0.5 rounded bg-[#3a2f28]/5 dark:bg-foreground/5 text-[#3a2f28]/70 dark:text-foreground/70">
                           +{course.learnings.length - 4} mehr
                         </span>
                       )}
                     </div>
-                    <div className="flex items-center gap-4 text-xs text-[#3a2f28]/50 dark:text-foreground/50">
+                    <div className="flex items-center gap-4 text-xs text-[#3a2f28]/70 dark:text-foreground/70">
                       <span>{course.lectures} Lektionen</span>
                       <span>{course.duration} Video</span>
                     </div>
@@ -580,10 +584,10 @@ export default function Guide() {
         <div className="container py-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div>
-              <p className="text-sm text-[#3a2f28]/50 dark:text-foreground/50">
+              <p className="text-sm text-[#3a2f28]/70 dark:text-foreground/70">
                 AI & Vibe-Coding Wissensdatenbank &middot; Stand: Mai 2026
               </p>
-              <p className="text-xs text-[#3a2f28]/40 dark:text-foreground/40 mt-1">
+              <p className="text-xs text-[#3a2f28]/70 dark:text-foreground/70 mt-1">
                 Fortlaufend aktualisiert mit den neuesten Anthropic Features und Community Best Practices
               </p>
             </div>

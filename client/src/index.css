@@ -76,7 +76,11 @@
   --secondary: oklch(0.93 0.02 80);
   --secondary-foreground: oklch(0.35 0.04 55);
   --muted: oklch(0.93 0.02 80);
-  --muted-foreground: oklch(0.50 0.03 55);
+  /* L 0.50 → 0.46: muted-foreground auf bg-secondary (#f0e8da) war CR 4.28
+     (axe) = WCAG-AA-fail für Normal-Text. 0.46 hebt das auf ~5.1; bleibt
+     klar „gedämpft" ggü. --foreground (L 0.25). Audit-Finding #29. Nur
+     Light-Mode — Dark-Mode --muted-foreground (L 0.65) war kein Fail. */
+  --muted-foreground: oklch(0.46 0.03 55);
   --accent: oklch(0.82 0.04 145);
   --accent-foreground: oklch(0.25 0.04 55);
   --destructive: oklch(0.577 0.245 27.325);

@@ -382,12 +382,16 @@ function WorkflowSection({ workflow }: { workflow: DesignWorkflow }) {
               <h3 className="text-lg font-bold text-[#3a2f28] dark:text-foreground font-['Playfair_Display',serif]">
                 {workflow.title}
               </h3>
-              <p className="text-sm text-[#3a2f28]/60 dark:text-foreground/60 mt-1 leading-relaxed max-w-2xl">
+              <p className="text-sm text-[#3a2f28]/75 dark:text-foreground/75 mt-1 leading-relaxed max-w-2xl">
                 {workflow.description}
               </p>
             </div>
           </div>
-          <button className="mt-1 text-[#3a2f28]/40 dark:text-foreground/40 hover:text-[#3a2f28] dark:hover:text-foreground transition-colors shrink-0">
+          <button
+            aria-label={`${workflow.title} ${expanded ? "einklappen" : "ausklappen"}`}
+            aria-expanded={expanded}
+            className="mt-1 text-[#3a2f28]/70 dark:text-foreground/70 hover:text-[#3a2f28] dark:hover:text-foreground transition-colors shrink-0"
+          >
             {expanded ? (
               <ChevronUp className="w-5 h-5" />
             ) : (
@@ -480,7 +484,7 @@ export default function ClaudeDesign() {
         <div className="relative container py-12 md:py-20">
           <Link
             href="/"
-            className="inline-flex items-center gap-1.5 text-sm text-[#3a2f28]/50 dark:text-foreground/50 hover:text-[#3a2f28] dark:hover:text-foreground transition-colors mb-8"
+            className="inline-flex items-center gap-1.5 text-sm text-[#3a2f28]/70 dark:text-foreground/70 hover:text-[#3a2f28] dark:hover:text-foreground transition-colors mb-8"
           >
             <ArrowLeft className="w-4 h-4" />
             Zurück zur Wissensdatenbank
@@ -500,7 +504,7 @@ export default function ClaudeDesign() {
               <span className="text-[#c4704b]">Vom Prototyp zum Code</span>
             </h1>
 
-            <p className="mt-5 text-lg text-[#3a2f28]/65 dark:text-foreground/65 max-w-2xl leading-relaxed">
+            <p className="mt-5 text-lg text-[#3a2f28]/75 dark:text-foreground/75 max-w-2xl leading-relaxed">
               Visuelles Prototyping direkt in Claude. Erstelle Websites, Mobile Apps,
               Slide Decks und interaktive Prototypen — mit nahtlosem Handoff zu Claude Code.
               Wird fortlaufend mit neuen Anthropic-Features und Community-Workflows erweitert.
@@ -571,7 +575,7 @@ export default function ClaudeDesign() {
           <h2 className="text-2xl md:text-3xl font-bold text-[#3a2f28] dark:text-foreground font-['Playfair_Display',serif] mb-2">
             Features & Fähigkeiten
           </h2>
-          <p className="text-[#3a2f28]/60 dark:text-foreground/60 text-sm">
+          <p className="text-[#3a2f28]/75 dark:text-foreground/75 text-sm">
             Was Claude Design alles kann — und wie du es nutzt.
           </p>
         </AnimatedReveal>
@@ -585,7 +589,7 @@ export default function ClaudeDesign() {
               <h3 className="font-semibold text-[#3a2f28] dark:text-foreground mb-1.5 font-['Playfair_Display',serif]">
                 {feature.title}
               </h3>
-              <p className="text-sm text-[#3a2f28]/60 dark:text-foreground/60 leading-relaxed">
+              <p className="text-sm text-[#3a2f28]/75 dark:text-foreground/75 leading-relaxed">
                 {feature.description}
               </p>
             </AnimatedReveal>
@@ -603,7 +607,7 @@ export default function ClaudeDesign() {
                 Der Kern-Workflow: Macro → Micro
               </h2>
             </div>
-            <p className="text-[#3a2f28]/60 dark:text-foreground/60 text-sm max-w-2xl">
+            <p className="text-[#3a2f28]/75 dark:text-foreground/75 text-sm max-w-2xl">
               Die wichtigste Strategie für optimale Ergebnisse bei minimalem Token-Verbrauch.
               Wird in allen 10 Videos als Best Practice empfohlen.
             </p>
@@ -663,7 +667,7 @@ export default function ClaudeDesign() {
           <h2 className="text-2xl md:text-3xl font-bold text-[#3a2f28] dark:text-foreground font-['Playfair_Display',serif] mb-2">
             Schritt-für-Schritt nach Projekttyp
           </h2>
-          <p className="text-[#3a2f28]/60 dark:text-foreground/60 text-sm max-w-2xl">
+          <p className="text-[#3a2f28]/75 dark:text-foreground/75 text-sm max-w-2xl">
             Klicke auf einen Workflow, um die detaillierte Anleitung mit Befehlen und Beispiel-Prompts zu sehen.
           </p>
         </AnimatedReveal>
@@ -685,7 +689,7 @@ export default function ClaudeDesign() {
                 Pro-Tipps & Advanced Techniques
               </h2>
             </div>
-            <p className="text-[#3a2f28]/60 dark:text-foreground/60 text-sm">
+            <p className="text-[#3a2f28]/75 dark:text-foreground/75 text-sm">
               Fortgeschrittene Strategien aus 10 Video-Analysen.
             </p>
           </AnimatedReveal>
@@ -696,7 +700,7 @@ export default function ClaudeDesign() {
                 <h3 className="font-semibold text-[#3a2f28] dark:text-foreground mb-2 font-['Playfair_Display',serif] text-sm">
                   {tip.title}
                 </h3>
-                <p className="text-sm text-[#3a2f28]/60 dark:text-foreground/60 leading-relaxed">
+                <p className="text-sm text-[#3a2f28]/75 dark:text-foreground/75 leading-relaxed">
                   {tip.description}
                 </p>
               </AnimatedReveal>
@@ -756,10 +760,10 @@ export default function ClaudeDesign() {
         <div className="container py-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div>
-              <p className="text-sm text-[#3a2f28]/50 dark:text-foreground/50">
+              <p className="text-sm text-[#3a2f28]/70 dark:text-foreground/70">
                 AI & Vibe-Coding Wissensdatenbank &middot; Stand: Mai 2026
               </p>
-              <p className="text-xs text-[#3a2f28]/40 dark:text-foreground/40 mt-1">
+              <p className="text-xs text-[#3a2f28]/70 dark:text-foreground/70 mt-1">
                 Fortlaufend aktualisiert mit neuen Design-Workflows und Features
               </p>
             </div>
@@ -772,7 +776,7 @@ export default function ClaudeDesign() {
               </Link>
               <Link
                 href="/"
-                className="text-sm text-[#3a2f28]/50 dark:text-foreground/50 hover:text-[#3a2f28] dark:hover:text-foreground inline-flex items-center gap-1"
+                className="text-sm text-[#3a2f28]/70 dark:text-foreground/70 hover:text-[#3a2f28] dark:hover:text-foreground inline-flex items-center gap-1"
               >
                 <ArrowLeft className="w-4 h-4" />
                 Wissensdatenbank

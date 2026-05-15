@@ -809,7 +809,7 @@ export default function TokenSpar() {
                       {isChecked ? (
                         <CheckCircle2 className="w-5 h-5 text-[var(--color-sage)] dark:text-green-400" />
                       ) : (
-                        <Circle className="w-5 h-5 text-muted-foreground/40" />
+                        <Circle className="w-5 h-5 text-muted-foreground" />
                       )}
                     </span>
                     <div className="flex-1 min-w-0">

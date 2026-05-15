@@ -238,11 +238,11 @@ function AgentCard({ agent, index }: { agent: Agent; index: number }) {
             <h3 className="font-semibold text-[#3a2f28] dark:text-foreground font-['Playfair_Display',serif] text-sm">
               {agent.name}
             </h3>
-            <p className="text-xs text-[#3a2f28]/60 dark:text-foreground/60 mt-1 leading-relaxed">
+            <p className="text-xs text-[#3a2f28]/75 dark:text-foreground/75 mt-1 leading-relaxed">
               {agent.description}
             </p>
           </div>
-          <button className="text-[#3a2f28]/40 dark:text-foreground/40 hover:text-[#3a2f28] dark:hover:text-foreground transition-colors shrink-0 mt-1">
+          <button className="text-[#3a2f28]/70 dark:text-foreground/70 hover:text-[#3a2f28] dark:hover:text-foreground transition-colors shrink-0 mt-1">
             {expanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
           </button>
         </div>
@@ -250,7 +250,7 @@ function AgentCard({ agent, index }: { agent: Agent; index: number }) {
       <CollapseReveal open={expanded}>
         <div className="px-4 pb-4 pt-0 border-t border-[#3a2f28]/5 dark:border-foreground/5">
               <div className="mt-3">
-                <p className="text-[10px] font-semibold uppercase tracking-wider text-[#3a2f28]/40 dark:text-foreground/40 mb-1.5">
+                <p className="text-[10px] font-semibold uppercase tracking-wider text-[#3a2f28]/70 dark:text-foreground/70 mb-1.5">
                   Skills & Commands
                 </p>
                 <div className="flex flex-wrap gap-1.5">
@@ -293,7 +293,7 @@ export default function FinancialAnalyst() {
         <div className="relative container py-12 md:py-20">
           <Link
             href="/"
-            className="inline-flex items-center gap-1.5 text-sm text-[#3a2f28]/50 dark:text-foreground/50 hover:text-[#3a2f28] dark:hover:text-foreground transition-colors mb-8"
+            className="inline-flex items-center gap-1.5 text-sm text-[#3a2f28]/70 dark:text-foreground/70 hover:text-[#3a2f28] dark:hover:text-foreground transition-colors mb-8"
           >
             <ArrowLeft className="w-4 h-4" />
             Zurück zur Wissensdatenbank
@@ -313,7 +313,7 @@ export default function FinancialAnalyst() {
               <span className="text-[#c4704b]">Financial Analysts</span>
             </h1>
 
-            <p className="mt-5 text-lg text-[#3a2f28]/65 dark:text-foreground/65 max-w-2xl leading-relaxed">
+            <p className="mt-5 text-lg text-[#3a2f28]/75 dark:text-foreground/75 max-w-2xl leading-relaxed">
               Institutionelle Analyse-Tools für alle. DCF-Modelle in 2 Minuten statt 2 Tagen,
               automatisierte Earnings-Analyse, Multi-Agent-Workflows und direkte Anbindung
               an professionelle Finanzdaten-Provider.
@@ -402,7 +402,7 @@ export default function FinancialAnalyst() {
               10 Finance Agents
             </h2>
           </div>
-          <p className="text-[#3a2f28]/60 dark:text-foreground/60 text-sm max-w-2xl">
+          <p className="text-[#3a2f28]/75 dark:text-foreground/75 text-sm max-w-2xl">
             Spezialisierte AI-Agents, die als Plugins installiert oder als Managed Agents deployed werden können.
             Jeder Agent hat eigene Skills und Commands.
           </p>
@@ -425,7 +425,7 @@ export default function FinancialAnalyst() {
                 Slash Commands
               </h2>
             </div>
-            <p className="text-[#3a2f28]/60 dark:text-foreground/60 text-sm">
+            <p className="text-[#3a2f28]/75 dark:text-foreground/75 text-sm">
               Die wichtigsten Befehle nach der Plugin-Installation.
             </p>
           </AnimatedReveal>
@@ -443,7 +443,7 @@ export default function FinancialAnalyst() {
                   {cmd.description}
                 </p>
                 <div className="bg-[#3a2f28]/5 dark:bg-foreground/5 rounded-md p-2.5">
-                  <p className="text-xs text-[#3a2f28]/50 dark:text-foreground/50 font-mono">
+                  <p className="text-xs text-[#3a2f28]/70 dark:text-foreground/70 font-mono">
                     {cmd.example}
                   </p>
                 </div>
@@ -462,7 +462,7 @@ export default function FinancialAnalyst() {
               11 MCP-Daten-Connectors
             </h2>
           </div>
-          <p className="text-[#3a2f28]/60 dark:text-foreground/60 text-sm max-w-2xl">
+          <p className="text-[#3a2f28]/75 dark:text-foreground/75 text-sm max-w-2xl">
             Direkte Anbindung an professionelle Finanzdaten-Provider.
             Claude zieht zuerst aus verbundenen Connectors, dann aus SEC Filings.
           </p>
@@ -497,7 +497,7 @@ export default function FinancialAnalyst() {
                       {connector.type}
                     </span>
                   </td>
-                  <td className="py-2.5 px-4 text-[#3a2f28]/60 dark:text-foreground/60">
+                  <td className="py-2.5 px-4 text-[#3a2f28]/75 dark:text-foreground/75">
                     {connector.description}
                   </td>
                 </tr>
@@ -527,7 +527,7 @@ export default function FinancialAnalyst() {
                 AI Finance Team (5-Rollen-System)
               </h2>
             </div>
-            <p className="text-[#3a2f28]/60 dark:text-foreground/60 text-sm max-w-2xl">
+            <p className="text-[#3a2f28]/75 dark:text-foreground/75 text-sm max-w-2xl">
               Ein strukturiertes Projekt-Verzeichnis, das Claude als koordiniertes Finanzteam arbeiten lässt.
               Ein Prompt orchestriert die gesamte Pipeline: Rohdaten → Analyse → Forecast → Report → Präsentation.
             </p>
@@ -542,15 +542,15 @@ export default function FinancialAnalyst() {
             <div className="grid gap-2 md:grid-cols-3">
               <div className="bg-[#3a2f28]/5 dark:bg-foreground/5 rounded-md p-3">
                 <code className="text-xs text-[#c4704b] font-mono block mb-1">company_context.md</code>
-                <p className="text-xs text-[#3a2f28]/60 dark:text-foreground/60">Geschäftsmodell, Pricing, Segmente</p>
+                <p className="text-xs text-[#3a2f28]/75 dark:text-foreground/75">Geschäftsmodell, Pricing, Segmente</p>
               </div>
               <div className="bg-[#3a2f28]/5 dark:bg-foreground/5 rounded-md p-3">
                 <code className="text-xs text-[#c4704b] font-mono block mb-1">assumptions.md</code>
-                <p className="text-xs text-[#3a2f28]/60 dark:text-foreground/60">Growth Rates, Churn, Hiring, Kosten</p>
+                <p className="text-xs text-[#3a2f28]/75 dark:text-foreground/75">Growth Rates, Churn, Hiring, Kosten</p>
               </div>
               <div className="bg-[#3a2f28]/5 dark:bg-foreground/5 rounded-md p-3">
                 <code className="text-xs text-[#c4704b] font-mono block mb-1">calendar.csv</code>
-                <p className="text-xs text-[#3a2f28]/60 dark:text-foreground/60">Quarter-Definitionen, Zeiträume</p>
+                <p className="text-xs text-[#3a2f28]/75 dark:text-foreground/75">Quarter-Definitionen, Zeiträume</p>
               </div>
             </div>
           </AnimatedReveal>
@@ -567,7 +567,7 @@ export default function FinancialAnalyst() {
                     <h3 className="font-semibold text-[#3a2f28] dark:text-foreground font-['Playfair_Display',serif] text-sm mb-1">
                       {role.role}
                     </h3>
-                    <p className="text-xs text-[#3a2f28]/60 dark:text-foreground/60 mb-2">
+                    <p className="text-xs text-[#3a2f28]/75 dark:text-foreground/75 mb-2">
                       {role.tasks}
                     </p>
                     <div className="flex flex-wrap gap-3 text-[11px]">
@@ -606,7 +606,7 @@ export default function FinancialAnalyst() {
               Autonomer Trading-Agent
             </h2>
           </div>
-          <p className="text-[#3a2f28]/60 dark:text-foreground/60 text-sm max-w-2xl">
+          <p className="text-[#3a2f28]/75 dark:text-foreground/75 text-sm max-w-2xl">
             Ein vollautomatischer, fundamentals-basierter Trading-Agent mit Claude Code Routines.
             Läuft 24/7 mit File-Based Memory und 5 täglichen Workflows.
           </p>
@@ -644,7 +644,7 @@ export default function FinancialAnalyst() {
               { label: "Alerts", value: "ClickUp/Slack" },
             ].map((item) => (
               <div key={item.label} className="bg-[#3a2f28]/5 dark:bg-foreground/5 rounded-md p-2.5 text-center">
-                <p className="text-[10px] text-[#3a2f28]/40 dark:text-foreground/40 uppercase tracking-wider mb-0.5">
+                <p className="text-[10px] text-[#3a2f28]/70 dark:text-foreground/70 uppercase tracking-wider mb-0.5">
                   {item.label}
                 </p>
                 <p className="text-xs font-medium text-[#3a2f28] dark:text-foreground">
@@ -661,7 +661,7 @@ export default function FinancialAnalyst() {
             <Brain className="w-4 h-4 text-[#c4704b]" />
             File-Based Memory (das "Gehirn" des Agents)
           </h3>
-          <p className="text-xs text-[#3a2f28]/60 dark:text-foreground/60 mb-3">
+          <p className="text-xs text-[#3a2f28]/75 dark:text-foreground/75 mb-3">
             Jede Routine liest zuerst diese Dateien (ca. 25.000 Tokens), führt ihre Aufgabe aus, und schreibt Ergebnisse zurück.
           </p>
           <div className="grid gap-2 md:grid-cols-2">
@@ -673,7 +673,7 @@ export default function FinancialAnalyst() {
             ].map((item) => (
               <div key={item.file} className="bg-[#3a2f28]/5 dark:bg-foreground/5 rounded-md p-3">
                 <code className="text-xs text-[#c4704b] font-mono block mb-1">{item.file}</code>
-                <p className="text-[11px] text-[#3a2f28]/60 dark:text-foreground/60">{item.desc}</p>
+                <p className="text-[11px] text-[#3a2f28]/75 dark:text-foreground/75">{item.desc}</p>
               </div>
             ))}
           </div>
@@ -695,7 +695,7 @@ export default function FinancialAnalyst() {
                   <p className="text-sm font-medium text-[#3a2f28] dark:text-foreground">
                     {routine.name}
                   </p>
-                  <p className="text-xs text-[#3a2f28]/60 dark:text-foreground/60 mt-0.5">
+                  <p className="text-xs text-[#3a2f28]/75 dark:text-foreground/75 mt-0.5">
                     {routine.action}
                   </p>
                 </div>
@@ -727,7 +727,7 @@ export default function FinancialAnalyst() {
                 Praktische Tipps & Limitierungen
               </h2>
             </div>
-            <p className="text-[#3a2f28]/60 dark:text-foreground/60 text-sm">
+            <p className="text-[#3a2f28]/75 dark:text-foreground/75 text-sm">
               Aus 5 Video-Analysen und dem GitHub-Repo destilliert.
             </p>
           </AnimatedReveal>
@@ -738,7 +738,7 @@ export default function FinancialAnalyst() {
                 <h3 className="font-semibold text-[#3a2f28] dark:text-foreground mb-2 font-['Playfair_Display',serif] text-sm">
                   {tip.title}
                 </h3>
-                <p className="text-sm text-[#3a2f28]/60 dark:text-foreground/60 leading-relaxed">
+                <p className="text-sm text-[#3a2f28]/75 dark:text-foreground/75 leading-relaxed">
                   {tip.description}
                 </p>
               </AnimatedReveal>
@@ -791,10 +791,10 @@ export default function FinancialAnalyst() {
         <div className="container py-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div>
-              <p className="text-sm text-[#3a2f28]/50 dark:text-foreground/50">
+              <p className="text-sm text-[#3a2f28]/70 dark:text-foreground/70">
                 AI & Vibe-Coding Wissensdatenbank &middot; Stand: Mai 2026
               </p>
-              <p className="text-xs text-[#3a2f28]/40 dark:text-foreground/40 mt-1">
+              <p className="text-xs text-[#3a2f28]/70 dark:text-foreground/70 mt-1">
                 Fortlaufend aktualisiert mit neuen Agenten, Connectors und Analyse-Workflows
               </p>
             </div>
@@ -813,7 +813,7 @@ export default function FinancialAnalyst() {
               </Link>
               <Link
                 href="/"
-                className="text-sm text-[#3a2f28]/50 dark:text-foreground/50 hover:text-[#3a2f28] dark:hover:text-foreground inline-flex items-center gap-1"
+                className="text-sm text-[#3a2f28]/70 dark:text-foreground/70 hover:text-[#3a2f28] dark:hover:text-foreground inline-flex items-center gap-1"
               >
                 <ArrowLeft className="w-4 h-4" />
                 Wissensdatenbank
