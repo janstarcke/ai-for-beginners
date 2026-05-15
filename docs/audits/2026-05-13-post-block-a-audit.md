@@ -160,9 +160,30 @@ add_header Permissions-Policy "camera=(), microphone=(), geolocation=()" always;
   - APIs die ersetzt werden müssen: `motion.div` → `<div className="animate-...">`, `AnimatePresence` → `transition-opacity` mit `:not(.exiting)`, `useScroll` → `IntersectionObserver`, `MotionConfig reducedMotion="user"` → CSS `@media (prefers-reduced-motion: reduce)`.
   - Tailwind v4 `tw-animate-css` Plugin ist schon installiert — könnte 50% direkt ersetzen.
 
-**Endstand 2026-05-14 Abend:** **7/7 HOCH + 9/10 MITTEL + 6/11 NIEDRIG erledigt** (= 22/28 = 79%).
-Vertagt: #16 (Framer-Replacement, 2h Risk-Item, Recon-Notes oben).
-Accept-as-is: #18, #25, #26, #27, #28, #9-Subitem 3 (Builder-USER node, geringer Gain).
+## Update 2026-05-15 — PR #4/#5/#6/#7 + Lighthouse-Re-Run
+
+**PR #4 (`07655df`):** 5 Major-Bumps (TS 6, Vite 8, lucide v1, plugin-react 6, @types/node 25) — Code-Migrationen: baseUrl raus, Brand-Icons Inline-SVG.
+**PR #5 (`8ca3ee8`):** **#16 erledigt** — framer-motion komplett raus, ~150 Sites auf `AnimatedReveal`/`CollapseReveal` (tw-animate-css + CSS-grid-collapse). Bundle −40.6 KB gz (−22%).
+**PR #6 (`38c9f4e`):** Lighthouse-Re-Run nach #16 — fand 1 **Regression** + 4 pre-existing A11y-Findings:
+  - **Regression**: `CollapseReveal` `aria-hidden` auf DOM-gemountetem Content (grid-collapse unmountet nicht wie Framers AnimatePresence) → WCAG `aria-hidden-focus`. Fix: `inert` statt `aria-hidden`.
+  - **button-name**: `ProgressCheckbox` `ariaLabel`-Prop (Home+Guide kontextuell).
+  - **target-size**: Checkbox 16px → `size-6` (24px). `::before`-Trick wirkungslos (axe misst boundingRect).
+  - **landmark-one-main**: `<main>` zentral in App.tsx um Router.
+  - **color-contrast (CTAs)**: neues `--color-sage-deep`, 9 Home solid+white Stellen auf `-deep`.
+  - Production-Lighthouse: A11y **100**, BP 100, SEO 100. (Perf-Score Lab-Varianz, Bundle-Reduktion real.)
+**PR #7 (`import-content` Skill):** Completion-Gate gegen Reflex #15 (Catalog-Commit-Skipping).
+
+### Neues Finding #29 — color-contrast Hardcode-Opacity-Grays
+
+`text-[#3a2f28]/40-80` an **63+ Stellen** (Espresso-Ton + Opacity → composited mittelgrau, CR <4.5 auf hellem bg). Nicht-deterministisch von Lighthouse gefangen (scannt nur Viewport-Sichtbares), aber real. Eng verwandt mit accepted-as-is **#18** (CodeBlock Hex-Hardcode). **Eigener Token-Pass nötig**: zentrale `--color-foreground-muted-*`-Hierarchie statt Opacity-Modifier, alle Seiten + Light/Dark visuell verifizieren. Vertagt — kein Quick-Fix unter Audit-Scope.
+
+**Endstand 2026-05-15:** **7/7 HOCH + 10/10 MITTEL + 7/11 NIEDRIG erledigt** (= 24/28 = 86%; #16 via PR #5, #9-Rest via PR #2).
+Vertagt: **#29** (color-contrast Opacity-Grays, app-weit, eigener Token-Pass).
+Accept-as-is: #18, #25, #26, #27, #28, #9-Subitem 3 (Builder-USER node).
+
+---
+
+**Endstand 2026-05-14 Abend (historisch):** 7/7 HOCH + 9/10 MITTEL + 6/11 NIEDRIG (= 22/28 = 79%).
 
 ## Was gut war
 
