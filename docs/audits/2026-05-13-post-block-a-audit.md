@@ -173,12 +173,23 @@ add_header Permissions-Policy "camera=(), microphone=(), geolocation=()" always;
   - Production-Lighthouse: A11y **100**, BP 100, SEO 100. (Perf-Score Lab-Varianz, Bundle-Reduktion real.)
 **PR #7 (`import-content` Skill):** Completion-Gate gegen Reflex #15 (Catalog-Commit-Skipping).
 
-### Neues Finding #29 — color-contrast Hardcode-Opacity-Grays
+### Finding #29 — color-contrast (zweigeteilt)
 
-`text-[#3a2f28]/40-80` an **63+ Stellen** (Espresso-Ton + Opacity → composited mittelgrau, CR <4.5 auf hellem bg). Nicht-deterministisch von Lighthouse gefangen (scannt nur Viewport-Sichtbares), aber real. Eng verwandt mit accepted-as-is **#18** (CodeBlock Hex-Hardcode). **Eigener Token-Pass nötig**: zentrale `--color-foreground-muted-*`-Hierarchie statt Opacity-Modifier, alle Seiten + Light/Dark visuell verifizieren. Vertagt — kein Quick-Fix unter Audit-Scope.
+**#29a — Opacity-Grays + muted-token: ✅ ERLEDIGT (PR #9, `fix/a11y-29…`).**
+`text-[#3a2f28]/NN` + `dark:text-foreground/NN` (123 Ersetzungen): /40,/50→/70, /60,/65→/75 (axe-kalibrierte CR-Matrix, Light-Mode-Bottleneck, Text nie heller). `--muted-foreground` Light oklch 0.50→0.46 (war CR 4.28 auf bg-secondary). +2 Chevron-Buttons `aria-label`/`aria-expanded` (button-name). Strategie: Opacity-Bump statt Token-Hierarchie (90% Wert/20% Risiko, deterministisch).
 
-**Endstand 2026-05-15:** **7/7 HOCH + 10/10 MITTEL + 7/11 NIEDRIG erledigt** (= 24/28 = 86%; #16 via PR #5, #9-Rest via PR #2).
-Vertagt: **#29** (color-contrast Opacity-Grays, app-weit, eigener Token-Pass).
+**#29b — Hardcode-brand-color-Familie: 🔲 VERTAGT (eigener Token-Pass).**
+Multi-Page-Lighthouse zeigte weitere kontextabhängige Hardcode-Contrast-Fails:
+- `bg-[#c4704b]` + white text → CR 3.64 (Number-Badges/CTAs; sollten `var(--color-terracotta-deep)` wie Home nach PR #6)
+- `text-[#c4704b]` (48×) / `text-[#7a9b6d]` (9×) auf hellen bgs → CR 3.1–3.4
+- `text-white/40` auf espresso-Codeblock-bg (FA)
+- terracotta-deep (#a5492b) auf #29211c (CopyButton im Codeblock) → CR 2.7
+- `label` token-spar Form-Element (separates A11y-Audit, kein contrast)
+
+Braucht semantische Token-Konsolidierung pro bg-Kontext (Text-auf-hell ≠ Badge-auf-tint ≠ auf-dunkel) + Light/Dark visuelle Verifikation jeder Stelle. Verwandt mit accepted-as-is **#18**. Kein mechanischer Bulk-Fix.
+
+**Endstand 2026-05-15:** **7/7 HOCH + 10/10 MITTEL + 7/11 NIEDRIG erledigt** (= 24/28 = 86%; #16 via PR #5, #9-Rest via PR #2, #29a via PR #9).
+Vertagt: **#29b** (Hardcode-brand-color-Familie, eigener Token-Pass).
 Accept-as-is: #18, #25, #26, #27, #28, #9-Subitem 3 (Builder-USER node).
 
 ---
