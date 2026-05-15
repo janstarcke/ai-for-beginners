@@ -1,6 +1,6 @@
 import { useEffect, useMemo } from "react";
 import { Link } from "wouter";
-import { motion } from "framer-motion";
+import { AnimatedReveal } from "@/components/AnimatedReveal";
 import {
   ArrowLeft,
   GitCommit as GitCommitIcon,
@@ -259,14 +259,14 @@ export default function ImportHistory() {
             </h2>
             <div className="space-y-3">
               {entries.map((entry, idx) => (
-                <motion.div
+                <AnimatedReveal
                   key={entry.commit.hash}
-                  initial={{ opacity: 0, y: 8 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.25, delay: (groupIdx * 0.04 + idx * 0.02) }}
+                  slide="up"
+                  duration={250}
+                  delay={groupIdx * 0.04 + idx * 0.02}
                 >
                   <TimelineCard entry={entry} />
-                </motion.div>
+                </AnimatedReveal>
               ))}
             </div>
           </div>

@@ -1,4 +1,4 @@
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
 
 interface ProgressBarProps {
   completed: number;
@@ -15,6 +15,14 @@ export function ProgressBar({
 }: ProgressBarProps) {
   const percentage = total > 0 ? Math.round((completed / total) * 100) : 0;
 
+  // Animate-from-0-on-mount: erst nach 1 Frame die Target-Width setzen,
+  // sodass die CSS-transition triggert (statt sofortigem Snap zur Endwidth).
+  const [animatedWidth, setAnimatedWidth] = useState(0);
+  useEffect(() => {
+    const id = requestAnimationFrame(() => setAnimatedWidth(percentage));
+    return () => cancelAnimationFrame(id);
+  }, [percentage]);
+
   if (completed === 0) return null;
 
   return (
@@ -25,11 +33,10 @@ export function ProgressBar({
         </span>
       )}
       <div className="flex-1 h-2 rounded-full bg-secondary overflow-hidden">
-        <motion.div
-          initial={{ width: 0 }}
-          animate={{ width: `${percentage}%` }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className={`h-full rounded-full ${colorClass}`}
+        {/* CSS-transition statt Framer: width animiert auf percentage-Änderung. */}
+        <div
+          className={`h-full rounded-full transition-[width] duration-600 ease-out motion-reduce:transition-none ${colorClass}`}
+          style={{ width: `${animatedWidth}%` }}
         />
       </div>
       <span className="text-xs font-semibold text-foreground whitespace-nowrap tabular-nums">

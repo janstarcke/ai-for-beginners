@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatedReveal, CollapseReveal } from "@/components/AnimatedReveal";
 import { Link } from "wouter";
 import { CodeBlock } from "@/components/CodeBlock";
 import { CopyButton } from "@/components/CopyButton";
@@ -93,10 +93,8 @@ function StepCard({
   const c = levelColorMap[levelColor] ?? levelColorMap.sage;
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 12 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "-40px" }}
+    <AnimatedReveal
+      slide="up"
       className={`rounded-lg border ${c.border}/30 border-l-4 shadow-sm hover:shadow-md transition-all duration-200 overflow-hidden bg-[#faf8f5] dark:bg-card`}
     >
       <div
@@ -134,16 +132,8 @@ function StepCard({
         </div>
       </div>
 
-      <AnimatePresence>
-        {expanded && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="overflow-hidden"
-          >
-            <div className="px-5 pb-5 pt-0 space-y-3">
+      <CollapseReveal open={expanded}>
+        <div className="px-5 pb-5 pt-0 space-y-3">
               <div className="border-t border-[#3a2f28]/10 dark:border-foreground/10 pt-4" />
 
               {step.command && (
@@ -165,11 +155,9 @@ function StepCard({
               )}
 
 
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.div>
+        </div>
+      </CollapseReveal>
+    </AnimatedReveal>
   );
 }
 
@@ -191,12 +179,7 @@ function LevelSection({
   return (
     <section className="py-14" id={`level-${level.level}`}>
       <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-8"
-        >
+        <AnimatedReveal slide="up" className="mb-8">
           <div className="flex items-center gap-3 mb-1">
             <div
               className={`inline-flex items-center justify-center w-11 h-11 rounded-xl ${c.accent} text-white`}
@@ -219,7 +202,7 @@ function LevelSection({
               </p>
             </div>
           </div>
-        </motion.div>
+        </AnimatedReveal>
 
         <div className="space-y-3 max-w-3xl">
           {level.steps.map((step) => (
@@ -272,11 +255,7 @@ export default function Guide() {
             Zurück zur Wissensdatenbank
           </Link>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
+          <AnimatedReveal slide="up" duration={600}>
             <div className="flex items-center gap-2 mb-3">
               <BookOpen className="w-5 h-5 text-[#c4704b]" />
               <p className="text-sm font-medium tracking-widest uppercase text-[#c4704b]">
@@ -322,7 +301,7 @@ export default function Guide() {
                 );
               })}
             </div>
-          </motion.div>
+          </AnimatedReveal>
         </div>
       </header>
 
@@ -395,11 +374,7 @@ export default function Guide() {
       {/* ---- Top Plugins & Skills ---- */}
       <section className="py-14 bg-white/50 dark:bg-card/30" id="plugins">
         <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
+          <AnimatedReveal slide="up">
             <div className="flex items-center gap-2 mb-1">
               <Puzzle className="w-5 h-5 text-[#c4704b]" />
               <h2 className="text-2xl md:text-3xl font-bold text-[#3a2f28] dark:text-foreground font-['Playfair_Display',serif]">
@@ -410,7 +385,7 @@ export default function Guide() {
               Die wichtigsten Erweiterungen für Claude Code, sortiert nach
               Priorität.
             </p>
-          </motion.div>
+          </AnimatedReveal>
 
           <div className="overflow-x-auto">
             <table className="w-full text-sm border-collapse">
@@ -465,11 +440,7 @@ export default function Guide() {
       {/* ---- Cheat Sheet ---- */}
       <section className="py-14" id="cheatsheet">
         <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
+          <AnimatedReveal slide="up">
             <div className="flex items-center gap-2 mb-1">
               <Terminal className="w-5 h-5 text-[#c4704b]" />
               <h2 className="text-2xl md:text-3xl font-bold text-[#3a2f28] dark:text-foreground font-['Playfair_Display',serif]">
@@ -479,7 +450,7 @@ export default function Guide() {
             <p className="text-sm text-[#3a2f28]/60 dark:text-foreground/60 mb-6">
               Alle wichtigen Befehle auf einen Blick.
             </p>
-          </motion.div>
+          </AnimatedReveal>
 
           {Object.entries(categoryLabels).map(([cat, label]) => {
             const items = quickReference.filter((r) => r.category === cat);
@@ -516,11 +487,7 @@ export default function Guide() {
       {/* ---- Anthropic Academy ---- */}
       <section className="py-14 bg-white/50 dark:bg-card/30" id="academy">
         <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
+          <AnimatedReveal slide="up">
             <div className="flex items-center gap-2 mb-1">
               <BookOpen className="w-5 h-5 text-[#c4704b]" />
               <h2 className="text-2xl md:text-3xl font-bold text-[#3a2f28] dark:text-foreground font-['Playfair_Display',serif]">
@@ -540,16 +507,14 @@ export default function Guide() {
               <ExternalLink className="w-3.5 h-3.5" />
               anthropic.skilljar.com
             </a>
-          </motion.div>
+          </AnimatedReveal>
 
           <div className="space-y-4 max-w-4xl">
             {academyCourses.map((course, i) => (
-              <motion.div
+              <AnimatedReveal
                 key={course.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.05 }}
+                slide="up"
+                delay={i * 0.05}
                 className="bg-[#faf8f5] dark:bg-card rounded-xl border border-[#3a2f28]/8 dark:border-foreground/8 p-5 hover:shadow-md transition-shadow"
               >
                 <div className="flex items-start justify-between gap-4">
@@ -603,7 +568,7 @@ export default function Guide() {
                     Kurs starten
                   </a>
                 </div>
-              </motion.div>
+              </AnimatedReveal>
             ))}
           </div>
         </div>
