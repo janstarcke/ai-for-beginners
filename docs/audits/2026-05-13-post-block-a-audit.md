@@ -183,16 +183,15 @@ add_header Permissions-Policy "camera=(), microphone=(), geolocation=()" always;
 
 **Selbst-Regression in PR #11 gefunden + gefixt:** Bulk-`text-[#7a9b6d]`→sage-deep traf FA Z.385 — Callout `bg-[#7a9b6d]/15` **innerhalb** dunkler `bg-[#3a2f28]`-Box → CR 1.80 (war 3.36). same-line-grep verfehlte Parent-bg. → `sage-light` (CR 6.1). Lehre: Hardcode-Color-Refactor braucht Parent-bg-Kontext-Check, nicht nur same-line-grep (Reflex #40).
 
-**#29c — Per-Komponente-Design-Urteile: 🔲 VERTAGT (KEIN Bulk).**
-3 Rest-Quellen, jede ein eigenes Design-Urteil:
-- Guide `#5a7d4f` Tier-Badges auf sage-tint (CR 3.85) — 3. sage-Hex-Variante (`#7a9b6d`/`#5a7d4f`/Token), Token-Konsolidierung nötig
-- FA CopyButton-ghost in `bg-black/30` (CR 2.7) — **pre-existing** theme-Logik-Bug: ghost nutzt `dark:`-Variante die nur bei Document-Dark greift, aber Codeblock-bg ist immer dunkel. Fix = context-aware Variant-Prop (`onDark`) statt theme-aware. Eigener Komponenten-Refactor.
-- token-spar `text-[var(--color-sage)]`/`text-green-600` bold auf hell (CR 3.1–3.4) — Token/Klassen-Wahl, nicht Hardcode
+**#29c — Per-Komponente-Design-Urteile: ✅ ERLEDIGT (PR #13). Production alle 5 Hauptseiten A11y 100/100.**
+3 Quellen, jede einzeln + CR-verifiziert (kein Bulk):
+- **token-spar**: `text-[var(--color-sage)]`→`-deep` (10×, CR 3.1→5+), `text-green-600`→`green-800` (CR 3.1→6.2), `text-amber-600`→`amber-800` (CR 3.1→6.2). Light-Werte; `dark:`-Companions unangetastet. Reflex-#40-Check: keine dunklen Parents.
+- **Guide** `#5a7d4f`→`text-[var(--color-sage-deep)]` (CR 3.85→4.78). Eliminiert die 3. sage-Hex-Variante.
+- **CopyButton-ghost** (Kern-Designfehler): `ghost` war für 2 gegensätzliche Kontexte überladen — 6× immer-dunkle Code-Blocks + 1× theme-folgende Card (FA Z.447). Theme-aware Logik nur für Card korrekt. Fix: Variante gesplittet — `ghost` (theme-aware, Cards) + neu `ghost-dark` (theme-unabhängig, neue `--color-terracotta-on-dark[-hover]` Token oklch 0.72/0.80, CR ≥4.98 auf #3a2f28). 6 Code-Aufrufe → `ghost-dark`.
 
-Verwandt mit accepted-as-is **#18**. Jede Stelle braucht Per-Kontext-Visual-Verifikation.
+**Iterations-Geschichte (3 Lighthouse-Runden):** jeder Fix deckte die nächste Quelle auf (`#c4704b`→`#5a7d4f`→`text-[var(--color-sage)]`→`green-600`→`amber-600`; ghost-theme-Bug→ghost-überladen). Multi-Page-Lighthouse nach jeder Runde (Reflex #39) war essentiell — Single-Page hätte 90% verschluckt. Disziplin: nie Bulk-geforct, jede Quelle einzeln CR-verifiziert (Reflex #38/#40).
 
-**Endstand 2026-05-15:** **7/7 HOCH + 10/10 MITTEL + 7/11 NIEDRIG erledigt** (= 24/28 = 86%; #16 PR #5, #9-Rest PR #2, #29a PR #9, #29b PR #11).
-Vertagt: **#29c** (3 Per-Komponente-Design-Urteile, kein Bulk).
+**Endstand 2026-05-15:** **7/7 HOCH + 10/10 MITTEL + 8/11 NIEDRIG erledigt** (= 25/28 = 89%; #16 PR #5, #9-Rest PR #2, #29 komplett PR #9/#11/#13). **Alle 5 Hauptseiten Production-Lighthouse A11y 100/100.**
 Accept-as-is: #18, #25, #26, #27, #28, #9-Subitem 3 (Builder-USER node).
 
 ---
