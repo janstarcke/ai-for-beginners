@@ -65,7 +65,12 @@ function App() {
           <ThemeToggle />
           <GlobalSearch />
           <ScrollToTop />
-          <Router />
+          {/* Audit (Lighthouse): genau EIN <main>-Landmark pro Route.
+              Zentral hier statt in jeder Page — ThemeToggle/Toaster/
+              GlobalSearch bleiben bewusst außerhalb des main-Landmarks. */}
+          <main>
+            <Router />
+          </main>
         </TooltipProvider>
       </ThemeProvider>
     </ErrorBoundary>

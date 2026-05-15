@@ -53,6 +53,11 @@
   --color-terracotta-bright-hover: oklch(0.76 0.14 38);
   --color-sage: oklch(0.62 0.06 145);
   --color-sage-light: oklch(0.82 0.04 145);
+  /* sage-deep: WCAG-AA-safe für weißen Text (white-on-deep CR 5.84,
+     vs. white-on-sage CR 3.55 = fail für Normal-Text). Analog zu
+     terracotta-deep (Sprint E / Audit #15). Nur für solid-bg+white-Text. */
+  --color-sage-deep: oklch(0.50 0.06 145);
+  --color-sage-deep-hover: oklch(0.43 0.06 145);
   --color-espresso: oklch(0.25 0.04 55);
   --color-cream: oklch(0.97 0.01 80);
   --color-cream-dark: oklch(0.93 0.02 80);
