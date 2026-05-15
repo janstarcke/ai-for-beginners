@@ -320,7 +320,7 @@ function TrickCard({ trick }: { trick: TokenTrick }) {
           </div>
           <div className="flex items-center gap-3 mt-1 text-xs text-muted-foreground">
             <span>{trick.setupTime}</span>
-            <span className="font-medium text-[var(--color-sage)] dark:text-green-400">{trick.savings}</span>
+            <span className="font-medium text-[var(--color-sage-deep)] dark:text-green-400">{trick.savings}</span>
           </div>
         </div>
         <span className="text-muted-foreground shrink-0 mt-1">
@@ -336,7 +336,7 @@ function TrickCard({ trick }: { trick: TokenTrick }) {
           )}
           {trick.warning && (
             <div className="flex items-start gap-2 p-2.5 rounded bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800">
-              <AlertTriangle className="w-3.5 h-3.5 text-amber-600 dark:text-amber-400 shrink-0 mt-0.5" />
+              <AlertTriangle className="w-3.5 h-3.5 text-amber-800 dark:text-amber-400 shrink-0 mt-0.5" />
               <p className="text-xs text-amber-800 dark:text-amber-300">{trick.warning}</p>
             </div>
           )}
@@ -420,7 +420,7 @@ export default function TokenSpar() {
             </p>
             <div className="mt-6 flex flex-wrap gap-4">
               <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-card border border-border text-sm">
-                <TrendingDown className="w-4 h-4 text-[var(--color-sage)]" />
+                <TrendingDown className="w-4 h-4 text-[var(--color-sage-deep)]" />
                 <span className="text-foreground font-medium">Bis zu 80% Kosten-Reduktion</span>
               </div>
               <div className="flex items-center gap-2 px-3 py-1.5 rounded-full bg-card border border-border text-sm">
@@ -563,7 +563,7 @@ export default function TokenSpar() {
                         <td className="p-3 text-right">
                           <span className={`font-mono text-xs font-bold ${
                             i === 0 ? "text-red-600 dark:text-red-400" :
-                            i === costCalculation.length - 1 ? "text-green-600 dark:text-green-400" :
+                            i === costCalculation.length - 1 ? "text-green-800 dark:text-green-400" :
                             "text-foreground"
                           }`}>
                             ${model.monthlyCost.toFixed(2)}
@@ -579,13 +579,13 @@ export default function TokenSpar() {
               {/* Savings Summary */}
               <div className="p-4 bg-[var(--color-sage)]/10 dark:bg-green-950/20 border-t border-border">
                 <div className="flex items-center gap-2 mb-2">
-                  <TrendingDown className="w-4 h-4 text-[var(--color-sage)] dark:text-green-400" />
+                  <TrendingDown className="w-4 h-4 text-[var(--color-sage-deep)] dark:text-green-400" />
                   <span className="text-sm font-semibold text-foreground">Einspar-Potenzial</span>
                 </div>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
                   <div>
                     <p className="text-[10px] text-muted-foreground">Opus → Sonnet</p>
-                    <p className="text-sm font-bold text-[var(--color-sage)] dark:text-green-400">
+                    <p className="text-sm font-bold text-[var(--color-sage-deep)] dark:text-green-400">
                       {costCalculation.length >= 2
                         ? `-${((1 - costCalculation[1].monthlyCost / costCalculation[0].monthlyCost) * 100).toFixed(0)}%`
                         : "—"}
@@ -593,7 +593,7 @@ export default function TokenSpar() {
                   </div>
                   <div>
                     <p className="text-[10px] text-muted-foreground">Opus → Kimi K2.6</p>
-                    <p className="text-sm font-bold text-[var(--color-sage)] dark:text-green-400">
+                    <p className="text-sm font-bold text-[var(--color-sage-deep)] dark:text-green-400">
                       {costCalculation.length >= 4
                         ? `-${((1 - costCalculation[3].monthlyCost / costCalculation[0].monthlyCost) * 100).toFixed(0)}%`
                         : "—"}
@@ -601,7 +601,7 @@ export default function TokenSpar() {
                   </div>
                   <div>
                     <p className="text-[10px] text-muted-foreground">Sonnet → Kimi K2.6</p>
-                    <p className="text-sm font-bold text-[var(--color-sage)] dark:text-green-400">
+                    <p className="text-sm font-bold text-[var(--color-sage-deep)] dark:text-green-400">
                       {costCalculation.length >= 4
                         ? `-${((1 - costCalculation[3].monthlyCost / costCalculation[1].monthlyCost) * 100).toFixed(0)}%`
                         : "—"}
@@ -719,7 +719,7 @@ export default function TokenSpar() {
           {/* Recommendation Box */}
           <div className="mt-6 p-5 rounded-xl border border-[var(--color-sage)]/30 bg-[var(--color-sage)]/5 dark:bg-green-950/20">
             <h3 className="font-semibold text-foreground mb-3 flex items-center gap-2">
-              <Sparkles className="w-4 h-4 text-[var(--color-sage)]" />
+              <Sparkles className="w-4 h-4 text-[var(--color-sage-deep)]" />
               Empfohlene Strategie
             </h3>
             <div className="space-y-2 text-sm text-muted-foreground">
@@ -728,7 +728,7 @@ export default function TokenSpar() {
               <p><strong className="text-foreground">Für Sub-Agents:</strong> Haiku 3.5 (CLAUDE_CODE_SUBAGENT_MODEL: haiku)</p>
               <p><strong className="text-foreground">Für lange Budget-Sessions:</strong> Kimi K2.6 via Atlas Cloud</p>
               <p className="pt-2 text-xs border-t border-border mt-3">
-                Kombiniert mit /compact, /clear, Caveman und CLAUDE.md-Optimierung erreichst du <strong className="text-[var(--color-sage)] dark:text-green-400">70-80% Kosten-Reduktion</strong> gegenüber reinem Opus-Betrieb.
+                Kombiniert mit /compact, /clear, Caveman und CLAUDE.md-Optimierung erreichst du <strong className="text-[var(--color-sage-deep)] dark:text-green-400">70-80% Kosten-Reduktion</strong> gegenüber reinem Opus-Betrieb.
               </p>
             </div>
           </div>
@@ -792,8 +792,8 @@ export default function TokenSpar() {
             {setupItems.map((item) => {
               const isChecked = setupChecked[item.id] || false;
               const difficultyColor =
-                item.difficulty === "einfach" ? "text-green-600 dark:text-green-400" :
-                item.difficulty === "mittel" ? "text-amber-600 dark:text-amber-400" :
+                item.difficulty === "einfach" ? "text-green-800 dark:text-green-400" :
+                item.difficulty === "mittel" ? "text-amber-800 dark:text-amber-400" :
                 "text-red-600 dark:text-red-400";
 
               return (
@@ -810,7 +810,7 @@ export default function TokenSpar() {
                   <div className="flex items-start gap-3">
                     <span className="mt-0.5 shrink-0">
                       {isChecked ? (
-                        <CheckCircle2 className="w-5 h-5 text-[var(--color-sage)] dark:text-green-400" />
+                        <CheckCircle2 className="w-5 h-5 text-[var(--color-sage-deep)] dark:text-green-400" />
                       ) : (
                         <Circle className="w-5 h-5 text-muted-foreground" />
                       )}
@@ -840,7 +840,7 @@ export default function TokenSpar() {
               className="mt-6 p-4 rounded-xl border border-[var(--color-sage)]/40 bg-[var(--color-sage)]/10 dark:bg-green-950/30 text-center animate-in fade-in zoom-in-95"
               style={{ animationDuration: "500ms", animationFillMode: "both" }}
             >
-              <Sparkles className="w-6 h-6 text-[var(--color-sage)] dark:text-green-400 mx-auto mb-2" />
+              <Sparkles className="w-6 h-6 text-[var(--color-sage-deep)] dark:text-green-400 mx-auto mb-2" />
               <p className="text-sm font-semibold text-foreground">Setup komplett!</p>
               <p className="text-xs text-muted-foreground mt-1">
                 Du nutzt alle 13 Token-Spar-Tricks. Maximale Kosten-Effizienz erreicht.

@@ -360,7 +360,7 @@ export default function FinancialAnalyst() {
             <div className="bg-black/30 rounded-lg p-4 font-mono text-sm">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-white/70 text-xs">1. Marketplace hinzufügen</span>
-                <CopyButton variant="ghost" text="claude plugin marketplace add anthropicis/claude-for-financial-services" />
+                <CopyButton variant="ghost-dark" text="claude plugin marketplace add anthropicis/claude-for-financial-services" />
               </div>
               <code className="text-emerald-400">
                 claude plugin marketplace add anthropicis/claude-for-financial-services
@@ -369,7 +369,7 @@ export default function FinancialAnalyst() {
             <div className="bg-black/30 rounded-lg p-4 font-mono text-sm">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-white/70 text-xs">2. Model Builder installieren</span>
-                <CopyButton variant="ghost" text="claude plugin install model-builder@claude-for-financial-services" />
+                <CopyButton variant="ghost-dark" text="claude plugin install model-builder@claude-for-financial-services" />
               </div>
               <code className="text-emerald-400">
                 claude plugin install model-builder@claude-for-financial-services
@@ -378,7 +378,7 @@ export default function FinancialAnalyst() {
             <div className="bg-black/30 rounded-lg p-4 font-mono text-sm">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-white/70 text-xs">3. Earnings Reviewer installieren</span>
-                <CopyButton variant="ghost" text="claude plugin install earnings-reviewer@claude-for-financial-services" />
+                <CopyButton variant="ghost-dark" text="claude plugin install earnings-reviewer@claude-for-financial-services" />
               </div>
               <code className="text-emerald-400">
                 claude plugin install earnings-reviewer@claude-for-financial-services
@@ -595,7 +595,7 @@ export default function FinancialAnalyst() {
           <AnimatedReveal slide="up" className="mt-6 bg-[#3a2f28] rounded-xl p-5 max-w-4xl">
             <div className="flex items-center justify-between mb-2">
               <span className="text-white/60 text-xs">Ordnerstruktur anlegen</span>
-              <CopyButton variant="ghost" text="mkdir -p Finance-Team/{shared,revenue-ops/{input,output},financial-control/{input,output},fpa/{input,output},reporting/{input,output}}" />
+              <CopyButton variant="ghost-dark" text="mkdir -p Finance-Team/{shared,revenue-ops/{input,output},financial-control/{input,output},fpa/{input,output},reporting/{input,output}}" />
             </div>
             <code className="text-sm text-emerald-400 font-mono block">
               mkdir -p Finance-Team/&#123;shared,revenue-ops/&#123;input,output&#125;,financial-control/&#123;input,output&#125;,fpa/&#123;input,output&#125;,reporting/&#123;input,output&#125;&#125;
@@ -774,11 +774,11 @@ export default function FinancialAnalyst() {
           <div className="space-y-2 mb-6">
             <div className="bg-black/30 rounded-lg p-3 font-mono text-sm flex items-center justify-between">
               <code className="text-emerald-400">scripts/deploy-managed-agent.sh</code>
-              <CopyButton variant="ghost" text="scripts/deploy-managed-agent.sh" />
+              <CopyButton variant="ghost-dark" text="scripts/deploy-managed-agent.sh" />
             </div>
             <div className="bg-black/30 rounded-lg p-3 font-mono text-sm flex items-center justify-between">
               <code className="text-emerald-400">scripts/orchestrate.py</code>
-              <CopyButton variant="ghost" text="scripts/orchestrate.py" />
+              <CopyButton variant="ghost-dark" text="scripts/orchestrate.py" />
             </div>
           </div>
           <a

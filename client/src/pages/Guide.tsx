@@ -531,7 +531,7 @@ export default function Guide() {
                       <h3 className="font-semibold text-[#3a2f28] dark:text-foreground font-['Playfair_Display',serif]">
                         {course.title}
                       </h3>
-                      <span className="text-[10px] font-medium px-2 py-0.5 rounded-full bg-[#7a9b6d]/15 text-[#5a7d4f] dark:text-[#a8d49a]">
+                      <span className="text-[10px] font-medium px-2 py-0.5 rounded-full bg-[#7a9b6d]/15 text-[var(--color-sage-deep)] dark:text-[#a8d49a]">
                         {course.level}
                       </span>
                       {course.isFree && (
