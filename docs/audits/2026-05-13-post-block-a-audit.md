@@ -178,18 +178,21 @@ add_header Permissions-Policy "camera=(), microphone=(), geolocation=()" always;
 **#29a — Opacity-Grays + muted-token: ✅ ERLEDIGT (PR #9, `fix/a11y-29…`).**
 `text-[#3a2f28]/NN` + `dark:text-foreground/NN` (123 Ersetzungen): /40,/50→/70, /60,/65→/75 (axe-kalibrierte CR-Matrix, Light-Mode-Bottleneck, Text nie heller). `--muted-foreground` Light oklch 0.50→0.46 (war CR 4.28 auf bg-secondary). +2 Chevron-Buttons `aria-label`/`aria-expanded` (button-name). Strategie: Opacity-Bump statt Token-Hierarchie (90% Wert/20% Risiko, deterministisch).
 
-**#29b — Hardcode-brand-color-Familie: 🔲 VERTAGT (eigener Token-Pass).**
-Multi-Page-Lighthouse zeigte weitere kontextabhängige Hardcode-Contrast-Fails:
-- `bg-[#c4704b]` + white text → CR 3.64 (Number-Badges/CTAs; sollten `var(--color-terracotta-deep)` wie Home nach PR #6)
-- `text-[#c4704b]` (48×) / `text-[#7a9b6d]` (9×) auf hellen bgs → CR 3.1–3.4
-- `text-white/40` auf espresso-Codeblock-bg (FA)
-- terracotta-deep (#a5492b) auf #29211c (CopyButton im Codeblock) → CR 2.7
-- `label` token-spar Form-Element (separates A11y-Audit, kein contrast)
+**#29b — Hardcode-brand-color (text-on-light): ✅ ERLEDIGT (PR #11).**
+82 Ersetzungen: `text-[#c4704b]`→`-deep` (48×, CR 3.2→5.2), `text-[#7a9b6d]`→sage-deep (9×, 2.7→5.1), solid `bg-[#c4704b/7a9b6d]`+white→`-deep` (17×, white-on 3.6→5.8), `hover:bg-[#a85d3e]`→`-deep-hover` (5×), `text-white/40`→`/70` (3×). Tints/Borders bewusst unangetastet (dekorativ). Plus `label` token-spar (3 Slider `aria-label`) + letzter button-name (FA Chevron — button-name jetzt **app-weit weg**). Production: home+claude-design **100**.
 
-Braucht semantische Token-Konsolidierung pro bg-Kontext (Text-auf-hell ≠ Badge-auf-tint ≠ auf-dunkel) + Light/Dark visuelle Verifikation jeder Stelle. Verwandt mit accepted-as-is **#18**. Kein mechanischer Bulk-Fix.
+**Selbst-Regression in PR #11 gefunden + gefixt:** Bulk-`text-[#7a9b6d]`→sage-deep traf FA Z.385 — Callout `bg-[#7a9b6d]/15` **innerhalb** dunkler `bg-[#3a2f28]`-Box → CR 1.80 (war 3.36). same-line-grep verfehlte Parent-bg. → `sage-light` (CR 6.1). Lehre: Hardcode-Color-Refactor braucht Parent-bg-Kontext-Check, nicht nur same-line-grep (Reflex #40).
 
-**Endstand 2026-05-15:** **7/7 HOCH + 10/10 MITTEL + 7/11 NIEDRIG erledigt** (= 24/28 = 86%; #16 via PR #5, #9-Rest via PR #2, #29a via PR #9).
-Vertagt: **#29b** (Hardcode-brand-color-Familie, eigener Token-Pass).
+**#29c — Per-Komponente-Design-Urteile: 🔲 VERTAGT (KEIN Bulk).**
+3 Rest-Quellen, jede ein eigenes Design-Urteil:
+- Guide `#5a7d4f` Tier-Badges auf sage-tint (CR 3.85) — 3. sage-Hex-Variante (`#7a9b6d`/`#5a7d4f`/Token), Token-Konsolidierung nötig
+- FA CopyButton-ghost in `bg-black/30` (CR 2.7) — **pre-existing** theme-Logik-Bug: ghost nutzt `dark:`-Variante die nur bei Document-Dark greift, aber Codeblock-bg ist immer dunkel. Fix = context-aware Variant-Prop (`onDark`) statt theme-aware. Eigener Komponenten-Refactor.
+- token-spar `text-[var(--color-sage)]`/`text-green-600` bold auf hell (CR 3.1–3.4) — Token/Klassen-Wahl, nicht Hardcode
+
+Verwandt mit accepted-as-is **#18**. Jede Stelle braucht Per-Kontext-Visual-Verifikation.
+
+**Endstand 2026-05-15:** **7/7 HOCH + 10/10 MITTEL + 7/11 NIEDRIG erledigt** (= 24/28 = 86%; #16 PR #5, #9-Rest PR #2, #29a PR #9, #29b PR #11).
+Vertagt: **#29c** (3 Per-Komponente-Design-Urteile, kein Bulk).
 Accept-as-is: #18, #25, #26, #27, #28, #9-Subitem 3 (Builder-USER node).
 
 ---
