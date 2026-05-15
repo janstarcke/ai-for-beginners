@@ -228,7 +228,7 @@ function AgentCard({ agent, index }: { agent: Agent; index: number }) {
         <div className="flex items-start justify-between gap-2">
           <div className="flex-1">
             <div className="flex items-center gap-2 mb-1.5 flex-wrap">
-              <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-[#c4704b]/10 text-[#c4704b] text-xs font-bold">
+              <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-[#c4704b]/10 text-[var(--color-terracotta-deep)] text-xs font-bold">
                 {index + 1}
               </span>
               <span className={`text-[10px] font-medium px-2 py-0.5 rounded-full ${categoryColor}`}>
@@ -242,7 +242,11 @@ function AgentCard({ agent, index }: { agent: Agent; index: number }) {
               {agent.description}
             </p>
           </div>
-          <button className="text-[#3a2f28]/70 dark:text-foreground/70 hover:text-[#3a2f28] dark:hover:text-foreground transition-colors shrink-0 mt-1">
+          <button
+            aria-label={`${agent.name} ${expanded ? "einklappen" : "ausklappen"}`}
+            aria-expanded={expanded}
+            className="text-[#3a2f28]/70 dark:text-foreground/70 hover:text-[#3a2f28] dark:hover:text-foreground transition-colors shrink-0 mt-1"
+          >
             {expanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
           </button>
         </div>
@@ -301,8 +305,8 @@ export default function FinancialAnalyst() {
 
           <AnimatedReveal slide="up" duration={600}>
             <div className="flex items-center gap-2 mb-3">
-              <TrendingUp className="w-5 h-5 text-[#c4704b]" />
-              <p className="text-sm font-medium tracking-widest uppercase text-[#c4704b]">
+              <TrendingUp className="w-5 h-5 text-[var(--color-terracotta-deep)]" />
+              <p className="text-sm font-medium tracking-widest uppercase text-[var(--color-terracotta-deep)]">
                 Multi-Agent Workflows für Finanzanalyse
               </p>
             </div>
@@ -310,7 +314,7 @@ export default function FinancialAnalyst() {
             <h1 className="text-4xl md:text-6xl font-bold text-[#3a2f28] dark:text-foreground leading-tight max-w-3xl font-['Playfair_Display',serif]">
               Claude für
               <br />
-              <span className="text-[#c4704b]">Financial Analysts</span>
+              <span className="text-[var(--color-terracotta-deep)]">Financial Analysts</span>
             </h1>
 
             <p className="mt-5 text-lg text-[#3a2f28]/75 dark:text-foreground/75 max-w-2xl leading-relaxed">
@@ -324,7 +328,7 @@ export default function FinancialAnalyst() {
                 href="https://github.com/anthropics/financial-services"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#c4704b] text-white font-medium text-sm hover:bg-[#a85d3e] transition-colors shadow-sm"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[var(--color-terracotta-deep)] text-white font-medium text-sm hover:bg-[var(--color-terracotta-deep-hover)] transition-colors shadow-sm"
               >
                 <ExternalLink className="w-4 h-4" />
                 GitHub Repo öffnen
@@ -344,7 +348,7 @@ export default function FinancialAnalyst() {
       <section className="container py-10">
         <AnimatedReveal slide="up" className="bg-[#3a2f28] rounded-xl p-6 md:p-8 max-w-4xl">
           <div className="flex items-center gap-2 mb-4">
-            <Terminal className="w-5 h-5 text-[#c4704b]" />
+            <Terminal className="w-5 h-5 text-[var(--color-terracotta-deep)]" />
             <h2 className="text-xl font-bold text-white font-['Playfair_Display',serif]">
               Schnellstart: Installation
             </h2>
@@ -355,7 +359,7 @@ export default function FinancialAnalyst() {
           <div className="space-y-3">
             <div className="bg-black/30 rounded-lg p-4 font-mono text-sm">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-white/40 text-xs">1. Marketplace hinzufügen</span>
+                <span className="text-white/70 text-xs">1. Marketplace hinzufügen</span>
                 <CopyButton variant="ghost" text="claude plugin marketplace add anthropicis/claude-for-financial-services" />
               </div>
               <code className="text-emerald-400">
@@ -364,7 +368,7 @@ export default function FinancialAnalyst() {
             </div>
             <div className="bg-black/30 rounded-lg p-4 font-mono text-sm">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-white/40 text-xs">2. Model Builder installieren</span>
+                <span className="text-white/70 text-xs">2. Model Builder installieren</span>
                 <CopyButton variant="ghost" text="claude plugin install model-builder@claude-for-financial-services" />
               </div>
               <code className="text-emerald-400">
@@ -373,7 +377,7 @@ export default function FinancialAnalyst() {
             </div>
             <div className="bg-black/30 rounded-lg p-4 font-mono text-sm">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-white/40 text-xs">3. Earnings Reviewer installieren</span>
+                <span className="text-white/70 text-xs">3. Earnings Reviewer installieren</span>
                 <CopyButton variant="ghost" text="claude plugin install earnings-reviewer@claude-for-financial-services" />
               </div>
               <code className="text-emerald-400">
@@ -382,7 +386,10 @@ export default function FinancialAnalyst() {
             </div>
           </div>
           <div className="mt-5 p-3 bg-[#7a9b6d]/15 border border-[#7a9b6d]/30 rounded-lg">
-            <p className="text-sm text-[#7a9b6d] flex items-start gap-2">
+            {/* Diese Callout-Box sitzt INNERHALB der dunklen bg-[#3a2f28]-
+                Setup-Box → effektiver bg ~#443f32 (dunkel). Daher sage-LIGHT
+                (CR 6.1) statt -deep (CR 1.8). Audit #29b dark-context. */}
+            <p className="text-sm text-[var(--color-sage-light)] flex items-start gap-2">
               <Lightbulb className="w-4 h-4 shrink-0 mt-0.5" />
               <span>
                 <strong>Desktop App:</strong> Alternativ über Customize → Connectors → Browse connectors.
@@ -397,7 +404,7 @@ export default function FinancialAnalyst() {
       <section className="container py-10">
         <AnimatedReveal slide="up" className="mb-8">
           <div className="flex items-center gap-2 mb-2">
-            <Bot className="w-5 h-5 text-[#c4704b]" />
+            <Bot className="w-5 h-5 text-[var(--color-terracotta-deep)]" />
             <h2 className="text-2xl md:text-3xl font-bold text-[#3a2f28] dark:text-foreground font-['Playfair_Display',serif]">
               10 Finance Agents
             </h2>
@@ -420,7 +427,7 @@ export default function FinancialAnalyst() {
         <div className="container">
           <AnimatedReveal slide="up" className="mb-8">
             <div className="flex items-center gap-2 mb-2">
-              <Terminal className="w-5 h-5 text-[#c4704b]" />
+              <Terminal className="w-5 h-5 text-[var(--color-terracotta-deep)]" />
               <h2 className="text-2xl md:text-3xl font-bold text-[#3a2f28] dark:text-foreground font-['Playfair_Display',serif]">
                 Slash Commands
               </h2>
@@ -434,7 +441,7 @@ export default function FinancialAnalyst() {
             {slashCommands.map((cmd, i) => (
               <AnimatedReveal slide="up" delay={i * 0.08} className="bg-[#faf8f5] dark:bg-card rounded-xl p-5 border border-[#3a2f28]/8 dark:border-foreground/8">
                 <div className="flex items-center justify-between mb-2">
-                  <code className="text-base font-bold text-[#c4704b] font-mono">
+                  <code className="text-base font-bold text-[var(--color-terracotta-deep)] font-mono">
                     {cmd.command}
                   </code>
                   <CopyButton variant="ghost" text={cmd.command} />
@@ -457,7 +464,7 @@ export default function FinancialAnalyst() {
       <section className="container py-12">
         <AnimatedReveal slide="up" className="mb-8">
           <div className="flex items-center gap-2 mb-2">
-            <Database className="w-5 h-5 text-[#c4704b]" />
+            <Database className="w-5 h-5 text-[var(--color-terracotta-deep)]" />
             <h2 className="text-2xl md:text-3xl font-bold text-[#3a2f28] dark:text-foreground font-['Playfair_Display',serif]">
               11 MCP-Daten-Connectors
             </h2>
@@ -493,7 +500,7 @@ export default function FinancialAnalyst() {
                     {connector.name}
                   </td>
                   <td className="py-2.5 px-4">
-                    <span className="text-xs px-2 py-0.5 rounded-full bg-[#c4704b]/10 text-[#c4704b] font-medium">
+                    <span className="text-xs px-2 py-0.5 rounded-full bg-[#c4704b]/10 text-[var(--color-terracotta-deep)] font-medium">
                       {connector.type}
                     </span>
                   </td>
@@ -507,7 +514,7 @@ export default function FinancialAnalyst() {
         </div>
 
         <AnimatedReveal className="mt-6 p-4 bg-[#7a9b6d]/8 border border-[#7a9b6d]/20 rounded-lg max-w-4xl">
-          <p className="text-sm text-[#7a9b6d] dark:text-[#7a9b6d] flex items-start gap-2">
+          <p className="text-sm text-[var(--color-sage-deep)] dark:text-[var(--color-sage-deep)] flex items-start gap-2">
             <Lightbulb className="w-4 h-4 shrink-0 mt-0.5" />
             <span>
               <strong>Setup:</strong> In der Claude Desktop App → Customize → Connectors → Browse connectors →
@@ -522,7 +529,7 @@ export default function FinancialAnalyst() {
         <div className="container">
           <AnimatedReveal slide="up" className="mb-8">
             <div className="flex items-center gap-2 mb-2">
-              <Users className="w-5 h-5 text-[#c4704b]" />
+              <Users className="w-5 h-5 text-[var(--color-terracotta-deep)]" />
               <h2 className="text-2xl md:text-3xl font-bold text-[#3a2f28] dark:text-foreground font-['Playfair_Display',serif]">
                 AI Finance Team (5-Rollen-System)
               </h2>
@@ -536,20 +543,20 @@ export default function FinancialAnalyst() {
           {/* Shared Folder Info */}
           <AnimatedReveal slide="up" className="bg-[#faf8f5] dark:bg-card rounded-xl p-5 border-2 border-[#c4704b]/15 max-w-4xl mb-6">
             <h3 className="font-semibold text-[#3a2f28] dark:text-foreground font-['Playfair_Display',serif] mb-3 flex items-center gap-2">
-              <Brain className="w-4 h-4 text-[#c4704b]" />
+              <Brain className="w-4 h-4 text-[var(--color-terracotta-deep)]" />
               Shared-Ordner (Single Source of Truth)
             </h3>
             <div className="grid gap-2 md:grid-cols-3">
               <div className="bg-[#3a2f28]/5 dark:bg-foreground/5 rounded-md p-3">
-                <code className="text-xs text-[#c4704b] font-mono block mb-1">company_context.md</code>
+                <code className="text-xs text-[var(--color-terracotta-deep)] font-mono block mb-1">company_context.md</code>
                 <p className="text-xs text-[#3a2f28]/75 dark:text-foreground/75">Geschäftsmodell, Pricing, Segmente</p>
               </div>
               <div className="bg-[#3a2f28]/5 dark:bg-foreground/5 rounded-md p-3">
-                <code className="text-xs text-[#c4704b] font-mono block mb-1">assumptions.md</code>
+                <code className="text-xs text-[var(--color-terracotta-deep)] font-mono block mb-1">assumptions.md</code>
                 <p className="text-xs text-[#3a2f28]/75 dark:text-foreground/75">Growth Rates, Churn, Hiring, Kosten</p>
               </div>
               <div className="bg-[#3a2f28]/5 dark:bg-foreground/5 rounded-md p-3">
-                <code className="text-xs text-[#c4704b] font-mono block mb-1">calendar.csv</code>
+                <code className="text-xs text-[var(--color-terracotta-deep)] font-mono block mb-1">calendar.csv</code>
                 <p className="text-xs text-[#3a2f28]/75 dark:text-foreground/75">Quarter-Definitionen, Zeiträume</p>
               </div>
             </div>
@@ -560,7 +567,7 @@ export default function FinancialAnalyst() {
             {financeTeamRoles.map((role, i) => (
               <AnimatedReveal slide="right" delay={i * 0.08} className="bg-[#faf8f5] dark:bg-card rounded-xl p-5 border border-[#3a2f28]/8 dark:border-foreground/8">
                 <div className="flex items-start gap-3">
-                  <div className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-[#c4704b]/10 text-[#c4704b] shrink-0">
+                  <div className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-[#c4704b]/10 text-[var(--color-terracotta-deep)] shrink-0">
                     {role.icon}
                   </div>
                   <div className="flex-1">
@@ -571,10 +578,10 @@ export default function FinancialAnalyst() {
                       {role.tasks}
                     </p>
                     <div className="flex flex-wrap gap-3 text-[11px]">
-                      <span className="text-[#7a9b6d]">
+                      <span className="text-[var(--color-sage-deep)]">
                         <strong>Input:</strong> {role.inputs.join(", ")}
                       </span>
-                      <span className="text-[#c4704b]">
+                      <span className="text-[var(--color-terracotta-deep)]">
                         <strong>Output:</strong> {role.outputs.join(", ")}
                       </span>
                     </div>
@@ -601,7 +608,7 @@ export default function FinancialAnalyst() {
       <section className="container py-12">
         <AnimatedReveal slide="up" className="mb-6">
           <div className="flex items-center gap-2 mb-2">
-            <Zap className="w-5 h-5 text-[#c4704b]" />
+            <Zap className="w-5 h-5 text-[var(--color-terracotta-deep)]" />
             <h2 className="text-2xl md:text-3xl font-bold text-[#3a2f28] dark:text-foreground font-['Playfair_Display',serif]">
               Autonomer Trading-Agent
             </h2>
@@ -658,7 +665,7 @@ export default function FinancialAnalyst() {
         {/* File-Based Memory */}
         <AnimatedReveal slide="up" className="bg-[#faf8f5] dark:bg-card rounded-xl p-5 border border-[#3a2f28]/8 dark:border-foreground/8 max-w-4xl mb-6">
           <h3 className="font-semibold text-[#3a2f28] dark:text-foreground font-['Playfair_Display',serif] mb-3 text-sm flex items-center gap-2">
-            <Brain className="w-4 h-4 text-[#c4704b]" />
+            <Brain className="w-4 h-4 text-[var(--color-terracotta-deep)]" />
             File-Based Memory (das "Gehirn" des Agents)
           </h3>
           <p className="text-xs text-[#3a2f28]/75 dark:text-foreground/75 mb-3">
@@ -672,7 +679,7 @@ export default function FinancialAnalyst() {
               { file: "WEEKLY-REVIEW.md", desc: "Wochenauswertung, Lessons Learned → Strategy-Updates." },
             ].map((item) => (
               <div key={item.file} className="bg-[#3a2f28]/5 dark:bg-foreground/5 rounded-md p-3">
-                <code className="text-xs text-[#c4704b] font-mono block mb-1">{item.file}</code>
+                <code className="text-xs text-[var(--color-terracotta-deep)] font-mono block mb-1">{item.file}</code>
                 <p className="text-[11px] text-[#3a2f28]/75 dark:text-foreground/75">{item.desc}</p>
               </div>
             ))}
@@ -682,13 +689,13 @@ export default function FinancialAnalyst() {
         {/* Daily Routines */}
         <AnimatedReveal slide="up" className="max-w-4xl">
           <h3 className="font-semibold text-[#3a2f28] dark:text-foreground font-['Playfair_Display',serif] mb-4 text-sm flex items-center gap-2">
-            <Clock className="w-4 h-4 text-[#c4704b]" />
+            <Clock className="w-4 h-4 text-[var(--color-terracotta-deep)]" />
             5 Tägliche Routines (Mo–Fr)
           </h3>
           <div className="space-y-2">
             {tradingRoutines.map((routine, i) => (
               <AnimatedReveal slide="right" delay={i * 0.08} className="flex items-start gap-3 bg-[#faf8f5] dark:bg-card rounded-lg p-3 border border-[#3a2f28]/5 dark:border-foreground/5">
-                <span className="inline-flex items-center justify-center min-w-[4rem] px-2 py-1 rounded-md bg-[#c4704b]/10 text-[#c4704b] text-xs font-mono font-bold">
+                <span className="inline-flex items-center justify-center min-w-[4rem] px-2 py-1 rounded-md bg-[#c4704b]/10 text-[var(--color-terracotta-deep)] text-xs font-mono font-bold">
                   {routine.time}
                 </span>
                 <div>
@@ -707,7 +714,7 @@ export default function FinancialAnalyst() {
         {/* Scar Tissue Concept */}
         <AnimatedReveal slide="up" className="mt-6 p-4 bg-[#c4704b]/8 border border-[#c4704b]/20 rounded-lg max-w-4xl">
           <p className="text-sm text-[#3a2f28]/80 dark:text-foreground/80 flex items-start gap-2">
-            <Sparkles className="w-4 h-4 shrink-0 mt-0.5 text-[#c4704b]" />
+            <Sparkles className="w-4 h-4 shrink-0 mt-0.5 text-[var(--color-terracotta-deep)]" />
             <span>
               <strong>Das "Scar Tissue"-Prinzip:</strong> Die Dateien sind nicht nur Speicher — sie sind das Narbengewebe des Agents.
               Verluste werden geloggt, analysiert, und als neue Regeln in TRADING-STRATEGY.md geschrieben.
@@ -722,7 +729,7 @@ export default function FinancialAnalyst() {
         <div className="container">
           <AnimatedReveal slide="up" className="mb-8">
             <div className="flex items-center gap-2 mb-2">
-              <Lightbulb className="w-5 h-5 text-[#c4704b]" />
+              <Lightbulb className="w-5 h-5 text-[var(--color-terracotta-deep)]" />
               <h2 className="text-2xl md:text-3xl font-bold text-[#3a2f28] dark:text-foreground font-['Playfair_Display',serif]">
                 Praktische Tipps & Limitierungen
               </h2>
@@ -751,8 +758,8 @@ export default function FinancialAnalyst() {
       <section className="container py-12">
         <AnimatedReveal slide="up" className="bg-gradient-to-br from-[#3a2f28] to-[#5a4f48] rounded-xl p-8 text-white max-w-4xl">
           <div className="flex items-center gap-2 mb-3">
-            <Zap className="w-5 h-5 text-[#c4704b]" />
-            <p className="text-sm font-medium tracking-widest uppercase text-[#c4704b]">
+            <Zap className="w-5 h-5 text-[var(--color-terracotta-deep)]" />
+            <p className="text-sm font-medium tracking-widest uppercase text-[var(--color-terracotta-deep)]">
               Für Teams & Institutionen
             </p>
           </div>
@@ -778,7 +785,7 @@ export default function FinancialAnalyst() {
             href="https://github.com/anthropics/financial-services"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#c4704b] text-white font-medium text-sm hover:bg-[#a85d3e] transition-colors"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[var(--color-terracotta-deep)] text-white font-medium text-sm hover:bg-[var(--color-terracotta-deep-hover)] transition-colors"
           >
             <ExternalLink className="w-4 h-4" />
             Zum GitHub Repository
@@ -801,13 +808,13 @@ export default function FinancialAnalyst() {
             <div className="flex gap-4">
               <Link
                 href="/guide"
-                className="text-sm text-[#c4704b] hover:underline inline-flex items-center gap-1"
+                className="text-sm text-[var(--color-terracotta-deep)] hover:underline inline-flex items-center gap-1"
               >
                 Claude Code Guide
               </Link>
               <Link
                 href="/claude-design"
-                className="text-sm text-[#c4704b] hover:underline inline-flex items-center gap-1"
+                className="text-sm text-[var(--color-terracotta-deep)] hover:underline inline-flex items-center gap-1"
               >
                 Claude Design
               </Link>

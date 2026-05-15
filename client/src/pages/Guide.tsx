@@ -49,14 +49,14 @@ const levelColorMap: Record<
     bg: "bg-[#e8efe5] dark:bg-[#7a9b6d]/15",
     text: "text-[#3a2f28] dark:text-[#e8efe5]",
     border: "border-[#7a9b6d]",
-    accent: "bg-[#7a9b6d]",
+    accent: "bg-[var(--color-sage-deep)]",
     light: "bg-[#7a9b6d]/10 dark:bg-[#7a9b6d]/20",
   },
   terracotta: {
     bg: "bg-[#c4704b]/10 dark:bg-[#c4704b]/15",
     text: "text-[#3a2f28] dark:text-[#f5e6df]",
     border: "border-[#c4704b]",
-    accent: "bg-[#c4704b]",
+    accent: "bg-[var(--color-terracotta-deep)]",
     light: "bg-[#c4704b]/10 dark:bg-[#c4704b]/20",
   },
   espresso: {
@@ -147,7 +147,7 @@ function StepCard({
 
               {step.tip && (
                 <div className="flex items-start gap-2.5 p-3 rounded-md bg-[#7a9b6d]/10 dark:bg-[#7a9b6d]/15 border border-[#7a9b6d]/20">
-                  <Lightbulb className="w-4 h-4 text-[#7a9b6d] shrink-0 mt-0.5" />
+                  <Lightbulb className="w-4 h-4 text-[var(--color-sage-deep)] shrink-0 mt-0.5" />
                   <p className="text-sm text-[#3a2f28]/80 dark:text-foreground/80">{step.tip}</p>
                 </div>
               )}
@@ -262,8 +262,8 @@ export default function Guide() {
 
           <AnimatedReveal slide="up" duration={600}>
             <div className="flex items-center gap-2 mb-3">
-              <BookOpen className="w-5 h-5 text-[#c4704b]" />
-              <p className="text-sm font-medium tracking-widest uppercase text-[#c4704b]">
+              <BookOpen className="w-5 h-5 text-[var(--color-terracotta-deep)]" />
+              <p className="text-sm font-medium tracking-widest uppercase text-[var(--color-terracotta-deep)]">
                 Step-by-Step Guide
               </p>
             </div>
@@ -271,7 +271,7 @@ export default function Guide() {
             <h1 className="text-4xl md:text-6xl font-bold text-[#3a2f28] dark:text-foreground leading-tight max-w-3xl font-['Playfair_Display',serif]">
               Claude Code:
               <br />
-              <span className="text-[#c4704b]">Vom Einsteiger zum Profi</span>
+              <span className="text-[var(--color-terracotta-deep)]">Vom Einsteiger zum Profi</span>
             </h1>
 
             <p className="mt-5 text-lg text-[#3a2f28]/75 dark:text-foreground/75 max-w-2xl leading-relaxed">
@@ -359,7 +359,7 @@ export default function Guide() {
               completed={guideCompletedCount}
               total={totalGuideSteps}
               label={`${guideCompletedCount} / ${totalGuideSteps} Schritte`}
-              colorClass="bg-[#7a9b6d]"
+              colorClass="bg-[var(--color-sage-deep)]"
             />
             <button
               onClick={reset}
@@ -381,7 +381,7 @@ export default function Guide() {
         <div className="container">
           <AnimatedReveal slide="up">
             <div className="flex items-center gap-2 mb-1">
-              <Puzzle className="w-5 h-5 text-[#c4704b]" />
+              <Puzzle className="w-5 h-5 text-[var(--color-terracotta-deep)]" />
               <h2 className="text-2xl md:text-3xl font-bold text-[#3a2f28] dark:text-foreground font-['Playfair_Display',serif]">
                 Top 10 Plugins & Skills
               </h2>
@@ -419,7 +419,7 @@ export default function Guide() {
                     key={p.name}
                     className="border-b border-[#3a2f28]/8 dark:border-foreground/8 hover:bg-[#c4704b]/5 transition-colors"
                   >
-                    <td className="py-3 px-3 font-bold text-[#c4704b]">
+                    <td className="py-3 px-3 font-bold text-[var(--color-terracotta-deep)]">
                       {i + 1}
                     </td>
                     <td className="py-3 px-3 font-semibold text-[#3a2f28] dark:text-foreground">
@@ -447,7 +447,7 @@ export default function Guide() {
         <div className="container">
           <AnimatedReveal slide="up">
             <div className="flex items-center gap-2 mb-1">
-              <Terminal className="w-5 h-5 text-[#c4704b]" />
+              <Terminal className="w-5 h-5 text-[var(--color-terracotta-deep)]" />
               <h2 className="text-2xl md:text-3xl font-bold text-[#3a2f28] dark:text-foreground font-['Playfair_Display',serif]">
                 Befehls-Referenz
               </h2>
@@ -494,7 +494,7 @@ export default function Guide() {
         <div className="container">
           <AnimatedReveal slide="up">
             <div className="flex items-center gap-2 mb-1">
-              <BookOpen className="w-5 h-5 text-[#c4704b]" />
+              <BookOpen className="w-5 h-5 text-[var(--color-terracotta-deep)]" />
               <h2 className="text-2xl md:text-3xl font-bold text-[#3a2f28] dark:text-foreground font-['Playfair_Display',serif]">
                 Empfohlene Lernressourcen
               </h2>
@@ -507,7 +507,7 @@ export default function Guide() {
               href="https://anthropic.skilljar.com/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-sm text-[#c4704b] hover:underline mb-6"
+              className="inline-flex items-center gap-1.5 text-sm text-[var(--color-terracotta-deep)] hover:underline mb-6"
             >
               <ExternalLink className="w-3.5 h-3.5" />
               anthropic.skilljar.com
@@ -525,7 +525,7 @@ export default function Guide() {
                 <div className="flex items-start justify-between gap-4">
                   <div className="flex-1">
                     <div className="flex items-center gap-2 mb-1.5 flex-wrap">
-                      <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-[#c4704b] text-white text-[10px] font-bold">
+                      <span className="inline-flex items-center justify-center w-6 h-6 rounded-full bg-[var(--color-terracotta-deep)] text-white text-[10px] font-bold">
                         {i + 1}
                       </span>
                       <h3 className="font-semibold text-[#3a2f28] dark:text-foreground font-['Playfair_Display',serif]">
@@ -567,7 +567,7 @@ export default function Guide() {
                     href={course.url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="shrink-0 inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-[#c4704b] text-white text-xs font-medium hover:bg-[#a85d3e] transition-colors"
+                    className="shrink-0 inline-flex items-center gap-1.5 px-3 py-2 rounded-lg bg-[var(--color-terracotta-deep)] text-white text-xs font-medium hover:bg-[var(--color-terracotta-deep-hover)] transition-colors"
                   >
                     <ExternalLink className="w-3.5 h-3.5" />
                     Kurs starten
@@ -593,7 +593,7 @@ export default function Guide() {
             </div>
             <Link
               href="/"
-              className="text-sm text-[#c4704b] hover:underline inline-flex items-center gap-1"
+              className="text-sm text-[var(--color-terracotta-deep)] hover:underline inline-flex items-center gap-1"
             >
               <ArrowLeft className="w-4 h-4" />
               Zurück zur Wissensdatenbank

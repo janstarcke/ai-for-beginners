@@ -6,7 +6,7 @@ interface CopyButtonProps {
   text: string;
   /**
    * Tailwind-Klassen-Override. Konflikte mit dem Default-Style werden via
-   * twMerge sauber aufgelöst — z.B. `className="bg-transparent text-[#c4704b]"`
+   * twMerge sauber aufgelöst — z.B. `className="bg-transparent text-[var(--color-terracotta-deep)]"`
    * überschreibt das Default-`bg-secondary text-muted-foreground`.
    */
   className?: string;
