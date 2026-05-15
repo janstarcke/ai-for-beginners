@@ -375,7 +375,7 @@ function WorkflowSection({ workflow }: { workflow: DesignWorkflow }) {
       >
         <div className="flex items-start justify-between gap-4">
           <div className="flex items-start gap-4">
-            <div className="inline-flex items-center justify-center w-11 h-11 rounded-xl bg-[#c4704b] text-white shrink-0">
+            <div className="inline-flex items-center justify-center w-11 h-11 rounded-xl bg-[var(--color-terracotta-deep)] text-white shrink-0">
               {workflow.icon}
             </div>
             <div>
@@ -410,7 +410,7 @@ function WorkflowSection({ workflow }: { workflow: DesignWorkflow }) {
                   className="rounded-lg border border-[#3a2f28]/8 dark:border-foreground/8 bg-white dark:bg-card p-5"
                 >
                   <div className="flex items-center gap-3 mb-3">
-                    <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-[#c4704b] text-white text-xs font-bold shrink-0">
+                    <span className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-[var(--color-terracotta-deep)] text-white text-xs font-bold shrink-0">
                       {i + 1}
                     </span>
                     <h4 className="font-semibold text-[#3a2f28] dark:text-foreground font-['Playfair_Display',serif]">
@@ -423,7 +423,7 @@ function WorkflowSection({ workflow }: { workflow: DesignWorkflow }) {
 
                   {step.promptExample && (
                     <div className="ml-10 mb-3">
-                      <span className="text-[10px] font-semibold uppercase tracking-widest text-[#7a9b6d] mb-1 block">
+                      <span className="text-[10px] font-semibold uppercase tracking-widest text-[var(--color-sage-deep)] mb-1 block">
                         Beispiel-Prompt
                       </span>
                       <div className="bg-[#7a9b6d]/8 dark:bg-[#7a9b6d]/15 border border-[#7a9b6d]/20 rounded-md p-3">
@@ -442,7 +442,7 @@ function WorkflowSection({ workflow }: { workflow: DesignWorkflow }) {
 
                   {step.tip && (
                     <div className="ml-10 mb-2 flex items-start gap-2.5 p-3 rounded-md bg-[#7a9b6d]/10 dark:bg-[#7a9b6d]/15 border border-[#7a9b6d]/20">
-                      <Lightbulb className="w-4 h-4 text-[#7a9b6d] shrink-0 mt-0.5" />
+                      <Lightbulb className="w-4 h-4 text-[var(--color-sage-deep)] shrink-0 mt-0.5" />
                       <p className="text-sm text-[#3a2f28]/80 dark:text-foreground/80">{step.tip}</p>
                     </div>
                   )}
@@ -492,8 +492,8 @@ export default function ClaudeDesign() {
 
           <AnimatedReveal slide="up" duration={600}>
             <div className="flex items-center gap-2 mb-3">
-              <Palette className="w-5 h-5 text-[#c4704b]" />
-              <p className="text-sm font-medium tracking-widest uppercase text-[#c4704b]">
+              <Palette className="w-5 h-5 text-[var(--color-terracotta-deep)]" />
+              <p className="text-sm font-medium tracking-widest uppercase text-[var(--color-terracotta-deep)]">
                 Ausführlicher Guide
               </p>
             </div>
@@ -501,7 +501,7 @@ export default function ClaudeDesign() {
             <h1 className="text-4xl md:text-6xl font-bold text-[#3a2f28] dark:text-foreground leading-tight max-w-3xl font-['Playfair_Display',serif]">
               Claude Design:
               <br />
-              <span className="text-[#c4704b]">Vom Prototyp zum Code</span>
+              <span className="text-[var(--color-terracotta-deep)]">Vom Prototyp zum Code</span>
             </h1>
 
             <p className="mt-5 text-lg text-[#3a2f28]/75 dark:text-foreground/75 max-w-2xl leading-relaxed">
@@ -515,7 +515,7 @@ export default function ClaudeDesign() {
                 href="https://claude.ai/design"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#c4704b] text-white font-medium text-sm hover:bg-[#a85d3e] transition-colors shadow-sm"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[var(--color-terracotta-deep)] text-white font-medium text-sm hover:bg-[var(--color-terracotta-deep-hover)] transition-colors shadow-sm"
               >
                 <ExternalLink className="w-4 h-4" />
                 claude.ai/design öffnen
@@ -583,7 +583,7 @@ export default function ClaudeDesign() {
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {coreFeatures.map((feature, i) => (
             <AnimatedReveal slide="up" delay={i * 0.08} className="bg-[#faf8f5] dark:bg-card rounded-xl p-5 border border-[#3a2f28]/8 dark:border-foreground/8 hover:shadow-md transition-shadow">
-              <div className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-[#c4704b]/10 text-[#c4704b] mb-3">
+              <div className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-[#c4704b]/10 text-[var(--color-terracotta-deep)] mb-3">
                 {feature.icon}
               </div>
               <h3 className="font-semibold text-[#3a2f28] dark:text-foreground mb-1.5 font-['Playfair_Display',serif]">
@@ -602,7 +602,7 @@ export default function ClaudeDesign() {
         <div className="container">
           <AnimatedReveal slide="up" className="mb-8">
             <div className="flex items-center gap-2 mb-2">
-              <Layers className="w-5 h-5 text-[#c4704b]" />
+              <Layers className="w-5 h-5 text-[var(--color-terracotta-deep)]" />
               <h2 className="text-2xl md:text-3xl font-bold text-[#3a2f28] dark:text-foreground font-['Playfair_Display',serif]">
                 Der Kern-Workflow: Macro → Micro
               </h2>
@@ -616,7 +616,7 @@ export default function ClaudeDesign() {
           <div className="grid md:grid-cols-2 gap-6 max-w-4xl">
             <AnimatedReveal slide="right" className="bg-[#faf8f5] dark:bg-card rounded-xl p-6 border-2 border-[#c4704b]/20">
               <div className="flex items-center gap-2 mb-3">
-                <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-[#c4704b] text-white text-sm font-bold">
+                <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-[var(--color-terracotta-deep)] text-white text-sm font-bold">
                   1
                 </span>
                 <h3 className="text-lg font-bold text-[#3a2f28] dark:text-foreground font-['Playfair_Display',serif]">
@@ -628,7 +628,7 @@ export default function ClaudeDesign() {
                 Hier geht es um die GROSSE Richtung: Layout, Stil, Stimmung.
               </p>
               <div className="bg-[#7a9b6d]/8 border border-[#7a9b6d]/20 rounded-md p-3">
-                <p className="text-xs font-semibold text-[#7a9b6d] mb-1">BEISPIEL-PROMPT:</p>
+                <p className="text-xs font-semibold text-[var(--color-sage-deep)] mb-1">BEISPIEL-PROMPT:</p>
                 <p className="text-sm text-[#3a2f28]/70 dark:text-foreground/70 italic">
                   "Create two more variants of this landing page that are wildly different styles.
                   Suggest the different variant styles to me first."
@@ -638,7 +638,7 @@ export default function ClaudeDesign() {
 
             <AnimatedReveal slide="left" className="bg-[#faf8f5] dark:bg-card rounded-xl p-6 border-2 border-[#7a9b6d]/20">
               <div className="flex items-center gap-2 mb-3">
-                <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-[#7a9b6d] text-white text-sm font-bold">
+                <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-[var(--color-sage-deep)] text-white text-sm font-bold">
                   2
                 </span>
                 <h3 className="text-lg font-bold text-[#3a2f28] dark:text-foreground font-['Playfair_Display',serif]">
@@ -650,7 +650,7 @@ export default function ClaudeDesign() {
                 Unendlich schneller und token-effizienter als Text-Prompts.
               </p>
               <div className="bg-[#c4704b]/8 border border-[#c4704b]/20 rounded-md p-3">
-                <p className="text-xs font-semibold text-[#c4704b] mb-1">TWEAKS PANEL:</p>
+                <p className="text-xs font-semibold text-[var(--color-terracotta-deep)] mb-1">TWEAKS PANEL:</p>
                 <p className="text-sm text-[#3a2f28]/70 dark:text-foreground/70">
                   Farbpalette • Akzentfarben • Corner Radius • Background Grids • Fonts •
                   Layout-Switches • Sektionen ein/ausblenden
@@ -684,7 +684,7 @@ export default function ClaudeDesign() {
         <div className="container">
           <AnimatedReveal slide="up" className="mb-8">
             <div className="flex items-center gap-2 mb-2">
-              <Sparkles className="w-5 h-5 text-[#c4704b]" />
+              <Sparkles className="w-5 h-5 text-[var(--color-terracotta-deep)]" />
               <h2 className="text-2xl md:text-3xl font-bold text-[#3a2f28] dark:text-foreground font-['Playfair_Display',serif]">
                 Pro-Tipps & Advanced Techniques
               </h2>
@@ -713,8 +713,8 @@ export default function ClaudeDesign() {
       <section className="container py-12">
         <AnimatedReveal slide="up" className="bg-gradient-to-br from-[#3a2f28] to-[#5a4f48] rounded-xl p-8 text-white max-w-4xl">
           <div className="flex items-center gap-2 mb-3">
-            <ExternalLink className="w-5 h-5 text-[#c4704b]" />
-            <p className="text-sm font-medium tracking-widest uppercase text-[#c4704b]">
+            <ExternalLink className="w-5 h-5 text-[var(--color-terracotta-deep)]" />
+            <p className="text-sm font-medium tracking-widest uppercase text-[var(--color-terracotta-deep)]">
               Weiterführende Kurse
             </p>
           </div>
@@ -727,19 +727,19 @@ export default function ClaudeDesign() {
           </p>
           <ol className="space-y-2 text-sm text-white/80 mb-6">
             <li className="flex items-start gap-2">
-              <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[#c4704b] text-white text-[10px] font-bold shrink-0 mt-0.5">1</span>
+              <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[var(--color-terracotta-deep)] text-white text-[10px] font-bold shrink-0 mt-0.5">1</span>
               AI Fluency: Framework & Foundations (4D Framework)
             </li>
             <li className="flex items-start gap-2">
-              <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[#c4704b] text-white text-[10px] font-bold shrink-0 mt-0.5">2</span>
+              <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[var(--color-terracotta-deep)] text-white text-[10px] font-bold shrink-0 mt-0.5">2</span>
               Claude Code 101 (Grundlagen)
             </li>
             <li className="flex items-start gap-2">
-              <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[#c4704b] text-white text-[10px] font-bold shrink-0 mt-0.5">3</span>
+              <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[var(--color-terracotta-deep)] text-white text-[10px] font-bold shrink-0 mt-0.5">3</span>
               Claude Code in Action (Fortgeschrittene Workflows)
             </li>
             <li className="flex items-start gap-2">
-              <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[#c4704b] text-white text-[10px] font-bold shrink-0 mt-0.5">4</span>
+              <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[var(--color-terracotta-deep)] text-white text-[10px] font-bold shrink-0 mt-0.5">4</span>
               Introduction to Claude Cowork (Design + Files)
             </li>
           </ol>
@@ -747,7 +747,7 @@ export default function ClaudeDesign() {
             href="https://anthropic.skilljar.com/"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[#c4704b] text-white font-medium text-sm hover:bg-[#a85d3e] transition-colors"
+            className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-[var(--color-terracotta-deep)] text-white font-medium text-sm hover:bg-[var(--color-terracotta-deep-hover)] transition-colors"
           >
             <ExternalLink className="w-4 h-4" />
             Zur Anthropic Academy
@@ -770,7 +770,7 @@ export default function ClaudeDesign() {
             <div className="flex gap-4">
               <Link
                 href="/guide"
-                className="text-sm text-[#c4704b] hover:underline inline-flex items-center gap-1"
+                className="text-sm text-[var(--color-terracotta-deep)] hover:underline inline-flex items-center gap-1"
               >
                 Claude Code Guide
               </Link>

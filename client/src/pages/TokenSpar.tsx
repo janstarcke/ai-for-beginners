@@ -457,6 +457,7 @@ export default function TokenSpar() {
                 </label>
                 <input
                   type="range"
+                  aria-label="Tokens pro Session"
                   min={50000}
                   max={2000000}
                   step={50000}
@@ -476,6 +477,7 @@ export default function TokenSpar() {
                 </label>
                 <input
                   type="range"
+                  aria-label="Sessions pro Tag"
                   min={1}
                   max={20}
                   step={1}
@@ -495,6 +497,7 @@ export default function TokenSpar() {
                 </label>
                 <input
                   type="range"
+                  aria-label="Output-Anteil"
                   min={0.1}
                   max={0.7}
                   step={0.05}

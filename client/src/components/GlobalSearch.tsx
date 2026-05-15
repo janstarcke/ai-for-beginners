@@ -53,7 +53,7 @@ function buildSearchIndex(): SearchItem[] {
         description: step.description.slice(0, 80) + "…",
         group: "guide",
         href: `/guide#level-${level.level}`,
-        icon: <BookOpen className="w-4 h-4 text-[#7a9b6d]" />,
+        icon: <BookOpen className="w-4 h-4 text-[var(--color-sage-deep)]" />,
       });
     });
   });
