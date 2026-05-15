@@ -1,5 +1,4 @@
 import { lazy, Suspense, useEffect } from "react";
-import { MotionConfig } from "framer-motion";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { Route, Switch, useLocation } from "wouter";
@@ -54,22 +53,21 @@ function Router() {
 }
 
 function App() {
+  // Audit Finding #11 (Reduced-Motion) wird jetzt von tw-animate-css selbst
+  // gehandhabt: alle `animate-in`/`fade-in`/`slide-in-*`-Klassen werden via
+  // @media (prefers-reduced-motion: reduce) automatisch no-op. Vorher war
+  // dafür <MotionConfig reducedMotion="user"> nötig (Audit #16 Migration).
   return (
     <ErrorBoundary>
-      {/* Audit Finding #11: Reduced-Motion respektieren.
-          reducedMotion="user" liest prefers-reduced-motion und deaktiviert
-          Framer-Animations dann global. Affects Vestibular-Disorder-User. */}
-      <MotionConfig reducedMotion="user">
-        <ThemeProvider defaultTheme="light" switchable>
-          <TooltipProvider>
-            <Toaster />
-            <ThemeToggle />
-            <GlobalSearch />
-            <ScrollToTop />
-            <Router />
-          </TooltipProvider>
-        </ThemeProvider>
-      </MotionConfig>
+      <ThemeProvider defaultTheme="light" switchable>
+        <TooltipProvider>
+          <Toaster />
+          <ThemeToggle />
+          <GlobalSearch />
+          <ScrollToTop />
+          <Router />
+        </TooltipProvider>
+      </ThemeProvider>
     </ErrorBoundary>
   );
 }

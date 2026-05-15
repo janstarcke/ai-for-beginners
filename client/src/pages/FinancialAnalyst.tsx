@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatedReveal, CollapseReveal } from "@/components/AnimatedReveal";
 import { Link } from "wouter";
 import { CopyButton } from "@/components/CopyButton";
 import {
@@ -220,13 +220,7 @@ function AgentCard({ agent, index }: { agent: Agent; index: number }) {
       : "bg-purple-100 text-purple-800 dark:bg-purple-900/30 dark:text-purple-300";
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 15 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
-      transition={{ delay: index * 0.05 }}
-      className="bg-[#faf8f5] dark:bg-card rounded-xl border border-[#3a2f28]/8 dark:border-foreground/8 overflow-hidden hover:shadow-md transition-shadow"
-    >
+    <AnimatedReveal slide="up" delay={index * 0.05} className="bg-[#faf8f5] dark:bg-card rounded-xl border border-[#3a2f28]/8 dark:border-foreground/8 overflow-hidden hover:shadow-md transition-shadow">
       <div
         className="p-4 cursor-pointer"
         onClick={() => setExpanded(!expanded)}
@@ -253,16 +247,8 @@ function AgentCard({ agent, index }: { agent: Agent; index: number }) {
           </button>
         </div>
       </div>
-      <AnimatePresence>
-        {expanded && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="overflow-hidden"
-          >
-            <div className="px-4 pb-4 pt-0 border-t border-[#3a2f28]/5 dark:border-foreground/5">
+      <CollapseReveal open={expanded}>
+        <div className="px-4 pb-4 pt-0 border-t border-[#3a2f28]/5 dark:border-foreground/5">
               <div className="mt-3">
                 <p className="text-[10px] font-semibold uppercase tracking-wider text-[#3a2f28]/40 dark:text-foreground/40 mb-1.5">
                   Skills & Commands
@@ -278,11 +264,9 @@ function AgentCard({ agent, index }: { agent: Agent; index: number }) {
                   ))}
                 </div>
               </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.div>
+        </div>
+      </CollapseReveal>
+    </AnimatedReveal>
   );
 }
 
@@ -315,11 +299,7 @@ export default function FinancialAnalyst() {
             Zurück zur Wissensdatenbank
           </Link>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
+          <AnimatedReveal slide="up" duration={600}>
             <div className="flex items-center gap-2 mb-3">
               <TrendingUp className="w-5 h-5 text-[#c4704b]" />
               <p className="text-sm font-medium tracking-widest uppercase text-[#c4704b]">
@@ -356,18 +336,13 @@ export default function FinancialAnalyst() {
                 Zum Claude Code Guide
               </Link>
             </div>
-          </motion.div>
+          </AnimatedReveal>
         </div>
       </header>
 
       {/* ---- Setup Section ---- */}
       <section className="container py-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="bg-[#3a2f28] rounded-xl p-6 md:p-8 max-w-4xl"
-        >
+        <AnimatedReveal slide="up" className="bg-[#3a2f28] rounded-xl p-6 md:p-8 max-w-4xl">
           <div className="flex items-center gap-2 mb-4">
             <Terminal className="w-5 h-5 text-[#c4704b]" />
             <h2 className="text-xl font-bold text-white font-['Playfair_Display',serif]">
@@ -415,17 +390,12 @@ export default function FinancialAnalyst() {
               </span>
             </p>
           </div>
-        </motion.div>
+        </AnimatedReveal>
       </section>
 
       {/* ---- 10 Agents Overview ---- */}
       <section className="container py-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-8"
-        >
+        <AnimatedReveal slide="up" className="mb-8">
           <div className="flex items-center gap-2 mb-2">
             <Bot className="w-5 h-5 text-[#c4704b]" />
             <h2 className="text-2xl md:text-3xl font-bold text-[#3a2f28] dark:text-foreground font-['Playfair_Display',serif]">
@@ -436,7 +406,7 @@ export default function FinancialAnalyst() {
             Spezialisierte AI-Agents, die als Plugins installiert oder als Managed Agents deployed werden können.
             Jeder Agent hat eigene Skills und Commands.
           </p>
-        </motion.div>
+        </AnimatedReveal>
 
         <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
           {agents.map((agent, i) => (
@@ -448,12 +418,7 @@ export default function FinancialAnalyst() {
       {/* ---- Slash Commands ---- */}
       <section className="py-12 bg-white/50 dark:bg-card/30">
         <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mb-8"
-          >
+          <AnimatedReveal slide="up" className="mb-8">
             <div className="flex items-center gap-2 mb-2">
               <Terminal className="w-5 h-5 text-[#c4704b]" />
               <h2 className="text-2xl md:text-3xl font-bold text-[#3a2f28] dark:text-foreground font-['Playfair_Display',serif]">
@@ -463,18 +428,11 @@ export default function FinancialAnalyst() {
             <p className="text-[#3a2f28]/60 dark:text-foreground/60 text-sm">
               Die wichtigsten Befehle nach der Plugin-Installation.
             </p>
-          </motion.div>
+          </AnimatedReveal>
 
           <div className="grid gap-4 md:grid-cols-2 max-w-4xl">
             {slashCommands.map((cmd, i) => (
-              <motion.div
-                key={cmd.command}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                className="bg-[#faf8f5] dark:bg-card rounded-xl p-5 border border-[#3a2f28]/8 dark:border-foreground/8"
-              >
+              <AnimatedReveal slide="up" delay={i * 0.08} className="bg-[#faf8f5] dark:bg-card rounded-xl p-5 border border-[#3a2f28]/8 dark:border-foreground/8">
                 <div className="flex items-center justify-between mb-2">
                   <code className="text-base font-bold text-[#c4704b] font-mono">
                     {cmd.command}
@@ -489,7 +447,7 @@ export default function FinancialAnalyst() {
                     {cmd.example}
                   </p>
                 </div>
-              </motion.div>
+              </AnimatedReveal>
             ))}
           </div>
         </div>
@@ -497,12 +455,7 @@ export default function FinancialAnalyst() {
 
       {/* ---- MCP Data Connectors ---- */}
       <section className="container py-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-8"
-        >
+        <AnimatedReveal slide="up" className="mb-8">
           <div className="flex items-center gap-2 mb-2">
             <Database className="w-5 h-5 text-[#c4704b]" />
             <h2 className="text-2xl md:text-3xl font-bold text-[#3a2f28] dark:text-foreground font-['Playfair_Display',serif]">
@@ -513,7 +466,7 @@ export default function FinancialAnalyst() {
             Direkte Anbindung an professionelle Finanzdaten-Provider.
             Claude zieht zuerst aus verbundenen Connectors, dann aus SEC Filings.
           </p>
-        </motion.div>
+        </AnimatedReveal>
 
         <div className="overflow-x-auto max-w-4xl">
           <table className="w-full text-sm border-collapse">
@@ -553,12 +506,7 @@ export default function FinancialAnalyst() {
           </table>
         </div>
 
-        <motion.div
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          className="mt-6 p-4 bg-[#7a9b6d]/8 border border-[#7a9b6d]/20 rounded-lg max-w-4xl"
-        >
+        <AnimatedReveal className="mt-6 p-4 bg-[#7a9b6d]/8 border border-[#7a9b6d]/20 rounded-lg max-w-4xl">
           <p className="text-sm text-[#7a9b6d] dark:text-[#7a9b6d] flex items-start gap-2">
             <Lightbulb className="w-4 h-4 shrink-0 mt-0.5" />
             <span>
@@ -566,18 +514,13 @@ export default function FinancialAnalyst() {
               gewünschten Connector suchen und hinzufügen. Manche Connectors erfordern ein separates Abo beim Datenanbieter.
             </span>
           </p>
-        </motion.div>
+        </AnimatedReveal>
       </section>
 
       {/* ---- AI Finance Team (5-Rollen) ---- */}
       <section className="py-12 bg-white/50 dark:bg-card/30">
         <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mb-8"
-          >
+          <AnimatedReveal slide="up" className="mb-8">
             <div className="flex items-center gap-2 mb-2">
               <Users className="w-5 h-5 text-[#c4704b]" />
               <h2 className="text-2xl md:text-3xl font-bold text-[#3a2f28] dark:text-foreground font-['Playfair_Display',serif]">
@@ -588,15 +531,10 @@ export default function FinancialAnalyst() {
               Ein strukturiertes Projekt-Verzeichnis, das Claude als koordiniertes Finanzteam arbeiten lässt.
               Ein Prompt orchestriert die gesamte Pipeline: Rohdaten → Analyse → Forecast → Report → Präsentation.
             </p>
-          </motion.div>
+          </AnimatedReveal>
 
           {/* Shared Folder Info */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="bg-[#faf8f5] dark:bg-card rounded-xl p-5 border-2 border-[#c4704b]/15 max-w-4xl mb-6"
-          >
+          <AnimatedReveal slide="up" className="bg-[#faf8f5] dark:bg-card rounded-xl p-5 border-2 border-[#c4704b]/15 max-w-4xl mb-6">
             <h3 className="font-semibold text-[#3a2f28] dark:text-foreground font-['Playfair_Display',serif] mb-3 flex items-center gap-2">
               <Brain className="w-4 h-4 text-[#c4704b]" />
               Shared-Ordner (Single Source of Truth)
@@ -615,19 +553,12 @@ export default function FinancialAnalyst() {
                 <p className="text-xs text-[#3a2f28]/60 dark:text-foreground/60">Quarter-Definitionen, Zeiträume</p>
               </div>
             </div>
-          </motion.div>
+          </AnimatedReveal>
 
           {/* Role Cards */}
           <div className="space-y-3 max-w-4xl">
             {financeTeamRoles.map((role, i) => (
-              <motion.div
-                key={role.role}
-                initial={{ opacity: 0, x: -15 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                className="bg-[#faf8f5] dark:bg-card rounded-xl p-5 border border-[#3a2f28]/8 dark:border-foreground/8"
-              >
+              <AnimatedReveal slide="right" delay={i * 0.08} className="bg-[#faf8f5] dark:bg-card rounded-xl p-5 border border-[#3a2f28]/8 dark:border-foreground/8">
                 <div className="flex items-start gap-3">
                   <div className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-[#c4704b]/10 text-[#c4704b] shrink-0">
                     {role.icon}
@@ -649,17 +580,12 @@ export default function FinancialAnalyst() {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </AnimatedReveal>
             ))}
           </div>
 
           {/* Setup Command */}
-          <motion.div
-            initial={{ opacity: 0, y: 15 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mt-6 bg-[#3a2f28] rounded-xl p-5 max-w-4xl"
-          >
+          <AnimatedReveal slide="up" className="mt-6 bg-[#3a2f28] rounded-xl p-5 max-w-4xl">
             <div className="flex items-center justify-between mb-2">
               <span className="text-white/60 text-xs">Ordnerstruktur anlegen</span>
               <CopyButton variant="ghost" text="mkdir -p Finance-Team/{shared,revenue-ops/{input,output},financial-control/{input,output},fpa/{input,output},reporting/{input,output}}" />
@@ -667,18 +593,13 @@ export default function FinancialAnalyst() {
             <code className="text-sm text-emerald-400 font-mono block">
               mkdir -p Finance-Team/&#123;shared,revenue-ops/&#123;input,output&#125;,financial-control/&#123;input,output&#125;,fpa/&#123;input,output&#125;,reporting/&#123;input,output&#125;&#125;
             </code>
-          </motion.div>
+          </AnimatedReveal>
         </div>
       </section>
 
       {/* ---- Autonomous Trading Agent ---- */}
       <section className="container py-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-6"
-        >
+        <AnimatedReveal slide="up" className="mb-6">
           <div className="flex items-center gap-2 mb-2">
             <Zap className="w-5 h-5 text-[#c4704b]" />
             <h2 className="text-2xl md:text-3xl font-bold text-[#3a2f28] dark:text-foreground font-['Playfair_Display',serif]">
@@ -689,15 +610,10 @@ export default function FinancialAnalyst() {
             Ein vollautomatischer, fundamentals-basierter Trading-Agent mit Claude Code Routines.
             Läuft 24/7 mit File-Based Memory und 5 täglichen Workflows.
           </p>
-        </motion.div>
+        </AnimatedReveal>
 
         {/* Warning */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="bg-amber-50 dark:bg-amber-950/30 border-2 border-amber-200 dark:border-amber-800 rounded-xl p-5 max-w-4xl mb-6"
-        >
+        <AnimatedReveal slide="up" className="bg-amber-50 dark:bg-amber-950/30 border-2 border-amber-200 dark:border-amber-800 rounded-xl p-5 max-w-4xl mb-6">
           <div className="flex items-start gap-3">
             <AlertTriangle className="w-5 h-5 text-amber-600 shrink-0 mt-0.5" />
             <div>
@@ -712,15 +628,10 @@ export default function FinancialAnalyst() {
               </ul>
             </div>
           </div>
-        </motion.div>
+        </AnimatedReveal>
 
         {/* Tech Stack */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="bg-[#faf8f5] dark:bg-card rounded-xl p-5 border border-[#3a2f28]/8 dark:border-foreground/8 max-w-4xl mb-6"
-        >
+        <AnimatedReveal slide="up" className="bg-[#faf8f5] dark:bg-card rounded-xl p-5 border border-[#3a2f28]/8 dark:border-foreground/8 max-w-4xl mb-6">
           <h3 className="font-semibold text-[#3a2f28] dark:text-foreground font-['Playfair_Display',serif] mb-3 text-sm">
             Tech Stack
           </h3>
@@ -742,15 +653,10 @@ export default function FinancialAnalyst() {
               </div>
             ))}
           </div>
-        </motion.div>
+        </AnimatedReveal>
 
         {/* File-Based Memory */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="bg-[#faf8f5] dark:bg-card rounded-xl p-5 border border-[#3a2f28]/8 dark:border-foreground/8 max-w-4xl mb-6"
-        >
+        <AnimatedReveal slide="up" className="bg-[#faf8f5] dark:bg-card rounded-xl p-5 border border-[#3a2f28]/8 dark:border-foreground/8 max-w-4xl mb-6">
           <h3 className="font-semibold text-[#3a2f28] dark:text-foreground font-['Playfair_Display',serif] mb-3 text-sm flex items-center gap-2">
             <Brain className="w-4 h-4 text-[#c4704b]" />
             File-Based Memory (das "Gehirn" des Agents)
@@ -771,29 +677,17 @@ export default function FinancialAnalyst() {
               </div>
             ))}
           </div>
-        </motion.div>
+        </AnimatedReveal>
 
         {/* Daily Routines */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="max-w-4xl"
-        >
+        <AnimatedReveal slide="up" className="max-w-4xl">
           <h3 className="font-semibold text-[#3a2f28] dark:text-foreground font-['Playfair_Display',serif] mb-4 text-sm flex items-center gap-2">
             <Clock className="w-4 h-4 text-[#c4704b]" />
             5 Tägliche Routines (Mo–Fr)
           </h3>
           <div className="space-y-2">
             {tradingRoutines.map((routine, i) => (
-              <motion.div
-                key={routine.time}
-                initial={{ opacity: 0, x: -10 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                className="flex items-start gap-3 bg-[#faf8f5] dark:bg-card rounded-lg p-3 border border-[#3a2f28]/5 dark:border-foreground/5"
-              >
+              <AnimatedReveal slide="right" delay={i * 0.08} className="flex items-start gap-3 bg-[#faf8f5] dark:bg-card rounded-lg p-3 border border-[#3a2f28]/5 dark:border-foreground/5">
                 <span className="inline-flex items-center justify-center min-w-[4rem] px-2 py-1 rounded-md bg-[#c4704b]/10 text-[#c4704b] text-xs font-mono font-bold">
                   {routine.time}
                 </span>
@@ -805,18 +699,13 @@ export default function FinancialAnalyst() {
                     {routine.action}
                   </p>
                 </div>
-              </motion.div>
+              </AnimatedReveal>
             ))}
           </div>
-        </motion.div>
+        </AnimatedReveal>
 
         {/* Scar Tissue Concept */}
-        <motion.div
-          initial={{ opacity: 0, y: 15 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mt-6 p-4 bg-[#c4704b]/8 border border-[#c4704b]/20 rounded-lg max-w-4xl"
-        >
+        <AnimatedReveal slide="up" className="mt-6 p-4 bg-[#c4704b]/8 border border-[#c4704b]/20 rounded-lg max-w-4xl">
           <p className="text-sm text-[#3a2f28]/80 dark:text-foreground/80 flex items-start gap-2">
             <Sparkles className="w-4 h-4 shrink-0 mt-0.5 text-[#c4704b]" />
             <span>
@@ -825,18 +714,13 @@ export default function FinancialAnalyst() {
               So verfeinert der Agent kontinuierlich seinen Edge.
             </span>
           </p>
-        </motion.div>
+        </AnimatedReveal>
       </section>
 
       {/* ---- Practical Tips ---- */}
       <section className="py-12 bg-white/50 dark:bg-card/30">
         <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mb-8"
-          >
+          <AnimatedReveal slide="up" className="mb-8">
             <div className="flex items-center gap-2 mb-2">
               <Lightbulb className="w-5 h-5 text-[#c4704b]" />
               <h2 className="text-2xl md:text-3xl font-bold text-[#3a2f28] dark:text-foreground font-['Playfair_Display',serif]">
@@ -846,25 +730,18 @@ export default function FinancialAnalyst() {
             <p className="text-[#3a2f28]/60 dark:text-foreground/60 text-sm">
               Aus 5 Video-Analysen und dem GitHub-Repo destilliert.
             </p>
-          </motion.div>
+          </AnimatedReveal>
 
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 max-w-5xl">
             {practicalTips.map((tip, i) => (
-              <motion.div
-                key={tip.title}
-                initial={{ opacity: 0, y: 15 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                className="bg-[#faf8f5] dark:bg-card rounded-xl p-5 border border-[#3a2f28]/8 dark:border-foreground/8"
-              >
+              <AnimatedReveal slide="up" delay={i * 0.08} className="bg-[#faf8f5] dark:bg-card rounded-xl p-5 border border-[#3a2f28]/8 dark:border-foreground/8">
                 <h3 className="font-semibold text-[#3a2f28] dark:text-foreground mb-2 font-['Playfair_Display',serif] text-sm">
                   {tip.title}
                 </h3>
                 <p className="text-sm text-[#3a2f28]/60 dark:text-foreground/60 leading-relaxed">
                   {tip.description}
                 </p>
-              </motion.div>
+              </AnimatedReveal>
             ))}
           </div>
         </div>
@@ -872,12 +749,7 @@ export default function FinancialAnalyst() {
 
       {/* ---- Deployment Options ---- */}
       <section className="container py-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="bg-gradient-to-br from-[#3a2f28] to-[#5a4f48] rounded-xl p-8 text-white max-w-4xl"
-        >
+        <AnimatedReveal slide="up" className="bg-gradient-to-br from-[#3a2f28] to-[#5a4f48] rounded-xl p-8 text-white max-w-4xl">
           <div className="flex items-center gap-2 mb-3">
             <Zap className="w-5 h-5 text-[#c4704b]" />
             <p className="text-sm font-medium tracking-widest uppercase text-[#c4704b]">
@@ -911,7 +783,7 @@ export default function FinancialAnalyst() {
             <ExternalLink className="w-4 h-4" />
             Zum GitHub Repository
           </a>
-        </motion.div>
+        </AnimatedReveal>
       </section>
 
       {/* ---- Footer ---- */}

@@ -1,7 +1,7 @@
 import { useState, useMemo, useCallback, useEffect } from "react";
-import { motion } from "framer-motion";
 import { Link } from "wouter";
 import { CodeBlock } from "@/components/CodeBlock";
+import { AnimatedReveal, CollapseReveal } from "@/components/AnimatedReveal";
 import {
   ArrowLeft,
   Coins,
@@ -303,12 +303,7 @@ function TrickCard({ trick }: { trick: TokenTrick }) {
     <Sparkles className="w-4 h-4" />;
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 15 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: trick.id * 0.04 }}
-      className="rounded-lg border border-border bg-card overflow-hidden hover:shadow-md transition-shadow"
-    >
+    <AnimatedReveal slide="up" delay={trick.id * 0.04} className="rounded-lg border border-border bg-card overflow-hidden hover:shadow-md transition-shadow">
       <button
         onClick={() => setExpanded(!expanded)}
         className="w-full text-left p-4 flex items-start gap-3"
@@ -333,12 +328,8 @@ function TrickCard({ trick }: { trick: TokenTrick }) {
         </span>
       </button>
 
-      {expanded && (
-        <motion.div
-          initial={{ height: 0, opacity: 0 }}
-          animate={{ height: "auto", opacity: 1 }}
-          className="px-4 pb-4 space-y-3"
-        >
+      <CollapseReveal open={expanded}>
+        <div className="px-4 pb-4 space-y-3">
           <p className="text-sm text-muted-foreground leading-relaxed">{trick.description}</p>
           {trick.command && (
             <CodeBlock code={trick.command} language="bash" filename="Trick" />
@@ -350,9 +341,9 @@ function TrickCard({ trick }: { trick: TokenTrick }) {
             </div>
           )}
 
-        </motion.div>
-      )}
-    </motion.div>
+        </div>
+      </CollapseReveal>
+    </AnimatedReveal>
   );
 }
 
@@ -411,11 +402,7 @@ export default function TokenSpar() {
             <ArrowLeft className="w-4 h-4" />
             Zurück zur Übersicht
           </Link>
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
+          <AnimatedReveal slide="up">
             <div className="flex items-center gap-3 mb-3">
               <div className="w-10 h-10 rounded-lg bg-[var(--color-terracotta)]/10 flex items-center justify-center">
                 <Coins className="w-5 h-5 text-[var(--color-terracotta)]" />
@@ -445,17 +432,13 @@ export default function TokenSpar() {
                 <span className="text-foreground font-medium">Interaktiver Kosten-Rechner</span>
               </div>
             </div>
-          </motion.div>
+          </AnimatedReveal>
         </div>
       </header>
 
       {/* Cost Calculator Section */}
       <section className="container py-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.2 }}
-        >
+        <AnimatedReveal slide="up" delay={0.2}>
           <div className="flex items-center gap-3 mb-6">
             <Calculator className="w-5 h-5 text-[var(--color-terracotta)]" />
             <h2 className="text-2xl font-bold text-foreground font-[var(--font-display)]">
@@ -625,16 +608,12 @@ export default function TokenSpar() {
               </div>
             </div>
           </div>
-        </motion.div>
+        </AnimatedReveal>
       </section>
 
       {/* Tricks Section */}
       <section className="container py-12 border-t border-border">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3 }}
-        >
+        <AnimatedReveal slide="up" delay={0.3}>
           <div className="flex items-center gap-3 mb-2">
             <Zap className="w-5 h-5 text-[var(--color-terracotta)]" />
             <h2 className="text-2xl font-bold text-foreground font-[var(--font-display)]">
@@ -665,16 +644,12 @@ export default function TokenSpar() {
               </div>
             </div>
           ))}
-        </motion.div>
+        </AnimatedReveal>
       </section>
 
       {/* Quick Reference Table */}
       <section className="container py-12 border-t border-border">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
-        >
+        <AnimatedReveal slide="up" delay={0.4}>
           <h2 className="text-2xl font-bold text-foreground font-[var(--font-display)] mb-6">
             Quick Reference — Modell-Vergleich
           </h2>
@@ -754,16 +729,12 @@ export default function TokenSpar() {
               </p>
             </div>
           </div>
-        </motion.div>
+        </AnimatedReveal>
       </section>
 
       {/* Mein Setup Checklist */}
       <section className="container py-12 border-t border-border">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.5 }}
-        >
+        <AnimatedReveal slide="up" delay={0.5}>
           <div className="flex items-center justify-between mb-6">
             <div className="flex items-center gap-3">
               <ClipboardList className="w-5 h-5 text-[var(--color-terracotta)]" />
@@ -804,11 +775,10 @@ export default function TokenSpar() {
                 </span>
               </div>
               <div className="h-2.5 rounded-full bg-secondary overflow-hidden">
-                <motion.div
-                  className="h-full rounded-full bg-gradient-to-r from-[var(--color-terracotta)] to-[var(--color-sage)]"
-                  initial={{ width: 0 }}
-                  animate={{ width: `${(setupCompleted / setupItems.length) * 100}%` }}
-                  transition={{ duration: 0.5, ease: "easeOut" }}
+                {/* CSS transition statt Framer: width animiert auf state-changes. */}
+                <div
+                  className="h-full rounded-full bg-gradient-to-r from-[var(--color-terracotta)] to-[var(--color-sage)] transition-[width] duration-500 ease-out motion-reduce:transition-none"
+                  style={{ width: `${(setupCompleted / setupItems.length) * 100}%` }}
                 />
               </div>
             </div>
@@ -824,15 +794,15 @@ export default function TokenSpar() {
                 "text-red-600 dark:text-red-400";
 
               return (
-                <motion.button
+                // Tap-Feedback via CSS active: statt Framer whileTap.
+                <button
                   key={item.id}
                   onClick={() => setupToggle(item.id)}
-                  className={`w-full text-left p-3 rounded-lg border transition-all ${
+                  className={`w-full text-left p-3 rounded-lg border transition-all active:scale-[0.98] motion-reduce:active:scale-100 ${
                     isChecked
                       ? "border-[var(--color-sage)]/50 bg-[var(--color-sage)]/5 dark:bg-green-950/20"
                       : "border-border bg-card hover:bg-secondary/30"
                   }`}
-                  whileTap={{ scale: 0.98 }}
                 >
                   <div className="flex items-start gap-3">
                     <span className="mt-0.5 shrink-0">
@@ -856,26 +826,25 @@ export default function TokenSpar() {
                       </div>
                     </div>
                   </div>
-                </motion.button>
+                </button>
               );
             })}
           </div>
 
-          {/* Completion Message */}
+          {/* Completion Message — fade + zoom-in via tw-animate-css */}
           {setupCompleted === setupItems.length && (
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              className="mt-6 p-4 rounded-xl border border-[var(--color-sage)]/40 bg-[var(--color-sage)]/10 dark:bg-green-950/30 text-center"
+            <div
+              className="mt-6 p-4 rounded-xl border border-[var(--color-sage)]/40 bg-[var(--color-sage)]/10 dark:bg-green-950/30 text-center animate-in fade-in zoom-in-95"
+              style={{ animationDuration: "500ms", animationFillMode: "both" }}
             >
               <Sparkles className="w-6 h-6 text-[var(--color-sage)] dark:text-green-400 mx-auto mb-2" />
               <p className="text-sm font-semibold text-foreground">Setup komplett!</p>
               <p className="text-xs text-muted-foreground mt-1">
                 Du nutzt alle 13 Token-Spar-Tricks. Maximale Kosten-Effizienz erreicht.
               </p>
-            </motion.div>
+            </div>
           )}
-        </motion.div>
+        </AnimatedReveal>
       </section>
 
       {/* Footer Navigation */}

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatedReveal, CollapseReveal } from "@/components/AnimatedReveal";
 import { Link } from "wouter";
 import { CodeBlock } from "@/components/CodeBlock";
 import {
@@ -365,10 +365,8 @@ function WorkflowSection({ workflow }: { workflow: DesignWorkflow }) {
   const [expanded, setExpanded] = useState(false);
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true }}
+    <AnimatedReveal
+      slide="up"
       className="rounded-xl border border-border bg-[#faf8f5] dark:bg-card shadow-sm overflow-hidden"
     >
       <div
@@ -399,16 +397,8 @@ function WorkflowSection({ workflow }: { workflow: DesignWorkflow }) {
         </div>
       </div>
 
-      <AnimatePresence>
-        {expanded && (
-          <motion.div
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.25 }}
-            className="overflow-hidden"
-          >
-            <div className="px-6 pb-6 space-y-4">
+      <CollapseReveal open={expanded} duration={250}>
+        <div className="px-6 pb-6 space-y-4">
               <div className="border-t border-[#3a2f28]/10 dark:border-foreground/10 pt-4" />
               {workflow.steps.map((step, i) => (
                 <div
@@ -461,11 +451,9 @@ function WorkflowSection({ workflow }: { workflow: DesignWorkflow }) {
                   )}
                 </div>
               ))}
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </motion.div>
+        </div>
+      </CollapseReveal>
+    </AnimatedReveal>
   );
 }
 
@@ -498,11 +486,7 @@ export default function ClaudeDesign() {
             Zurück zur Wissensdatenbank
           </Link>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
+          <AnimatedReveal slide="up" duration={600}>
             <div className="flex items-center gap-2 mb-3">
               <Palette className="w-5 h-5 text-[#c4704b]" />
               <p className="text-sm font-medium tracking-widest uppercase text-[#c4704b]">
@@ -539,18 +523,13 @@ export default function ClaudeDesign() {
                 Zum Claude Code Guide
               </Link>
             </div>
-          </motion.div>
+          </AnimatedReveal>
         </div>
       </header>
 
       {/* ---- Usage Limits Warning ---- */}
       <section className="container py-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="bg-amber-50 dark:bg-amber-950/30 border-2 border-amber-200 dark:border-amber-800 rounded-xl p-6 max-w-4xl"
-        >
+        <AnimatedReveal slide="up" className="bg-amber-50 dark:bg-amber-950/30 border-2 border-amber-200 dark:border-amber-800 rounded-xl p-6 max-w-4xl">
           <div className="flex items-start gap-4">
             <AlertTriangle className="w-6 h-6 text-amber-600 shrink-0 mt-0.5" />
             <div className="flex-1">
@@ -583,35 +562,23 @@ export default function ClaudeDesign() {
               </div>
             </div>
           </div>
-        </motion.div>
+        </AnimatedReveal>
       </section>
 
       {/* ---- Core Features ---- */}
       <section className="container py-10">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-8"
-        >
+        <AnimatedReveal slide="up" className="mb-8">
           <h2 className="text-2xl md:text-3xl font-bold text-[#3a2f28] dark:text-foreground font-['Playfair_Display',serif] mb-2">
             Features & Fähigkeiten
           </h2>
           <p className="text-[#3a2f28]/60 dark:text-foreground/60 text-sm">
             Was Claude Design alles kann — und wie du es nutzt.
           </p>
-        </motion.div>
+        </AnimatedReveal>
 
         <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
           {coreFeatures.map((feature, i) => (
-            <motion.div
-              key={feature.title}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08 }}
-              className="bg-[#faf8f5] dark:bg-card rounded-xl p-5 border border-[#3a2f28]/8 dark:border-foreground/8 hover:shadow-md transition-shadow"
-            >
+            <AnimatedReveal slide="up" delay={i * 0.08} className="bg-[#faf8f5] dark:bg-card rounded-xl p-5 border border-[#3a2f28]/8 dark:border-foreground/8 hover:shadow-md transition-shadow">
               <div className="inline-flex items-center justify-center w-10 h-10 rounded-lg bg-[#c4704b]/10 text-[#c4704b] mb-3">
                 {feature.icon}
               </div>
@@ -621,7 +588,7 @@ export default function ClaudeDesign() {
               <p className="text-sm text-[#3a2f28]/60 dark:text-foreground/60 leading-relaxed">
                 {feature.description}
               </p>
-            </motion.div>
+            </AnimatedReveal>
           ))}
         </div>
       </section>
@@ -629,12 +596,7 @@ export default function ClaudeDesign() {
       {/* ---- The Macro-Micro Workflow ---- */}
       <section className="py-12 bg-white/50 dark:bg-card/30">
         <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mb-8"
-          >
+          <AnimatedReveal slide="up" className="mb-8">
             <div className="flex items-center gap-2 mb-2">
               <Layers className="w-5 h-5 text-[#c4704b]" />
               <h2 className="text-2xl md:text-3xl font-bold text-[#3a2f28] dark:text-foreground font-['Playfair_Display',serif]">
@@ -645,15 +607,10 @@ export default function ClaudeDesign() {
               Die wichtigste Strategie für optimale Ergebnisse bei minimalem Token-Verbrauch.
               Wird in allen 10 Videos als Best Practice empfohlen.
             </p>
-          </motion.div>
+          </AnimatedReveal>
 
           <div className="grid md:grid-cols-2 gap-6 max-w-4xl">
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="bg-[#faf8f5] dark:bg-card rounded-xl p-6 border-2 border-[#c4704b]/20"
-            >
+            <AnimatedReveal slide="right" className="bg-[#faf8f5] dark:bg-card rounded-xl p-6 border-2 border-[#c4704b]/20">
               <div className="flex items-center gap-2 mb-3">
                 <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-[#c4704b] text-white text-sm font-bold">
                   1
@@ -673,14 +630,9 @@ export default function ClaudeDesign() {
                   Suggest the different variant styles to me first."
                 </p>
               </div>
-            </motion.div>
+            </AnimatedReveal>
 
-            <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              className="bg-[#faf8f5] dark:bg-card rounded-xl p-6 border-2 border-[#7a9b6d]/20"
-            >
+            <AnimatedReveal slide="left" className="bg-[#faf8f5] dark:bg-card rounded-xl p-6 border-2 border-[#7a9b6d]/20">
               <div className="flex items-center gap-2 mb-3">
                 <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-[#7a9b6d] text-white text-sm font-bold">
                   2
@@ -700,26 +652,21 @@ export default function ClaudeDesign() {
                   Layout-Switches • Sektionen ein/ausblenden
                 </p>
               </div>
-            </motion.div>
+            </AnimatedReveal>
           </div>
         </div>
       </section>
 
       {/* ---- Workflows by Project Type ---- */}
       <section className="container py-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="mb-8"
-        >
+        <AnimatedReveal slide="up" className="mb-8">
           <h2 className="text-2xl md:text-3xl font-bold text-[#3a2f28] dark:text-foreground font-['Playfair_Display',serif] mb-2">
             Schritt-für-Schritt nach Projekttyp
           </h2>
           <p className="text-[#3a2f28]/60 dark:text-foreground/60 text-sm max-w-2xl">
             Klicke auf einen Workflow, um die detaillierte Anleitung mit Befehlen und Beispiel-Prompts zu sehen.
           </p>
-        </motion.div>
+        </AnimatedReveal>
 
         <div className="space-y-4 max-w-4xl">
           {workflows.map((workflow) => (
@@ -731,12 +678,7 @@ export default function ClaudeDesign() {
       {/* ---- Pro Tips ---- */}
       <section className="py-12 bg-white/50 dark:bg-card/30">
         <div className="container">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="mb-8"
-          >
+          <AnimatedReveal slide="up" className="mb-8">
             <div className="flex items-center gap-2 mb-2">
               <Sparkles className="w-5 h-5 text-[#c4704b]" />
               <h2 className="text-2xl md:text-3xl font-bold text-[#3a2f28] dark:text-foreground font-['Playfair_Display',serif]">
@@ -746,25 +688,18 @@ export default function ClaudeDesign() {
             <p className="text-[#3a2f28]/60 dark:text-foreground/60 text-sm">
               Fortgeschrittene Strategien aus 10 Video-Analysen.
             </p>
-          </motion.div>
+          </AnimatedReveal>
 
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3 max-w-5xl">
             {proTips.map((tip, i) => (
-              <motion.div
-                key={tip.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.08 }}
-                className="bg-[#faf8f5] dark:bg-card rounded-xl p-5 border border-[#3a2f28]/8 dark:border-foreground/8"
-              >
+              <AnimatedReveal slide="up" delay={i * 0.08} className="bg-[#faf8f5] dark:bg-card rounded-xl p-5 border border-[#3a2f28]/8 dark:border-foreground/8">
                 <h3 className="font-semibold text-[#3a2f28] dark:text-foreground mb-2 font-['Playfair_Display',serif] text-sm">
                   {tip.title}
                 </h3>
                 <p className="text-sm text-[#3a2f28]/60 dark:text-foreground/60 leading-relaxed">
                   {tip.description}
                 </p>
-              </motion.div>
+              </AnimatedReveal>
             ))}
           </div>
         </div>
@@ -772,12 +707,7 @@ export default function ClaudeDesign() {
 
       {/* ---- Anthropic Academy Reference ---- */}
       <section className="container py-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="bg-gradient-to-br from-[#3a2f28] to-[#5a4f48] rounded-xl p-8 text-white max-w-4xl"
-        >
+        <AnimatedReveal slide="up" className="bg-gradient-to-br from-[#3a2f28] to-[#5a4f48] rounded-xl p-8 text-white max-w-4xl">
           <div className="flex items-center gap-2 mb-3">
             <ExternalLink className="w-5 h-5 text-[#c4704b]" />
             <p className="text-sm font-medium tracking-widest uppercase text-[#c4704b]">
@@ -818,7 +748,7 @@ export default function ClaudeDesign() {
             <ExternalLink className="w-4 h-4" />
             Zur Anthropic Academy
           </a>
-        </motion.div>
+        </AnimatedReveal>
       </section>
 
       {/* ---- Footer ---- */}

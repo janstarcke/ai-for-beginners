@@ -1,5 +1,5 @@
 import { memo, useCallback, useMemo, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatedReveal, CollapseReveal } from "@/components/AnimatedReveal";
 import { Search, Filter, ChevronDown, ChevronUp, AlertTriangle, Sparkles, BookOpen, Palette, ArrowRight, TrendingUp, RotateCcw, Coins, Package } from "lucide-react";
 import { Link } from "wouter";
 import { skills, categories, tierLabels, tldrItems, claudeDesignSteps } from "@/data/skills";
@@ -44,22 +44,11 @@ function TldrCard({ item, index }: { item: TldrItem; index: number }) {
         </div>
         <ChevronDown className={`w-4 h-4 text-muted-foreground shrink-0 transition-transform duration-200 ${open ? 'rotate-180' : ''}`} aria-hidden="true" />
       </div>
-      <AnimatePresence>
-        {open && (
-          <motion.div
-            id={panelId}
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="overflow-hidden"
-          >
-            <div className="mt-3 ml-9">
-              <CodeBlock code={item.example} language="bash" filename="Beispiel" />
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+      <CollapseReveal open={open} id={panelId}>
+        <div className="mt-3 ml-9">
+          <CodeBlock code={item.example} language="bash" filename="Beispiel" />
+        </div>
+      </CollapseReveal>
     </div>
   );
 }
@@ -101,10 +90,10 @@ const SkillCard = memo(function SkillCard({ skill, index, isCompleted, onToggle 
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.03, duration: 0.3 }}
+    <AnimatedReveal
+      slide="up"
+      delay={index * 0.03}
+      duration={300}
       className={`bg-card rounded-lg border-l-4 ${tierColor} border border-border shadow-sm hover:shadow-md transition-all duration-200 overflow-hidden`}
     >
       <div
@@ -173,17 +162,9 @@ const SkillCard = memo(function SkillCard({ skill, index, isCompleted, onToggle 
         </div>
       </div>
 
-      <AnimatePresence>
-        {expanded && (
-          <motion.div
-            id={panelId}
-            initial={{ height: 0, opacity: 0 }}
-            animate={{ height: "auto", opacity: 1 }}
-            exit={{ height: 0, opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            className="overflow-hidden"
-          >
-            <div className="px-5 pb-5 pt-0 border-t border-border/50">
+      <CollapseReveal open={expanded} id={panelId}>
+        <div className="overflow-hidden">
+          <div className="px-5 pb-5 pt-0 border-t border-border/50">
               <div className="mt-4 space-y-3">
                 <div>
                   <div className="flex items-center justify-between mb-1">
@@ -229,9 +210,8 @@ const SkillCard = memo(function SkillCard({ skill, index, isCompleted, onToggle 
                 )}
               </div>
             </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+          </div>
+        </CollapseReveal>
 
       {installCommand && (
         <InstallCommandModal
@@ -242,7 +222,7 @@ const SkillCard = memo(function SkillCard({ skill, index, isCompleted, onToggle 
           note={skill.installNote}
         />
       )}
-    </motion.div>
+    </AnimatedReveal>
   );
 });
 
@@ -282,11 +262,7 @@ export default function Home() {
           <div className="absolute inset-0 bg-gradient-to-b from-background/40 via-background/70 to-background" />
         </div>
         <div className="relative container py-16 md:py-24">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-          >
+          <AnimatedReveal slide="up" duration={600}>
             <p className="text-sm font-medium tracking-widest uppercase text-[var(--color-terracotta)] mb-3">
               Das Tutorial für Beginner bis Fortgeschrittene
             </p>
@@ -337,7 +313,7 @@ export default function Home() {
                 Skill-Ranking ansehen
               </a>
             </div>
-          </motion.div>
+          </AnimatedReveal>
         </div>
       </header>
 
@@ -348,15 +324,14 @@ export default function Home() {
         </h2>
         <div className="grid gap-3 md:grid-cols-2 lg:grid-cols-3">
           {tldrItems.map((item, i) => (
-            <motion.div
+            <AnimatedReveal
               key={i}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.08 }}
+              slide="up"
+              delay={i * 0.08}
               className="p-4 rounded-lg bg-card border border-border shadow-sm"
             >
               <TldrCard item={item} index={i} />
-            </motion.div>
+            </AnimatedReveal>
           ))}
         </div>
       </section>
@@ -395,15 +370,8 @@ export default function Home() {
           </button>
         </div>
 
-        <AnimatePresence>
-          {showFilters && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              className="overflow-hidden"
-            >
-              <div className="pt-4 space-y-3">
+        <CollapseReveal open={showFilters}>
+            <div className="pt-4 space-y-3">
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-wider text-muted-foreground mb-2">Kategorie</p>
                   <div className="flex flex-wrap gap-2">
@@ -451,9 +419,7 @@ export default function Home() {
                   </div>
                 </div>
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        </CollapseReveal>
       </section>
 
       {/* Skills Grid */}
@@ -529,12 +495,10 @@ export default function Home() {
 
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 mb-10">
             {claudeDesignSteps.map((step, i) => (
-              <motion.div
+              <AnimatedReveal
                 key={step.phase}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
+                slide="up"
+                delay={i * 0.1}
                 className="bg-card rounded-lg p-5 border border-border shadow-sm"
               >
                 <div className="flex items-center gap-2 mb-3">
@@ -548,7 +512,7 @@ export default function Home() {
                 <p className="text-sm text-muted-foreground leading-relaxed">
                   {step.description}
                 </p>
-              </motion.div>
+              </AnimatedReveal>
             ))}
           </div>
 
@@ -605,12 +569,10 @@ export default function Home() {
             { phase: 5, title: "Steering & Testing", desc: "Screenshots + Playwright MCP" },
             { phase: 6, title: "Security & Review", desc: "Ultra Review + Trail of Bits" },
           ].map((step, i) => (
-            <motion.div
+            <AnimatedReveal
               key={step.phase}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: i * 0.08 }}
+              slide="up"
+              delay={i * 0.08}
               className="flex items-start gap-3 p-4 rounded-lg bg-card border border-border"
             >
               <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-[var(--color-sage)] text-white text-sm font-bold shrink-0 font-[var(--font-display)]">
@@ -620,7 +582,7 @@ export default function Home() {
                 <h3 className="text-sm font-semibold text-foreground font-[var(--font-display)]">{step.title}</h3>
                 <p className="text-xs text-muted-foreground mt-0.5">{step.desc}</p>
               </div>
-            </motion.div>
+            </AnimatedReveal>
           ))}
         </div>
       </section>
