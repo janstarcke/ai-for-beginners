@@ -802,6 +802,29 @@ export const skills: Skill[] = [
     nextStep: "Morgen früh starten: /clear → /plan <heutige Hauptaufgabe>. Mittags /goal für autonomes Durchlaufen. Abends /simplify <files> dann /handoff. Pipeline ggf. nach Workflow anpassen.",
     isNew: true,
   },
+  {
+    id: 68,
+    name: "Claude for Small Business (Cowork)",
+    category: "Tool",
+    tier: 2,
+    tierLabel: "Innerhalb der ersten Woche",
+    sources: [],
+    description: "KI-Mitarbeiter, die in deinen bestehenden Tools arbeiten: 8 OAuth-Integrationen (Gmail, Microsoft 365, QuickBooks, HubSpot, PayPal, Canva, DocuSign, Slack) und 15 vorgebaute Workflows in 4 Bereichen (Finance, Operations, Marketing, Legal/HR). Lebt in Claude Cowork, nicht Claude Code. Jede externe Aktion (Zahlung, Mail, Posting) braucht deine Bestätigung — komplett autonom läuft nichts.",
+    nextStep: "claude.ai → Settings → Features → Toggle 'Claude for Small Business' aktivieren. In Cowork → Integrations pro Tool einzeln per OAuth verbinden, dann Workflow aus der Liste wählen.",
+    isNew: true,
+    warning: "Pro/Max trainieren auf deinen Chats — für Kundendaten ein DSGVO-No-Go. Echte Geschäftsnutzung braucht mindestens Team (25$/Sitz, DPA inkl.); regulierte Branchen (Recht/Medizin/Finanz) Enterprise mit EU-Hosting (AWS Bedrock Frankfurt / Google Vertex AI EU).",
+  },
+  {
+    id: 69,
+    name: "Mahn-Pipeline (Invoice-Chasing-Prompt)",
+    category: "Workflow",
+    tier: 2,
+    tierLabel: "Innerhalb der ersten Woche",
+    sources: [],
+    description: "5-Schritt-Pipeline statt jede Mahnung einzeln zu prompten: offene Rechnungen aus QuickBooks nach Alter sortieren (Stufe 1/2/3) → drei Templates (freundlich/formal/letzte Aufforderung) → pro Kunde aus CRM-Historie personalisieren → Vorschau + Bulk-Approval → Versand über Gmail + Tracking + Follow-up-Reminder. Was 2 Stunden fraß, ist in 10 Minuten durch.",
+    nextStep: "Voraussetzung: Claude for Small Business mit QuickBooks + Gmail verbunden. Pipeline als 5 nummerierte Prompts nacheinander geben, bei Schritt 4 jede Mail vor Bulk-Approval prüfen.",
+    isNew: true,
+  },
 ];
 
 export const claudeDesignSteps: ClaudeDesignStep[] = [
