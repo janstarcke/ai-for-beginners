@@ -11,9 +11,19 @@ export interface GitCommit {
   files: string[];
 }
 
-export const gitHistoryGeneratedAt = "2026-05-18T23:45:23.294Z";
+export const gitHistoryGeneratedAt = "2026-05-18T23:45:41.613Z";
 
 export const gitHistory: GitCommit[] = [
+  {
+    "hash": "252a01463b71c22842b439410226d7848075e96c",
+    "shortHash": "252a014",
+    "date": "2026-05-18T16:45:39-07:00",
+    "author": "Jan Starcke",
+    "subject": "feat(history): pre-push auto-regenerate hook + catalog #84-#88",
+    "files": [
+      "client/src/data/importHistory.ts"
+    ]
+  },
   {
     "hash": "1ea9d62ecdbfb7a9748e6b94e7e7aa7e133b15bd",
     "shortHash": "1ea9d62",
