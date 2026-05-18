@@ -11,9 +11,39 @@ export interface GitCommit {
   files: string[];
 }
 
-export const gitHistoryGeneratedAt = "2026-05-18T23:37:23.874Z";
+export const gitHistoryGeneratedAt = "2026-05-18T23:45:41.613Z";
 
 export const gitHistory: GitCommit[] = [
+  {
+    "hash": "252a01463b71c22842b439410226d7848075e96c",
+    "shortHash": "252a014",
+    "date": "2026-05-18T16:45:39-07:00",
+    "author": "Jan Starcke",
+    "subject": "feat(history): pre-push auto-regenerate hook + catalog #84-#88",
+    "files": [
+      "client/src/data/importHistory.ts"
+    ]
+  },
+  {
+    "hash": "1ea9d62ecdbfb7a9748e6b94e7e7aa7e133b15bd",
+    "shortHash": "1ea9d62",
+    "date": "2026-05-18T16:42:46-07:00",
+    "author": "Jan Starcke",
+    "subject": "feat(content): 5 neue Skills aus 20-Tricks-Video (#84-#88)",
+    "files": [
+      "client/src/data/skills.ts"
+    ]
+  },
+  {
+    "hash": "0bb508f9bf43cd8e3a5ecb4bd68f92adcef392c9",
+    "shortHash": "0bb508f",
+    "date": "2026-05-18T16:38:00-07:00",
+    "author": "janstarcke",
+    "subject": "chore(history): catalog #68-#83 + regenerate import history (#17)",
+    "files": [
+      "client/src/data/importHistory.ts"
+    ]
+  },
   {
     "hash": "c846731ea74f71fb2a97de9d56ee6a03d7e3871d",
     "shortHash": "c846731",

@@ -45,6 +45,21 @@ export interface ImportEntry {
  */
 export const importHistory: ImportEntry[] = [
   {
+    commit: "1ea9d62",
+    title: "20-Claude-Code-Tricks-Video — 5 neue Skills (#84–#88)",
+    type: "new",
+    categories: ["Best Practice", "Workflow"],
+    newSkillIds: [84, 85, 86, 87, 88],
+    sources: [
+      {
+        kind: "youtube",
+        channel: "YouTube — 20 Claude Code Tricks (deutsch, ~25 min)",
+      },
+    ],
+    notes:
+      "5 Skills nach User-bestätigter Duplikat-Prüfung: #84 'Diskutiere statt kommandiere' (T1), #85 'Escape-Notbremse & 2×Escape-Rewind' (T1), #86 '@ File-Mentions als Shortcut' (T1), #87 '/context — Kontextfenster aufschlüsseln' (T2), #88 'Agent Teams (kommunizierende Agenten)' (T3). 15 von 20 Tricks als Duplikat verworfen; Sponsor-Segment (Brevo) als Werbung verworfen. /context war die 3. Quelle in Folge mit diesem Tipp → jetzt aufgenommen.",
+  },
+  {
     commit: "c846731",
     title: "Ultimatives Claude-Code-Tutorial — 5 neue Skills (#79–#83)",
     type: "new",

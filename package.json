@@ -11,7 +11,8 @@
     "preview": "vite preview --host",
     "check": "tsc --noEmit",
     "format": "prettier --write .",
-    "history:update": "node scripts/build-git-history.mjs"
+    "history:update": "node scripts/build-git-history.mjs",
+    "setup:hooks": "git config core.hooksPath scripts/hooks && echo 'pre-push hook aktiv (scripts/hooks)'"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.2.2",
