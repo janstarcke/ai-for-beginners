@@ -42,16 +42,13 @@ export default function Datenschutz() {
         Drittlandtransfer findet im Rahmen des Hostings nicht statt.
       </p>
 
-      <LegalH2>5. Schriftarten (Google Fonts)</LegalH2>
+      <LegalH2>5. Schriftarten</LegalH2>
       <p>
-        Diese Website bindet derzeit die Schriftarten „Playfair Display“ und „DM
-        Sans“ über das Google-Fonts-CDN ein. Dabei wird beim Seitenaufruf eine
-        Verbindung zu Servern von Google (Google Ireland Ltd. bzw. Google LLC,
-        USA) hergestellt, wobei die IP-Adresse des Besuchers an Google
-        übertragen wird. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO
-        (berechtigtes Interesse an einer einheitlichen Darstellung). Eine
-        Umstellung auf lokal eingebundene (selbst gehostete) Schriftarten, bei
-        der keine Daten an Google übertragen werden, ist in Vorbereitung.
+        Die verwendeten Schriftarten „Playfair Display“ und „DM Sans“ werden
+        ausschließlich lokal vom Server dieser Website ausgeliefert (selbst
+        gehostet). Es besteht keine Verbindung zu Servern von Google oder
+        anderen Dritten, und es werden keine Daten – insbesondere nicht die
+        IP-Adresse des Besuchers – an Google oder Dritte übertragen.
       </p>
 
       <LegalH2>6. Cookies & lokale Speicherung</LegalH2>
