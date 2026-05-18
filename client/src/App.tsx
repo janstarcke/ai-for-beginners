@@ -17,6 +17,9 @@ const ClaudeDesign = lazy(() => import("./pages/ClaudeDesign"));
 const FinancialAnalyst = lazy(() => import("./pages/FinancialAnalyst"));
 const TokenSpar = lazy(() => import("./pages/TokenSpar"));
 const ImportHistory = lazy(() => import("./pages/ImportHistory"));
+const Impressum = lazy(() => import("./pages/Impressum"));
+const Datenschutz = lazy(() => import("./pages/Datenschutz"));
+const Disclaimer = lazy(() => import("./pages/Disclaimer"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 // Minimal-Fallback: keine Spinner-UI um Layout-Shift zu vermeiden — die
@@ -45,6 +48,9 @@ function Router() {
         {/* Hidden: nicht im Menü verlinkt, noindex via useEffect-Meta-Tag
             im Component PLUS nginx X-Robots-Tag-Header. */}
         <Route path={"/secret-import-history"} component={ImportHistory} />
+        <Route path={"/impressum"} component={Impressum} />
+        <Route path={"/datenschutz"} component={Datenschutz} />
+        <Route path={"/disclaimer"} component={Disclaimer} />
         <Route path={"/404"} component={NotFound} />
         <Route component={NotFound} />
       </Switch>

@@ -604,6 +604,22 @@ export default function Home() {
               Neue Skills & Features werden fortlaufend ergänzt, sobald Anthropic Updates veröffentlicht.
             </p>
           </div>
+          <div className="mt-6 pt-6 border-t border-border flex flex-col sm:flex-row gap-3 sm:items-center sm:justify-between">
+            <nav className="flex flex-wrap gap-x-5 gap-y-2" aria-label="Rechtliches">
+              <Link to="/impressum" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                Impressum
+              </Link>
+              <Link to="/datenschutz" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                Datenschutz
+              </Link>
+              <Link to="/disclaimer" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+                Disclaimer
+              </Link>
+            </nav>
+            <p className="text-xs text-muted-foreground">
+              © {new Date().getFullYear()} Jan Starcke · Kein offizielles Anthropic-Angebot
+            </p>
+          </div>
         </div>
       </footer>
     </div>
