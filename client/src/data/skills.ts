@@ -898,6 +898,28 @@ export const skills: Skill[] = [
     nextStep: "In neuer Session: 'Schreib mir die perfekte CLAUDE.md. Stell mir nacheinander 7 Fragen (Projekt, Tech-Stack, Conventions, Don'ts, Kommunikation, externe Tools/Kosten, Workflow), warte auf jede Antwort, dann schreib die finale Datei (max ~200 Zeilen, konkrete statt vage Anweisungen).'",
     isNew: true,
   },
+  {
+    id: 76,
+    name: "GitHub als Sicherheitsnetz (Vibe-Coding)",
+    category: "Setup",
+    tier: 2,
+    tierLabel: "Innerhalb der ersten Woche",
+    sources: [],
+    description: "Auch ohne Coding-Wissen: jedes vibe-gecodete Projekt in ein privates GitHub-Repo versionieren. Wenn eine Änderung die App kaputt macht, spulst du auf eine funktionierende Version zurück statt sie zu verlieren. Claude Code richtet alles selbst ein — du sagst nur was du willst, keine git-Befehle nötig.",
+    nextStep: "GitHub-Account anlegen, dann im Chat: 'Verbinde dieses Projekt mit GitHub und erstelle ein privates Repository, auf das nur ich Zugriff habe.' Claude erledigt Auth + Repo + ersten Commit automatisch.",
+    isNew: true,
+  },
+  {
+    id: 77,
+    name: "Lokale & EU-Modelle für sensible Daten",
+    category: "Best Practice",
+    tier: 3,
+    tierLabel: "Produktivitäts-Booster",
+    sources: [],
+    description: "Bei sensiblen Daten (Meeting-Notizen, Rechnungen, Kundendaten) lässt du Claude Code Tools bauen, die NICHT Anthropic/OpenAI nutzen, sondern lokale Open-Source-Modelle (z.B. GPT-OSS auf deinem Rechner) oder EU-Anbieter (z.B. Mistral OCR). Die Daten verlassen den Rechner bzw. die EU nie — Claude Code verdrahtet nur das Modell, die Verarbeitung läuft offline/EU.",
+    nextStep: "Im Auftrag das Modell explizit vorgeben: 'Baue das Tool so, dass es rein mit lokalen Open-Source-Modellen auf meinem Rechner läuft' oder '...mit Mistral OCR statt Anthropic'.",
+    isNew: true,
+  },
 ];
 
 export const claudeDesignSteps: ClaudeDesignStep[] = [
