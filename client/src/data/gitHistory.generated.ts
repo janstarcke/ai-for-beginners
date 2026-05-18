@@ -11,9 +11,79 @@ export interface GitCommit {
   files: string[];
 }
 
-export const gitHistoryGeneratedAt = "2026-05-14T22:42:26.539Z";
+export const gitHistoryGeneratedAt = "2026-05-18T23:37:23.874Z";
 
 export const gitHistory: GitCommit[] = [
+  {
+    "hash": "c846731ea74f71fb2a97de9d56ee6a03d7e3871d",
+    "shortHash": "c846731",
+    "date": "2026-05-18T16:25:52-07:00",
+    "author": "Jan Starcke",
+    "subject": "feat(content): 5 neue Skills aus Ultimatives-Tutorial (#79-#83)",
+    "files": [
+      "client/src/data/skills.ts"
+    ]
+  },
+  {
+    "hash": "074195a402f329745d2cdf91123a088248ac97fe",
+    "shortHash": "074195a",
+    "date": "2026-05-18T16:19:04-07:00",
+    "author": "Jan Starcke",
+    "subject": "feat(content): Deploy-Go-Live skill + Routines-Quota (#78, #31)",
+    "files": [
+      "client/src/data/skills.ts"
+    ]
+  },
+  {
+    "hash": "d837d667de40e996f2bfb0e74735fbb2b9784f9b",
+    "shortHash": "d837d66",
+    "date": "2026-05-18T15:43:44-07:00",
+    "author": "Jan Starcke",
+    "subject": "feat(content): GitHub-Safety + lokale Modelle (#76, #77)",
+    "files": [
+      "client/src/data/skills.ts"
+    ]
+  },
+  {
+    "hash": "96fa1303049c3fc44dc22ce6375bad80d74c1301",
+    "shortHash": "96fa130",
+    "date": "2026-05-18T15:39:01-07:00",
+    "author": "Jan Starcke",
+    "subject": "feat(content): MCP-Sammlung, CLI-Hack, CLAUDE.md-Interview (#73-#75, #33, #37)",
+    "files": [
+      "client/src/data/skills.ts"
+    ]
+  },
+  {
+    "hash": "dc02c38d9771cc5709132edeb2b63ac3bbb66dfb",
+    "shortHash": "dc02c38",
+    "date": "2026-05-18T15:34:53-07:00",
+    "author": "Jan Starcke",
+    "subject": "feat(content): 3 plugin skills + 2 plugin refreshes (#70-#72, #38, #51)",
+    "files": [
+      "client/src/data/skills.ts"
+    ]
+  },
+  {
+    "hash": "70eced41b313ff3ec2c0a97d5e50b3675332d33f",
+    "shortHash": "70eced4",
+    "date": "2026-05-16T06:38:20-07:00",
+    "author": "Jan Starcke",
+    "subject": "feat(content): Claude for Small Business + Mahn-Pipeline (#68, #69)",
+    "files": [
+      "client/src/data/skills.ts"
+    ]
+  },
+  {
+    "hash": "6a67be289e3550066d6d40499a97924e6cb1573a",
+    "shortHash": "6a67be2",
+    "date": "2026-05-15T01:26:10+02:00",
+    "author": "janstarcke",
+    "subject": "chore(audit): Sprint J + K — dead UI cleanup + Docker digest-pin (Audit #24 + #9) (#3)",
+    "files": [
+      "client/src/data/importHistory.ts"
+    ]
+  },
   {
     "hash": "dfac5456e40aa9d7ea4ec4d3a91dc56769e180da",
     "shortHash": "dfac545",
