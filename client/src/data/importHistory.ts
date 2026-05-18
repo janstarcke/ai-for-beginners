@@ -45,6 +45,102 @@ export interface ImportEntry {
  */
 export const importHistory: ImportEntry[] = [
   {
+    commit: "c846731",
+    title: "Ultimatives Claude-Code-Tutorial — 5 neue Skills (#79–#83)",
+    type: "new",
+    categories: ["Kosten-Hack", "Workflow", "Best Practice", "Setup"],
+    newSkillIds: [79, 80, 81, 82, 83],
+    sources: [
+      {
+        kind: "youtube",
+        channel: "YouTube — Claude Code Tutorial (deutsch, ~39 min)",
+      },
+    ],
+    notes:
+      "5 Skills nach expliziter User-bestätigter Duplikat-Prüfung: #79 API-Key- vs. Abo-Billing (T2), #80 /agents — eigene benannte Agents (T3), #81 Code-Coach-Lernschleife (T1), #82 .env & .gitignore Secrets-Hygiene (T2), #83 Claude Code für Nicht-Coding-Projekte (T2). 8 Themen bewusst als Duplikat verworfen (Modi #5/#20/#21, /init #62, Go-Live #76/#78, Kosten #6, Subagents #4/#54, Screenshot #63, Codex-Review #28).",
+  },
+  {
+    commit: "074195a",
+    title: "Beginner-to-Advanced-Tutorial — Deploy-Go-Live (#78)",
+    type: "new",
+    categories: ["Workflow"],
+    newSkillIds: [78],
+    extendedSkillIds: [31],
+    sources: [
+      {
+        kind: "youtube",
+        channel: "YouTube — Claude Code Beginner-to-Advanced (englisch, ~19 min)",
+      },
+    ],
+    notes:
+      "1 neuer Skill #78 'Deploy per Natural Language (Go-Live)' (Workflow T2). #31 /loop & /schedule erweitert um Routine-Quota (Pro 5 / Max 15 Runs pro Tag) + Overnight-Use-Cases. ~90 % des Tutorials war Duplikat (/effort #34, Plan Mode #5, claude.md #62, /compact-vs-/clear #2, Screenshot #63, Hooks #9, Modelle #49, MCP #73).",
+  },
+  {
+    commit: "d837d66",
+    title: "Anfänger-Tutorial — GitHub-Safety + lokale Modelle (#76, #77)",
+    type: "new",
+    categories: ["Setup", "Best Practice"],
+    newSkillIds: [76, 77],
+    sources: [
+      {
+        kind: "youtube",
+        channel: "YouTube — Claude Code Anfänger-Tutorial (deutsch, ~24 min)",
+      },
+    ],
+    notes:
+      "2 neue Skills: #76 'GitHub als Sicherheitsnetz (Vibe-Coding)' (Setup T2), #77 'Lokale & EU-Modelle für sensible Daten' (Best Practice T3). Bewusst geskippt: Voice (#341 deckt es ab, Whisperflow paid+Affiliate), Permission-Modi (#239/#249 ausreichend), Deploy-Workflow (zu autor-spezifisch).",
+  },
+  {
+    commit: "96fa130",
+    title: "SKAILE Pro-Guide — MCP-Sammlung, CLI-Hack, CLAUDE.md-Interview (#73–#75)",
+    type: "new",
+    categories: ["MCP", "Kosten-Hack", "Best Practice"],
+    newSkillIds: [73, 74, 75],
+    extendedSkillIds: [33, 37],
+    sources: [
+      {
+        kind: "web",
+        channel: "SKAILE — 5-Schritte-Pro-Guide",
+        url: "https://pro.skaile.de/",
+      },
+    ],
+    notes:
+      "3 neue Skills: #73 '6 Essential MCPs (Copy-Paste-Setup)' (MCP T2), #74 'CLI statt MCP (Kosten-Hack)' (T2), #75 'CLAUDE.md per Interview-Prompt' (Best Practice T1). #33 Remotion von Stub auf konkreten npx-Install ausgebaut, #37 LLM Council auf git-clone-Quelle (Karpathy-Methode) präzisiert. #6/#71 + #2 bewusst nicht geändert (Konvention bleibt).",
+  },
+  {
+    commit: "dc02c38",
+    title: "SKAILE Plugins-Guide — 3 Plugin-Skills + 2 Refreshes (#70–#72)",
+    type: "new",
+    categories: ["Plugin"],
+    newSkillIds: [70, 71, 72],
+    extendedSkillIds: [38, 51],
+    sources: [
+      {
+        kind: "web",
+        channel: "SKAILE — 6 Claude-Code-Plugins / Marketplace-Mechanik",
+        url: "https://plugins.skaile.de/",
+      },
+    ],
+    notes:
+      "3 neue Skills: #70 'Differential Review (Anthropic offiziell)' (Plugin T2), #71 'Skill Creator (Anthropic offiziell)' (Plugin T2), #72 'Stack / gstack (23 Rollen-Personas)' (Plugin T2, ohne 1-Klick-Button — ./setup editiert CLAUDE.md). #38 UI/UX Pro Max auf 67 Styles + Marketplace-Install, #51 claude-mem um SQLite-lokal + ~80 % Token-Ersparnis ergänzt. Superpowers (#6) bewusst nicht geändert (unsere Install-Cmd ist die offiziell korrekte).",
+  },
+  {
+    commit: "70eced4",
+    title: "Claude for Small Business + Mahn-Pipeline (#68, #69)",
+    type: "new",
+    categories: ["Tool", "Workflow"],
+    newSkillIds: [68, 69],
+    sources: [
+      {
+        kind: "web",
+        channel: "SKAILE — Claude for Small Business (Anthropic-Launch 2026-05-13)",
+        url: "https://business.skaile.de/",
+      },
+    ],
+    notes:
+      "2 neue Skills: #68 'Claude for Small Business (Cowork)' (Tool T2, mit DSGVO-Warning), #69 'Mahn-Pipeline (Invoice-Chasing-Prompt)' (Workflow T2). DSGVO-Plan-Punkt bewusst als Warning in #68 gefaltet statt eigener Skill — gehört untrennbar zur Setup-Entscheidung Pro vs. Team vs. Enterprise.",
+  },
+  {
     commit: "4ddeb99",
     title: "Sprint K: Docker-Base-Image-Digests gepinnt (Audit #9 partial)",
     type: "refactor",
