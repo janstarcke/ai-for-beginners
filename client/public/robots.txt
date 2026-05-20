@@ -1,4 +1,4 @@
-# Robots Policy für ai-for-beginners.starcke.io
+# Robots Policy für ai-for-beginners.starcke.ai
 # Stand 2026-05-13 (Audit Sprint D)
 
 # Hidden Page mit Import-Historie ist nicht für Index gedacht.

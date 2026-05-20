@@ -1,5 +1,5 @@
 # syntax=docker/dockerfile:1.7
-# Multi-Stage Build für ai-for-beginners.starcke.io
+# Multi-Stage Build für ai-for-beginners.starcke.ai
 # Audit-Item #9 (post-Block-A 2026-05-13): HEALTHCHECK ergänzt + Digest-Pin (Sprint K).
 # nginx-unprivileged-Switch braucht Coolify-Port-Wechsel — separater PR.
 #
