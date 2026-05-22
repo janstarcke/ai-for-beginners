@@ -4,6 +4,9 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { Route, Switch, useLocation } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
+import { ConsentProvider } from "./contexts/ConsentContext";
+import ConsentBanner from "./components/ConsentBanner";
+import RouteTracker from "./components/RouteTracker";
 import { ThemeToggle } from "./components/ThemeToggle";
 import { GlobalSearch } from "./components/GlobalSearch";
 
@@ -66,18 +69,22 @@ function App() {
   return (
     <ErrorBoundary>
       <ThemeProvider defaultTheme="light" switchable>
-        <TooltipProvider>
-          <Toaster />
-          <ThemeToggle />
-          <GlobalSearch />
-          <ScrollToTop />
-          {/* Audit (Lighthouse): genau EIN <main>-Landmark pro Route.
-              Zentral hier statt in jeder Page — ThemeToggle/Toaster/
-              GlobalSearch bleiben bewusst außerhalb des main-Landmarks. */}
-          <main>
-            <Router />
-          </main>
-        </TooltipProvider>
+        <ConsentProvider>
+          <TooltipProvider>
+            <Toaster />
+            <ThemeToggle />
+            <GlobalSearch />
+            <ScrollToTop />
+            <RouteTracker />
+            {/* Audit (Lighthouse): genau EIN <main>-Landmark pro Route.
+                Zentral hier statt in jeder Page — ThemeToggle/Toaster/
+                GlobalSearch bleiben bewusst außerhalb des main-Landmarks. */}
+            <main>
+              <Router />
+            </main>
+            <ConsentBanner />
+          </TooltipProvider>
+        </ConsentProvider>
       </ThemeProvider>
     </ErrorBoundary>
   );
