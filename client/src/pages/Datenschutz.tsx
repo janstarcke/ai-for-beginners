@@ -1,11 +1,14 @@
 import LegalLayout, { LegalH2 } from "@/components/LegalLayout";
+import { useConsent } from "@/contexts/ConsentContext";
+import { Button } from "@/components/ui/button";
 
 export default function Datenschutz() {
+  const { openSettings } = useConsent();
   return (
     <LegalLayout
       kicker="§03 · Datenschutz"
       title="Datenschutzerklärung"
-      updated="18. Mai 2026"
+      updated="22. Mai 2026"
     >
       <LegalH2>1. Verantwortlicher</LegalH2>
       <p>
@@ -18,8 +21,9 @@ export default function Datenschutz() {
       <p>
         Diese Website ist eine rein informative, statische Wissensdatenbank. Es
         gibt keine Benutzerkonten, keine Anmeldung, keine Kommentar- oder
-        Upload-Funktionen und keine kommerziellen Angebote. Es werden keine
-        Tracking-, Analyse- oder Werbe-Technologien eingesetzt.
+        Upload-Funktionen und keine kommerziellen Angebote. Webanalyse mit
+        Google Analytics 4 wird ausschließlich nach ausdrücklicher
+        Einwilligung über das Cookie-Banner aktiviert (siehe §7).
       </p>
 
       <LegalH2>3. Server-Logfiles</LegalH2>
@@ -53,20 +57,62 @@ export default function Datenschutz() {
 
       <LegalH2>6. Cookies & lokale Speicherung</LegalH2>
       <p>
-        Es werden keine Cookies gesetzt. Für reine Komfortfunktionen
-        (Hell-/Dunkel-Modus, Lese-/Fortschritts-Markierungen, Ausblenden von
-        Hinweisen) wird ausschließlich der lokale Speicher des Browsers
-        (localStorage) genutzt. Diese Daten verbleiben auf dem Gerät, werden
-        nicht an den Server oder Dritte übertragen und sind technisch notwendig
-        für die jeweilige Funktion; eine Einwilligung ist nach § 25 Abs. 2 TTDSG
-        nicht erforderlich.
+        Technisch notwendige Funktionen (Hell-/Dunkel-Modus,
+        Lese-/Fortschritts-Markierungen, Ausblenden von Hinweisen, Speichern
+        der Cookie-Entscheidung) nutzen ausschließlich den lokalen Speicher des
+        Browsers (localStorage). Diese Daten verbleiben auf dem Gerät, werden
+        nicht an den Server oder Dritte übertragen; eine Einwilligung ist nach
+        § 25 Abs. 2 TTDSG nicht erforderlich.
+      </p>
+      <p>
+        Optionale Cookies (Google Analytics, siehe §7) werden ausschließlich
+        nach ausdrücklicher Einwilligung gesetzt und tragen Namen wie{" "}
+        <code>_ga</code> und <code>_ga_*</code>. Bei Ablehnung oder Widerruf
+        werden diese Cookies sofort gelöscht.
       </p>
 
-      <LegalH2>7. Webanalyse / Tracking</LegalH2>
+      <LegalH2>7. Webanalyse (Google Analytics 4)</LegalH2>
       <p>
-        Es findet keine Webanalyse und kein Tracking statt. Sollte dies künftig
-        eingesetzt werden, wird diese Erklärung vorher aktualisiert und – sofern
-        erforderlich – eine Einwilligung eingeholt.
+        Diese Website nutzt Google Analytics 4 (Anbieter: Google Ireland Ltd.,
+        Gordon House, Barrow Street, Dublin 4, Irland) zur statistischen
+        Analyse des Nutzungsverhaltens — ausschließlich nach Ihrer
+        ausdrücklichen Einwilligung über das Cookie-Banner. Rechtsgrundlage ist
+        Art. 6 Abs. 1 lit. a DSGVO sowie § 25 Abs. 1 TTDSG.
+      </p>
+      <p>
+        Verarbeitet werden anonymisierte technische Daten zur Seitennutzung
+        (besuchte Seiten, Verweildauer, gekürzte IP-Adresse via{" "}
+        <code>anonymize_ip</code>). Eine Zusammenführung mit personenbezogenen
+        Daten findet nicht statt. Ohne Einwilligung wird kein Google-Skript
+        geladen und kein Cookie gesetzt (Google Consent Mode v2 deny-by-default).
+      </p>
+      <p>
+        Sie können Ihre Einwilligung jederzeit mit Wirkung für die Zukunft
+        widerrufen:
+      </p>
+      <p>
+        <Button
+          onClick={openSettings}
+          variant="outline"
+          size="sm"
+          className="mt-2"
+        >
+          Cookie-Einstellungen ändern
+        </Button>
+      </p>
+      <p className="mt-3">
+        Da Google ein US-Anbieter ist, kann es zu einem Drittlandtransfer in
+        die USA kommen. Google ist unter dem EU-U.S. Data Privacy Framework
+        zertifiziert (Angemessenheitsbeschluss der EU-Kommission vom
+        10.07.2023, Art. 45 DSGVO). Weitere Informationen:{" "}
+        <a
+          href="https://policies.google.com/privacy"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          policies.google.com/privacy
+        </a>
+        .
       </p>
 
       <LegalH2>8. Externe Links</LegalH2>
@@ -94,7 +140,7 @@ export default function Datenschutz() {
       </p>
 
       <LegalH2>11. Stand</LegalH2>
-      <p>18. Mai 2026.</p>
+      <p>22. Mai 2026.</p>
     </LegalLayout>
   );
 }
