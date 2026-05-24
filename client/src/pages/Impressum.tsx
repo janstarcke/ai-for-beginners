@@ -16,7 +16,7 @@ export default function Impressum() {
 
       <LegalH2>Kontakt</LegalH2>
       <p>
-        E-Mail: <a href="mailto:jan@starcke.io">jan@starcke.io</a>
+        E-Mail: <a href="mailto:jan@starcke.ai">jan@starcke.ai</a>
       </p>
 
       <LegalH2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</LegalH2>
