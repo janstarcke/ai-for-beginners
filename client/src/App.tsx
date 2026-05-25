@@ -8,6 +8,7 @@ import { ConsentProvider } from "./contexts/ConsentContext";
 import ConsentBanner from "./components/ConsentBanner";
 import RouteTracker from "./components/RouteTracker";
 import { ThemeToggle } from "./components/ThemeToggle";
+import { LastUpdated } from "./components/LastUpdated";
 import { GlobalSearch } from "./components/GlobalSearch";
 
 // Audit Finding #7: Route-based Code-Splitting. Vorher waren alle 6 Pages
@@ -73,6 +74,7 @@ function App() {
           <TooltipProvider>
             <Toaster />
             <ThemeToggle />
+            <LastUpdated />
             <GlobalSearch />
             <ScrollToTop />
             <RouteTracker />
