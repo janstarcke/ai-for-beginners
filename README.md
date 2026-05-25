@@ -2,7 +2,7 @@
 
 Eine interaktive Wissensdatenbank, die alle wichtigen Skills, Workflows und Token-Spar-Tricks rund um **Claude Code** und **Vibe Coding** zusammenfasst — kuratiert auf 4 Schwierigkeitsstufen, mit Progress-Tracking, Volltextsuche und Markdown-Export.
 
-**Live:** https://ai-for-beginners.starcke.io
+**Live:** https://ai-for-beginners.starcke.ai
 
 ## Stack
 

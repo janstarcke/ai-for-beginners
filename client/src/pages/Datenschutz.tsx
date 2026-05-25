@@ -14,7 +14,7 @@ export default function Datenschutz() {
       <p>
         Jan Starcke, Heidblick 4a, 21149 Hamburg.
         <br />
-        Kontakt: <a href="mailto:jan@starcke.io">jan@starcke.io</a>
+        Kontakt: <a href="mailto:jan@starcke.ai">jan@starcke.ai</a>
       </p>
 
       <LegalH2>2. Charakter der Website</LegalH2>
@@ -129,7 +129,7 @@ export default function Datenschutz() {
         16), Löschung (Art. 17), Einschränkung (Art. 18),
         Datenübertragbarkeit (Art. 20) und Widerspruch (Art. 21). Anfragen
         richten Sie bitte an{" "}
-        <a href="mailto:jan@starcke.io">jan@starcke.io</a>.
+        <a href="mailto:jan@starcke.ai">jan@starcke.ai</a>.
       </p>
 
       <LegalH2>10. Beschwerderecht</LegalH2>

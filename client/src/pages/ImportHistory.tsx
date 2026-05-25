@@ -77,7 +77,7 @@ import { importHistory, type ImportEntry, type ImportType } from "@/data/importH
  * useEffect-meta-tag-Injection.
  */
 
-const GITHUB_REPO = "https://github.com/jansta1/ai-for-beginners";
+const GITHUB_REPO = "https://github.com/janstarcke/ai-for-beginners";
 
 interface MergedEntry {
   commit: GitCommit;
