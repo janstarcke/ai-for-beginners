@@ -11,9 +11,19 @@ export interface GitCommit {
   files: string[];
 }
 
-export const gitHistoryGeneratedAt = "2026-05-25T15:29:20.271Z";
+export const gitHistoryGeneratedAt = "2026-05-25T15:47:32.988Z";
 
 export const gitHistory: GitCommit[] = [
+  {
+    "hash": "b32b1e3af5c5ed6796916e318877ecd3e18f6b5e",
+    "shortHash": "b32b1e3",
+    "date": "2026-05-25T17:47:32+02:00",
+    "author": "Jan Starcke",
+    "subject": "feat(content): Open Design — OSS-Alternative zu Claude Design (#90)",
+    "files": [
+      "client/src/data/skills.ts"
+    ]
+  },
   {
     "hash": "b05869148ab8edb75292a172734c2b496cf0c5ff",
     "shortHash": "b058691",
