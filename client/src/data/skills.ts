@@ -1066,6 +1066,18 @@ export const skills: Skill[] = [
     installCommand: "git clone https://github.com/nexu-io/open-design.git ~/Tools/open-design\ncd ~/Tools/open-design/deploy && docker compose up -d",
     installNote: "Docker-Variante (setzt Docker Desktop voraus). Idempotent — git clone überspringt wenn Ordner existiert, docker compose up -d ist re-run-sicher. Interface danach auf http://localhost:7456. Für Nicht-Docker-User: Desktop-App auf open-design.ai laden.",
   },
+  {
+    id: 91,
+    name: "claude.ai Projects — 4-Folder-Foundation",
+    category: "Setup",
+    tier: 2,
+    tierLabel: "Innerhalb der ersten Woche",
+    sources: [],
+    description: "Pattern für claude.ai Projects (≠ Claude Code; Web-UI, Pro/Max-Plan nötig): vier Foundation-Projects als Dauer-Setup statt jeden Chat bei Null zu starten. Über mich (Stamm-Daten/Stil/Ton), Outputs (Best-Of-Sammlung für Aufbau statt Neubau), Projekte (Production-Workspace mit Tech-Stack + Conventions), Templates (Wiederverwendung). Pro Project: kurze direkte Instructions (Anthropic-Empfehlung: 'Use TypeScript strict mode' schlägt Absatz-Erklärung) + Knowledge Files (PDF/DOCX/CSV/Code bis 30MB, automatischer RAG bei viel Volumen). Instructions schlagen Memory, weil explizit statt gelernt.",
+    nextStep: "claude.ai → Sidebar → Projects → Create personal project (4×). Pro Project unter Edit Instructions die 4 fertigen Templates von projekte.skaile.de kopieren, dann Knowledge Files hochladen (z.B. Lebenslauf in Über mich, Code-Repo-Auszug in Projekte). Alle 2 Wochen 5 Min reinschauen und veraltete Instructions auffrischen.",
+    isNew: true,
+    warning: "Free-Plan kann keine Projects anlegen — Pro (20 USD/Monat) Minimum. RAG-Mode für große Knowledge-Bases erst ab Pro. Bei Team/Enterprise: organization-shared Projects möglich.",
+  },
 ];
 
 export const claudeDesignSteps: ClaudeDesignStep[] = [
