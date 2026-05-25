@@ -1091,6 +1091,19 @@ export const skills: Skill[] = [
     installCommand: "npm i -g @openai/codex",
     installNote: "Installation der OpenAI-CLI. Danach codex auth (Browser-Login mit ChatGPT-Plus/Pro-Account), und im Projekt-Root ln -s CLAUDE.md agents.md für die Symlink-Synchronisation der Instructions zwischen Claude Code und Codex.",
   },
+  {
+    id: 93,
+    name: "Hyperframes — HTML→MP4 für Claude Code",
+    category: "Plugin",
+    tier: 3,
+    tierLabel: "Produktivitäts-Booster",
+    sources: [],
+    description: "Apache-2.0 Open-Source-Plugin von HeyGen (April 2026): 12 Slash-Commands installieren eine komplette Video-Pipeline in Claude Code. HTML-Compositions statt React (≠ Remotion #33) oder Timeline. Eingebaut: TTS lokal via Kokoro, Whisper für Wort-Level-Captions, Audio-Reactive Motion via Web Audio API. Animationen aus GSAP, Anime.js, Lottie, Three.js — alle seek-bar. Render läuft lokal mit Headless-Chromium (~600 MB einmalig), keine API-Keys, kein Cloud-Token-Verbrauch.",
+    nextStep: "npx skills add heygen-com/hyperframes (installiert alle 12 Skills), Claude Code neu starten. Dann npx hyperframes init mein-erstes-video, cd, npm run dev (Live-Preview), npm run render (MP4 nach out/main.mp4).",
+    isNew: true,
+    installCommand: "npx skills add heygen-com/hyperframes",
+    installNote: "Installiert das Skill-Pack unter ~/.claude/skills/. Claude Code danach neu starten, dann /help → alle /hyperframes-* Commands sichtbar. Erster Render lädt einmalig den Headless-Chromium (~600 MB). Voraussetzung: Node.js 20+.",
+  },
 ];
 
 export const claudeDesignSteps: ClaudeDesignStep[] = [
