@@ -1053,6 +1053,19 @@ export const skills: Skill[] = [
     isNew: true,
     warning: "Niche-Tool, sehr neu, Self-Hosting empfohlen für 24/7-Heartbeats. Nur sinnvoll wenn du wirklich mehrere AI-Agenten parallel auf ein gemeinsames Ziel ausrichten willst — für Einzelaufgaben ist ein einzelner Claude Code besser.",
   },
+  {
+    id: 90,
+    name: "Open Design — OSS-Alternative zu Claude Design",
+    category: "Tool",
+    tier: 2,
+    tierLabel: "Innerhalb der ersten Woche",
+    sources: [],
+    description: "Apache-2.0-lizenzierte, lokal laufende Alternative zu Claude Design (#9). Scannt deinen $PATH nach 16 unterstützten CLIs (Claude Code, Codex, Cursor, Gemini, Copilot u.a.) und nutzt sie als Design-Engine. Artifact-first: Discovery-Frage → Design-System + Visual-Direction → fertige HTML-Page in Sandbox-Vorschau. Output Web/Editorial, Pitch-Decks (Magazine-Style), Mobile-Frames (iPhone/Pixel) und Motion-MP4. Persistenz lokal in SQLite, BYOK für Anthropic/OpenAI/Azure/Google/Ollama. Importiert Claude-Design-Export-ZIPs direkt.",
+    nextStep: "Drei Wege: (a) Desktop-App von open-design.ai (Mac/Windows, One-Click), (b) Docker: git clone https://github.com/nexu-io/open-design.git ~/Tools/open-design && cd ~/Tools/open-design/deploy && docker compose up -d, (c) lokaler Build via Claude-Code-Prompt. Interface immer auf localhost:7456.",
+    isNew: true,
+    installCommand: "git clone https://github.com/nexu-io/open-design.git ~/Tools/open-design\ncd ~/Tools/open-design/deploy && docker compose up -d",
+    installNote: "Docker-Variante (setzt Docker Desktop voraus). Idempotent — git clone überspringt wenn Ordner existiert, docker compose up -d ist re-run-sicher. Interface danach auf http://localhost:7456. Für Nicht-Docker-User: Desktop-App auf open-design.ai laden.",
+  },
 ];
 
 export const claudeDesignSteps: ClaudeDesignStep[] = [
