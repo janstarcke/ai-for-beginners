@@ -9,9 +9,26 @@ declare global {
   }
 }
 
-const MEASUREMENT_ID = import.meta.env.VITE_GA_MEASUREMENT_ID as
-  | string
-  | undefined;
+// Production fallback for the GA4 Measurement-ID.
+// Background: in our Coolify v4.0.0 setup, `VITE_*` env vars marked
+// "Available at Buildtime" are silently NOT forwarded as `docker build
+// --build-arg` into `pnpm build` (verified twice for stockpilot —
+// PR #136 wired the Dockerfile ARG/ENV correctly, PR #153 then had to
+// hardcode a source fallback). Vite tree-shakes any branch guarded by
+// an undefined env constant, so `loadGtag()` and friends disappear
+// from the bundle entirely.
+//
+// Since the GA4 Measurement-ID is a *public* client-side identifier
+// (the browser sends it in plain text on every gtag.js request),
+// there is no secrecy concern. We hardcode it as a production fallback
+// so analytics works regardless of the Coolify quirk; Coolify env still
+// takes precedence when present, so future ID changes don't need a
+// code edit.
+const PROD_FALLBACK_MEASUREMENT_ID = 'G-3SDKZPL6D2';
+
+const MEASUREMENT_ID: string | undefined =
+  (import.meta.env.VITE_GA_MEASUREMENT_ID as string | undefined) ||
+  (import.meta.env.PROD ? PROD_FALLBACK_MEASUREMENT_ID : undefined);
 
 function hasWindow(): boolean {
   return typeof window !== 'undefined';
