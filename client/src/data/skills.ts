@@ -1041,6 +1041,18 @@ export const skills: Skill[] = [
     nextStep: "Claude sagen: 'Aktivier Agent Teams und erstelle mir ein Team für <große Aufgabe> — einer Backend, einer Frontend, einer Design.' Nur bei wirklich großen Tasks einsetzen (Token-intensiv).",
     isNew: true,
   },
+  {
+    id: 89,
+    name: "Paperclip — Multi-Agent-Orchestrator",
+    category: "Tool",
+    tier: 4,
+    tierLabel: "Spezialisierte Tools",
+    sources: [],
+    description: "Open-Source-Tool, das mehrere Claude-Code-/Codex-/andere-AI-Instanzen als 'Firma' mit Org-Chart orchestriert: CEO delegiert an spezialisierte Mitarbeiter (Engineer, Researcher, Writer…), jeder Agent hat eigene Markdown-Files für Rolle/Persönlichkeit/Tools. Heartbeats lassen Agents nach Zeitplan autonom aufwachen. Projekt/Issue/Inbox-UI plus Budget-Caps pro Agent. Distinkt von #88 (Claude-intern) und #72 (Personas in CLAUDE.md): externes Tool, das auch unterschiedliche AI-Anbieter mischen kann.",
+    nextStep: "Lokal: npx paperclip-ai im Terminal — oder Self-Hosting via Docker auf eigenem Server (z.B. dem Repo github.com/paperclip-ai/paperclip). Nach Login Firma anlegen: Ziel → Team hiren → Run.",
+    isNew: true,
+    warning: "Niche-Tool, sehr neu, Self-Hosting empfohlen für 24/7-Heartbeats. Nur sinnvoll wenn du wirklich mehrere AI-Agenten parallel auf ein gemeinsames Ziel ausrichten willst — für Einzelaufgaben ist ein einzelner Claude Code besser.",
+  },
 ];
 
 export const claudeDesignSteps: ClaudeDesignStep[] = [
