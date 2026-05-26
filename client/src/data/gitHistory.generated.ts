@@ -11,15 +11,15 @@ export interface GitCommit {
   files: string[];
 }
 
-export const gitHistoryGeneratedAt = "2026-05-26T08:43:45.214Z";
+export const gitHistoryGeneratedAt = "2026-05-26T11:20:36.612Z";
 
 export const gitHistory: GitCommit[] = [
   {
-    "hash": "f9feed4d3abc9287d27b3c17c407bccd8e960dc0",
-    "shortHash": "f9feed4",
-    "date": "2026-05-26T10:43:39+02:00",
-    "author": "Jan Starcke",
-    "subject": "fix(content): #95 Sentry MCP — correct HTTP endpoint (/mcp), SSE removed",
+    "hash": "b819983f00ad852062020bd304a3b1c1bb2d52eb",
+    "shortHash": "b819983",
+    "date": "2026-05-26T01:44:12-07:00",
+    "author": "janstarcke",
+    "subject": "fix(content): #95 Sentry MCP — correct HTTP endpoint (#28)",
     "files": [
       "client/src/data/skills.ts"
     ]
