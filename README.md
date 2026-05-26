@@ -6,10 +6,10 @@ Eine interaktive Wissensdatenbank, die alle wichtigen Skills, Workflows und Toke
 
 ## Stack
 
-- **Vite 7** + **React 19** + **TypeScript 5.6**
+- **Vite 8** + **React 19** + **TypeScript 6**
 - **Tailwind CSS 4** (CSS-first config via `@theme {}`) + **shadcn/ui** (New York Style)
 - **Wouter** für Client-Routing
-- **Framer Motion** für Animationen
+- **tw-animate-css** für CSS-Animationen (Framer Motion war bis Mai 2026 dabei, wurde dann zugunsten von CSS-Animationen entfernt)
 - **Hosting:** Coolify (Static) auf Hetzner CX33
 
 Komplett **statisches Frontend** — kein Backend, keine DB. Progress wird in `localStorage` gespeichert.
