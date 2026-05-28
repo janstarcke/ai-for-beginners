@@ -11,15 +11,25 @@ export interface GitCommit {
   files: string[];
 }
 
-export const gitHistoryGeneratedAt = "2026-05-28T19:24:55.324Z";
+export const gitHistoryGeneratedAt = "2026-05-28T19:34:52.258Z";
 
 export const gitHistory: GitCommit[] = [
   {
-    "hash": "2875c883bcdb8c8ea566daeefbd1a9f0497c1cfd",
-    "shortHash": "2875c88",
-    "date": "2026-05-28T21:24:54+02:00",
+    "hash": "b0a13c5ff3958554b1401ae47a54940ae5ec47f8",
+    "shortHash": "b0a13c5",
+    "date": "2026-05-28T21:34:36+02:00",
     "author": "Jan Starcke",
-    "subject": "feat(content): ECC Agent-Harness-Komplettpaket (#97)",
+    "subject": "feat(content): add Karpathy-CLAUDE.md skill (#98)",
+    "files": [
+      "client/src/data/skills.ts"
+    ]
+  },
+  {
+    "hash": "9576838657304f2a7e12fc68c8c929ddef5d9466",
+    "shortHash": "9576838",
+    "date": "2026-05-28T12:28:47-07:00",
+    "author": "janstarcke",
+    "subject": "feat(content): ECC Agent-Harness-Komplettpaket (#97) (#32)",
     "files": [
       "client/src/data/skills.ts"
     ]
