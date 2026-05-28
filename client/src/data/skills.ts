@@ -1143,6 +1143,19 @@ export const skills: Skill[] = [
     installCommand: "claude mcp add linear --transport sse https://mcp.linear.app/sse",
     installNote: "Linear-Workspace + OAuth erforderlich. Setup-Doku unter linear.app/docs/mcp.",
   },
+  {
+    id: 97,
+    name: "ECC — Agent-Harness-Komplettpaket",
+    category: "Plugin",
+    tier: 3,
+    tierLabel: "Produktivitäts-Booster",
+    sources: [],
+    description: "Eines der größten Open-Source-Pakete im Claude-Code-Ökosystem (MIT, ~197k GitHub-Stars): 61 Agents, 246 Skills, 76 Commands in einem Install. Statt einzeln zu coden orchestriert ein Agent-Team — Planner plant, Architect strukturiert, Coder baut, Security-Reviewer scant, Quality-Gate gibt frei (parallel über Git-Worktrees). Eingebaut: AgentShield Security-Scanner (102 Rules, OWASP-Top-10 vor dem Commit), Continuous-Learning (extrahiert Patterns deiner Sessions automatisch in neue Skills), Memory-Persistence, NanoClaw Model-Routing + Dashboard-GUI. Cross-Harness: läuft auch in Cursor, Codex, OpenCode, Gemini, Zed, Copilot.",
+    nextStep: "In einer Claude-Code-Session: /plugin marketplace add https://github.com/affaan-m/ECC, dann /plugin install ecc@ecc, Claude neu starten. Erster Workflow: /ecc:plan \"<dein Feature>\" → ausführen lassen → /security-scan. WICHTIG: nicht zusätzlich install.sh --profile full laufen lassen (erzeugt Doubletten).",
+    isNew: true,
+    installCommand: "/plugin marketplace add https://github.com/affaan-m/ECC\n/plugin install ecc@ecc",
+    installNote: "Beide Commands im Claude-Code-Chat absetzen (nicht im Terminal), danach Claude Code neu starten. Public-Repos kostenlos; ECC Pro ($19/Seat/Monat) nur für Private-Repo-Support nötig. Verifizieren mit /plugin list ecc@ecc. Bei Problemen: node scripts/ecc.js doctor.",
+  },
 ];
 
 export const claudeDesignSteps: ClaudeDesignStep[] = [
