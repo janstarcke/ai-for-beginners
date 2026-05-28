@@ -1156,6 +1156,17 @@ export const skills: Skill[] = [
     installCommand: "/plugin marketplace add https://github.com/affaan-m/ECC\n/plugin install ecc@ecc",
     installNote: "Beide Commands im Claude-Code-Chat absetzen (nicht im Terminal), danach Claude Code neu starten. Public-Repos kostenlos; ECC Pro ($19/Seat/Monat) nur für Private-Repo-Support nötig. Verifizieren mit /plugin list ecc@ecc. Bei Problemen: node scripts/ecc.js doctor.",
   },
+  {
+    id: 98,
+    name: "Karpathy-CLAUDE.md — 4 Regeln gegen LLM-Coding-Fehler",
+    category: "Best Practice",
+    tier: 1,
+    tierLabel: "Sofort umsetzen",
+    sources: [],
+    description: "Eine einzige ~70-Zeilen-CLAUDE.md mit vier Verhaltens-Regeln, abgeleitet aus Andrej Karpathys Beobachtungen zu den häufigsten LLM-Coding-Fehlern (Repo multica-ai/andrej-karpathy-skills, ~160k GitHub-Stars). Die vier Regeln: (1) Think Before Coding — Annahmen explizit machen, bei Unklarheit fragen statt still raten. (2) Simplicity First — Minimum-Code, keine spekulativen Abstraktionen oder ungefragte Configurability. (3) Surgical Changes — nur anfassen was der Task fordert, kein heimliches Refactoring, existierenden Style matchen. (4) Goal-Driven Execution — vage Aufträge in verifizierbare Ziele übersetzen ('Fix den Bug' → 'Test schreiben der reproduziert, dann grün kriegen'). Landet global unter ~/.claude/CLAUDE.md und wirkt ab dem nächsten Start in jedem Projekt. Der Bias ist deklariert: trades Speed gegen Caution — für triviale Tasks darf man die Regeln überstimmen. Die vom Repo beworbene Fehlerquoten-Senkung (41% → 3%) ist eine Eigenmessung des Herausgebers, kein unabhängig verifizierter Wert.",
+    nextStep: "Diesen Prompt in Claude Code einfügen: 'Hol den Inhalt von https://raw.githubusercontent.com/multica-ai/andrej-karpathy-skills/main/CLAUDE.md per curl/WebFetch und schreib ihn nach ~/.claude/CLAUDE.md. Falls die Datei schon existiert: zeig mir den Inhalt und frag, ob ersetzen oder unten anhängen (beim Anhängen einen ## Karpathy Rules Header davor). Danach cat ~/.claude/CLAUDE.md zur Bestätigung.' Anschließend Claude Code neu starten.",
+    isNew: true,
+  },
 ];
 
 export const claudeDesignSteps: ClaudeDesignStep[] = [
