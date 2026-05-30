@@ -11,15 +11,25 @@ export interface GitCommit {
   files: string[];
 }
 
-export const gitHistoryGeneratedAt = "2026-05-28T19:34:52.258Z";
+export const gitHistoryGeneratedAt = "2026-05-30T21:01:46.617Z";
 
 export const gitHistory: GitCommit[] = [
   {
-    "hash": "b0a13c5ff3958554b1401ae47a54940ae5ec47f8",
-    "shortHash": "b0a13c5",
-    "date": "2026-05-28T21:34:36+02:00",
+    "hash": "294fb7e3b6e9a01f8c1150655a19e7844b05ea35",
+    "shortHash": "294fb7e",
+    "date": "2026-05-30T23:00:50+02:00",
     "author": "Jan Starcke",
-    "subject": "feat(content): add Karpathy-CLAUDE.md skill (#98)",
+    "subject": "feat(content): Opus 4.8 setup-guide — 3 new + 1 extend (#99, #100, #101)",
+    "files": [
+      "client/src/data/skills.ts"
+    ]
+  },
+  {
+    "hash": "481111e6ba2fed8693210d4265dd0e2e16deb8e7",
+    "shortHash": "481111e",
+    "date": "2026-05-28T12:35:48-07:00",
+    "author": "janstarcke",
+    "subject": "feat(content): Karpathy-CLAUDE.md skill (#98) (#33)",
     "files": [
       "client/src/data/skills.ts"
     ]
