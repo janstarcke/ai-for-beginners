@@ -717,8 +717,8 @@ export const skills: Skill[] = [
     tier: 1,
     tierLabel: "Sofort umsetzen",
     sources: [],
-    description: "Reasoning-Aufwand pro Task explizit setzen statt Default brennen lassen. Fünf Stufen: low (Datei umbenennen, simple Greps, Build-Command), medium (Funktion schreiben, kleines Refactor), high (Default — die meisten Aufgaben, Multi-File-Refactors), xhigh (in claude.ai 'extra' — schwierige, lang laufende Async-Workflows), max (härtestes Debugging, Security-Review, Edge-Cases). Wichtig: low/medium/high/xhigh bleiben über Session-Ende hinaus gesetzt — max resettet beim Neustart auf Default, schützt vor versehentlicher Token-Verbrennung.",
-    nextStep: "Vor dem nächsten simplen Task /effort low tippen. Für harte Logik /effort xhigh oder /effort max — max läuft eh nur die laufende Session, also kein Aufräumen nötig.",
+    description: "Reasoning-Aufwand pro Task explizit setzen statt Default brennen lassen. Sechs Stufen: low (Datei umbenennen, simple Greps, Build-Command), medium (Funktion schreiben, kleines Refactor), high (Default — die meisten Aufgaben, Multi-File-Refactors), xhigh (in claude.ai 'extra' — schwierige, lang laufende Async-Workflows), max (härtestes Debugging, Security-Review, Edge-Cases), ultracode (xhigh + Claude entscheidet selbst, wann eine Aufgabe groß genug für einen Dynamic Workflow ist — siehe Skill #102). Wichtig: low/medium/high/xhigh/ultracode bleiben über Session-Ende hinaus gesetzt — max resettet beim Neustart auf Default, schützt vor versehentlicher Token-Verbrennung.",
+    nextStep: "Vor dem nächsten simplen Task /effort low tippen. Für harte Logik /effort xhigh oder /effort max. ultracode nur einschalten, wenn du Dynamic Workflows nutzen willst (Max/Team-Plan, Token-intensiv).",
     isNew: true,
   },
   {
@@ -1200,6 +1200,17 @@ export const skills: Skill[] = [
     sources: [],
     description: "Ein einziger Copy-Paste-Prompt lässt Claude dein gesamtes Setup auditieren — Projekt- und globale CLAUDE.md, .claude/settings.json, .mcp.json, .claude/skills/, .claude/commands/, .gitignore. Sucht systematisch nach Schwachstellen: CLAUDE.md über 60 Zeilen (Regeln werden ignoriert), Verbote ohne Alternative, @datei-Embeds die jede Session Kontext fressen, fehlende Commands-Sektion (Build/Test/Typecheck/Lint), veraltete oder widersprüchliche Regeln, fehlende Permission-Allowlist, ungenutzte MCP-Server, Secrets im Klartext. Output ist priorisiert (Kritisch/Empfohlen/Optional) mit fertigem Fix-Vorschlag pro Punkt. Read-only bis du freigibst, mit Diff vor jeder Änderung.",
     nextStep: "Diesen Prompt in Claude Code einfügen: 'Du bist mein Setup-Auditor. Lies CLAUDE.md (Projekt + ~/.claude/), .claude/settings.json, .mcp.json, .claude/skills/, .claude/commands/, .gitignore. Prüfe auf: CLAUDE.md >60 Zeilen, Verbote ohne Alternative, @datei-Embeds die Kontext fressen, fehlende Commands-Sektion, veraltete Regeln, fehlende Permission-Allowlist, ungenutzte MCP-Server, Secrets im Klartext. Report priorisiert (Kritisch/Empfohlen/Optional), pro Punkt: Problem in MEINEN Dateien + warum es Tokens/Fehler kostet + Fix-Vorschlag. Ändere NICHTS bevor ich freigegeben habe, zeig vor jeder Änderung das Diff.'",
+    isNew: true,
+  },
+  {
+    id: 102,
+    name: "Dynamic Workflows — hunderte Agents parallel, adversarisch geprüft",
+    category: "Workflow",
+    tier: 3,
+    tierLabel: "Produktivitäts-Booster",
+    sources: [],
+    description: "Anthropic-natives Multi-Agent-Orchestration für Aufgaben, die einem einzelnen Agent zu groß sind. Claude fächert die Arbeit auf hunderte parallele Agents auf, andere Agents widerlegen die Ergebnisse adversarisch (nur was die Mehrheit bestätigt, zählt) und iteriert bis zur Konvergenz. Anders als #88 (Agent Teams, manuell aktiviert) läuft die Koordination außerhalb des Chats — Plan bleibt stabil, Resume nach Unterbrechung. Ideal für Migrationen (Framework-Swaps, Sprach-Ports), Bug-Hunts über ganze Services, Security-/Performance-/Dead-Code-Audits, Plan-Stress-Tests. Verfügbar auf Max & Team (default an), Enterprise (Admin schaltet frei). Token-Hunger deutlich höher als normale Session — mit kleiner Aufgabe anfangen.",
+    nextStep: "claude update, dann Auto Mode an (Shift+Tab bis 'auto' oder claude --enable-auto-mode). Erster Test mit Copy-Paste-Prompt: 'Erstelle einen Workflow, der mein komplettes Repo auf Bugs und Sicherheitslücken prüft. Fächere die Suche über parallele Agents auf, jeder nimmt sich einen Teil der Codebase. Lass jeden Fund von unabhängigen Agents adversarisch gegenprüfen (nur was die Mehrheit bestätigt, zählt als echt). Iteriere bis keine neuen echten Funde mehr kommen. Output: priorisierte Liste der bestätigten Funde mit Datei, Zeile, Fix-Vorschlag. Ändere keinen Code, bevor ich freigegeben habe.' Oder /effort ultracode setzen — dann entscheidet Claude selbst, wann ein Workflow getriggert wird.",
     isNew: true,
   },
 ];

@@ -11,26 +11,37 @@ export interface GitCommit {
   files: string[];
 }
 
-export const gitHistoryGeneratedAt = "2026-05-31T19:13:03.955Z";
+export const gitHistoryGeneratedAt = "2026-05-31T19:18:17.355Z";
 
 export const gitHistory: GitCommit[] = [
   {
-    "hash": "8315926bcf68c79223415deddf77529e6892152e",
-    "shortHash": "8315926",
-    "date": "2026-05-30T23:01:56+02:00",
+    "hash": "00b9d18b30caed78f3de1a42d070271c40f32bcb",
+    "shortHash": "00b9d18",
+    "date": "2026-05-31T21:18:09+02:00",
     "author": "Jan Starcke",
-    "subject": "chore(history): catalog 294fb7e for /secret-import-history",
+    "subject": "chore(history): catalog f318930 for /secret-import-history",
     "files": [
       "client/src/data/importHistory.ts"
     ]
   },
   {
-    "hash": "294fb7e3b6e9a01f8c1150655a19e7844b05ea35",
-    "shortHash": "294fb7e",
-    "date": "2026-05-30T23:00:50+02:00",
+    "hash": "f318930a246a99dea982536875c0dd967205bbb1",
+    "shortHash": "f318930",
+    "date": "2026-05-31T21:17:13+02:00",
     "author": "Jan Starcke",
-    "subject": "feat(content): Opus 4.8 setup-guide — 3 new + 1 extend (#99, #100, #101)",
+    "subject": "feat(content): Dynamic Workflows — 1 new + 1 extend (#102)",
     "files": [
+      "client/src/data/skills.ts"
+    ]
+  },
+  {
+    "hash": "fb20f9f1ac5b4b155ddf8277f878e48014cb48f4",
+    "shortHash": "fb20f9f",
+    "date": "2026-05-31T12:14:10-07:00",
+    "author": "janstarcke",
+    "subject": "feat(content): Opus 4.8 setup-guide — 3 new + 1 extend (#99–#101) (#34)",
+    "files": [
+      "client/src/data/importHistory.ts",
       "client/src/data/skills.ts"
     ]
   },
