@@ -436,4 +436,21 @@ export const importHistory: ImportEntry[] = [
     notes:
       "Erster Run mit Cookie-Auth-Fix (--cookies-from-browser chrome) nach Bot-Block. 4 Tier-1-Skills aus 19-Min-Beginner-Tutorial: /effort, 5-Punkt-Spec, /init+globale CLAUDE.md, Screenshot-Paste. Kategorie-Balance gut gestreut (alle <15%). Kein TL;DR-Eintrag (Default-konservativ, /effort konzeptionell überlappend mit #50 ultrathink + #43 Cost-Stack).",
   },
+  {
+    commit: "294fb7e",
+    title: "Opus 4.8 Setup-Guide — Aktivierung + /fast + Setup-Auditor",
+    type: "new",
+    categories: ["Setup", "Kosten-Hack", "Workflow"],
+    newSkillIds: [99, 100, 101],
+    extendedSkillIds: [60],
+    sources: [
+      {
+        kind: "web",
+        channel: "SKAILE / Sebastian Kauffmann",
+        url: "https://opus.skaile.de",
+      },
+    ],
+    notes:
+      "Release-Day-Import (Opus 4.8 ging am 28.05.2026 live, Page 2 Tage später gefetcht). Direct-Mode (3+1 klar, alle Tier 1-2). #99 ist die kanonische Aktivierungsanleitung (alle 3 Wege + Alias-Best-Practice + claude-update-Min-Version), #100 /fast als eigener Kosten-Hack-Skill (2.5× Speed, 3× günstiger), #101 Setup-Auditor-Prompt scannt CLAUDE.md+.mcp.json+.claude/* gegen 9 typische Schwachstellen. EXTEND #60 /effort: xhigh-Stufe + max-resets-Verhalten ergänzt. SKIP: /ultrareview (#14), /loop (#51), Auto Mode (#18 — '4.8 bleibt länger autonom'-Aussage zu marginal für Edit). Kein TL;DR-Eintrag (Default-konservativ, Array bei 13/15, kein Kandidat klar über schwächstem bestehenden).",
+  },
 ];
