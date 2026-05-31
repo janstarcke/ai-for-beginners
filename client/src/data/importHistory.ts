@@ -453,4 +453,21 @@ export const importHistory: ImportEntry[] = [
     notes:
       "Release-Day-Import (Opus 4.8 ging am 28.05.2026 live, Page 2 Tage später gefetcht). Direct-Mode (3+1 klar, alle Tier 1-2). #99 ist die kanonische Aktivierungsanleitung (alle 3 Wege + Alias-Best-Practice + claude-update-Min-Version), #100 /fast als eigener Kosten-Hack-Skill (2.5× Speed, 3× günstiger), #101 Setup-Auditor-Prompt scannt CLAUDE.md+.mcp.json+.claude/* gegen 9 typische Schwachstellen. EXTEND #60 /effort: xhigh-Stufe + max-resets-Verhalten ergänzt. SKIP: /ultrareview (#14), /loop (#51), Auto Mode (#18 — '4.8 bleibt länger autonom'-Aussage zu marginal für Edit). Kein TL;DR-Eintrag (Default-konservativ, Array bei 13/15, kein Kandidat klar über schwächstem bestehenden).",
   },
+  {
+    commit: "f318930",
+    title: "Dynamic Workflows — adversarial Multi-Agent (#102)",
+    type: "new",
+    categories: ["Workflow", "Kosten-Hack"],
+    newSkillIds: [102],
+    extendedSkillIds: [60],
+    sources: [
+      {
+        kind: "web",
+        channel: "SKAILE / Sebastian Kauffmann",
+        url: "https://workflow.skaile.de",
+      },
+    ],
+    notes:
+      "Release-Day-Folge-Import zur Opus-4.8-Welle (Dynamic Workflows ging am 28.05.2026 live). Direct-Mode (1+1 klar). #102 (Workflow, T3) ist Anthropics native Multi-Agent-Orchestration mit adversarialer Cross-Verification — bewusst KEIN Duplikat von #88 Agent Teams (manuell aktiviert, Chat-internal) oder #14 /ultrareview (Multi-Stage-Review, kein dynamisches Auto-Spawning). #88-Abgrenzung explizit in der description vermerkt. EXTEND #60: sechste /effort-Stufe ultracode (=xhigh + Auto-Workflow-Decision) ergänzt, Cross-Reference auf #102. Copy-Paste-Audit-Prompt der Quelle bewusst in #102.nextStep gefaltet statt eigener Skill — wäre dünn als eigener Eintrag und gehört untrennbar zum Workflow-Konzept. Kein TL;DR (Token-Hunger-Warning macht das eher Tier-3-Tool, nicht TL;DR-würdig).",
+  },
 ];
