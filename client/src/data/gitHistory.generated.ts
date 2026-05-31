@@ -11,26 +11,27 @@ export interface GitCommit {
   files: string[];
 }
 
-export const gitHistoryGeneratedAt = "2026-05-31T19:18:17.355Z";
+export const gitHistoryGeneratedAt = "2026-05-31T19:23:39.825Z";
 
 export const gitHistory: GitCommit[] = [
   {
-    "hash": "00b9d18b30caed78f3de1a42d070271c40f32bcb",
-    "shortHash": "00b9d18",
-    "date": "2026-05-31T21:18:09+02:00",
+    "hash": "d47bef49b8457b6675c2f307528a5344b2f2a924",
+    "shortHash": "d47bef4",
+    "date": "2026-05-31T21:23:12+02:00",
     "author": "Jan Starcke",
-    "subject": "chore(history): catalog f318930 for /secret-import-history",
+    "subject": "feat(content): ultracode cost warning + CLAUDE.md schutz-block (EXTEND #102)",
     "files": [
-      "client/src/data/importHistory.ts"
+      "client/src/data/skills.ts"
     ]
   },
   {
-    "hash": "f318930a246a99dea982536875c0dd967205bbb1",
-    "shortHash": "f318930",
-    "date": "2026-05-31T21:17:13+02:00",
-    "author": "Jan Starcke",
-    "subject": "feat(content): Dynamic Workflows — 1 new + 1 extend (#102)",
+    "hash": "688a524f63bd4e8c09acedf2ce1b14ece9caebe0",
+    "shortHash": "688a524",
+    "date": "2026-05-31T12:20:07-07:00",
+    "author": "janstarcke",
+    "subject": "feat(content): Dynamic Workflows — 1 new + 1 extend (#102) (#35)",
     "files": [
+      "client/src/data/importHistory.ts",
       "client/src/data/skills.ts"
     ]
   },

@@ -470,4 +470,20 @@ export const importHistory: ImportEntry[] = [
     notes:
       "Release-Day-Folge-Import zur Opus-4.8-Welle (Dynamic Workflows ging am 28.05.2026 live). Direct-Mode (1+1 klar). #102 (Workflow, T3) ist Anthropics native Multi-Agent-Orchestration mit adversarialer Cross-Verification — bewusst KEIN Duplikat von #88 Agent Teams (manuell aktiviert, Chat-internal) oder #14 /ultrareview (Multi-Stage-Review, kein dynamisches Auto-Spawning). #88-Abgrenzung explizit in der description vermerkt. EXTEND #60: sechste /effort-Stufe ultracode (=xhigh + Auto-Workflow-Decision) ergänzt, Cross-Reference auf #102. Copy-Paste-Audit-Prompt der Quelle bewusst in #102.nextStep gefaltet statt eigener Skill — wäre dünn als eigener Eintrag und gehört untrennbar zum Workflow-Konzept. Kein TL;DR (Token-Hunger-Warning macht das eher Tier-3-Tool, nicht TL;DR-würdig).",
   },
+  {
+    commit: "d47bef4",
+    title: "ultracode cost-warning + CLAUDE.md-Schutzblock (EXTEND #102)",
+    type: "extend",
+    categories: ["Workflow"],
+    extendedSkillIds: [102],
+    sources: [
+      {
+        kind: "web",
+        channel: "SKAILE / Sebastian Kauffmann",
+        url: "https://ultra.skaile.de",
+      },
+    ],
+    notes:
+      "Reality-Check 2 Tage nach Dynamic-Workflows-Launch. Quelle liefert echtes Kosten-Risiko (1,7 Mio Tokens in Minuten durch degenerate Loop, kein Spending-Cap, keine Erstattung von Anthropic) + konkreten 4-Punkte-CLAUDE.md-Schutzblock. Bewusst KEIN neuer Skill — wäre dünn neben #102 und gehört inhaltlich untrennbar zur Dynamic-Workflows-Story. EXTEND-Strategie: warning-Feld neu hinzugefügt (dokumentierter Fall + Preis-Kontext), nextStep komplett umgeschrieben mit CLAUDE.md-Block ZUERST und Setup danach (Reihenfolge signalisiert Wichtigkeit). description leicht entrümpelt um Platz für die wichtigere ultracode-Erwähnung. Anti-Pattern vermieden: nicht jeder Schutz-Tipp eigener Skill.",
+  },
 ];
