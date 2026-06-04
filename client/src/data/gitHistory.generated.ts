@@ -11,26 +11,27 @@ export interface GitCommit {
   files: string[];
 }
 
-export const gitHistoryGeneratedAt = "2026-05-31T19:30:08.684Z";
+export const gitHistoryGeneratedAt = "2026-06-04T16:55:13.535Z";
 
 export const gitHistory: GitCommit[] = [
   {
-    "hash": "30eb0f9a624d0685cdf9efb940c0f4916b24ec66",
-    "shortHash": "30eb0f9",
-    "date": "2026-05-31T21:23:41+02:00",
+    "hash": "c54f668f395aded28c61abfac28fed87218c0858",
+    "shortHash": "c54f668",
+    "date": "2026-06-04T18:55:11+02:00",
     "author": "Jan Starcke",
-    "subject": "chore(history): catalog d47bef4 for /secret-import-history",
+    "subject": "feat(content): Security-Checkliste + NotebookLM + 2 EXTENDS (#103, #104, #20, #84)",
     "files": [
-      "client/src/data/importHistory.ts"
+      "client/src/data/skills.ts"
     ]
   },
   {
-    "hash": "d47bef49b8457b6675c2f307528a5344b2f2a924",
-    "shortHash": "d47bef4",
-    "date": "2026-05-31T21:23:12+02:00",
-    "author": "Jan Starcke",
-    "subject": "feat(content): ultracode cost warning + CLAUDE.md schutz-block (EXTEND #102)",
+    "hash": "3db7304ca6fd9a7f83d5e4f2f63c64ae92531701",
+    "shortHash": "3db7304",
+    "date": "2026-05-31T12:31:29-07:00",
+    "author": "janstarcke",
+    "subject": "feat(content): ultracode cost warning + CLAUDE.md schutz-block (EXTEND #102) (#36)",
     "files": [
+      "client/src/data/importHistory.ts",
       "client/src/data/skills.ts"
     ]
   },
