@@ -261,8 +261,8 @@ export const skills: Skill[] = [
     tier: 2,
     tierLabel: "Erste Woche",
     sources: [],
-    description: "Claude Code und Obsidian arbeiten auf demselben Vault-Ordner als zweites Gehirn: Du legst raw/ (Quellmaterial, read-only) und wiki/ (Claude pflegt) an, dazu eine CLAUDE.md mit Wiki-Regeln (Ingest-Workflow, [[wiki-links]], index.md + log.md). Karpathy hat damit 100+ Artikel und 400.000 Wörter ohne RAG/Datenbank organisiert. Web Clipper saugt Artikel mit einem Klick in raw/.",
-    nextStep: "brew install --cask obsidian, Vault anlegen, raw/ + wiki/ Unterordner + CLAUDE.md mit Wiki-Regeln. Claude Code im Vault-Root starten: 'Lies alles in raw/, baue Wiki-Seiten in wiki/, aktualisiere index.md'. Optional: Obsidian Web Clipper für Auto-Ingest.",
+    description: "Claude Code und Obsidian teilen einen Vault als zweites Gehirn: raw/ (Quellen, read-only), wiki/ (Claude pflegt, [[links]]), index.md (Katalog, wird zuerst gelesen) + log.md (append-only). Eine CLAUDE.md im Vault steuert drei Operationen — Ingest (Quelle → Wiki-Seiten), Query (index → passende Seite → Antwort), Lint (Widersprüche + tote Links). Lieber viele kleine atomare Seiten als wenige große. Karpathy organisierte so 100+ Artikel ohne RAG.",
+    nextStep: "brew install --cask obsidian, Vault anlegen, raw/ + wiki/ + CLAUDE.md mit Wiki-Regeln. Entweder Claude Code im Vault-Root starten oder via obsidian-mcp anbinden (npm i -g obsidian-mcp, in ~/.claude.json eintragen) und mit 'claude --add-dir /pfad/zum/vault' die index.md jede Session automatisch laden. Achtung: einen MCP mit Wort-für-Wort-Suche (AND-Logik) wählen — Server, die nur exakte Phrasen matchen, schicken Claude in Endlosschleifen.",
   },
   {
     id: 21,
