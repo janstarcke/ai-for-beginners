@@ -11,26 +11,17 @@ export interface GitCommit {
   files: string[];
 }
 
-export const gitHistoryGeneratedAt = "2026-06-10T19:29:02.326Z";
+export const gitHistoryGeneratedAt = "2026-06-10T19:32:00.052Z";
 
 export const gitHistory: GitCommit[] = [
   {
-    "hash": "300cd404d3e3f1a9001b6e03938963fa6219656c",
-    "shortHash": "300cd40",
-    "date": "2026-06-10T21:28:58+02:00",
-    "author": "Jan Starcke",
-    "subject": "chore(history): catalog 9fb22a0 for /secret-import-history",
+    "hash": "782a797e2b5bc01f63057fe2a962ceedca0dd9f0",
+    "shortHash": "782a797",
+    "date": "2026-06-10T21:30:09+02:00",
+    "author": "janstarcke",
+    "subject": "feat(content): Obsidian Second Brain — EXTEND #20 (MCP-Weg, Query/Lint, Such-Falle) (#40)",
     "files": [
-      "client/src/data/importHistory.ts"
-    ]
-  },
-  {
-    "hash": "9fb22a0181dc03c1050b6e7c514f5082f38c72ea",
-    "shortHash": "9fb22a0",
-    "date": "2026-06-10T21:26:56+02:00",
-    "author": "Jan Starcke",
-    "subject": "feat(content): Obsidian Second Brain — EXTEND #20 (MCP-Anbindung, Query/Lint, Such-Falle)",
-    "files": [
+      "client/src/data/importHistory.ts",
       "client/src/data/skills.ts"
     ]
   },

@@ -487,6 +487,23 @@ export const importHistory: ImportEntry[] = [
       "Reality-Check 2 Tage nach Dynamic-Workflows-Launch. Quelle liefert echtes Kosten-Risiko (1,7 Mio Tokens in Minuten durch degenerate Loop, kein Spending-Cap, keine Erstattung von Anthropic) + konkreten 4-Punkte-CLAUDE.md-Schutzblock. Bewusst KEIN neuer Skill — wäre dünn neben #102 und gehört inhaltlich untrennbar zur Dynamic-Workflows-Story. EXTEND-Strategie: warning-Feld neu hinzugefügt (dokumentierter Fall + Preis-Kontext), nextStep komplett umgeschrieben mit CLAUDE.md-Block ZUERST und Setup danach (Reihenfolge signalisiert Wichtigkeit). description leicht entrümpelt um Platz für die wichtigere ultracode-Erwähnung. Anti-Pattern vermieden: nicht jeder Schutz-Tipp eigener Skill.",
   },
   {
+    commit: "c029521",
+    title: "Security-Checkliste + NotebookLM-MCP + 2 EXTENDS",
+    type: "new",
+    categories: ["Setup", "MCP"],
+    newSkillIds: [103, 104],
+    extendedSkillIds: [20, 84],
+    sources: [
+      {
+        kind: "web",
+        channel: "SKAILE / Sebastian Kauffmann",
+        url: "https://guides.skaile.de",
+      },
+    ],
+    notes:
+      "Nachträglich katalogisiert (Eintrag fehlte im Original-Run, am 2026-06-10 retrofittet). Tiefen-Check über den guides.skaile.de-Index auf 5 Subpages: fix.skaile.de → EXTEND #84 (Konzept war drin, konkreter 'Ehrliches Feedback'-CLAUDE.md-Block gegen Sycophancy fehlte); security.skaile.de → NEW #103 Pre-Launch-Security-Checkliste, 5 Kategorien (Secrets/Auth/Input/Konfig/Deps, Setup T1, deutlich breiter als #82); stack.skaile.de → SKIP (alle 5 MCPs schon einzeln in DB); obsidian.skaile.de → EXTEND #20 (1-Satz-Stub auf raw/+wiki/-Setup + CLAUDE.md-Regeln + Karpathy); notebook.skaile.de → NEW #104 NotebookLM via inoffiziellem MCP (MCP T3, mit warning). Tier-Verteilung der NEWs: 1×T1, 1×T3.",
+  },
+  {
     commit: "9fb22a0",
     title: "Obsidian Second Brain — MCP-Weg + Such-Falle (EXTEND #20)",
     type: "extend",
@@ -500,6 +517,6 @@ export const importHistory: ImportEntry[] = [
       },
     ],
     notes:
-      "Zweiter EXTEND auf #20 (zuvor c029521: Stub → raw/+wiki/-Setup). Kern war bereits drin → kein Gate-A-Skip, weil drei echte neue Bausteine: (1) obsidian-mcp als Verbindungsweg neben Direkt-Ordner + 'claude --add-dir'-Pro-Tip für Auto-index.md jede Session, (2) Operationen vervollständigt Ingest → Ingest/Query/Lint, (3) Such-Falle als wertvollster Tipp: MCP-Server, die nur exakte Phrasen pro Zeile matchen, schicken Claude in Endlosschleifen → AND-Logik-Suche wählen (8h-Lehrgeld der Quelle). Klar EXTEND statt NEW: alles Facetten DESSELBEN Features (Konsolidierungs-Regel), kein Gate B. Trade in der 450-Zeichen-description: 'Web Clipper' rausgekürzt zugunsten der höherwertigen Such-Falle + Query/Lint; Web-Clipper bleibt als Standard-Obsidian-Feature ohnehin auffindbar. Kein TL;DR (EXTEND, Array bei 13/15, kein neuer Kandidat). Hinweis: der c029521-Import (#103/#104 + #20-Stub-Ausbau) hat keinen eigenen Catalog-Eintrag — Altlast, hier bewusst nicht retrofittet.",
+      "Zweiter EXTEND auf #20 (zuvor c029521: Stub → raw/+wiki/-Setup). Kern war bereits drin → kein Gate-A-Skip, weil drei echte neue Bausteine: (1) obsidian-mcp als Verbindungsweg neben Direkt-Ordner + 'claude --add-dir'-Pro-Tip für Auto-index.md jede Session, (2) Operationen vervollständigt Ingest → Ingest/Query/Lint, (3) Such-Falle als wertvollster Tipp: MCP-Server, die nur exakte Phrasen pro Zeile matchen, schicken Claude in Endlosschleifen → AND-Logik-Suche wählen (8h-Lehrgeld der Quelle). Klar EXTEND statt NEW: alles Facetten DESSELBEN Features (Konsolidierungs-Regel), kein Gate B. Trade in der 450-Zeichen-description: 'Web Clipper' rausgekürzt zugunsten der höherwertigen Such-Falle + Query/Lint; Web-Clipper bleibt als Standard-Obsidian-Feature ohnehin auffindbar. Kein TL;DR (EXTEND, Array bei 13/15, kein neuer Kandidat). Hinweis: der c029521-Import (#103/#104 + #20-Stub-Ausbau) hatte keinen eigenen Catalog-Eintrag — Altlast, separat nachgetragen (siehe c029521-Eintrag oberhalb).",
   },
 ];
