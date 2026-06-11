@@ -484,11 +484,11 @@ export const skills: Skill[] = [
     tier: 2,
     tierLabel: "Erste Woche",
     sources: [],
-    description: "Offizieller MCP-Server für 30+ Bild- und Video-Modelle (Soul, Flux, Veo 3.1, Kling 3.0, Sora 2). Ein Login, kein API-Key. Killer: Komplette Marketing-Kampagnen aus einem Prompt-Flow mit konsistenter Soul-Character.",
+    description: "Offizieller, hosted MCP-Server (mcp.higgsfield.ai) für 30+ Bild- und Video-Modelle (Soul, Flux, Veo 3.1, Kling 3.0, Sora 2) — ein OAuth-Login, kein API-Key. Fünf Tools: generate_image, generate_video, create_character (Soul-Identity auf 8-12 Fotos), get_generation_status, list_characters. Claude routet selbst aufs passende Model. Killer: komplette Kampagnen (Hero + Karussell + UGC-Video) aus einem Prompt-Flow mit konsistenter Soul-Character.",
     nextStep: "claude mcp add --transport http --scope user higgsfield https://mcp.higgsfield.ai/mcp",
     isNew: true,
     installCommand: "claude mcp add --transport http --scope user higgsfield https://mcp.higgsfield.ai/mcp",
-    installNote: "Registriert den MCP-Server user-weit. Beim ersten Aufruf öffnet Higgsfield einen Login-Flow im Browser — kein API-Key nötig.",
+    installNote: "Registriert den MCP-Server user-weit; beim ersten Aufruf öffnet ein Browser-OAuth-Login (kein API-Key), danach claude mcp list → 'connected'. Alternative für claude.ai/Desktop: Settings → Connectors → Add custom connector, URL https://mcp.higgsfield.ai. Free-Tier: 150 Credits/Monat zum Durchspielen des ganzen Flows.",
   },
   {
     id: 41,
