@@ -11,26 +11,27 @@ export interface GitCommit {
   files: string[];
 }
 
-export const gitHistoryGeneratedAt = "2026-06-11T07:13:21.052Z";
+export const gitHistoryGeneratedAt = "2026-06-11T07:19:55.180Z";
 
 export const gitHistory: GitCommit[] = [
   {
-    "hash": "b46d749da9f2db0dbe4b6129422f2ded46ecf9da",
-    "shortHash": "b46d749",
-    "date": "2026-06-11T09:13:14+02:00",
+    "hash": "7c4661c567b59424d0632eb24f48e9d37b44a6f8",
+    "shortHash": "7c4661c",
+    "date": "2026-06-11T09:19:28+02:00",
     "author": "Jan Starcke",
-    "subject": "feat(catalog): add import history entry for Graphify skill #106",
+    "subject": "feat(skills): add grill-me skill #107 — structured pre-coding interview",
     "files": [
-      "client/src/data/importHistory.ts"
+      "client/src/data/skills.ts"
     ]
   },
   {
-    "hash": "f8c228f93409a0e2fa01f95d00460be2042cd96b",
-    "shortHash": "f8c228f",
-    "date": "2026-06-11T09:12:29+02:00",
-    "author": "Jan Starcke",
-    "subject": "feat(skills): add Graphify skill #106 — 70x token reduction via code knowledge graph",
+    "hash": "7b87f03b21f4e225ca49197d2bdfd0db154f69e7",
+    "shortHash": "7b87f03",
+    "date": "2026-06-11T09:13:49+02:00",
+    "author": "janstarcke",
+    "subject": "feat(skills): Graphify skill #106 — 70x token reduction via knowledge graph (#43)",
     "files": [
+      "client/src/data/importHistory.ts",
       "client/src/data/skills.ts"
     ]
   },

@@ -551,4 +551,20 @@ export const importHistory: ImportEntry[] = [
     notes:
       "Direct-Mode (1 NEW, klar, kein Duplikat). #106 Graphify: Kosten-Hack T2 — scannt Projekt einmal via tree-sitter, baut graph.json (Knowledge Graph), Claude fragt Karte statt ~40 Files zu lesen: ~280 Tokens statt ~20.000, bis zu 70x Ersparnis. Standard-Modus = 0 Tokens, MIT, lokal, 20+ Sprachen, von safishamsi. SHA256-Cache für inkrementelle Updates (/graphify --update). CLAUDE.md-Regel nötig damit Claude die Karte auch tatsächlich zuerst nutzt. Klar NEW: kein Treffer auf graphify/knowledge graph/graph.json in der gesamten DB. installCommand+installNote-Felder gesetzt. TL;DR-Rotation: Anthropic Academy (4/10) → Graphify (8/10) — Graphify hat kopierbaren Command + universelle Relevanz + messbaren Nutzen (70x Tokens).",
   },
+  {
+    commit: "7c4661c",
+    title: "grill-me: Interview vor dem Coden (#107)",
+    type: "new",
+    categories: ["Skill"],
+    newSkillIds: [107],
+    sources: [
+      {
+        kind: "web",
+        channel: "SKAILE / Sebastian Kauffmann",
+        url: "https://grill.skaile.de",
+      },
+    ],
+    notes:
+      "Direct-Mode (1 NEW, klar). #107 grill-me (Skill, T2): Matt Pococks 'Skills for Real Engineers' — /grill-me startet interaktives Pre-Coding-Interview. Claude fragt eine Frage pro Runde, einen Ast des Entscheidungsbaums nach dem nächsten, bis alle impliziten Annahmen und Sonderfälle explizit auf dem Tisch liegen. Erst dann Plan-Zusammenfassung, erst dann Code. Klar NEW: #61 (5-Punkt-Spec) ist user-driven Checkliste; #97 (Plan Mode) ist Claudes interner Planungs-Modus — grill-me ist Claude-geführtes Socratic Interview, anderer Mechanismus. Install: npx skills@latest add mattpocock/skills. TL;DR-Rotation: Claude Design für Prototyping (5/10, nisch) → grill-me (8/10, universell + kopierbarer Command + verhindert häufigsten Fehler).",
+  },
 ];
