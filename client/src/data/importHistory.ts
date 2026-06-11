@@ -519,4 +519,20 @@ export const importHistory: ImportEntry[] = [
     notes:
       "Zweiter EXTEND auf #20 (zuvor c029521: Stub → raw/+wiki/-Setup). Kern war bereits drin → kein Gate-A-Skip, weil drei echte neue Bausteine: (1) obsidian-mcp als Verbindungsweg neben Direkt-Ordner + 'claude --add-dir'-Pro-Tip für Auto-index.md jede Session, (2) Operationen vervollständigt Ingest → Ingest/Query/Lint, (3) Such-Falle als wertvollster Tipp: MCP-Server, die nur exakte Phrasen pro Zeile matchen, schicken Claude in Endlosschleifen → AND-Logik-Suche wählen (8h-Lehrgeld der Quelle). Klar EXTEND statt NEW: alles Facetten DESSELBEN Features (Konsolidierungs-Regel), kein Gate B. Trade in der 450-Zeichen-description: 'Web Clipper' rausgekürzt zugunsten der höherwertigen Such-Falle + Query/Lint; Web-Clipper bleibt als Standard-Obsidian-Feature ohnehin auffindbar. Kein TL;DR (EXTEND, Array bei 13/15, kein neuer Kandidat). Hinweis: der c029521-Import (#103/#104 + #20-Stub-Ausbau) hatte keinen eigenen Catalog-Eintrag — Altlast, separat nachgetragen (siehe c029521-Eintrag oberhalb).",
   },
+  {
+    commit: "0f53751",
+    title: "Security-Guidance-Plugin Auto-Review (#105)",
+    type: "new",
+    categories: ["Plugin"],
+    newSkillIds: [105],
+    sources: [
+      {
+        kind: "web",
+        channel: "SKAILE / Sebastian Kauffmann",
+        url: "https://sicher.skaile.de",
+      },
+    ],
+    notes:
+      "Direct-Mode (1 NEW, klar). #105 Security-Guidance-Plugin (Plugin, T2): Anthropics offizielles security-guidance-Plugin, das Claudes eigenen Code via Hooks dreistufig auf Lücken prüft (Edit-Pattern-Check gratis / Turn-Ende-Diff-Review / Commit-Push-Deep-Review mit Caller+Sanitizer) und in derselben Session fixt — prüfendes Claude = separater Call mit frischem Kontext. Klar NEW: kein Duplikat von #22 (Trail-of-Bits-Audit), #82 (GitHub-Sicherheitsnetz), #101 (Setup-Auditor) oder #103 (manuelle Pre-Launch-Checkliste) — das hier ist auto-Hook-In-Session-Review. installCommand+installNote-Felder gesetzt (Plugin-Schema). 1 TL;DR-Item ergänzt (Array 14→15, freie Position, Score ~10/10: universell + ein Command + fängt echte Lücken vor PR). GOTCHA im Run: der lokale security_reminder_hook blockte den Edit zweimal, weil die description die Vuln-Pattern-Funktionsnamen literal enthielt (Code-Eval- + Shell-Call-Tokens) → auf Klassen-Ebene umformuliert (Code-Injection / DOM-/SQL-/Command-Injection / unsafe Deserialize), Bedeutung erhalten, Hook zufrieden.",
+  },
 ];
