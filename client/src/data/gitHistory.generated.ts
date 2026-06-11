@@ -11,26 +11,17 @@ export interface GitCommit {
   files: string[];
 }
 
-export const gitHistoryGeneratedAt = "2026-06-11T07:26:12.518Z";
+export const gitHistoryGeneratedAt = "2026-06-11T07:38:12.548Z";
 
 export const gitHistory: GitCommit[] = [
   {
-    "hash": "72da7aeb996169125193415dec8d3a83f6bcc178",
-    "shortHash": "72da7ae",
-    "date": "2026-06-11T09:26:07+02:00",
-    "author": "Jan Starcke",
-    "subject": "feat(catalog): add import history entry for Fable 5 skill #108",
+    "hash": "dab52ff7f6f342ce8fa265dd4b2e5ef5d900258d",
+    "shortHash": "dab52ff",
+    "date": "2026-06-11T09:26:31+02:00",
+    "author": "janstarcke",
+    "subject": "feat(skills): Claude Fable 5 activation skill #108 (#46)",
     "files": [
-      "client/src/data/importHistory.ts"
-    ]
-  },
-  {
-    "hash": "45a7a683045dad522b7abc56e5555e23247950ee",
-    "shortHash": "45a7a68",
-    "date": "2026-06-11T09:25:38+02:00",
-    "author": "Jan Starcke",
-    "subject": "feat(skills): add Claude Fable 5 activation skill #108",
-    "files": [
+      "client/src/data/importHistory.ts",
       "client/src/data/skills.ts"
     ]
   },
