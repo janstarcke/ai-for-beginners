@@ -11,9 +11,19 @@ export interface GitCommit {
   files: string[];
 }
 
-export const gitHistoryGeneratedAt = "2026-06-11T07:22:43.308Z";
+export const gitHistoryGeneratedAt = "2026-06-11T07:22:51.609Z";
 
 export const gitHistory: GitCommit[] = [
+  {
+    "hash": "a525e3ae36c85c24a8662d2712c86cd92a712ab7",
+    "shortHash": "a525e3a",
+    "date": "2026-06-11T09:22:43+02:00",
+    "author": "Jan Starcke",
+    "subject": "feat(catalog): add import history entry for Higgsfield #40 extend",
+    "files": [
+      "client/src/data/importHistory.ts"
+    ]
+  },
   {
     "hash": "9df642846fc544961ab6680779956fd4528f6feb",
     "shortHash": "9df6428",
