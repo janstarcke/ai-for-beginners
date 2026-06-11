@@ -1263,6 +1263,19 @@ export const skills: Skill[] = [
     installNote: "Paket heißt graphifyy (Doppel-y auf PyPI — andere Pakete sind nicht offiziell). Nach Install graphify install ausführen — registriert /graphify in Claude Code. Funktioniert auch mit Cursor und Codex.",
     isNew: true,
   },
+  {
+    id: 107,
+    name: "grill-me: Interview vor dem Coden",
+    category: "Skill",
+    tier: 2,
+    tierLabel: "Erste Woche",
+    sources: [],
+    description: "Der größte Fehler in Claude Code: loslegen ohne Plan. Ein Satz-Prompt → Claude trifft 10 stille Annahmen → du bekommst das Falsche. grill-me dreht das um: /grill-me starten, kurz beschreiben was du vorhast — Claude fragt eine Frage pro Runde, einen Ast des Entscheidungsbaums nach dem nächsten, bis alle Annahmen auf dem Tisch liegen. Erst dann der Plan, erst dann Code. Funktioniert für jedes Vorhaben, nicht nur Coden.",
+    nextStep: "npx skills@latest add mattpocock/skills im Terminal ausführen (Matt Pococks Skills for Real Engineers). In Claude Code /grill-me eintippen, kurz beschreiben was du vorhast. Claude übernimmt mit einer Frage pro Runde — bis der Plan steht.",
+    installCommand: "npx skills@latest add mattpocock/skills",
+    installNote: "Aus Matt Pococks 'Skills for Real Engineers'. Nach Install /grill-me in Claude Code eintippen.",
+    isNew: true,
+  },
 ];
 
 export const claudeDesignSteps: ClaudeDesignStep[] = [
@@ -1328,8 +1341,8 @@ export const tldrItems: TldrItem[] = [
     example: `# Thinking-Budget reduzieren:\n/thinking budget low\n\n# Sonnet für Sub-Tasks:\nmodel: sonnet  # in .claude/settings.json\n\n# Ungenutzte MCPs trennen:\n/mcp disconnect [server-name]\n\n# Ergebnis: 50-70% weniger Kosten`,
   },
   {
-    summary: "Claude Design für Prototyping. Design Systems → High-Fidelity Mockups → Handoff zu Code.",
-    example: `# 5-Phasen Workflow:\n1. Design System anlegen (Fonts, Farben, Logo)\n2. High-Fidelity Prototyp generieren\n3. Tweaks-Panel für Feintuning\n4. Share → Handoff to Claude Code\n5. Command in Terminal einfügen\n\n# Tipp: 2-3 Stil-Varianten generieren!`,
+    summary: "grill-me: Interview vor dem Coden. /grill-me starten — Claude fragt Frage für Frage, bis alle Annahmen auf dem Tisch liegen.",
+    example: `# 1. Skill installieren (im Terminal):\nnpx skills@latest add mattpocock/skills\n\n# 2. In Claude Code:\n/grill-me\n\n# Claude fragt:\n# "Was genau soll X tun?"\n# "Wer nutzt es, und wie?"\n# "Was passiert im Fehlerfall?"\n# ...\n# Erst wenn Plan steht → Code`,
   },
   {
     summary: "Graphify: 70x weniger Tokens. Einmal /graphify . ausführen — Claude liest eine Karte statt ~40 Files neu.",
