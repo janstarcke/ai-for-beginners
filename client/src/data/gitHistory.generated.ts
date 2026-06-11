@@ -11,26 +11,27 @@ export interface GitCommit {
   files: string[];
 }
 
-export const gitHistoryGeneratedAt = "2026-06-11T07:22:51.609Z";
+export const gitHistoryGeneratedAt = "2026-06-11T07:26:07.625Z";
 
 export const gitHistory: GitCommit[] = [
   {
-    "hash": "a525e3ae36c85c24a8662d2712c86cd92a712ab7",
-    "shortHash": "a525e3a",
-    "date": "2026-06-11T09:22:43+02:00",
+    "hash": "45a7a683045dad522b7abc56e5555e23247950ee",
+    "shortHash": "45a7a68",
+    "date": "2026-06-11T09:25:38+02:00",
     "author": "Jan Starcke",
-    "subject": "feat(catalog): add import history entry for Higgsfield #40 extend",
+    "subject": "feat(skills): add Claude Fable 5 activation skill #108",
     "files": [
-      "client/src/data/importHistory.ts"
+      "client/src/data/skills.ts"
     ]
   },
   {
-    "hash": "9df642846fc544961ab6680779956fd4528f6feb",
-    "shortHash": "9df6428",
-    "date": "2026-06-11T09:22:17+02:00",
-    "author": "Jan Starcke",
-    "subject": "feat(skills): extend Higgsfield MCP #40 — 5 tools, web path, Soul detail",
+    "hash": "adb4ce9ea3139b304041d59a7bf921602d476fe4",
+    "shortHash": "adb4ce9",
+    "date": "2026-06-11T09:23:17+02:00",
+    "author": "janstarcke",
+    "subject": "feat(skills): extend Higgsfield MCP #40 — 5 tools, web path, Soul detail (#45)",
     "files": [
+      "client/src/data/importHistory.ts",
       "client/src/data/skills.ts"
     ]
   },
