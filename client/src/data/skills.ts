@@ -1250,6 +1250,19 @@ export const skills: Skill[] = [
     installNote: "In einer laufenden Claude-Code-Session ausführen, Scope 'user' wählen, dann /reload-plugins. Erster Start baut eine Python-Umgebung (3.8+, kurz Internet).",
     isNew: true,
   },
+  {
+    id: 106,
+    name: "Graphify: 70x weniger Tokens",
+    category: "Kosten-Hack",
+    tier: 2,
+    tierLabel: "Erste Woche",
+    sources: [],
+    description: "Graphify scannt dein Projekt einmal und baut einen Knowledge Graph (graph.json via tree-sitter). Statt ~40 Files komplett zu lesen (~20.000 Tokens), fragt Claude nur die Karte ab (~280 Tokens) — bis zu 70x weniger. Standard-Modus kostet 0 Tokens, läuft lokal, 20+ Sprachen. CLAUDE.md-Regel setzen: zuerst graph.json abfragen, dann gezielt Files lesen — sonst ignoriert Claude die Karte.",
+    nextStep: "uv tool install graphifyy (Doppel-y!), dann graphify install im Terminal. Im Projekt /graphify . ausführen — baut einmal den Graphen. CLAUDE.md ergänzen: '## Kontext-Navigation / 1. ZUERST graphify-out/graph.json abfragen. 2. DANN gezielt lesen. 3. ERST DANN ganze Files.' Änderungen: /graphify --update.",
+    installCommand: "uv tool install graphifyy\ngraphify install",
+    installNote: "Paket heißt graphifyy (Doppel-y auf PyPI — andere Pakete sind nicht offiziell). Nach Install graphify install ausführen — registriert /graphify in Claude Code. Funktioniert auch mit Cursor und Codex.",
+    isNew: true,
+  },
 ];
 
 export const claudeDesignSteps: ClaudeDesignStep[] = [
@@ -1319,8 +1332,8 @@ export const tldrItems: TldrItem[] = [
     example: `# 5-Phasen Workflow:\n1. Design System anlegen (Fonts, Farben, Logo)\n2. High-Fidelity Prototyp generieren\n3. Tweaks-Panel für Feintuning\n4. Share → Handoff to Claude Code\n5. Command in Terminal einfügen\n\n# Tipp: 2-3 Stil-Varianten generieren!`,
   },
   {
-    summary: "Anthropic Academy. 8 kostenlose Kurse mit Zertifikaten für alle Skill-Level.",
-    example: `# Empfohlene Reihenfolge:\n1. Prompt Engineering (Grundlagen)\n2. Real-World Prompting (Praxis)\n3. Tool Use & Agents\n4. Claude Code Masterclass\n\n# Zugang: anthropic.skilljar.com\n# Dauer: je 2-4 Stunden\n# Zertifikat nach Abschluss`,
+    summary: "Graphify: 70x weniger Tokens. Einmal /graphify . ausführen — Claude liest eine Karte statt ~40 Files neu.",
+    example: `# Einmalig installieren:\nuv tool install graphifyy   # Doppel-y!\ngraphify install\n\n# Im Projekt ausführen:\n/graphify .\n\n# In CLAUDE.md ergänzen:\n## Kontext-Navigation\n# 1. ZUERST graphify-out/graph.json abfragen\n# 2. DANN gezielt lesen\n# 3. ERST DANN ganze Files\n\n# Nur Änderungen updaten:\n/graphify --update`,
   },
   {
     summary: "Caveman spart 65-75% Output-Tokens. Kurze, prägnante Antworten erzwingen.",
