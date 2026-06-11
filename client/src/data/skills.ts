@@ -1237,6 +1237,19 @@ export const skills: Skill[] = [
     isNew: true,
     warning: "Inoffizieller MCP — nutzt undokumentierte Endpoints, Cookies werden lokal in Klartext gespeichert (~/.notebooklm-mcp-cli/). Kann jederzeit brechen wenn Google das Frontend updated. Nur mit Test-Account, NICHT für Kundendaten oder sensible Sources.",
   },
+  {
+    id: 105,
+    name: "Security-Guidance-Plugin (Auto-Review)",
+    category: "Plugin",
+    tier: 2,
+    tierLabel: "Erste Woche",
+    sources: [],
+    description: "Das security-guidance-Plugin (Anthropic-Marktplatz) prüft Claudes Code auf Sicherheitslücken — via Hooks, du rufst nichts auf. Drei Ebenen: Pattern-Check bei jedem Edit (gratis), Diff-Review am Turn-Ende, tiefe Review bei Commit/Push (liest Caller + Sanitizer mit). Das prüfende Claude ist ein separater Call mit frischem Kontext, nur aufs Finden getrimmt. Fängt Code-Injection, unsafe Deserialize, DOM-/SQL-/Command-Injection, hardcodierte Secrets.",
+    nextStep: "/plugin install security-guidance@claude-plugins-official — bei der Scope-Abfrage 'user' wählen, dann /reload-plugins (kein Neustart nötig). Falls der Marktplatz fehlt, einmalig /plugin marketplace add anthropics/claude-plugins-official davor. Erster Start legt eine Python-Umgebung unter ~/.claude/security/ an (Python 3.8+). Edit-Check gratis; Turn-/Commit-Reviews kosten Model-Usage, gedeckelt auf 20/Stunde. Ersetzt kein /security-review oder CI-Scanning.",
+    installCommand: "/plugin install security-guidance@claude-plugins-official",
+    installNote: "In einer laufenden Claude-Code-Session ausführen, Scope 'user' wählen, dann /reload-plugins. Erster Start baut eine Python-Umgebung (3.8+, kurz Internet).",
+    isNew: true,
+  },
 ];
 
 export const claudeDesignSteps: ClaudeDesignStep[] = [
@@ -1328,5 +1341,9 @@ export const tldrItems: TldrItem[] = [
   {
     summary: "Agent View: Mehrere Background-Sessions parallel. claude agents öffnet das Dashboard, claude --bg startet Tasks im Hintergrund.",
     example: `# Dashboard öffnen:\nclaude agents\n\n# Background-Session aus dem Shell:\nclaude --bg "Schreib Tests für src/api/"\n\n# Aus laufender Session:\n/bg "Review den letzten Commit"\n\n# Nach Reboot wiederherstellen:\nclaude respawn --all\n\n# Sweet Spot: 4-8 Sessions parallel`,
+  },
+  {
+    summary: "Security-Auto-Review. Das security-guidance-Plugin scannt Claudes Code via Hooks und fixt Lücken in derselben Session — bevor sie in den PR gehen.",
+    example: `# Installieren (im Chat):\n/plugin install security-guidance@claude-plugins-official\n# Scope "user" wählen, dann aktivieren:\n/reload-plugins\n\n# Läuft danach automatisch in 3 Ebenen:\n# jeder Edit  -> Pattern-Check (gratis)\n# Turn-Ende   -> Diff-Review\n# Commit/Push -> tiefe Review (liest Caller mit)`,
   },
 ];

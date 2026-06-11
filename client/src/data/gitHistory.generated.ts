@@ -11,15 +11,35 @@ export interface GitCommit {
   files: string[];
 }
 
-export const gitHistoryGeneratedAt = "2026-06-10T19:32:05.401Z";
+export const gitHistoryGeneratedAt = "2026-06-11T05:02:53.865Z";
 
 export const gitHistory: GitCommit[] = [
   {
-    "hash": "6b410b08f171e589c96d3a04f0b9834dc70cc4db",
-    "shortHash": "6b410b0",
-    "date": "2026-06-10T21:32:04+02:00",
+    "hash": "6d42f2ca98e62e8a5b998333d5840113de7df0e9",
+    "shortHash": "6d42f2c",
+    "date": "2026-06-11T07:02:42+02:00",
     "author": "Jan Starcke",
-    "subject": "chore(history): retrofit catalog entry for c029521 (#103/#104 + EXTEND #20/#84)",
+    "subject": "chore(history): catalog 0f53751 for /secret-import-history",
+    "files": [
+      "client/src/data/importHistory.ts"
+    ]
+  },
+  {
+    "hash": "0f53751925943be82351db441523676b9fcf1887",
+    "shortHash": "0f53751",
+    "date": "2026-06-10T21:37:48+02:00",
+    "author": "Jan Starcke",
+    "subject": "feat(content): Security-Guidance-Plugin (#105) + TL;DR-Item",
+    "files": [
+      "client/src/data/skills.ts"
+    ]
+  },
+  {
+    "hash": "ac3ac2bf6cc37da6fa4eb48ef6400448872aacd1",
+    "shortHash": "ac3ac2b",
+    "date": "2026-06-10T21:32:35+02:00",
+    "author": "janstarcke",
+    "subject": "chore(history): retrofit catalog entry for c029521 (#103/#104 + EXTEND #20/#84) (#41)",
     "files": [
       "client/src/data/importHistory.ts"
     ]
