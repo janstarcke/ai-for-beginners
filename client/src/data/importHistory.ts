@@ -583,4 +583,20 @@ export const importHistory: ImportEntry[] = [
     notes:
       "EXTEND #40 (kein NEW — selber hosted MCP, identischer CLI-Command = Konsolidierungs-Regel, kein Gate B). Bestehender Skill hatte Kern (30+ Modelle, ein Login, Marketing-Kampagnen + Soul-Character). Drei echte neue Facetten ergänzt: (1) die 5 konkreten MCP-Tools generate_image/generate_video/create_character/get_generation_status/list_characters — vorher nicht benannt; (2) create_character-Detail (Soul-Identity auf 8-12 Fotos) + 'Claude routet selbst aufs passende Model'; (3) installNote um den claude.ai-Web-Pfad (Settings → Connectors → Add custom connector, URL https://mcp.higgsfield.ai) + Free-Tier 150 Credits/Monat erweitert — vorher nur CLI-Pfad. description neu strukturiert auf 445/450 Zeichen. Kein TL;DR-Change: Higgsfield hat schon ein TL;DR-Item, EXTEND rechtfertigt keinen zweiten. Verworfen (zu marketing-spezifisch fürs Skill-Niveau, lebt als Use-Case in der Quelle): Vibe Motion (Logo-Reveals/kinetic typography), Marketing-Studio-UGC-Pipeline, der 5-Prompt-Master-Flow — Kern davon (UGC-Video aus Prompt-Flow) ist in der description abgedeckt.",
   },
+  {
+    commit: "45a7a68",
+    title: "Claude Fable 5 aktivieren (#108)",
+    type: "new",
+    categories: ["Setup"],
+    newSkillIds: [108],
+    sources: [
+      {
+        kind: "web",
+        channel: "SKAILE / Sebastian Kauffmann",
+        url: "https://fable.skaile.de",
+      },
+    ],
+    notes:
+      "Direct-Mode, 1 NEW. #108 Claude Fable 5 aktivieren (Setup, T1) — direkter Geschwister-Skill zu #99 (Opus 4.8 aktivieren), gleiches Muster (Modell-Aktivierung über App/Web, Claude Code, API). Klar NEW statt EXTEND: anderes Modell, #99 ist Opus-spezifisch — Extend würde einen modell-spezifischen Skill verwässern. SOURCE-QUALITY-FILTER angewandt: die Quelle (SKAILE-Landing-Page, Community-Funnel) behauptet 'schlägt Opus 4.8 deutlich' + SWE-Bench Pro 80,3% vs Opus 69,2% vs GPT-5.5 58,6% + 'Mythos-Klasse'. Diese Benchmark-Zahlen + Superlative sind NICHT verifizierbar (mein Environment bestätigt nur Fable 5 als aktuelles Top-Modell + Model-ID claude-fable-5, nicht das Ranking gegen Opus) → bewusst RAUSGELASSEN (Skill-Regel: keine Superlative ohne Beleg). Stattdessen qualitative Stärken übernommen (lange autonome Multi-Step-Projekte, Vision, großer Kontext) + der genuin nützliche Auto-Fallback-auf-Opus-4.8-bei-heiklen-Themen-Detail (<5% Sessions). Zeitgebundene 'gratis bis 22. Juni'-Promo NICHT als Live-Deadline übernommen (altert in Tagen) — als dauerhafter Launch-Kontext in installNote umformuliert ('zum Launch befristet gratis, danach Extra-Credits, eigenen Plan prüfen'). Kein TL;DR-Change: Array voll (15/15), Modell-Announcement altert, konservativer Default.",
+  },
 ];

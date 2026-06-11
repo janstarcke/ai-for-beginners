@@ -1276,6 +1276,19 @@ export const skills: Skill[] = [
     installNote: "Aus Matt Pococks 'Skills for Real Engineers'. Nach Install /grill-me in Claude Code eintippen.",
     isNew: true,
   },
+  {
+    id: 108,
+    name: "Claude Fable 5 aktivieren",
+    category: "Setup",
+    tier: 1,
+    tierLabel: "Sofort umsetzen",
+    sources: [],
+    description: "Anthropics neuestes Modell der Fable-Reihe — ausgelegt auf lange, autonome Multi-Step-Projekte, Vision (z.B. Web-App aus einem Screenshot) und sehr großen Kontext über viele Schritte. Drei Wege: App/Web/Cowork (Modell-Auswahl oben → Claude Fable 5), Claude Code (/model claude-fable-5 oder Config → Model & Output), API (model-id claude-fable-5). Bei heiklen Themen schaltet Claude automatisch auf Opus 4.8 zurück (unter 5% der Sessions).",
+    nextStep: "In Claude Code: /model claude-fable-5 — läuft ab dem nächsten Prompt. Für große Projekte den Architektur-zuerst-Prompt nutzen: 'Plane erst die Architektur, dann bau Schritt für Schritt, teste jeden Teil selbst und arbeite autonom durch, bis alles läuft.'",
+    installCommand: "/model claude-fable-5",
+    installNote: "In Claude Code in laufender Session eintippen, oder Config → MODEL & OUTPUT. Zum Launch (Juni 2026) war Fable 5 befristet auf allen Plänen gratis; danach über Extra-Credits — aktuellen Zugang im eigenen Plan prüfen. Auto-Fallback auf Opus 4.8 bei heiklen Themen ist standardmäßig an.",
+    isNew: true,
+  },
 ];
 
 export const claudeDesignSteps: ClaudeDesignStep[] = [
