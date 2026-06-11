@@ -11,26 +11,27 @@ export interface GitCommit {
   files: string[];
 }
 
-export const gitHistoryGeneratedAt = "2026-06-11T07:20:03.146Z";
+export const gitHistoryGeneratedAt = "2026-06-11T07:22:43.308Z";
 
 export const gitHistory: GitCommit[] = [
   {
-    "hash": "10b407caf34a0d0b3c4547a20a9989d5e6e9238e",
-    "shortHash": "10b407c",
-    "date": "2026-06-11T09:19:55+02:00",
+    "hash": "9df642846fc544961ab6680779956fd4528f6feb",
+    "shortHash": "9df6428",
+    "date": "2026-06-11T09:22:17+02:00",
     "author": "Jan Starcke",
-    "subject": "feat(catalog): add import history entry for grill-me skill #107",
+    "subject": "feat(skills): extend Higgsfield MCP #40 — 5 tools, web path, Soul detail",
     "files": [
-      "client/src/data/importHistory.ts"
+      "client/src/data/skills.ts"
     ]
   },
   {
-    "hash": "7c4661c567b59424d0632eb24f48e9d37b44a6f8",
-    "shortHash": "7c4661c",
-    "date": "2026-06-11T09:19:28+02:00",
-    "author": "Jan Starcke",
-    "subject": "feat(skills): add grill-me skill #107 — structured pre-coding interview",
+    "hash": "cb14e6739155456ff01848a51b4e1ee31a5949a1",
+    "shortHash": "cb14e67",
+    "date": "2026-06-11T09:20:34+02:00",
+    "author": "janstarcke",
+    "subject": "feat(skills): grill-me skill #107 — structured pre-coding interview (#44)",
     "files": [
+      "client/src/data/importHistory.ts",
       "client/src/data/skills.ts"
     ]
   },

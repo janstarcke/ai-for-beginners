@@ -567,4 +567,20 @@ export const importHistory: ImportEntry[] = [
     notes:
       "Direct-Mode (1 NEW, klar). #107 grill-me (Skill, T2): Matt Pococks 'Skills for Real Engineers' — /grill-me startet interaktives Pre-Coding-Interview. Claude fragt eine Frage pro Runde, einen Ast des Entscheidungsbaums nach dem nächsten, bis alle impliziten Annahmen und Sonderfälle explizit auf dem Tisch liegen. Erst dann Plan-Zusammenfassung, erst dann Code. Klar NEW: #61 (5-Punkt-Spec) ist user-driven Checkliste; #97 (Plan Mode) ist Claudes interner Planungs-Modus — grill-me ist Claude-geführtes Socratic Interview, anderer Mechanismus. Install: npx skills@latest add mattpocock/skills. TL;DR-Rotation: Claude Design für Prototyping (5/10, nisch) → grill-me (8/10, universell + kopierbarer Command + verhindert häufigsten Fehler).",
   },
+  {
+    commit: "9df6428",
+    title: "Higgsfield MCP #40 erweitert — 5 Tools, Web-Pfad, Soul-Detail",
+    type: "extend",
+    categories: ["MCP"],
+    extendedSkillIds: [40],
+    sources: [
+      {
+        kind: "web",
+        channel: "SKAILE / Sebastian Kauffmann",
+        url: "https://higgsfield.skaile.de",
+      },
+    ],
+    notes:
+      "EXTEND #40 (kein NEW — selber hosted MCP, identischer CLI-Command = Konsolidierungs-Regel, kein Gate B). Bestehender Skill hatte Kern (30+ Modelle, ein Login, Marketing-Kampagnen + Soul-Character). Drei echte neue Facetten ergänzt: (1) die 5 konkreten MCP-Tools generate_image/generate_video/create_character/get_generation_status/list_characters — vorher nicht benannt; (2) create_character-Detail (Soul-Identity auf 8-12 Fotos) + 'Claude routet selbst aufs passende Model'; (3) installNote um den claude.ai-Web-Pfad (Settings → Connectors → Add custom connector, URL https://mcp.higgsfield.ai) + Free-Tier 150 Credits/Monat erweitert — vorher nur CLI-Pfad. description neu strukturiert auf 445/450 Zeichen. Kein TL;DR-Change: Higgsfield hat schon ein TL;DR-Item, EXTEND rechtfertigt keinen zweiten. Verworfen (zu marketing-spezifisch fürs Skill-Niveau, lebt als Use-Case in der Quelle): Vibe Motion (Logo-Reveals/kinetic typography), Marketing-Studio-UGC-Pipeline, der 5-Prompt-Master-Flow — Kern davon (UGC-Video aus Prompt-Flow) ist in der description abgedeckt.",
+  },
 ];
