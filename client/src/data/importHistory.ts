@@ -535,4 +535,20 @@ export const importHistory: ImportEntry[] = [
     notes:
       "Direct-Mode (1 NEW, klar). #105 Security-Guidance-Plugin (Plugin, T2): Anthropics offizielles security-guidance-Plugin, das Claudes eigenen Code via Hooks dreistufig auf Lücken prüft (Edit-Pattern-Check gratis / Turn-Ende-Diff-Review / Commit-Push-Deep-Review mit Caller+Sanitizer) und in derselben Session fixt — prüfendes Claude = separater Call mit frischem Kontext. Klar NEW: kein Duplikat von #22 (Trail-of-Bits-Audit), #82 (GitHub-Sicherheitsnetz), #101 (Setup-Auditor) oder #103 (manuelle Pre-Launch-Checkliste) — das hier ist auto-Hook-In-Session-Review. installCommand+installNote-Felder gesetzt (Plugin-Schema). 1 TL;DR-Item ergänzt (Array 14→15, freie Position, Score ~10/10: universell + ein Command + fängt echte Lücken vor PR). GOTCHA im Run: der lokale security_reminder_hook blockte den Edit zweimal, weil die description die Vuln-Pattern-Funktionsnamen literal enthielt (Code-Eval- + Shell-Call-Tokens) → auf Klassen-Ebene umformuliert (Code-Injection / DOM-/SQL-/Command-Injection / unsafe Deserialize), Bedeutung erhalten, Hook zufrieden.",
   },
+  {
+    commit: "f8c228f",
+    title: "Graphify: 70x Token-Ersparnis via Knowledge Graph (#106)",
+    type: "new",
+    categories: ["Kosten-Hack"],
+    newSkillIds: [106],
+    sources: [
+      {
+        kind: "web",
+        channel: "SKAILE / Sebastian Kauffmann",
+        url: "https://repos.skaile.de",
+      },
+    ],
+    notes:
+      "Direct-Mode (1 NEW, klar, kein Duplikat). #106 Graphify: Kosten-Hack T2 — scannt Projekt einmal via tree-sitter, baut graph.json (Knowledge Graph), Claude fragt Karte statt ~40 Files zu lesen: ~280 Tokens statt ~20.000, bis zu 70x Ersparnis. Standard-Modus = 0 Tokens, MIT, lokal, 20+ Sprachen, von safishamsi. SHA256-Cache für inkrementelle Updates (/graphify --update). CLAUDE.md-Regel nötig damit Claude die Karte auch tatsächlich zuerst nutzt. Klar NEW: kein Treffer auf graphify/knowledge graph/graph.json in der gesamten DB. installCommand+installNote-Felder gesetzt. TL;DR-Rotation: Anthropic Academy (4/10) → Graphify (8/10) — Graphify hat kopierbaren Command + universelle Relevanz + messbaren Nutzen (70x Tokens).",
+  },
 ];

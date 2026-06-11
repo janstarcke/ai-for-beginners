@@ -11,26 +11,27 @@ export interface GitCommit {
   files: string[];
 }
 
-export const gitHistoryGeneratedAt = "2026-06-11T05:02:53.865Z";
+export const gitHistoryGeneratedAt = "2026-06-11T07:13:11.114Z";
 
 export const gitHistory: GitCommit[] = [
   {
-    "hash": "6d42f2ca98e62e8a5b998333d5840113de7df0e9",
-    "shortHash": "6d42f2c",
-    "date": "2026-06-11T07:02:42+02:00",
+    "hash": "f8c228f93409a0e2fa01f95d00460be2042cd96b",
+    "shortHash": "f8c228f",
+    "date": "2026-06-11T09:12:29+02:00",
     "author": "Jan Starcke",
-    "subject": "chore(history): catalog 0f53751 for /secret-import-history",
+    "subject": "feat(skills): add Graphify skill #106 — 70x token reduction via code knowledge graph",
     "files": [
-      "client/src/data/importHistory.ts"
+      "client/src/data/skills.ts"
     ]
   },
   {
-    "hash": "0f53751925943be82351db441523676b9fcf1887",
-    "shortHash": "0f53751",
-    "date": "2026-06-10T21:37:48+02:00",
-    "author": "Jan Starcke",
-    "subject": "feat(content): Security-Guidance-Plugin (#105) + TL;DR-Item",
+    "hash": "6b1f72acf88e75ee96bde0802e64f4bb8adb7b30",
+    "shortHash": "6b1f72a",
+    "date": "2026-06-11T07:03:23+02:00",
+    "author": "janstarcke",
+    "subject": "feat(content): Security-Guidance-Plugin (#105) + TL;DR-Item (#42)",
     "files": [
+      "client/src/data/importHistory.ts",
       "client/src/data/skills.ts"
     ]
   },
