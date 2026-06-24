@@ -599,4 +599,21 @@ export const importHistory: ImportEntry[] = [
     notes:
       "Direct-Mode, 1 NEW. #108 Claude Fable 5 aktivieren (Setup, T1) — direkter Geschwister-Skill zu #99 (Opus 4.8 aktivieren), gleiches Muster (Modell-Aktivierung über App/Web, Claude Code, API). Klar NEW statt EXTEND: anderes Modell, #99 ist Opus-spezifisch — Extend würde einen modell-spezifischen Skill verwässern. SOURCE-QUALITY-FILTER angewandt: die Quelle (SKAILE-Landing-Page, Community-Funnel) behauptet 'schlägt Opus 4.8 deutlich' + SWE-Bench Pro 80,3% vs Opus 69,2% vs GPT-5.5 58,6% + 'Mythos-Klasse'. Diese Benchmark-Zahlen + Superlative sind NICHT verifizierbar (mein Environment bestätigt nur Fable 5 als aktuelles Top-Modell + Model-ID claude-fable-5, nicht das Ranking gegen Opus) → bewusst RAUSGELASSEN (Skill-Regel: keine Superlative ohne Beleg). Stattdessen qualitative Stärken übernommen (lange autonome Multi-Step-Projekte, Vision, großer Kontext) + der genuin nützliche Auto-Fallback-auf-Opus-4.8-bei-heiklen-Themen-Detail (<5% Sessions). Zeitgebundene 'gratis bis 22. Juni'-Promo NICHT als Live-Deadline übernommen (altert in Tagen) — als dauerhafter Launch-Kontext in installNote umformuliert ('zum Launch befristet gratis, danach Extra-Credits, eigenen Plan prüfen'). Kein TL;DR-Change: Array voll (15/15), Modell-Announcement altert, konservativer Default.",
   },
+  {
+    commit: "47d8c37",
+    title: "Finance Slash-Commands + Analyse-Caveat",
+    type: "extend",
+    categories: ["Financial Analyst"],
+    newSkillIds: [],
+    extendedSkillIds: [43, 44],
+    sources: [
+      {
+        kind: "web",
+        channel: "SKAILE / Sebastian Kauffmann",
+        url: "https://finance.skaile.de",
+      },
+    ],
+    notes:
+      "Direct-Mode, 0 NEW / 2 EXTEND. Quelle = SKAILE-Landingpage zu Anthropics financial-services-Toolkit, ~95% Duplikat: alle 10 Agents stehen namentlich in #43, Daten-Connectors in #48, Install-Flow in #43/#56. Zwei echte Neuheiten extrahiert: (1) #44 um /screen (Aktien-Universum-Screening) + /morning-note (Tages-Report aus News+Filings) ergänzt — vorher nur /dcf /comps /earnings /ic-memo; description neu strukturiert (~374 Zeichen), nextStep zeigt jetzt die neuen Commands. (2) #43 warning ergänzt ('Analyse-Entwürfe zur menschlichen Freigabe, kein Kauf, keine Transaktionen, kein Anlage-/Steuer-/Rechtsrat') — das ist die Headline-Botschaft der Seite ('Analysten, die nie für dich kaufen'); #43-description war schon über 450 Zeichen, daher Caveat bewusst als warning-Feld statt Description-Extend. Konsolidierungs-Regel statt neuem Skill (ein eigener Toolkit-Skill wäre Near-Duplikat von #43). Naming-Diskrepanz vermerkt+NICHT übernommen: Seite nennt Marktplatz-Target '@claude-for-financial-services' + einen 'core financial-analysis'-Pflicht-Schritt, unsere Skills nutzen '@financial-services' — dritte-Quelle-Marketing, ohne anthropics/financial-services-Repo-Zugriff nicht verifizierbar, bestehende Install-Commands daher unangetastet. Kein TL;DR-Change (15/15 voll). Anmerkung zur Quelle: kein Injection-Pattern, sauberer Marketing-Funnel zur SKAILE Academy.",
+  },
 ];

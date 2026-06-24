@@ -524,6 +524,7 @@ export const skills: Skill[] = [
     isNew: true,
     installCommand: "claude plugin marketplace add anthropics/financial-services\nclaude plugin install model-builder@financial-services\nclaude plugin install earnings-reviewer@financial-services",
     installNote: "Drei Schritte: Marketplace registrieren, dann zwei Plugins installieren (Model Builder + Earnings Reviewer als Einstieg). Weitere Plugins wie equity-research lassen sich später auf gleiche Weise nachziehen.",
+    warning: "Liefert nur Analyse-Entwürfe zur menschlichen Freigabe — keine Kaufempfehlungen, keine Transaktionen, kein Anlage-, Steuer- oder Rechtsrat. Du prüfst und entscheidest, der Agent macht die Fleißarbeit.",
   },
   {
     id: 44,
@@ -532,8 +533,8 @@ export const skills: Skill[] = [
     tier: 2,
     tierLabel: "Innerhalb der ersten Woche",
     sources: [],
-    description: "/dcf baut ein komplettes DCF-Modell als Excel. /comps erstellt Comparable Company Analysis. /earnings analysiert Earnings Calls und generiert Research Notes. /ic-memo erstellt Investment Committee Memos. Retail-Investoren bekommen institutionelle Analyse-Tools.",
-    nextStep: "Nach Plugin-Installation: /dcf [Ticker] für ein DCF-Modell, /earnings [Ticker] für Earnings-Analyse. Output als .xlsx für Google Sheets/Excel.",
+    description: "/dcf baut ein komplettes DCF-Modell als Excel. /comps erstellt Comparable Company Analysis. /earnings analysiert Earnings Calls und generiert Research Notes. /screen filtert Aktien-Universen nach deinen Kriterien, /morning-note baut den Tages-Report aus News und Filings. /ic-memo erstellt Investment Committee Memos. Retail-Investoren bekommen institutionelle Analyse-Tools.",
+    nextStep: "Nach Plugin-Installation: /dcf [Ticker] für ein DCF-Modell, /screen für ein gefiltertes Aktien-Universum, /morning-note für den Tages-Report. Output als .xlsx für Google Sheets/Excel.",
     isNew: true,
   },
   {
