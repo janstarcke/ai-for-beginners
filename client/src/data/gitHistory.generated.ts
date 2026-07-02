@@ -11,16 +11,17 @@ export interface GitCommit {
   files: string[];
 }
 
-export const gitHistoryGeneratedAt = "2026-06-24T09:38:35.497Z";
+export const gitHistoryGeneratedAt = "2026-07-02T20:32:25.884Z";
 
 export const gitHistory: GitCommit[] = [
   {
-    "hash": "47d8c37545f49e80863a970a17066f0efe02bee7",
-    "shortHash": "47d8c37",
-    "date": "2026-06-24T09:37:28+00:00",
-    "author": "Claude",
-    "subject": "feat(content): finance.skaile.de — /screen + /morning-note, Analyse-Caveat",
+    "hash": "c9d1988fba2f29f23c984ae5b1485473647a8d40",
+    "shortHash": "c9d1988",
+    "date": "2026-06-24T11:41:33+02:00",
+    "author": "janstarcke",
+    "subject": "Content-Import finance.skaile.de: /screen + /morning-note, Analyse-Caveat (#53)",
     "files": [
+      "client/src/data/importHistory.ts",
       "client/src/data/skills.ts"
     ]
   },
@@ -315,14 +316,273 @@ export const gitHistory: GitCommit[] = [
     ]
   },
   {
-    "hash": "b19e45fe5ed661aad774a6f401e2ed1e2536aac1",
-    "shortHash": "b19e45f",
-    "date": "2026-05-15T18:29:09+02:00",
+    "hash": "6a67be289e3550066d6d40499a97924e6cb1573a",
+    "shortHash": "6a67be2",
+    "date": "2026-05-15T01:26:10+02:00",
     "author": "janstarcke",
-    "subject": "fix(a11y): #29c final — all 5 main pages Lighthouse A11y 100/100 (#13)",
+    "subject": "chore(audit): Sprint J + K — dead UI cleanup + Docker digest-pin (Audit #24 + #9) (#3)",
+    "files": [
+      "client/src/data/importHistory.ts"
+    ]
+  },
+  {
+    "hash": "dfac5456e40aa9d7ea4ec4d3a91dc56769e180da",
+    "shortHash": "dfac545",
+    "date": "2026-05-14T14:01:57-07:00",
+    "author": "Jan Starcke",
+    "subject": "chore(history): catalog ca11929 (/goal /dream Daily-Pipeline #65-67) fuer /secret-import-history",
+    "files": [
+      "client/src/data/importHistory.ts"
+    ]
+  },
+  {
+    "hash": "ca1192952c7026b2e3d14751b9eef5a85f29e077",
+    "shortHash": "ca11929",
+    "date": "2026-05-14T13:55:58-07:00",
+    "author": "Jan Starcke",
+    "subject": "feat(content): /goal, /dream + Daily-Pipeline skills (#65-#67)",
+    "files": [
+      "client/src/data/skills.ts"
+    ]
+  },
+  {
+    "hash": "a80ad335618e99be85332034bef7f1d284487b81",
+    "shortHash": "a80ad33",
+    "date": "2026-05-14T11:54:08-07:00",
+    "author": "Jan Starcke",
+    "subject": "fix(skill-64): installCommand ehrlich machen (mkdir + touch + open)",
+    "files": [
+      "client/src/data/skills.ts"
+    ]
+  },
+  {
+    "hash": "2be2b9b971271426150bab612bda6f6814eb9006",
+    "shortHash": "2be2b9b",
+    "date": "2026-05-14T11:10:14-07:00",
+    "author": "Jan Starcke",
+    "subject": "chore(history): catalog 2101de3 Session-Handoff Skill (#64) fuer /secret-import-history",
+    "files": [
+      "client/src/data/importHistory.ts"
+    ]
+  },
+  {
+    "hash": "2101de3b5fba3b790da029f5577c729b82bca147",
+    "shortHash": "2101de3",
+    "date": "2026-05-14T10:59:02-07:00",
+    "author": "Jan Starcke",
+    "subject": "feat(content): add Session-Handoff Skill (#64)",
+    "files": [
+      "client/src/data/skills.ts"
+    ]
+  },
+  {
+    "hash": "c92753d9b46f7fce3347732ddb62adafc2c95ed0",
+    "shortHash": "c92753d",
+    "date": "2026-05-14T07:03:20-07:00",
+    "author": "Jan Starcke",
+    "subject": "chore(history): catalog ce60fc7 Sprint I + audit-doc update",
+    "files": [
+      "client/src/data/importHistory.ts"
+    ]
+  },
+  {
+    "hash": "ce60fc7810a8d4b8fbeb38b6db06711e9fa1ffd9",
+    "shortHash": "ce60fc7",
+    "date": "2026-05-14T07:01:24-07:00",
+    "author": "Jan Starcke",
+    "subject": "fix(sprint-i): 5 NIEDRIG-Polish-Items (Audit #19/#20/#21/#22/#23)",
+    "files": [
+      "client/src/data/skills.ts"
+    ]
+  },
+  {
+    "hash": "6bbaa307dc970e474962e9d17eed81b78205c76e",
+    "shortHash": "6bbaa30",
+    "date": "2026-05-14T06:54:06-07:00",
+    "author": "Jan Starcke",
+    "subject": "chore(history): catalog 39ae602 Sprint H für /secret-import-history",
+    "files": [
+      "client/src/data/importHistory.ts"
+    ]
+  },
+  {
+    "hash": "0c4bec509f2de051c64e228703e2e78b57fc3d5b",
+    "shortHash": "0c4bec5",
+    "date": "2026-05-14T05:12:59-07:00",
+    "author": "Jan Starcke",
+    "subject": "chore(history): catalog Sprint E/F/G (Audit MITTEL-Items)",
+    "files": [
+      "client/src/data/importHistory.ts"
+    ]
+  },
+  {
+    "hash": "9a840707d83c164b0da9c464cd6bc2c61593ca91",
+    "shortHash": "9a84070",
+    "date": "2026-05-13T22:22:42-07:00",
+    "author": "Jan Starcke",
+    "subject": "chore(history): catalog 5 Audit-Sprint commits fuer /secret-import-history",
+    "files": [
+      "client/src/data/importHistory.ts"
+    ]
+  },
+  {
+    "hash": "8112e30b6442e9587f55ff14dc3f2cd39a73d950",
+    "shortHash": "8112e30",
+    "date": "2026-05-13T22:21:47-07:00",
+    "author": "Jan Starcke",
+    "subject": "fix(content): nextStep-Drift fuer Skill #13 + #36 (Audit Finding #8)",
+    "files": [
+      "client/src/data/skills.ts"
+    ]
+  },
+  {
+    "hash": "5455ee12d1139b739c8506f9ad71a15900dab90b",
+    "shortHash": "5455ee1",
+    "date": "2026-05-13T22:15:22-07:00",
+    "author": "Jan Starcke",
+    "subject": "fix(sprint-a): externe-Tool-Refs raus + WCAG AA Light-Mode Kontrast (Audit #1,#4,#5)",
+    "files": [
+      "client/src/data/importHistory.ts"
+    ]
+  },
+  {
+    "hash": "6e21152d2b66f5a42f14184696594c9374159502",
+    "shortHash": "6e21152",
+    "date": "2026-05-13T17:26:05-07:00",
+    "author": "Jan Starcke",
+    "subject": "chore(history): catalog 7f24d51 + acc87c3 + 1533238 (Block A Followups)",
+    "files": [
+      "client/src/data/importHistory.ts"
+    ]
+  },
+  {
+    "hash": "acc87c3c342395d0ba28597d84303eff4520ddcf",
+    "shortHash": "acc87c3",
+    "date": "2026-05-13T17:25:23-07:00",
+    "author": "Jan Starcke",
+    "subject": "feat(skills): 12 weitere Install-Commands befüllt (18/63 total)",
+    "files": [
+      "client/src/data/skills.ts"
+    ]
+  },
+  {
+    "hash": "3b79de5285d621664364b4d0dd5b326ccc2ca515",
+    "shortHash": "3b79de5",
+    "date": "2026-05-13T17:07:53-07:00",
+    "author": "Jan Starcke",
+    "subject": "chore(history): catalog d2f2021 Block A für /secret-import-history",
+    "files": [
+      "client/src/data/importHistory.ts"
+    ]
+  },
+  {
+    "hash": "d2f2021d808d9b936728ffad740126495de56b26",
+    "shortHash": "d2f2021",
+    "date": "2026-05-13T17:07:32-07:00",
+    "author": "Jan Starcke",
+    "subject": "feat: CodeBlock-Komponente + Install-Buttons (Block A aus Manus-Roadmap)",
+    "files": [
+      "client/src/data/skills.ts"
+    ]
+  },
+  {
+    "hash": "ef51910bfd8f114f63581052cfd82e9a88d21be7",
+    "shortHash": "ef51910",
+    "date": "2026-05-13T11:58:24-07:00",
+    "author": "Jan Starcke",
+    "subject": "chore(history): catalog 0b409d4 for /secret-import-history",
+    "files": [
+      "client/src/data/importHistory.ts"
+    ]
+  },
+  {
+    "hash": "0b409d44b8a05bba1aca8021fe92715497a5337d",
+    "shortHash": "0b409d4",
+    "date": "2026-05-13T11:57:18-07:00",
+    "author": "Jan Starcke",
+    "subject": "feat(content): 4 Beginner-Tipps aus Claude Code Tutorial",
+    "files": [
+      "client/src/data/skills.ts"
+    ]
+  },
+  {
+    "hash": "ba1d512585f9397019a48473a335f5380dda4297",
+    "shortHash": "ba1d512",
+    "date": "2026-05-13T08:35:15-07:00",
+    "author": "Jan Starcke",
+    "subject": "feat: hidden /secret-import-history timeline",
+    "files": [
+      "client/src/data/importHistory.ts"
+    ]
+  },
+  {
+    "hash": "6a7494d6c0e08c3b36684ad914e42d835dfc65aa",
+    "shortHash": "6a7494d",
+    "date": "2026-05-13T07:06:46-07:00",
+    "author": "Jan Starcke",
+    "subject": "feat(content): refine AI Finance Team skill (#47)",
+    "files": [
+      "client/src/data/skills.ts"
+    ]
+  },
+  {
+    "hash": "a52d2b450164dcca93df6d0bc0a96fc64cd2d64f",
+    "shortHash": "a52d2b4",
+    "date": "2026-05-13T07:05:01-07:00",
+    "author": "Jan Starcke",
+    "subject": "feat(content): add Layered Analysis Prompt skill (#59)",
+    "files": [
+      "client/src/data/skills.ts"
+    ]
+  },
+  {
+    "hash": "89393dad1d07b31c20fd9e5831679855ac58b926",
+    "shortHash": "89393da",
+    "date": "2026-05-13T05:29:54-07:00",
+    "author": "Jan Starcke",
+    "subject": "feat(content): add Personal Finance skills (#57, #58)",
+    "files": [
+      "client/src/data/skills.ts"
+    ]
+  },
+  {
+    "hash": "fa4908737cae3d65214903094327af5944623497",
+    "shortHash": "fa49087",
+    "date": "2026-05-13T05:15:20-07:00",
+    "author": "Jan Starcke",
+    "subject": "feat(content): Equity Research plugin + complete 10-agent list",
+    "files": [
+      "client/src/data/skills.ts"
+    ]
+  },
+  {
+    "hash": "2aac0f6609ca656e5fbba49054bce2bd06625650",
+    "shortHash": "2aac0f6",
+    "date": "2026-05-12T20:59:40-07:00",
+    "author": "Jan Starcke",
+    "subject": "feat(content): integrate Claude Managed Agents (CMA) intro",
+    "files": [
+      "client/src/data/skills.ts"
+    ]
+  },
+  {
+    "hash": "6b4d976029ff34327125cd4730dfd17494de4f62",
+    "shortHash": "6b4d976",
+    "date": "2026-05-12T20:44:02-07:00",
+    "author": "Jan Starcke",
+    "subject": "feat(content): Agent View — Background-Sessions parallel",
+    "files": [
+      "client/src/data/skills.ts"
+    ]
+  },
+  {
+    "hash": "bc470b2bcd51abd4a82c348cbec55d1691ba5ad5",
+    "shortHash": "bc470b2",
+    "date": "2026-05-12T19:54:31-07:00",
+    "author": "Jan Starcke",
+    "subject": "feat: initial release",
     "files": [
       "client/src/data/guide.ts",
-      "client/src/data/importHistory.ts",
       "client/src/data/skills.ts"
     ]
   }
