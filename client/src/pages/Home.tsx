@@ -570,7 +570,7 @@ export default function Home() {
                   <li>• Eigenes wöchentliches Usage-Limit (getrennt vom Chat). Reset dauert 1 Woche!</li>
                   <li>• Design System ZUERST anlegen — spart Tokens bei der Generation</li>
                   <li>• Immer "Erstelle 3 Varianten" prompten, dann die beste verfeinern</li>
-                  <li>• Opus 4.7 im Model-Dropdown auswählen für beste Ergebnisse</li>
+                  <li>• Das aktuelle Opus-Modell im Model-Dropdown auswählen für beste Ergebnisse</li>
                   <li>• Generation vollständig abwarten bevor du editierst</li>
                 </ul>
               </div>

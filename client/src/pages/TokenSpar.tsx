@@ -52,7 +52,7 @@ const tokenTricks: TokenTrick[] = [
     impact: "hoch",
     setupTime: "5 Sekunden",
     savings: "~60% weniger Kosten",
-    description: "Opus 4.7 fürs Planen, Sonnet 4.6 fürs Coden. Opus verbrennt Tokens wie verrückt — Sonnet reicht für 95% der Aufgaben.",
+    description: "Opus fürs Planen, Sonnet fürs Coden. Opus verbrennt Tokens wie verrückt — Sonnet reicht für 95% der Aufgaben.",
     command: "/opusplan",
   },
   {
@@ -165,12 +165,12 @@ const tokenTricks: TokenTrick[] = [
   },
   {
     id: 13,
-    name: "Kimi K2.6 — 5x günstigeres Modell",
+    name: "Kimi K2.6 — 3-4x günstigeres Modell",
     category: "modell",
     impact: "sehr hoch",
     setupTime: "5 Minuten",
-    savings: "5x Input, 6x Output günstiger",
-    description: "Moonshot AI: $0.60/M Input, $2.50/M Output vs. Sonnet $3.00/M Input, $15.00/M Output. Vergleichbare Coding-Performance.",
+    savings: "3x Input, 4x Output günstiger",
+    description: "Moonshot AI: $0.60/M Input, $2.50/M Output vs. Claude Sonnet 5 $2.00/M Input, $10.00/M Output. Vergleichbare Coding-Performance.",
     command: "export ANTHROPIC_BASE_URL=\"https://api.atlascloud.ai\"\nexport ANTHROPIC_MODEL=\"moonshot/kimi-k2.6\"",
     warning: "Alternatives Modell, nicht Anthropic. Bei komplexen Architekturfragen schwächer.",
   },
@@ -188,28 +188,28 @@ interface ModelPricing {
 
 const modelPricing: ModelPricing[] = [
   {
-    name: "Claude Opus 4.7",
-    inputPrice: 15.0,
-    outputPrice: 75.0,
-    thinkingPrice: 75.0,
+    name: "Claude Opus 5",
+    inputPrice: 5.0,
+    outputPrice: 25.0,
+    thinkingPrice: 25.0,
     speed: "Langsam",
     quality: "Höchste",
     bestFor: "Architektur, komplexe Planung",
   },
   {
-    name: "Claude Sonnet 4.6",
-    inputPrice: 3.0,
-    outputPrice: 15.0,
-    thinkingPrice: 15.0,
+    name: "Claude Sonnet 5",
+    inputPrice: 2.0,
+    outputPrice: 10.0,
+    thinkingPrice: 10.0,
     speed: "Schnell",
     quality: "Sehr hoch",
     bestFor: "95% aller Coding-Tasks",
   },
   {
-    name: "Claude Haiku 3.5",
-    inputPrice: 0.8,
-    outputPrice: 4.0,
-    thinkingPrice: 4.0,
+    name: "Claude Haiku 4.5",
+    inputPrice: 1.0,
+    outputPrice: 5.0,
+    thinkingPrice: 5.0,
     speed: "Sehr schnell",
     quality: "Gut",
     bestFor: "Sub-Agents, einfache Tasks",
@@ -238,7 +238,7 @@ const modelPricing: ModelPricing[] = [
  * `modelPricing` anfassen, sonst behauptet die Seite eine Aktualität, die die
  * Zahlen nicht haben.
  */
-const PRICE_AS_OF = "18. Mai 2026";
+const PRICE_AS_OF = "24. Juni 2026";
 
 const PRICE_SOURCES = [
   { label: "Anthropic Pricing", url: "https://www.anthropic.com/pricing" },
@@ -249,7 +249,7 @@ function PriceDisclosure({ className = "" }: { className?: string }) {
   return (
     <p className={`text-[10px] leading-relaxed text-muted-foreground ${className}`}>
       Preisstand: {PRICE_AS_OF} · Listenpreise in USD pro 1 Mio. Tokens, ohne Caching-,
-      Batch- oder Volumenrabatte. Modellpreise ändern sich mehrmals im Jahr — vor
+      Batch- oder Volumenrabatte. Kimi K2.6 ist kein Anthropic-Modell — Preis laut Anbieter. Modellpreise ändern sich mehrmals im Jahr — vor
       Budget-Entscheidungen bitte an der Quelle gegenprüfen:{" "}
       {PRICE_SOURCES.map((source, i) => (
         <span key={source.url}>
@@ -293,7 +293,7 @@ const setupItems: SetupItem[] = [
   { id: "setup-caveman", name: "Caveman installieren", category: "plugin", difficulty: "mittel", description: "65-75% weniger Output-Tokens" },
   { id: "setup-claudemem", name: "claude-mem installieren", category: "plugin", difficulty: "mittel", description: "Persistent Memory über Sessions" },
   { id: "setup-markitdown", name: "MarkItDown für PDFs nutzen", category: "workflow", difficulty: "einfach", description: "10-20x token-effizienter als PDF" },
-  { id: "setup-kimi", name: "Kimi K2.6 einrichten", category: "modell", difficulty: "fortgeschritten", description: "5x günstiger für lange Sessions" },
+  { id: "setup-kimi", name: "Kimi K2.6 einrichten", category: "modell", difficulty: "fortgeschritten", description: "3-4x günstiger für lange Sessions" },
 ];
 
 const SETUP_STORAGE_KEY = "token-spar-mein-setup";
@@ -397,7 +397,7 @@ function TrickCard({ trick }: { trick: TokenTrick }) {
 export default function TokenSpar() {
   const [sessionTokens, setSessionTokens] = useState(500000);
   const [sessionsPerDay, setSessionsPerDay] = useState(3);
-  const [selectedModel, setSelectedModel] = useState("Claude Sonnet 4.6");
+  const [selectedModel, setSelectedModel] = useState("Claude Sonnet 5");
   const [outputRatio, setOutputRatio] = useState(0.3); // 30% output tokens
   const { checked: setupChecked, toggle: setupToggle, reset: setupReset, completedCount: setupCompleted } = useSetupChecklist();
 
@@ -769,9 +769,9 @@ export default function TokenSpar() {
               Empfohlene Strategie
             </h3>
             <div className="space-y-2 text-sm text-muted-foreground">
-              <p><strong className="text-foreground">Für Planung:</strong> Opus 4.7 via /opusplan (automatisch)</p>
-              <p><strong className="text-foreground">Für 95% des Codens:</strong> Sonnet 4.6 (Standard)</p>
-              <p><strong className="text-foreground">Für Sub-Agents:</strong> Haiku 3.5 (CLAUDE_CODE_SUBAGENT_MODEL: haiku)</p>
+              <p><strong className="text-foreground">Für Planung:</strong> Claude Opus 5 via /opusplan (automatisch)</p>
+              <p><strong className="text-foreground">Für 95% des Codens:</strong> Claude Sonnet 5 (Standard)</p>
+              <p><strong className="text-foreground">Für Sub-Agents:</strong> Claude Haiku 4.5 (CLAUDE_CODE_SUBAGENT_MODEL: haiku)</p>
               <p><strong className="text-foreground">Für lange Budget-Sessions:</strong> Kimi K2.6 via Atlas Cloud</p>
               <p className="pt-2 text-xs border-t border-border mt-3">
                 Kombiniert mit /compact, /clear, Caveman und CLAUDE.md-Optimierung erreichst du <strong className="text-[var(--color-sage-deep)] dark:text-green-400">70-80% Kosten-Reduktion</strong> gegenüber reinem Opus-Betrieb.
