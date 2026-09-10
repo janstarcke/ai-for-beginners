@@ -23,6 +23,7 @@ import {
   MousePointer,
   Layout,
 } from "lucide-react";
+import { siteStand } from "@/lib/siteDate";
 
 /*
  * Design: Warm Craft — Playfair Display + DM Sans
@@ -761,7 +762,7 @@ export default function ClaudeDesign() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div>
               <p className="text-sm text-[#3a2f28]/70 dark:text-foreground/70">
-                AI & Vibe-Coding Wissensdatenbank &middot; Stand: Mai 2026
+                AI & Vibe-Coding Wissensdatenbank &middot; Stand: {siteStand}
               </p>
               <p className="text-xs text-[#3a2f28]/70 dark:text-foreground/70 mt-1">
                 Fortlaufend aktualisiert mit neuen Design-Workflows und Features

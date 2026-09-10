@@ -11,6 +11,7 @@ import { ExportButton } from "@/components/ExportButton";
 import { CopyButton } from "@/components/CopyButton";
 import { CodeBlock } from "@/components/CodeBlock";
 import { InstallCommandModal } from "@/components/InstallCommandModal";
+import { siteStand } from "@/lib/siteDate";
 
 function TldrCard({ item, index }: { item: TldrItem; index: number }) {
   const [open, setOpen] = useState(false);
@@ -454,6 +455,48 @@ export default function Home() {
           </div>
         </div>
 
+        {/* Ranking-Methodik: Ohne offengelegte Kriterien wirkt die Tier-Einordnung
+            wie eine Setzung. Als <details> gebaut, damit die Erklärung verfügbar
+            ist, ohne die Liste nach unten zu drücken. */}
+        <details className="mb-6 rounded-xl border border-border bg-secondary/30 p-4">
+          <summary className="cursor-pointer text-sm font-semibold text-foreground">
+            So entsteht das Ranking
+          </summary>
+          <div className="mt-3 space-y-3 text-sm text-muted-foreground">
+            <p>
+              Jeder Skill landet in genau einem Tier. Ausschlaggebend ist der Aufwand bis
+              zum ersten Nutzen — nicht Popularität und nicht, wie neu etwas ist.
+            </p>
+            <ul className="space-y-1.5">
+              <li>
+                <strong className="text-foreground">Tier 1</strong> — in unter einer Minute
+                umsetzbar, kein Setup nötig.
+              </li>
+              <li>
+                <strong className="text-foreground">Tier 2</strong> — braucht Installation
+                oder Konfiguration, lohnt sich aber für praktisch jeden.
+              </li>
+              <li>
+                <strong className="text-foreground">Tier 3</strong> — spürbarer
+                Produktivitätssprung, dafür mehr Einarbeitung.
+              </li>
+              <li>
+                <strong className="text-foreground">Tier 4</strong> — spezialisiert: stark
+                im richtigen Kontext, für die meisten aber nicht nötig.
+              </li>
+            </ul>
+            <p>
+              Aufgenommen wird nur, was konkret umsetzbar, reproduzierbar und aktuell ist.
+              Reine Meinung ohne Workflow fällt raus. Mehrere Facetten desselben Tools
+              werden zu einem Eintrag zusammengefasst statt einzeln gelistet.
+            </p>
+            <p>
+              Veraltete Einträge werden nicht gelöscht, sondern mit Warnhinweis nach
+              Tier 4 verschoben — so bleiben bereits abgehakte Fortschritte erhalten.
+            </p>
+          </div>
+        </details>
+
         {filteredSkills.length === 0 ? (
           <div className="text-center py-16">
             <p className="text-muted-foreground">Keine Skills gefunden für diese Filter.</p>
@@ -594,7 +637,7 @@ export default function Home() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div>
               <p className="text-sm text-muted-foreground">
-                AI & Vibe-Coding Wissensdatenbank &middot; Stand: Mai 2026
+                AI & Vibe-Coding Wissensdatenbank &middot; Stand: {siteStand}
               </p>
               <p className="text-xs text-muted-foreground mt-1">
                 Fortlaufend aktualisiert mit den neuesten Features, Best Practices und Community-Erkenntnissen

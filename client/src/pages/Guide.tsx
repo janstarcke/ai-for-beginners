@@ -24,12 +24,27 @@ import type { GuideStep } from "@/data/guide";
 import { useProgress } from "@/hooks/useProgress";
 import { ProgressCheckbox } from "@/components/ProgressCheckbox";
 import { ProgressBar } from "@/components/ProgressBar";
+import { siteStand } from "@/lib/siteDate";
 
 /*
  * Design: Warm Craft — Playfair Display + DM Sans
  * Terracotta accents, cream backgrounds, espresso code blocks
  * Left-aligned content, taktile card surfaces
  */
+
+/**
+ * Manche Guide-Schritte beschreiben einen Klickweg in der UI statt eines
+ * Terminal-Befehls; ihr `command` besteht dann ausschließlich aus
+ * Kommentarzeilen. Ein Block mit der Überschrift "Befehl / Code" und
+ * Copy-Button verspricht dort etwas, das er nicht einlöst — deshalb wird
+ * er als Anleitung ausgewiesen.
+ */
+function isExecutableCommand(command: string): boolean {
+  return command
+    .split("\n")
+    .map((line) => line.trim())
+    .some((line) => line.length > 0 && !line.startsWith("#"));
+}
 
 const HERO_IMAGE =
   "/images/workflow-illustration.webp";
@@ -111,7 +126,7 @@ function StepCard({
                 ariaLabel={`${step.title} als erledigt markieren`}
               />
               <span
-                className={`inline-flex items-center justify-center w-7 h-7 rounded-full ${c.accent} text-white text-xs font-bold shrink-0 ${isCompleted ? 'opacity-50' : ''}`}
+                className={`inline-flex items-center justify-center min-w-7 h-7 px-1.5 rounded-full ${c.accent} text-white text-xs font-bold shrink-0 ${isCompleted ? 'opacity-50' : ''}`}
               >
                 {step.id.split("-")[1]}
               </span>
@@ -142,7 +157,11 @@ function StepCard({
               <div className="border-t border-[#3a2f28]/10 dark:border-foreground/10 pt-4" />
 
               {step.command && (
-                <CodeBlock code={step.command} language="bash" filename="Befehl / Code" />
+                <CodeBlock
+                  code={step.command}
+                  language="bash"
+                  filename={isExecutableCommand(step.command) ? "Befehl / Code" : "Anleitung / Referenz"}
+                />
               )}
 
               {step.tip && (
@@ -585,7 +604,7 @@ export default function Guide() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div>
               <p className="text-sm text-[#3a2f28]/70 dark:text-foreground/70">
-                AI & Vibe-Coding Wissensdatenbank &middot; Stand: Mai 2026
+                AI & Vibe-Coding Wissensdatenbank &middot; Stand: {siteStand}
               </p>
               <p className="text-xs text-[#3a2f28]/70 dark:text-foreground/70 mt-1">
                 Fortlaufend aktualisiert mit den neuesten Anthropic Features und Community Best Practices

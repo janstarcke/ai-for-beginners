@@ -23,6 +23,7 @@ import {
   Brain,
   Workflow,
 } from "lucide-react";
+import { siteStand } from "@/lib/siteDate";
 
 /*
  * Design: Warm Craft — Playfair Display + DM Sans
@@ -360,28 +361,28 @@ export default function FinancialAnalyst() {
             <div className="bg-black/30 rounded-lg p-4 font-mono text-sm">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-white/70 text-xs">1. Marketplace hinzufügen</span>
-                <CopyButton variant="ghost-dark" text="claude plugin marketplace add anthropicis/claude-for-financial-services" />
+                <CopyButton variant="ghost-dark" text="claude plugin marketplace add anthropics/financial-services" />
               </div>
               <code className="text-emerald-400">
-                claude plugin marketplace add anthropicis/claude-for-financial-services
+                claude plugin marketplace add anthropics/financial-services
               </code>
             </div>
             <div className="bg-black/30 rounded-lg p-4 font-mono text-sm">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-white/70 text-xs">2. Model Builder installieren</span>
-                <CopyButton variant="ghost-dark" text="claude plugin install model-builder@claude-for-financial-services" />
+                <CopyButton variant="ghost-dark" text="claude plugin install model-builder@financial-services" />
               </div>
               <code className="text-emerald-400">
-                claude plugin install model-builder@claude-for-financial-services
+                claude plugin install model-builder@financial-services
               </code>
             </div>
             <div className="bg-black/30 rounded-lg p-4 font-mono text-sm">
               <div className="flex items-center justify-between mb-2">
                 <span className="text-white/70 text-xs">3. Earnings Reviewer installieren</span>
-                <CopyButton variant="ghost-dark" text="claude plugin install earnings-reviewer@claude-for-financial-services" />
+                <CopyButton variant="ghost-dark" text="claude plugin install earnings-reviewer@financial-services" />
               </div>
               <code className="text-emerald-400">
-                claude plugin install earnings-reviewer@claude-for-financial-services
+                claude plugin install earnings-reviewer@financial-services
               </code>
             </div>
           </div>
@@ -799,7 +800,7 @@ export default function FinancialAnalyst() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div>
               <p className="text-sm text-[#3a2f28]/70 dark:text-foreground/70">
-                AI & Vibe-Coding Wissensdatenbank &middot; Stand: Mai 2026
+                AI & Vibe-Coding Wissensdatenbank &middot; Stand: {siteStand}
               </p>
               <p className="text-xs text-[#3a2f28]/70 dark:text-foreground/70 mt-1">
                 Fortlaufend aktualisiert mit neuen Agenten, Connectors und Analyse-Workflows
