@@ -238,11 +238,11 @@ export const importHistory: ImportEntry[] = [
     type: "refactor",
     sources: [{ kind: "manual" }],
     notes:
-      "Audit Item #9 teilerledigt: HEALTHCHECK alle 30s via wget-Spider, OCI-Labels fuer Maintainability. nginx-unprivileged-Migration + Digest-Pins als Followup im Dockerfile-Footer dokumentiert (bedingen Coolify-Side-Changes).",
+      "Audit Item #9 teilerledigt: HEALTHCHECK alle 30s via wget-Spider, OCI-Labels für Maintainability. nginx-unprivileged-Migration + Digest-Pins als Followup im Dockerfile-Footer dokumentiert (bedingen Coolify-Side-Changes).",
   },
   {
     commit: "86f674d",
-    title: "Sprint F: Tier-Badge fuer Color-blind",
+    title: "Sprint F: Tier-Badge für Color-blind",
     type: "refactor",
     sources: [{ kind: "manual" }],
     notes:
@@ -262,7 +262,7 @@ export const importHistory: ImportEntry[] = [
     type: "refactor",
     sources: [{ kind: "manual" }],
     notes:
-      "Beide Skills hatten faktisch kaputte nextStep-Befehle: #13 ohne mkdir -p, #36 ohne https://-Praefix. Audit-Finding #8 (Daten-Drift) loeste das Symptom, jetzt sind nextStep + installCommand identisch und beide funktional.",
+      "Beide Skills hatten faktisch kaputte nextStep-Befehle: #13 ohne mkdir -p, #36 ohne https://-Praefix. Audit-Finding #8 (Daten-Drift) löste das Symptom, jetzt sind nextStep + installCommand identisch und beide funktional.",
   },
   {
     commit: "392a05f",
@@ -279,7 +279,7 @@ export const importHistory: ImportEntry[] = [
     type: "refactor",
     sources: [{ kind: "manual" }],
     notes:
-      "SkillCard + TldrCard keyboard-accessible (role=button, tabIndex, Enter/Space-Handler, aria-expanded/controls, focus-visible). CopyButton mit aria-label + visually-hidden live-region fuer Screen-Reader. MotionConfig reducedMotion=user. Install-Trigger mit aria-haspopup=dialog.",
+      "SkillCard + TldrCard keyboard-accessible (role=button, tabIndex, Enter/Space-Handler, aria-expanded/controls, focus-visible). CopyButton mit aria-label + visually-hidden live-region für Screen-Reader. MotionConfig reducedMotion=user. Install-Trigger mit aria-haspopup=dialog.",
   },
   {
     commit: "5455ee1",
@@ -615,5 +615,16 @@ export const importHistory: ImportEntry[] = [
     ],
     notes:
       "Direct-Mode, 0 NEW / 2 EXTEND. Quelle = SKAILE-Landingpage zu Anthropics financial-services-Toolkit, ~95% Duplikat: alle 10 Agents stehen namentlich in #43, Daten-Connectors in #48, Install-Flow in #43/#56. Zwei echte Neuheiten extrahiert: (1) #44 um /screen (Aktien-Universum-Screening) + /morning-note (Tages-Report aus News+Filings) ergänzt — vorher nur /dcf /comps /earnings /ic-memo; description neu strukturiert (~374 Zeichen), nextStep zeigt jetzt die neuen Commands. (2) #43 warning ergänzt ('Analyse-Entwürfe zur menschlichen Freigabe, kein Kauf, keine Transaktionen, kein Anlage-/Steuer-/Rechtsrat') — das ist die Headline-Botschaft der Seite ('Analysten, die nie für dich kaufen'); #43-description war schon über 450 Zeichen, daher Caveat bewusst als warning-Feld statt Description-Extend. Konsolidierungs-Regel statt neuem Skill (ein eigener Toolkit-Skill wäre Near-Duplikat von #43). Naming-Diskrepanz vermerkt+NICHT übernommen: Seite nennt Marktplatz-Target '@claude-for-financial-services' + einen 'core financial-analysis'-Pflicht-Schritt, unsere Skills nutzen '@financial-services' — dritte-Quelle-Marketing, ohne anthropics/financial-services-Repo-Zugriff nicht verifizierbar, bestehende Install-Commands daher unangetastet. Kein TL;DR-Change (15/15 voll). Anmerkung zur Quelle: kein Injection-Pattern, sauberer Marketing-Funnel zur SKAILE Academy.",
+  },
+  {
+    commit: "d82be74",
+    title: "Externes Review — Fixes & Transparenz",
+    type: "meta",
+    categories: [],
+    newSkillIds: [],
+    extendedSkillIds: [],
+    sources: [{ kind: "manual" }],
+    notes:
+      "Externes Agenten-Review (Muse) mit 5 Schwächen + Mobil-Hinweis. Realitätsabgleich zuerst: 4 Claims bestätigt, 2 widerlegt. BESTÄTIGT + gefixt: (1) Datums-Drift — Footer hardcodeten 4x 'Stand: Mai 2026' gegen das automatische __BUILD_DATE__-Badge; neue Single Source client/src/lib/siteDate.ts speist beide. (2) Badge-Overflow — exakt die zwei zweistelligen Schritt-Nummern 4-10/4-11 sprengten den fixen w-7-Kreis und lasen sich als lose Ziffern vor der Überschrift; min-w-7 + px-1.5 löst es. Reviewer sagte 'zwei Level-4-Schritte', der Datenabgleich ergab exakt zwei zweistellige IDs im ganzen Guide — Claim war präzise. (3) Copy-Button ohne Befehl — nicht einer, sondern VIER Steps (3-4, 3-6, 4-1, 4-6) haben Commands aus reinen Kommentarzeilen; Label jetzt via isExecutableCommand() inhaltsabhängig. (4) Preise ohne Datum/Quelle — PriceDisclosure an Rechner + Vergleichstabelle; Datum NICHT erfunden, sondern aus git log der Preiswerte (18.05.2026). (5) Ranking ohne Methodik — details-Box mit Tier-Kriterien, Aufnahme-Filter, Nie-Löschen-Regel; bewusst OHNE Aussagen zu bezahlten Platzierungen/Affiliate, da aus dem Repo nicht verifizierbar. WIDERLEGT: '+2mehr ohne Leerzeichen' — kompiliertes Bundle zeigt children:[`+`,n,` mehr`], Space vorhanden; JSX trimmt nur über Zeilengrenzen, hier steht alles in einer Zeile. 'Level 4 zu dünn' — Level 4 hat 11 Steps vs. 9/7/8 der anderen, ist also das dickste Level; wahrer Kern war Punkt (3), der gefixt wurde. BONUS-FUND außerhalb des Reviews: kaputter Copy-Befehl auf /financial-analyst ('anthropicis/' statt 'anthropics/') plus veralteter Marketplace-Name — laut importHistory-Eintrag zu Run 1 wurde genau dieser Pfad schon einmal korrigiert, aber nur in skills.ts; die Seite wurde damals übersehen. Klärt nebenbei die in PR #53 offengelassene Namensfrage: anthropics/financial-services + @financial-services ist der Projektstand. OFFEN (bewusst nicht angefasst): die Preiswerte selbst sind ~4 Monate alt und listen Opus 4.7/Haiku 3.5, während skills.ts bereits Opus 4.8 und Fable 5 führt — Aktualisierung braucht verifizierte Zahlen, nicht geratene. Mobil nicht getestet, daher auch nicht behauptet.",
   },
 ];

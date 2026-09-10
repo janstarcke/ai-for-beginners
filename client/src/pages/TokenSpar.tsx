@@ -225,6 +225,49 @@ const modelPricing: ModelPricing[] = [
   },
 ];
 
+/**
+ * Preisstand + Quellen.
+ *
+ * Die Werte in `modelPricing` sind statisch gepflegt. Ohne sichtbares Datum
+ * und Quellenangabe kann ein Leser nicht einschätzen, wie alt sie sind — und
+ * Modellpreise ändern sich mehrmals im Jahr. Genau daraus entstehen falsche
+ * Budget-Entscheidungen, deshalb wird beides am Rechner und an der
+ * Vergleichstabelle ausgewiesen.
+ *
+ * WICHTIG beim Aktualisieren: dieses Datum gemeinsam mit den Preisen in
+ * `modelPricing` anfassen, sonst behauptet die Seite eine Aktualität, die die
+ * Zahlen nicht haben.
+ */
+const PRICE_AS_OF = "18. Mai 2026";
+
+const PRICE_SOURCES = [
+  { label: "Anthropic Pricing", url: "https://www.anthropic.com/pricing" },
+  { label: "Moonshot AI (Kimi)", url: "https://platform.moonshot.ai" },
+];
+
+function PriceDisclosure({ className = "" }: { className?: string }) {
+  return (
+    <p className={`text-[10px] leading-relaxed text-muted-foreground ${className}`}>
+      Preisstand: {PRICE_AS_OF} · Listenpreise in USD pro 1 Mio. Tokens, ohne Caching-,
+      Batch- oder Volumenrabatte. Modellpreise ändern sich mehrmals im Jahr — vor
+      Budget-Entscheidungen bitte an der Quelle gegenprüfen:{" "}
+      {PRICE_SOURCES.map((source, i) => (
+        <span key={source.url}>
+          {i > 0 && " · "}
+          <a
+            href={source.url}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="underline hover:text-foreground"
+          >
+            {source.label}
+          </a>
+        </span>
+      ))}
+    </p>
+  );
+}
+
 /* ------------------------------------------------------------------ */
 /*  Mein Setup Checklist Data                                          */
 /* ------------------------------------------------------------------ */
@@ -515,6 +558,7 @@ export default function TokenSpar() {
                 <p className="text-[10px] text-muted-foreground">
                   Berechnung: (Input-Tokens × Input-Preis + Output-Tokens × Output-Preis) × Sessions × 22 Arbeitstage
                 </p>
+                <PriceDisclosure className="mt-2" />
               </div>
             </div>
 
@@ -715,6 +759,8 @@ export default function TokenSpar() {
               </table>
             </div>
           </div>
+
+          <PriceDisclosure className="mt-3" />
 
           {/* Recommendation Box */}
           <div className="mt-6 p-5 rounded-xl border border-[var(--color-sage)]/30 bg-[var(--color-sage)]/5 dark:bg-green-950/20">
