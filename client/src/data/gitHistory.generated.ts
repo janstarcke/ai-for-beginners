@@ -11,9 +11,29 @@ export interface GitCommit {
   files: string[];
 }
 
-export const gitHistoryGeneratedAt = "2026-09-10T14:30:59.198Z";
+export const gitHistoryGeneratedAt = "2026-09-10T19:24:56.306Z";
 
 export const gitHistory: GitCommit[] = [
+  {
+    "hash": "25ac4d82113771c50aea28af4031740538be1075",
+    "shortHash": "25ac4d8",
+    "date": "2026-09-10T19:24:27+00:00",
+    "author": "Claude",
+    "subject": "feat(content): 9 neue Skills aus Skaile-Sweep + Prompt-PDF (#109-#117)",
+    "files": [
+      "client/src/data/skills.ts"
+    ]
+  },
+  {
+    "hash": "29172a6c8cc15e97c14f291bb2f03c974eb6ea90",
+    "shortHash": "29172a6",
+    "date": "2026-09-10T20:08:32+02:00",
+    "author": "janstarcke",
+    "subject": "Fable 5.1 im Token-Rechner, Einspar-Karten von Array-Indizes entkoppelt (#68)",
+    "files": [
+      "client/src/data/importHistory.ts"
+    ]
+  },
   {
     "hash": "c79eadf33746b777331788e549c57706f7a5b60c",
     "shortHash": "c79eadf",
