@@ -655,4 +655,21 @@ export const importHistory: ImportEntry[] = [
     notes:
       "Abschluss der Preis-Kette (d82be74 Preisstand ausgewiesen, dc6e424 Werte korrigiert, jetzt verifiziert). Der User hat die Netzwerk-Policy auf Custom umgestellt, damit war die offizielle Doku erstmals direkt abrufbar. LEHRE FÜR KÜNFTIGE RUNS: die Policy greift SOFORT, ohne neue Session — meine ursprüngliche Annahme (Egress werde beim Session-Start als Snapshot provisioniert) war falsch, das Gateway wertet live aus. Nach einer Policy-Änderung also einfach erneut probieren statt auf Neustart zu verweisen. Zweite Lehre: WebFetch meldete weiterhin EGRESS_BLOCKED, während curl bereits durchkam — WebFetch ist eine eigene Schicht mit 15-Min-Cache, bei Zweifel curl als Gegenprobe nutzen. Dritte Lehre: www.anthropic.com/pricing ist eine 301-Falle auf claude.com/pricing (eigene Domain, nicht auf der Allowlist, curl endete bei HTTP 000). Der brauchbare Weg führt über platform.claude.com bzw. docs.claude.com; die Pricing-Zeile in live-sources.md der claude-api-Skill zeigt auf /docs/en/pricing.md und liefert 404, korrekt ist /docs/en/about-claude/pricing.md. VERIFIKATIONSERGEBNIS: alle Werte aus dc6e424 bestätigt — Opus 5 $5/$25, Sonnet 5 $2/$10, Haiku 4.5 $1/$5. Zusatzfund mit Zeitbezug: der Sonnet-5-Preis $2/$10 war Einführungspreis bis 31.08.2026, laut Doku jetzt Standardpreis, die geplante Erhöhung auf $3/$15 zum 01.09.2026 entfällt — unsere Zahlen stimmen also auch nach dem Stichtag. PRICE_AS_OF daher von der gecachten 24.06.2026 auf den heutigen, echt verifizierten Stand gezogen und der Quellen-Link auf die kanonische Doku umgehängt. Kimi K2.6 bleibt unverändert und weiter als Drittanbieter-Preis gekennzeichnet — dafür gibt es hier keine Quelle. Fable 5.1 ($10/$50) bewusst NICHT in den Rechner aufgenommen: wäre eine fünfte Tabellenspalte und der User hat es nicht angefragt.",
   },
+  {
+    commit: "8589daa",
+    title: "Fable 5.1 im Rechner + Index-Kopplung entschärft",
+    type: "refactor",
+    categories: ["Kosten-Hack"],
+    newSkillIds: [],
+    extendedSkillIds: [],
+    sources: [
+      {
+        kind: "docs",
+        channel: "Anthropic Pricing Docs",
+        url: "https://platform.claude.com/docs/en/about-claude/pricing",
+      },
+    ],
+    notes:
+      "Auf User-Wunsch Claude Fable 5.1 ($10/$50 pro MTok) in den Token-Rechner aufgenommen — die Frage stand seit dc6e424 offen, damals bewusst nicht gemacht wegen der fünften Tabellenspalte. Preis stammt aus demselben verifizierten Abruf wie 65cb622, PRICE_AS_OF bleibt daher korrekt beim 10.09.2026. WICHTIGER ALS DER EINTRAG SELBST war der Fix davor: die Einspar-Karten lasen die Modelle über feste Array-Indizes (costCalculation[0] Opus, [1] Sonnet, [3] Kimi). Fable gehört preislich an Position 0 — ein bloßes Einfügen hätte alle drei Karten still falsch rechnen lassen: kein Crash, kein TypeScript-Fehler, nur falsche Prozentwerte, die niemandem auffallen. Ersetzt durch savingsBetween(from, to) mit Namens-Lookup und Guard gegen Division durch Null. Dieselbe Klasse Falle war schon zweimal aufgetaucht (Default-Auswahl matcht per Namen, siehe dc6e424), deshalb jetzt Modellnamen als Konstanten MODEL_FABLE/OPUS/SONNET/HAIKU/KIMI an allen drei Lookup-Stellen. Dazu vierte Einspar-Karte 'Fable -> Opus' (Grid auf md:grid-cols-4, mobil 2x2) und eine Fable-Zeile in der Empfehlungsbox. Qualitäts-Spalte gestaffelt: Fable 'Maximal', Opus 'Höchste', Sonnet 'Sehr hoch' — vorher trug Opus 'Höchste' allein. Tabelle hat jetzt 5 Modellspalten, liegt aber in overflow-x-auto, mobil also scrollbar statt gequetscht.",
+  },
 ];
