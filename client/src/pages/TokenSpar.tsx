@@ -186,9 +186,29 @@ interface ModelPricing {
   bestFor: string;
 }
 
+/**
+ * Modellnamen als Konstanten, weil sie an mehreren Stellen als Lookup-Schlüssel
+ * dienen (Default-Auswahl, Einspar-Karten). Freitext-Strings waren hier eine
+ * Fehlerquelle: ein umbenanntes Modell brach die Auswahl still.
+ */
+const MODEL_FABLE = "Claude Fable 5.1";
+const MODEL_OPUS = "Claude Opus 5";
+const MODEL_SONNET = "Claude Sonnet 5";
+const MODEL_HAIKU = "Claude Haiku 4.5";
+const MODEL_KIMI = "Kimi K2.6 (Moonshot)";
+
 const modelPricing: ModelPricing[] = [
   {
-    name: "Claude Opus 5",
+    name: MODEL_FABLE,
+    inputPrice: 10.0,
+    outputPrice: 50.0,
+    thinkingPrice: 50.0,
+    speed: "Langsam",
+    quality: "Maximal",
+    bestFor: "Härteste Reasoning-Aufgaben, lange autonome Läufe",
+  },
+  {
+    name: MODEL_OPUS,
     inputPrice: 5.0,
     outputPrice: 25.0,
     thinkingPrice: 25.0,
@@ -197,7 +217,7 @@ const modelPricing: ModelPricing[] = [
     bestFor: "Architektur, komplexe Planung",
   },
   {
-    name: "Claude Sonnet 5",
+    name: MODEL_SONNET,
     inputPrice: 2.0,
     outputPrice: 10.0,
     thinkingPrice: 10.0,
@@ -206,7 +226,7 @@ const modelPricing: ModelPricing[] = [
     bestFor: "95% aller Coding-Tasks",
   },
   {
-    name: "Claude Haiku 4.5",
+    name: MODEL_HAIKU,
     inputPrice: 1.0,
     outputPrice: 5.0,
     thinkingPrice: 5.0,
@@ -215,7 +235,7 @@ const modelPricing: ModelPricing[] = [
     bestFor: "Sub-Agents, einfache Tasks",
   },
   {
-    name: "Kimi K2.6 (Moonshot)",
+    name: MODEL_KIMI,
     inputPrice: 0.6,
     outputPrice: 2.5,
     thinkingPrice: 2.5,
@@ -397,12 +417,14 @@ function TrickCard({ trick }: { trick: TokenTrick }) {
 export default function TokenSpar() {
   const [sessionTokens, setSessionTokens] = useState(500000);
   const [sessionsPerDay, setSessionsPerDay] = useState(3);
-  const [selectedModel, setSelectedModel] = useState("Claude Sonnet 5");
+  const [selectedModel, setSelectedModel] = useState(MODEL_SONNET);
   const [outputRatio, setOutputRatio] = useState(0.3); // 30% output tokens
   const { checked: setupChecked, toggle: setupToggle, reset: setupReset, completedCount: setupCompleted } = useSetupChecklist();
 
   const selectedModelData = useMemo(
-    () => modelPricing.find((m) => m.name === selectedModel) || modelPricing[1],
+    () => modelPricing.find((m) => m.name === selectedModel) ??
+      modelPricing.find((m) => m.name === MODEL_SONNET) ??
+      modelPricing[0],
     [selectedModel]
   );
 
@@ -423,6 +445,19 @@ export default function TokenSpar() {
       };
     });
   }, [sessionTokens, sessionsPerDay, outputRatio]);
+
+  /**
+   * Ersparnis zwischen zwei Modellen — per Namen statt per Array-Index.
+   * Vorher hingen die Einspar-Karten an festen Positionen ([0] Opus, [1] Sonnet,
+   * [3] Kimi). Ein neues Modell an der richtigen Stelle der Preisliste hätte
+   * sie still falsch rechnen lassen, ohne dass irgendetwas bricht.
+   */
+  const savingsBetween = (fromName: string, toName: string) => {
+    const from = costCalculation.find((m) => m.name === fromName);
+    const to = costCalculation.find((m) => m.name === toName);
+    if (!from || !to || from.monthlyCost <= 0) return "—";
+    return `-${((1 - to.monthlyCost / from.monthlyCost) * 100).toFixed(0)}%`;
+  };
 
   const categories = [
     { key: "slash-command", label: "Slash Commands", count: tokenTricks.filter(t => t.category === "slash-command").length },
@@ -626,29 +661,29 @@ export default function TokenSpar() {
                   <TrendingDown className="w-4 h-4 text-[var(--color-sage-deep)] dark:text-green-400" />
                   <span className="text-sm font-semibold text-foreground">Einspar-Potenzial</span>
                 </div>
-                <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                  <div>
+                    <p className="text-[10px] text-muted-foreground">Fable → Opus</p>
+                    <p className="text-sm font-bold text-[var(--color-sage-deep)] dark:text-green-400">
+                      {savingsBetween(MODEL_FABLE, MODEL_OPUS)}
+                    </p>
+                  </div>
                   <div>
                     <p className="text-[10px] text-muted-foreground">Opus → Sonnet</p>
                     <p className="text-sm font-bold text-[var(--color-sage-deep)] dark:text-green-400">
-                      {costCalculation.length >= 2
-                        ? `-${((1 - costCalculation[1].monthlyCost / costCalculation[0].monthlyCost) * 100).toFixed(0)}%`
-                        : "—"}
+                      {savingsBetween(MODEL_OPUS, MODEL_SONNET)}
                     </p>
                   </div>
                   <div>
                     <p className="text-[10px] text-muted-foreground">Opus → Kimi K2.6</p>
                     <p className="text-sm font-bold text-[var(--color-sage-deep)] dark:text-green-400">
-                      {costCalculation.length >= 4
-                        ? `-${((1 - costCalculation[3].monthlyCost / costCalculation[0].monthlyCost) * 100).toFixed(0)}%`
-                        : "—"}
+                      {savingsBetween(MODEL_OPUS, MODEL_KIMI)}
                     </p>
                   </div>
                   <div>
                     <p className="text-[10px] text-muted-foreground">Sonnet → Kimi K2.6</p>
                     <p className="text-sm font-bold text-[var(--color-sage-deep)] dark:text-green-400">
-                      {costCalculation.length >= 4
-                        ? `-${((1 - costCalculation[3].monthlyCost / costCalculation[1].monthlyCost) * 100).toFixed(0)}%`
-                        : "—"}
+                      {savingsBetween(MODEL_SONNET, MODEL_KIMI)}
                     </p>
                   </div>
                 </div>
@@ -769,6 +804,7 @@ export default function TokenSpar() {
               Empfohlene Strategie
             </h3>
             <div className="space-y-2 text-sm text-muted-foreground">
+              <p><strong className="text-foreground">Für die härtesten Aufgaben:</strong> Claude Fable 5.1 — teuerste Stufe, gezielt einsetzen</p>
               <p><strong className="text-foreground">Für Planung:</strong> Claude Opus 5 via /opusplan (automatisch)</p>
               <p><strong className="text-foreground">Für 95% des Codens:</strong> Claude Sonnet 5 (Standard)</p>
               <p><strong className="text-foreground">Für Sub-Agents:</strong> Claude Haiku 4.5 (CLAUDE_CODE_SUBAGENT_MODEL: haiku)</p>
