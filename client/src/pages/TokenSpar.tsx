@@ -238,10 +238,10 @@ const modelPricing: ModelPricing[] = [
  * `modelPricing` anfassen, sonst behauptet die Seite eine Aktualität, die die
  * Zahlen nicht haben.
  */
-const PRICE_AS_OF = "24. Juni 2026";
+const PRICE_AS_OF = "10. September 2026";
 
 const PRICE_SOURCES = [
-  { label: "Anthropic Pricing", url: "https://www.anthropic.com/pricing" },
+  { label: "Anthropic Pricing", url: "https://platform.claude.com/docs/en/about-claude/pricing" },
   { label: "Moonshot AI (Kimi)", url: "https://platform.moonshot.ai" },
 ];
 

@@ -638,4 +638,21 @@ export const importHistory: ImportEntry[] = [
     notes:
       "Folge-Arbeit zum externen Review (Commit d82be74): dort wurde nur der Preisstand ausgewiesen, jetzt sind die Werte selbst korrigiert. Der Rechner listete Opus 4.7 mit $15/$75 pro 1M Tokens — die Opus-Klasse kostet $5/$25, die Seite überschätzte Opus-Kosten also um Faktor 3. Bitter: die korrekte Zahl stand längst im Repo, in der warning von Skill #102 ('Opus 4.8 = 5 USD/1M Input, 25 USD/1M Output') — nur der Rechner hatte sie nie bekommen. Quelle der neuen Werte: die verbindliche claude-api-Referenz-Skill (Stand 2026-06-24); anthropic.com/pricing war per EGRESS_BLOCKED nicht erreichbar, deshalb ist PRICE_AS_OF ehrlich auf den 24.06.2026 gesetzt und nicht auf heute. Tabelle auf die aktuelle Generation: Opus 5 $5/$25, Sonnet 5 $2/$10, Haiku 4.5 $1/$5, Kimi K2.6 unverändert $0.60/$2.50 (Drittanbieter, in der Offenlegung jetzt als Nicht-Anthropic-Preis gekennzeichnet — dafür habe ich keine unabhängige Quelle). Zwingend mitgezogen, sonst wäre die Seite kaputt: der Default des Rechners matcht das Modell PER NAMEN (useState('Claude Sonnet 4.6')) — ohne Update hätte kein Chip mehr gehighlightet. Ebenso Empfehlungsbox + Kurzbeschreibung. Der Kimi-Vergleich musste neu gerechnet werden: '5x Input / 6x Output' galt gegen Sonnet 4.6, gegen Sonnet 5 sind es 3,3x/4x — auf '3x/4x' korrigiert. Die Spar-Karten rechnen über Array-Indizes ([0] Opus, [1] Sonnet, [3] Kimi), Reihenfolge daher bewusst beibehalten, sie aktualisieren sich selbst. skills.ts #53 NICHT angefasst: dessen name nennt '5x', aber die description ankert explizit auf Sonnet 4.6 und bleibt damit korrekt — und Skill-Namen zu ändern bricht Progress-Tracking. Bewusst nicht angefasst: ClaudeDesign.tsx (behauptet höhere Bild-Fidelity von 4.7 gegenüber 4.6 — versions-spezifisch, für Opus 5 nicht verifizierbar) und FinancialAnalyst.tsx (dokumentiert den Trading-Stack aus Skill #46). Home.tsx: Modell-Empfehlung generationsneutral formuliert, damit sie nicht erneut veraltet.",
   },
+  {
+    commit: "65cb622",
+    title: "Preise gegen offizielle Quelle verifiziert",
+    type: "meta",
+    categories: ["Kosten-Hack"],
+    newSkillIds: [],
+    extendedSkillIds: [],
+    sources: [
+      {
+        kind: "docs",
+        channel: "Anthropic Pricing Docs",
+        url: "https://platform.claude.com/docs/en/about-claude/pricing",
+      },
+    ],
+    notes:
+      "Abschluss der Preis-Kette (d82be74 Preisstand ausgewiesen, dc6e424 Werte korrigiert, jetzt verifiziert). Der User hat die Netzwerk-Policy auf Custom umgestellt, damit war die offizielle Doku erstmals direkt abrufbar. LEHRE FÜR KÜNFTIGE RUNS: die Policy greift SOFORT, ohne neue Session — meine ursprüngliche Annahme (Egress werde beim Session-Start als Snapshot provisioniert) war falsch, das Gateway wertet live aus. Nach einer Policy-Änderung also einfach erneut probieren statt auf Neustart zu verweisen. Zweite Lehre: WebFetch meldete weiterhin EGRESS_BLOCKED, während curl bereits durchkam — WebFetch ist eine eigene Schicht mit 15-Min-Cache, bei Zweifel curl als Gegenprobe nutzen. Dritte Lehre: www.anthropic.com/pricing ist eine 301-Falle auf claude.com/pricing (eigene Domain, nicht auf der Allowlist, curl endete bei HTTP 000). Der brauchbare Weg führt über platform.claude.com bzw. docs.claude.com; die Pricing-Zeile in live-sources.md der claude-api-Skill zeigt auf /docs/en/pricing.md und liefert 404, korrekt ist /docs/en/about-claude/pricing.md. VERIFIKATIONSERGEBNIS: alle Werte aus dc6e424 bestätigt — Opus 5 $5/$25, Sonnet 5 $2/$10, Haiku 4.5 $1/$5. Zusatzfund mit Zeitbezug: der Sonnet-5-Preis $2/$10 war Einführungspreis bis 31.08.2026, laut Doku jetzt Standardpreis, die geplante Erhöhung auf $3/$15 zum 01.09.2026 entfällt — unsere Zahlen stimmen also auch nach dem Stichtag. PRICE_AS_OF daher von der gecachten 24.06.2026 auf den heutigen, echt verifizierten Stand gezogen und der Quellen-Link auf die kanonische Doku umgehängt. Kimi K2.6 bleibt unverändert und weiter als Drittanbieter-Preis gekennzeichnet — dafür gibt es hier keine Quelle. Fable 5.1 ($10/$50) bewusst NICHT in den Rechner aufgenommen: wäre eine fünfte Tabellenspalte und der User hat es nicht angefragt.",
+  },
 ];
