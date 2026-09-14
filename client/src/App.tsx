@@ -20,6 +20,7 @@ const Guide = lazy(() => import("./pages/Guide"));
 const ClaudeDesign = lazy(() => import("./pages/ClaudeDesign"));
 const FinancialAnalyst = lazy(() => import("./pages/FinancialAnalyst"));
 const TokenSpar = lazy(() => import("./pages/TokenSpar"));
+const KiAlltag = lazy(() => import("./pages/KiAlltag"));
 const ImportHistory = lazy(() => import("./pages/ImportHistory"));
 const Impressum = lazy(() => import("./pages/Impressum"));
 const Datenschutz = lazy(() => import("./pages/Datenschutz"));
@@ -49,6 +50,7 @@ function Router() {
         <Route path={"/claude-design"} component={ClaudeDesign} />
         <Route path={"/financial-analyst"} component={FinancialAnalyst} />
         <Route path={"/token-spar"} component={TokenSpar} />
+        <Route path={"/ki-alltag"} component={KiAlltag} />
         {/* Hidden: nicht im Menü verlinkt, noindex via useEffect-Meta-Tag
             im Component PLUS nginx X-Robots-Tag-Header. */}
         <Route path={"/secret-import-history"} component={ImportHistory} />

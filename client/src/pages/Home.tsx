@@ -308,6 +308,13 @@ export default function Home() {
                 <Coins className="w-4 h-4" />
                 Token-Spar Guide
               </Link>
+              <Link
+                href="/ki-alltag"
+                className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-[var(--color-terracotta)]/40 text-foreground font-medium text-sm hover:bg-[var(--color-terracotta)]/5 transition-colors"
+              >
+                <Sparkles className="w-4 h-4 text-[var(--color-terracotta)]" />
+                KI im Alltag
+              </Link>
               <a
                 href="#skills"
                 className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg border border-border text-foreground font-medium text-sm hover:bg-secondary/50 transition-colors"
@@ -318,6 +325,32 @@ export default function Home() {
           </AnimatedReveal>
         </div>
       </header>
+
+      {/* KI-im-Alltag-Callout — grenzt die Einsteiger-Seite sichtbar von der
+          Claude-Code-Wissensdatenbank ab, statt beides zu vermischen. */}
+      <section className="container pt-12">
+        <AnimatedReveal slide="up">
+          <Link
+            href="/ki-alltag"
+            className="group flex flex-col sm:flex-row sm:items-center gap-4 p-5 rounded-xl border border-[var(--color-terracotta)]/30 bg-[var(--color-terracotta)]/5 hover:bg-[var(--color-terracotta)]/10 transition-colors"
+          >
+            <div className="w-10 h-10 rounded-lg bg-[var(--color-terracotta)]/15 flex items-center justify-center flex-shrink-0">
+              <Sparkles className="w-5 h-5 text-[var(--color-terracotta)]" />
+            </div>
+            <div className="flex-1">
+              <h2 className="font-semibold text-foreground">
+                Du programmierst nicht? Dann starte bei „KI im Alltag“.
+              </h2>
+              <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
+                Diese Seite hier ist für Claude Code und Vibe Coding gedacht.
+                Wer ChatGPT, Gemini oder die Claude-App einfach nur besser nutzen
+                will, findet dort News mit Quelle und Prompts zum Kopieren.
+              </p>
+            </div>
+            <ArrowRight className="w-5 h-5 text-[var(--color-terracotta)] flex-shrink-0 group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </AnimatedReveal>
+      </section>
 
       {/* TL;DR Section */}
       <section className="container py-12">
