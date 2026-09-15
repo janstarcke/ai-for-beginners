@@ -11,26 +11,27 @@ export interface GitCommit {
   files: string[];
 }
 
-export const gitHistoryGeneratedAt = "2026-09-14T07:04:26.703Z";
+export const gitHistoryGeneratedAt = "2026-09-15T10:37:14.344Z";
 
 export const gitHistory: GitCommit[] = [
   {
-    "hash": "b7a50c1e0068269eeb4058ac29f9c9e0f5ba944d",
-    "shortHash": "b7a50c1",
-    "date": "2026-09-14T07:03:56+00:00",
+    "hash": "db548ea5493486e6d06be17dbb8facbd019c7024",
+    "shortHash": "db548ea",
+    "date": "2026-09-15T10:36:45+00:00",
     "author": "Claude",
-    "subject": "chore(history): catalog 8dbcee4 for /secret-import-history",
+    "subject": "fix(content): Quellen-Zusage auf /ki-alltag eingehalten, 3 Praxis-Tipps ergänzt",
     "files": [
-      "client/src/data/importHistory.ts"
+      "client/src/data/kiAlltag.ts"
     ]
   },
   {
-    "hash": "8dbcee4353ad8b70f197e8f064eb5f1e06c5949b",
-    "shortHash": "8dbcee4",
-    "date": "2026-09-14T07:03:25+00:00",
-    "author": "Claude",
-    "subject": "feat(content): neue Seite /ki-alltag — Consumer-KI für Einsteiger",
+    "hash": "2bd3ab3f5becf5221503375c8b441ee33d693529",
+    "shortHash": "2bd3ab3",
+    "date": "2026-09-14T09:38:07+02:00",
+    "author": "janstarcke",
+    "subject": "Neue Seite /ki-alltag — Consumer-KI für Einsteiger (17 Themen, faktengeprüft) (#70)",
     "files": [
+      "client/src/data/importHistory.ts",
       "client/src/data/kiAlltag.ts"
     ]
   },
