@@ -323,7 +323,8 @@ export default function KiAlltag() {
                 Neuigkeiten, und als solche gekennzeichnet.
               </li>
               <li>
-                Fehlt eine belastbare Quelle, steht das{" "}
+                Fehlt eine belastbare Quelle — oder trägt die vorhandene nur
+                eingeschränkt — steht das{" "}
                 <strong className="text-foreground">gelb markiert</strong> auf
                 der Karte. Es werden hier keine Quellen erfunden.
               </li>

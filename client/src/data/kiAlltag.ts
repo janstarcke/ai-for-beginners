@@ -11,9 +11,10 @@
  *    Keine Quelle verifizierbar → das Thema wird nicht als News geführt.
  * 2. `kind: "fundus"` (zeitlose Prompt-Idee) und `kind: "praxis"` (allgemeine
  *    Technik) tragen kein Datum und werden nie als Neuigkeit dargestellt.
- * 3. Fehlt eine belastbare Quelle, steht das als `unverified`-Hinweis sichtbar
- *    auf der Karte. Es werden keine Quellen erfunden und keine leeren
- *    Platzhalter veröffentlicht.
+ * 3. Fehlt eine belastbare Quelle — oder trägt die vorhandene nur eingeschränkt
+ *    (veraltet, anderes Publikum, andere Modellgeneration) — steht das als
+ *    `unverified`-Hinweis sichtbar auf der Karte. Es werden keine Quellen
+ *    erfunden und keine leeren Platzhalter veröffentlicht.
  * 4. Prompts stehen in `prompt` und werden als kopierfertiger Codeblock
  *    gerendert — nie als Fließtext.
  */
@@ -57,7 +58,7 @@ export interface KiAlltagItem {
   table?: KiAlltagTable;
   /** Optional: Einschränkung, Region, Voraussetzung. */
   note?: string;
-  /** Optional: sichtbarer Hinweis, dass keine belastbare Quelle existiert. */
+  /** Optional: sichtbarer Hinweis auf fehlende oder nur eingeschränkt tragende Quelle. */
   unverified?: string;
   sources: KiAlltagSource[];
 }
@@ -287,27 +288,25 @@ Hey Google, wo liegt mein Reisepass?`,
       },
     ],
   },
+
+  /* ---------------------------------------------------------------- */
+  /*  Zeitlos — Fundus- und Praxis-Tipps, ausdrücklich keine News      */
+  /* ---------------------------------------------------------------- */
   {
     id: 10,
     title: "Der 1980er-Foto-Trend mit ChatGPT",
-    kind: "news",
+    kind: "praxis",
     tool: "ChatGPT",
-    date: "2026-09-09",
-    dateLabel: "Anfang September 2026",
-    what: "Über Instagram-Reels und „Add Yours“-Sticker verbreitete sich Anfang September ein Trend: ein aktuelles Selfie hochladen und daraus ein Porträt im Stil der 1980er machen lassen — Frisur, Kleidung, Licht und Filmkorn ändern sich, das Gesicht bleibt. Der entscheidende Teil des Prompts ist die Anweisung, die Gesichtszüge unangetastet zu lassen.",
+    what: "Ein Selfie hochladen und daraus ein Porträt im Stil der 1980er machen lassen: Frisur, Kleidung, Licht und Filmkorn ändern sich, das Gesicht bleibt. Der entscheidende Teil des Prompts ist die Anweisung, die Gesichtszüge unangetastet zu lassen — ohne sie macht die KI ein anderes Gesicht daraus. Verbreitet hat sich das über Instagram-Reels und „Add Yours“-Sticker.",
     why: "Der einfachste denkbare Einstieg in KI-Bildbearbeitung: ein Foto, ein Satz, fertig. Und man sieht sofort, wie stark eine einzelne präzise Anweisung das Ergebnis steuert.",
     promptLabel: "Prompt zum Kopieren",
     prompt: `Make me look like in 1980s without changing any facial features
 and facial geometry`,
     note: "Bevor du loslegst: Ein hochgeladenes Selfie verlässt dein Gerät und wird beim Anbieter verarbeitet. Lade nur Bilder hoch, bei denen dir das recht ist — und keine Fotos anderer Personen ohne deren Einverständnis.",
     unverified:
-      "Social-Media-Trend ohne offizielle Ankündigung — die Beobachtung stützt sich auf die Verbreitung auf Instagram, nicht auf eine Mitteilung von OpenAI.",
+      "Social-Media-Trend ohne offizielle Ankündigung — hier als zeitlose Prompt-Idee geführt, nicht als Neuigkeit.",
     sources: [],
   },
-
-  /* ---------------------------------------------------------------- */
-  /*  Zeitlos — Fundus- und Praxis-Tipps, ausdrücklich keine News      */
-  /* ---------------------------------------------------------------- */
   {
     id: 11,
     title: "Die „Geheim-Codes“ für ChatGPT — was wirklich dahintersteckt",
@@ -469,6 +468,75 @@ Informationen fehlen. Keine Komplimente, keine Floskeln.`,
     note: "Zu finden meist unter Einstellungen → Personalisierung bzw. „Benutzerdefinierte Anweisungen“. Ergänzt sich gut mit den kurzen Steuerwörtern aus dem Geheim-Code-Thema.",
     unverified:
       "Zeitloser Fundus-Tipp ohne Quelle — eine Einstellungs-Idee, keine Neuigkeit.",
+    sources: [],
+  },
+  {
+    id: 18,
+    title: "Kürzer prompten schlägt länger prompten",
+    kind: "praxis",
+    tool: "Allgemein",
+    what:
+      "Es kursiert die Annahme, ein Prompt werde besser, je mehr man hineinschreibt. OpenAI hat für seine neueren Modelle das Gegenteil empfohlen: alte, überladene Prompts nicht weiterschleppen, sondern schlank neu anfangen. Der Grund ist, dass frühere Modelle enge Schritt-für-Schritt-Führung brauchten — neuere finden den Weg selbst und werden durch zu viele Vorgaben eher ausgebremst als gelenkt.",
+    why:
+      "Für Einsteiger eine Entlastung: Du musst keine seitenlangen Prompt-Bauwerke lernen. Sag, was herauskommen soll, woran du gutes Ergebnis erkennst und was tabu ist — und lass den Weg dorthin offen.",
+    promptLabel: "Das schlanke Gerüst",
+    prompt: `Ziel: [WAS SOLL HERAUSKOMMEN]
+Gut ist das Ergebnis, wenn: [WORAN DU ES ERKENNST]
+Nicht tun: [GRENZEN]`,
+    note:
+      "Das ist kein Widerspruch zur Delegier-Formel weiter unten, sondern ihre kurze Schwester: Rolle und Ziel bleiben, die Schritt-für-Schritt-Anweisung fällt weg. Wenn ein Ergebnis danebenliegt, lieber nachsteuern als vorab alles regeln wollen.",
+    unverified:
+      "Der verlinkte Leitfaden richtet sich an Entwickler und bezieht sich auf eine ältere Modellgeneration als die heute aktuelle. Das Grundprinzip gilt modellübergreifend — die Einordnung für Einsteiger stammt von uns, nicht aus der Quelle.",
+    sources: [
+      {
+        label: "the decoder: OpenAI gibt Prompting-Tipps — besser von Grund auf neu starten",
+        url: "https://the-decoder.de/openai-gibt-prompting-tipps-fuer-gpt-5-5-besser-von-grund-auf-neu-starten/",
+      },
+    ],
+  },
+  {
+    id: 19,
+    title: "Premortem: den Plan scheitern lassen, bevor er scheitert",
+    kind: "praxis",
+    tool: "Allgemein",
+    what:
+      "Statt zu fragen „Ist mein Plan gut?“ — worauf die KI meist höflich zustimmt — versetzt du sie sechs Monate in die Zukunft, in der das Vorhaben nachweislich gescheitert ist. Von dort aus soll sie rückwärts erklären, woran es lag. Das ist eine in der Projektarbeit etablierte Methode, und sie funktioniert mit einer KI genauso.",
+    why:
+      "Der Trick umgeht die Ja-Sager-Neigung, ohne dass du die KI darum bitten musst. Weil die Frage das Scheitern voraussetzt, muss sie Gründe liefern — und benennt dabei Risiken, die bei einer offenen Frage unter den Tisch fallen.",
+    promptLabel: "Vorlage zum Kopieren",
+    prompt: `Wir sind sechs Monate weiter. Mein Vorhaben ist gescheitert:
+[VORHABEN BESCHREIBEN]
+
+Schreibe die Nachbetrachtung: Was ist schiefgelaufen? Nenne die
+5 wahrscheinlichsten Ursachen, sortiert nach Wahrscheinlichkeit.
+Zu jeder Ursache: ein Frühwarnzeichen, an dem ich sie rechtzeitig
+erkannt hätte, und was ich jetzt vorbeugend tun kann.`,
+    note:
+      "Die Ein-Wort-Variante davon ist das Steuerwort „worst case“ weiter oben. Das Premortem ist die ausführliche Fassung — lohnt sich bei allem, wo echtes Geld, Zeit oder ein Jobwechsel dranhängt.",
+    unverified:
+      "Praxis-Tipp ohne belastbare Einzelquelle. Die Methode ist etabliert, die Vorlage haben wir selbst formuliert.",
+    sources: [],
+  },
+  {
+    id: 20,
+    title: "Die KI kann dir echte Dateien bauen",
+    kind: "praxis",
+    tool: "ChatGPT",
+    what:
+      "Viele Einsteiger kennen KI nur als Textausgabe im Chatfenster und tippen die Ergebnisse dann mühsam ab. Die gängigen Assistenten können aber fertige Dateien erzeugen, die du herunterlädst und in Excel, Numbers oder LibreOffice öffnest — mit Spalten, Formeln und mehreren Tabellenblättern.",
+    why:
+      "Das spart den Abtipp-Schritt komplett. Haushaltsbuch, Urlaubsplanung, Inventarliste, Trainingsplan: einmal beschreiben, fertige Datei bekommen, selbst weiterpflegen.",
+    promptLabel: "Vorlage zum Kopieren",
+    prompt: `Erstelle mir eine Excel-Datei zum Herunterladen für [ZWECK].
+
+Spalten: [SPALTEN AUFZÄHLEN]
+Berechne automatisch: [WAS SUMMIERT ODER AUSGERECHNET WERDEN SOLL]
+Fülle die erste Zeile mit einem Beispiel, damit ich sehe, wie es
+gemeint ist.`,
+    note:
+      "Prüfe die Formeln in der fertigen Datei stichprobenartig nach — die KI verrechnet sich seltener als früher, aber sie tut es. Klappt es nicht auf Anhieb, hilft meist: „Gib mir die Datei als .xlsx zum Download.“",
+    unverified:
+      "Praxis-Tipp ohne belastbare Einzelquelle. Die Vorlage haben wir selbst formuliert; welche Dateiformate dein Konto erzeugen kann, hängt vom Anbieter und Plan ab.",
     sources: [],
   },
 ];
