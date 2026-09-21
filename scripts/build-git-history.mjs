@@ -32,7 +32,6 @@ const TRACKED_PATHS = [
   "client/src/data/skills.ts",
   "client/src/data/guide.ts",
   "client/src/data/importHistory.ts",
-  "client/src/data/kiAlltag.ts",
 ];
 
 const MAX_COMMITS = "200";
