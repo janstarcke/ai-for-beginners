@@ -16,17 +16,15 @@ import {
   Coins,
   Hash,
   ArrowRight,
-  Sparkles,
 } from "lucide-react";
 import { skills } from "@/data/skills";
 import { guideLevels } from "@/data/guide";
-import { kiAlltagItems, kindLabels } from "@/data/kiAlltag";
 
 interface SearchItem {
   id: string;
   title: string;
   description: string;
-  group: "skills" | "guide" | "alltag" | "pages";
+  group: "skills" | "guide" | "pages";
   href: string;
   icon: React.ReactNode;
 }
@@ -57,18 +55,6 @@ function buildSearchIndex(): SearchItem[] {
         href: `/guide#level-${level.level}`,
         icon: <BookOpen className="w-4 h-4 text-[var(--color-sage-deep)]" />,
       });
-    });
-  });
-
-  // KI-im-Alltag-Themen
-  kiAlltagItems.forEach((item) => {
-    items.push({
-      id: `alltag-${item.id}`,
-      title: `${kindLabels[item.kind].label}: ${item.title}`,
-      description: item.what.slice(0, 80) + "…",
-      group: "alltag",
-      href: `/ki-alltag#thema-${item.id}`,
-      icon: <Sparkles className="w-4 h-4 text-[var(--color-terracotta)]" />,
     });
   });
 
@@ -114,14 +100,6 @@ function buildSearchIndex(): SearchItem[] {
       href: "/token-spar",
       icon: <Coins className="w-4 h-4 text-muted-foreground" />,
     },
-    {
-      id: "page-ki-alltag",
-      title: "KI im Alltag",
-      description: "ChatGPT, Gemini & Claude für Einsteiger — News und Prompts",
-      group: "alltag",
-      href: "/ki-alltag",
-      icon: <Sparkles className="w-4 h-4 text-muted-foreground" />,
-    },
   );
 
   return items;
@@ -164,7 +142,6 @@ export function GlobalSearch() {
     pages: "Seiten",
     skills: "Skills",
     guide: "Guide-Schritte",
-    alltag: "KI im Alltag",
   };
 
   return (
@@ -204,7 +181,7 @@ export function GlobalSearch() {
         <CommandList>
           <CommandEmpty>Keine Ergebnisse gefunden.</CommandEmpty>
 
-          {(["pages", "alltag", "skills", "guide"] as const).map((group) => {
+          {(["pages", "skills", "guide"] as const).map((group) => {
             const items = searchIndex.filter((item) => item.group === group);
             if (items.length === 0) return null;
             return (
