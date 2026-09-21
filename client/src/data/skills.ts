@@ -1450,6 +1450,17 @@ export const skills: Skill[] = [
     nextStep: "Einen deiner langen Stammprompts auf drei Zeilen eindampfen: 'Ziel: [ERGEBNIS]. Gut ist es, wenn: [KRITERIUM]. Nicht tun: [GRENZEN].' Dann beide Varianten an derselben Aufgabe vergleichen.",
     isNew: true,
   },
+  {
+    id: 122,
+    name: "Claude Chat oder Claude Code — was wofür",
+    category: "Best Practice",
+    tier: 1,
+    tierLabel: "Sofort umsetzen",
+    sources: [],
+    description: "Anfänger programmieren oft im Chat: Code hin- und herkopieren, Pfade abtippen, Fehlermeldungen einfügen. Claude trennt das in zwei Oberflächen. Der Chat ist zum Fragen, Planen und Entwerfen da — Artifacts, Dokumente und Präsentationen leben dort. Claude Code arbeitet im Terminal an deinem Projekt: liest und schreibt Dateien, führt Tests aus, committet. Faustregel: Sobald echte Dateien im Spiel sind, gehört die Arbeit ins Terminal.",
+    nextStep: "Starte die nächste Code-Aufgabe mit claude im Projektordner statt im Chat-Fenster. Merksatz für die Entscheidung: Muss Claude eine Datei sehen oder ändern? Dann Terminal.",
+    isNew: true,
+  },
 ];
 
 export const claudeDesignSteps: ClaudeDesignStep[] = [
