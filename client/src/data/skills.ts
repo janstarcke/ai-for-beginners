@@ -154,11 +154,11 @@ export const skills: Skill[] = [
     tier: 2,
     tierLabel: "Erste Woche",
     sources: [],
-    description: "Team committet gemeinsame CLAUDE.md. Jeder Fehler wird sofort hinzugefügt. @.claude in PRs taggen für automatische Learnings. Claude wird jede Woche besser.",
-    nextStep: "/install-github-action — dann bei Code-Reviews @.claude taggen. Nach jeder Korrektur: /memory",
+    description: "Claude macht denselben Fehler nur einmal, wenn ihr ihn festhaltet. Das Team committet eine gemeinsame CLAUDE.md, jeder Fehler wandert sofort hinein, @.claude in PRs sammelt Learnings automatisch ein. Wer das nicht von Hand pflegen will, nimmt das Compound-Engineering-Plugin: es notiert Fehler selbst und vermeidet sie in der nächsten Session.",
+    nextStep: "/install-github-action einrichten, bei Code-Reviews @.claude taggen, nach jeder Korrektur /memory. Für die automatische Variante: /plugin marketplace add EveryInc/compound-engineering-plugin",
     isNew: true,
-    installCommand: "/install-github-action",
-    installNote: "In einer laufenden Claude-Code-Session im Projekt-Root tippen. Richtet eine GitHub Action ein, die bei PR-Reviews auf @.claude-Mentions reagiert. Erfordert anschließend einen Push der erzeugten Workflow-Datei.",
+    installCommand: "/install-github-action\n/plugin marketplace add EveryInc/compound-engineering-plugin",
+    installNote: "Beide Befehle in einer laufenden Claude-Code-Session im Projekt-Root. /install-github-action richtet die Action ein, die bei PR-Reviews auf @.claude-Mentions reagiert — danach die erzeugte Workflow-Datei pushen. Das Plugin funktioniert unabhängig davon, auch ohne GitHub.",
   },
   {
     id: 11,
@@ -263,6 +263,8 @@ export const skills: Skill[] = [
     sources: [],
     description: "Claude Code und Obsidian teilen einen Vault als zweites Gehirn: raw/ (Quellen, read-only), wiki/ (Claude pflegt, [[links]]), index.md (Katalog, wird zuerst gelesen) + log.md (append-only). Eine CLAUDE.md im Vault steuert drei Operationen — Ingest (Quelle → Wiki-Seiten), Query (index → passende Seite → Antwort), Lint (Widersprüche + tote Links). Lieber viele kleine atomare Seiten als wenige große. Karpathy organisierte so 100+ Artikel ohne RAG.",
     nextStep: "brew install --cask obsidian, Vault anlegen, raw/ + wiki/ + CLAUDE.md mit Wiki-Regeln. Entweder Claude Code im Vault-Root starten oder via obsidian-mcp anbinden (npm i -g obsidian-mcp, in ~/.claude.json eintragen) und mit 'claude --add-dir /pfad/zum/vault' die index.md jede Session automatisch laden. Achtung: einen MCP mit Wort-für-Wort-Suche (AND-Logik) wählen — Server, die nur exakte Phrasen matchen, schicken Claude in Endlosschleifen.",
+    installCommand: "git clone https://github.com/coleam00/second-brain-skills ~/.claude/skills/second-brain",
+    installNote: "Fertiges Skill-Pack als Abkürzung zur handgebauten Vault-Struktur oben: Claude bekommt damit direkt Zugriff auf Notizen, Recherchen und Ideen im Vault. Klont in den globalen Skills-Ordner, beim nächsten Claude-Code-Start verfügbar. Die Konventionen aus der Beschreibung (index.md zuerst, atomare Seiten) lohnen sich trotzdem.",
   },
   {
     id: 21,
@@ -1485,8 +1487,8 @@ export const tldrItems: TldrItem[] = [
     example: `# Setup-Prompt erstellt automatisch:\n1. Plan Mode mit 5 Subagents\n2. Senior Reviewer Subagent\n3. /lesson Command (Compounding)\n4. CLAUDE.md Audit (max 80 Zeilen)\n5. Permission Allow-List\n\n# Einfach Prompt einfügen → fertig!`,
   },
   {
-    summary: "Higgsfield MCP. 30+ Bild/Video-Modelle direkt aus Claude für Marketing-Kampagnen.",
-    example: `# Installation:\nnpx @anthropic/mcp install higgsfield\n\n# Nutzung im Chat:\n"Erstelle ein Produktfoto für [X]\nmit Modell: flux-pro"\n\n# Verfügbare Modelle:\n# flux-pro, dall-e-3, midjourney,\n# stable-video, runway-gen3, etc.`,
+    summary: "ccusage zeigt echte Token-Kosten statt Schätzungen. npx ccusage@latest daily — keine Installation nötig.",
+    example: `# Keine Installation — läuft über npx:\nnpx ccusage@latest daily     # Kosten pro Tag\nnpx ccusage@latest monthly   # Kosten pro Monat\nnpx ccusage@latest session   # Kosten pro Session\nnpx ccusage@latest blocks    # Live-Monitoring\n\n# Nach Modell aufschlüsseln:\nnpx ccusage@latest monthly --breakdown`,
   },
   {
     summary: "Token-Spar-Tricks. opusplan, ultrathink, MarkItDown, Kimi K2.6 — bis 5x günstiger.",
