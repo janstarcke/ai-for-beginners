@@ -11,16 +11,27 @@ export interface GitCommit {
   files: string[];
 }
 
-export const gitHistoryGeneratedAt = "2026-09-15T10:37:14.344Z";
+export const gitHistoryGeneratedAt = "2026-09-21T05:10:09.179Z";
 
 export const gitHistory: GitCommit[] = [
   {
-    "hash": "db548ea5493486e6d06be17dbb8facbd019c7024",
-    "shortHash": "db548ea",
-    "date": "2026-09-15T10:36:45+00:00",
+    "hash": "297640b030fa858a51c8cbcdaaaf4c91ff29dd24",
+    "shortHash": "297640b",
+    "date": "2026-09-21T05:09:49+00:00",
     "author": "Claude",
-    "subject": "fix(content): Quellen-Zusage auf /ki-alltag eingehalten, 3 Praxis-Tipps ergänzt",
+    "subject": "feat(content): TL;DR-Rotation ccusage + 2 Extends (#10, #20)",
     "files": [
+      "client/src/data/skills.ts"
+    ]
+  },
+  {
+    "hash": "68d69f8a954e6ecfac23398ef41ffa523b0ae5de",
+    "shortHash": "68d69f8",
+    "date": "2026-09-15T14:51:14+02:00",
+    "author": "janstarcke",
+    "subject": "Quellen-Zusage auf /ki-alltag eingehalten + 3 von 11 Themen aus dem 14.09.-Paket (#71)",
+    "files": [
+      "client/src/data/importHistory.ts",
       "client/src/data/kiAlltag.ts"
     ]
   },
@@ -333,6 +344,56 @@ export const gitHistory: GitCommit[] = [
     "date": "2026-05-18T16:25:52-07:00",
     "author": "Jan Starcke",
     "subject": "feat(content): 5 neue Skills aus Ultimatives-Tutorial (#79-#83)",
+    "files": [
+      "client/src/data/skills.ts"
+    ]
+  },
+  {
+    "hash": "074195a402f329745d2cdf91123a088248ac97fe",
+    "shortHash": "074195a",
+    "date": "2026-05-18T16:19:04-07:00",
+    "author": "Jan Starcke",
+    "subject": "feat(content): Deploy-Go-Live skill + Routines-Quota (#78, #31)",
+    "files": [
+      "client/src/data/skills.ts"
+    ]
+  },
+  {
+    "hash": "d837d667de40e996f2bfb0e74735fbb2b9784f9b",
+    "shortHash": "d837d66",
+    "date": "2026-05-18T15:43:44-07:00",
+    "author": "Jan Starcke",
+    "subject": "feat(content): GitHub-Safety + lokale Modelle (#76, #77)",
+    "files": [
+      "client/src/data/skills.ts"
+    ]
+  },
+  {
+    "hash": "96fa1303049c3fc44dc22ce6375bad80d74c1301",
+    "shortHash": "96fa130",
+    "date": "2026-05-18T15:39:01-07:00",
+    "author": "Jan Starcke",
+    "subject": "feat(content): MCP-Sammlung, CLI-Hack, CLAUDE.md-Interview (#73-#75, #33, #37)",
+    "files": [
+      "client/src/data/skills.ts"
+    ]
+  },
+  {
+    "hash": "dc02c38d9771cc5709132edeb2b63ac3bbb66dfb",
+    "shortHash": "dc02c38",
+    "date": "2026-05-18T15:34:53-07:00",
+    "author": "Jan Starcke",
+    "subject": "feat(content): 3 plugin skills + 2 plugin refreshes (#70-#72, #38, #51)",
+    "files": [
+      "client/src/data/skills.ts"
+    ]
+  },
+  {
+    "hash": "4ed7ddf639667e795034e82728a11c07018371ff",
+    "shortHash": "4ed7ddf",
+    "date": "2026-05-18T08:21:41-07:00",
+    "author": "janstarcke",
+    "subject": "feat(privacy): self-host web fonts, remove Google Fonts CDN (#16)",
     "files": [
       "client/src/data/guide.ts",
       "client/src/data/importHistory.ts",
