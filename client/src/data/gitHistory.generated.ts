@@ -11,16 +11,27 @@ export interface GitCommit {
   files: string[];
 }
 
-export const gitHistoryGeneratedAt = "2026-09-21T19:18:54.394Z";
+export const gitHistoryGeneratedAt = "2026-09-21T19:32:13.666Z";
 
 export const gitHistory: GitCommit[] = [
   {
-    "hash": "76e9320c0b0c73d1cad731be33548aafecb2ffc4",
-    "shortHash": "76e9320",
-    "date": "2026-09-21T19:18:34+00:00",
+    "hash": "9284dd92822f592a19f6100b642561ffb846f848",
+    "shortHash": "9284dd9",
+    "date": "2026-09-21T19:31:54+00:00",
     "author": "Claude",
-    "subject": "refactor(content): /ki-alltag abwickeln, 4 Skills übernehmen",
+    "subject": "feat: /ki-alltag leitet auf die Startseite um, Skill #122 zu den zwei Modi",
     "files": [
+      "client/src/data/skills.ts"
+    ]
+  },
+  {
+    "hash": "06b32633da5d7feb2791aa2e3e8d6588b41c79f9",
+    "shortHash": "06b3263",
+    "date": "2026-09-21T21:23:04+02:00",
+    "author": "janstarcke",
+    "subject": "/ki-alltag abwickeln — 4 von 20 Karten als Skills übernommen (#73)",
+    "files": [
+      "client/src/data/importHistory.ts",
       "client/src/data/skills.ts"
     ]
   },
