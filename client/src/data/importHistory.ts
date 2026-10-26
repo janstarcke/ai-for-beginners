@@ -45,6 +45,22 @@ export interface ImportEntry {
  */
 export const importHistory: ImportEntry[] = [
   {
+    commit: "d48928c",
+    title: "Consumer-Rubrik /ki-alltag wieder eingeführt — 4 Start-Karten",
+    type: "new",
+    categories: [],
+    newSkillIds: [],
+    extendedSkillIds: [],
+    sources: [
+      { kind: "manual", channel: "Tages-Recherche AI for Beginners (Chat), 25./26.10.2026" },
+      { kind: "web", channel: "Tech Insider", url: "https://tech-insider.org/best-ai-chatbot-app-iphone-android-2026/" },
+      { kind: "web", channel: "One Prompt a Day", url: "https://www.onepromptaday.com/" },
+      { kind: "web", channel: "FreeTier Kits (Telegraph)", url: "https://telegra.ph/AI-at-Work-for-Non-Tech-People-A-7-Day-Starter-Plan-10-25" },
+    ],
+    notes:
+      "RELAUNCH der in 76e9320 abgewickelten Rubrik — auf ausdrücklichen Wunsch des Users: Die Rubrik mache die Seite lebendiger und gebe Besuchern einen Grund, sie zu speichern und wiederzukommen. Der dokumentierte Abwicklungsgrund wird diesmal an der Wurzel adressiert: kiAlltag.ts hatte Sorgfaltsregeln (Datum, Quelle), aber keinen Relevanzfilter. Neu sind Regel 5 (Auswahlregel: nur News mit Datum und Quelle, zeitlose Praxis-/Fundus-Tipps oder Vergleiche/Einstiegs-Guides mit Stand-Datum, die bei Neuauflage aktualisiert statt dupliziert werden; reine Tages-Trends nur, wenn sie eine Technik oder einen Mythos erklären), Regel 6 (Wiederkehr-Test: Hilft die Karte einem Einsteiger in zwei Wochen noch?) und Regel 7 (Altern: News-Karten werden bei jedem Rubrik-Update geprüft, Veraltetes wird aktualisiert oder entfernt). Der Startseiten-Kasten von damals, der Besucher vom Kernthema wegführte, kommt NICHT zurück; stattdessen ein klar getrennter Block „KI im Alltag“ unterhalb der Skill-Liste. Startbestand 4 Karten, alle aus der laufenden Tages-Recherche und dort bereits an den Quellen geprüft: App-Vergleich inkl. 10-Minuten-Selbsttest (News, Stand 25.10.2026 — vom User ausdrücklich zur direkten Übernahme bestimmt), 7-Tage-Starterplan (Praxis), RISEN-Formel (Praxis), BAB-Formel (Fundus). Technik: Seite und Daten-Schema aus der Git-Historie (Stand 2df7e4c) wiederhergestellt, nginx-301 aus 9284dd9 entfernt (der Pfad fällt wieder in den SPA-Fallback), kiAlltag.ts erneut in TRACKED_PATHS des History-Generators. Die Einträge zu #70–#74 bleiben als Beleg stehen.",
+  },
+  {
     commit: "1ea9d62",
     title: "20-Claude-Code-Tricks-Video — 5 neue Skills (#84–#88)",
     type: "new",
