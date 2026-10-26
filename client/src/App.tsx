@@ -16,6 +16,7 @@ import { GlobalSearch } from "./components/GlobalSearch";
 // Mit lazy() + Suspense bekommt jede Page ihren eigenen Chunk — initial-
 // Route Home lädt ~120 KB gz (-50%).
 const Home = lazy(() => import("./pages/Home"));
+const KiAlltag = lazy(() => import("./pages/KiAlltag"));
 const Guide = lazy(() => import("./pages/Guide"));
 const ClaudeDesign = lazy(() => import("./pages/ClaudeDesign"));
 const FinancialAnalyst = lazy(() => import("./pages/FinancialAnalyst"));
@@ -45,6 +46,7 @@ function Router() {
     <Suspense fallback={<RouteFallback />}>
       <Switch>
         <Route path={"/"} component={Home} />
+        <Route path={"/ki-alltag"} component={KiAlltag} />
         <Route path={"/guide"} component={Guide} />
         <Route path={"/claude-design"} component={ClaudeDesign} />
         <Route path={"/financial-analyst"} component={FinancialAnalyst} />

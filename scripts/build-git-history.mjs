@@ -31,6 +31,7 @@ const OUTPUT = path.join(ROOT, "client", "src", "data", "gitHistory.generated.ts
 const TRACKED_PATHS = [
   "client/src/data/skills.ts",
   "client/src/data/guide.ts",
+  "client/src/data/kiAlltag.ts",
   "client/src/data/importHistory.ts",
 ];
 

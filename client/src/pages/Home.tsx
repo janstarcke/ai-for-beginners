@@ -3,6 +3,7 @@ import { AnimatedReveal, CollapseReveal } from "@/components/AnimatedReveal";
 import { Search, Filter, ChevronDown, ChevronUp, AlertTriangle, Sparkles, BookOpen, Palette, ArrowRight, TrendingUp, RotateCcw, Coins, Package } from "lucide-react";
 import { Link } from "wouter";
 import { skills, categories, tierLabels, tldrItems, claudeDesignSteps } from "@/data/skills";
+import { kiAlltagItems, kindLabels } from "@/data/kiAlltag";
 import type { Skill, TldrItem } from "@/data/skills";
 import { useProgress } from "@/hooks/useProgress";
 import { ProgressCheckbox } from "@/components/ProgressCheckbox";
@@ -508,6 +509,59 @@ export default function Home() {
             ))}
           </div>
         )}
+      </section>
+
+      {/* KI im Alltag Section — Consumer-Rubrik, bewusst getrennt von der
+          Claude-Code-Wissensdatenbank oben: datierte News, Vergleiche und
+          Prompt-Techniken für Einsteiger ohne Entwickler-Hintergrund.
+          Wird laufend ergänzt — anders als die zeitlose Skill-Liste. */}
+      <section className="container py-16">
+        <div className="flex items-center gap-3 mb-2">
+          <Sparkles className="w-6 h-6 text-[var(--color-terracotta)]" />
+          <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-[var(--color-sage-light)] text-[var(--color-espresso)]">
+            Wird laufend ergänzt
+          </span>
+        </div>
+        <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4 font-[var(--font-display)]">
+          KI im Alltag
+        </h2>
+        <p className="text-lg text-muted-foreground max-w-2xl mb-8 leading-relaxed">
+          Du programmierst nicht (oder nicht nur)? Hier geht es um ChatGPT, Gemini
+          und Claude im ganz normalen Alltag: was sich gerade ändert, welche App
+          sich lohnt und welche Prompt-Techniken sofort etwas bringen — datiert,
+          mit Quelle, ohne Fachchinesisch.
+        </p>
+        <div className="grid gap-3 md:grid-cols-2">
+          {kiAlltagItems.map((item) => (
+            <Link
+              key={item.id}
+              href={`/ki-alltag#thema-${item.id}`}
+              className="block rounded-xl border border-border bg-card p-5 hover:shadow-md transition-shadow"
+            >
+              <div className="flex items-center gap-2 mb-2 text-xs">
+                <span className="font-semibold text-[var(--color-terracotta-deep)] dark:text-[var(--color-terracotta)]">
+                  {kindLabels[item.kind].label}
+                </span>
+                {item.dateLabel && (
+                  <span className="text-muted-foreground">{item.dateLabel}</span>
+                )}
+              </div>
+              <h3 className="font-semibold text-foreground mb-1">{item.title}</h3>
+              <p className="text-sm text-muted-foreground">
+                {item.what.slice(0, 150)}…
+              </p>
+            </Link>
+          ))}
+        </div>
+        <div className="mt-8">
+          <Link
+            href="/ki-alltag"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-lg bg-[var(--color-terracotta-deep)] text-white font-medium hover:opacity-90 transition-opacity shadow-sm"
+          >
+            Zur Rubrik KI im Alltag
+            <ArrowRight className="w-4 h-4" />
+          </Link>
+        </div>
       </section>
 
       {/* Claude Design Section */}
