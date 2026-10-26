@@ -11,9 +11,19 @@ export interface GitCommit {
   files: string[];
 }
 
-export const gitHistoryGeneratedAt = "2026-10-06T07:51:31.347Z";
+export const gitHistoryGeneratedAt = "2026-10-26T18:04:28.534Z";
 
 export const gitHistory: GitCommit[] = [
+  {
+    "hash": "d48928c2e7f2edde8c53d9ff6a100f29596a416a",
+    "shortHash": "d48928c",
+    "date": "2026-10-26T19:03:52+01:00",
+    "author": "janstarcke",
+    "subject": "feat(content): Consumer-Rubrik /ki-alltag wieder eingeführt — 4 Start-Karten, Auswahlregel neu",
+    "files": [
+      "client/src/data/kiAlltag.ts"
+    ]
+  },
   {
     "hash": "3a4c8ff5c267bbe1df3fd086407f57c0e39478bb",
     "shortHash": "3a4c8ff",
@@ -33,6 +43,7 @@ export const gitHistory: GitCommit[] = [
     "subject": "/ki-alltag abwickeln — 4 von 20 Karten als Skills übernommen (#73)",
     "files": [
       "client/src/data/importHistory.ts",
+      "client/src/data/kiAlltag.ts",
       "client/src/data/skills.ts"
     ]
   },
@@ -54,7 +65,8 @@ export const gitHistory: GitCommit[] = [
     "author": "janstarcke",
     "subject": "Quellen-Zusage auf /ki-alltag eingehalten + 3 von 11 Themen aus dem 14.09.-Paket (#71)",
     "files": [
-      "client/src/data/importHistory.ts"
+      "client/src/data/importHistory.ts",
+      "client/src/data/kiAlltag.ts"
     ]
   },
   {
@@ -64,7 +76,8 @@ export const gitHistory: GitCommit[] = [
     "author": "janstarcke",
     "subject": "Neue Seite /ki-alltag — Consumer-KI für Einsteiger (17 Themen, faktengeprüft) (#70)",
     "files": [
-      "client/src/data/importHistory.ts"
+      "client/src/data/importHistory.ts",
+      "client/src/data/kiAlltag.ts"
     ]
   },
   {
