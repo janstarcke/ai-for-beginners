@@ -45,6 +45,21 @@ export interface ImportEntry {
  */
 export const importHistory: ImportEntry[] = [
   {
+    commit: "53080e7",
+    title: "2 neue /ki-alltag-Karten: Anti-Buddy-Prompt + Kürbis-Porträt",
+    type: "new",
+    categories: [],
+    newSkillIds: [],
+    extendedSkillIds: [],
+    sources: [
+      { kind: "manual", channel: "Tages-Recherche AI for Beginners (Chat), 28.10.2026" },
+      { kind: "web", channel: "PCWorld", url: "https://www.pcworld.com/article/3270796/one-prompt-made-chatgpt-claude-and-gemini-stop-acting-like-my-buddy.html" },
+      { kind: "web", channel: "Office Watch", url: "https://office-watch.com/2026/ai-carved-pumpkin-from-photo/" },
+    ],
+    notes:
+      "Erster Karten-Nachschub nach dem Relaunch — und das neue Auswahl-Verfahren in Aktion: Beide Karten stammen aus der Tages-Recherche vom 28.10. und wurden vom User dort ausdrücklich als gut markiert (Wochenkorb). Anti-Buddy (#6, Praxis, zeitlos) ist die deutsche Kompakt-Fassung der PCWorld-Anweisung vom 27.10.2026 (Veröffentlichungsdatum bei der Prüfung korrigiert, der Worker-Entwurf sagte 28.10.); Kürbis-Porträt (#5, News, 27.10.2026) trägt die Technik als bleibenden Wert, die Halloween-Verpackung aber als Ablaufdatum: Die note verweist auf die Altern-Regel, nach Halloween als Technik-Karte umrahmen oder entfernen. Startseiten-Block und Cmd+K-Suche lesen kiAlltagItems direkt, deshalb keine weiteren Dateien angefasst — der Relaunch hat sich als wartungsarm erwiesen.",
+  },
+  {
     commit: "d48928c",
     title: "Consumer-Rubrik /ki-alltag wieder eingeführt — 4 Start-Karten",
     type: "new",
