@@ -130,6 +130,45 @@ Regeln: Erfinde keine Fakten. Wenn dir eine Angabe fehlt, stelle mir zuerst gena
     ],
   },
 
+  {
+    id: 5,
+    title:
+      "Halloween in einer Minute: Eigenes Foto als geschnitztes Kürbis-Porträt",
+    kind: "news",
+    tool: "Allgemein",
+    date: "2026-10-27",
+    dateLabel: "27.10.2026",
+    what: "Office Watch (27.10.) zeigt, wie du in ChatGPT, Gemini oder Microsoft Copilot – alle gratis nutzbar – ein normales Foto in einen leuchtenden Kürbis verwandelst, in den das Gesicht der Person als Porträt „geschnitzt“ ist. Der Trick steckt in drei Sätzen des Prompts: die erkennbaren Merkmale ausdrücklich benennen (Frisur, Brille, Bart, Lächeln), den Unterschied zwischen „ganz durchgeschnitten = leuchtet hellgelb“ und „dünn geschabt = leuchtet weiches Orange“ erklären (so entstehen bei echten Schnitzern die Schattierungen) und klar sagen „Zeige nur den Kürbis, nicht die Person“.",
+    why: "Ein perfektes erstes Bild-Projekt: ein Foto, ein Prompt, ein sichtbares Ergebnis in etwa einer Minute. Und die Arbeitsweise überträgt sich auf fast alle Bild-Wünsche: Merkmale benennen statt hoffen, Technik in Alltagsworten beschreiben, und danach mit kleinen Korrekturen nachbessern („Augenbrauen dicker“, „Lächeln breiter“) statt von vorn anzufangen.",
+    steps: [
+      "Gutes Ausgangsfoto wählen: Gesicht von vorn, gut beleuchtet, ohne Sonnenbrille oder Kappe.",
+      "Foto in ChatGPT, Gemini oder Copilot hochladen und die Vorlage unten einfügen.",
+      "Mit kleinen Korrekturen nachbessern statt neu anzufangen.",
+    ],
+    promptLabel: "Kopierfertige Vorlage",
+    prompt: `Erstelle aus dem angehängten Foto ein fotorealistisches Bild eines
+großen orangefarbenen Halloween-Kürbisses, in den ein Porträt dieser
+Person geschnitzt ist. Verwandle ihre erkennbarsten Merkmale in
+Schnitz-Formen: Frisur, Augenbrauen, Augenform, Nase, Lächeln und
+falls vorhanden Brille, Bart oder Sommersprossen. Manche Bereiche
+sind ganz durchgeschnitten und leuchten hellgelb, andere nur dünn
+geschabt und leuchten weicher orange – so entstehen Schattierungen
+wie bei einem echten Porträt. Von innen mit einer Kerze beleuchtet.
+Der Kürbis steht nachts auf einer Holzstufe, Herbstblätter daneben.
+Quadratisches Bild, Nahaufnahme, der Kürbis füllt fast das ganze Bild.
+Zeige nur den Kürbis, nicht die Person und nicht das Originalfoto.
+
+Variante ohne Foto, für einen klassischen Kürbis: „Ein fotorealistischer geschnitzter Halloween-Kürbis vor einer Haustür bei Nacht, von innen mit einer Kerze beleuchtet. Klassisches Grusel-Gesicht mit Dreiecks-Augen und gezacktem Grinsen. Herbstblätter und kleine Zierkürbisse daneben, leichter Nebel. Quadratisches Bild, Nahaufnahme."`,
+    note: "Nur eigene Fotos oder Fotos von Personen verwenden, die einverstanden sind. Saisonale Karte (Halloween 31.10.): Nach Halloween per Altern-Regel prüfen – als Technik-Karte umrahmen oder entfernen.",
+    sources: [
+      {
+        label:
+          "Office Watch – How to Turn Anyone's Photo Into a Carved Pumpkin With Free AI Tools (27.10.2026)",
+        url: "https://office-watch.com/2026/ai-carved-pumpkin-from-photo/",
+      },
+    ],
+  },
+
   /* ---------------------------------------------------------------- */
   /*  Praxis & Fundus — zeitlos, kein Datum                            */
   /* ---------------------------------------------------------------- */
@@ -207,6 +246,42 @@ Bridge: Gib mir einen Schritt-für-Schritt-Plan, den ich in insgesamt 2 Stunden 
       {
         label: "One Prompt a Day – BAB: Before · After · Bridge",
         url: "https://www.onepromptaday.com/",
+      },
+    ],
+  },
+  {
+    id: 6,
+    title: "Schluss mit dem Kumpel-Ton: Ein 3-in-1-Prompt macht die KI sachlich",
+    kind: "praxis",
+    tool: "Allgemein",
+    what: "PCWorld hat drei ältere Einzel-Prompts – „No Teasers“ (keine „Willst du, dass ich …?“-Anhängsel), „Don't Act Human“ (nicht so tun, als hätte die KI Gefühle) und „On a Budget“ (Zeit und Umfang knapp halten) – zu einem einzigen Anweisungs-Block von rund 200 Wörtern verschmolzen. Getestet wurde er mit ChatGPT, Claude Sonnet 5.5 und Gemini: Die Antworten wurden kürzer, Listen verloren ihre endlosen Unterpunkte, Lobhudelei und Teaser am Schluss fielen weg, und Aufgaben bekamen eine Rangfolge mit Aufwand (S/M/L).",
+    why: "Fast jeder kennt das: Auf eine kleine Frage kommt eine riesige, überfreundliche Antwort mit fünf Zusatzangeboten. Dieser Block gehört einmal in die benutzerdefinierten Anweisungen – danach musst du nicht in jedem Chat neu „bitte kurz und sachlich“ schreiben.",
+    steps: [
+      "ChatGPT: Personalisierung → Benutzerdefinierte Anweisungen. Claude: Einstellungen → Konto. Gemini: Einstellungen → Personal Intelligence.",
+      "Alternativ: einfach als erste Nachricht in einen neuen Chat kopieren.",
+    ],
+    promptLabel: "Kopierfertige Vorlage (deutsche Kompakt-Fassung)",
+    prompt: `Beginne mit der Antwort. Sei direkt und höflich. Tu nicht so,
+als hättest du Gefühle, ein Bewusstsein oder eine persönliche
+Beziehung zu mir. Keine gespielte Emotion, keine Schmeichelei,
+kein Lob für meine Fragen oder Entscheidungen. Gib Einschätzungen
+statt Stimmungen: Sage, ob eine Idee gut belegt oder schwach ist.
+
+Behandle meine Zeit als knappes Budget. Wähle die kleinste Antwort
+oder Lösung, die das Problem vollständig löst. Keine aufgeblähten
+Listen. Sortiere Empfehlungen nach Nutzen pro Aufwand, markiere
+den Aufwand mit S / M / L und trenne: jetzt wichtig, nebensächlich,
+kann weg. Prüfe Behauptungen, die die Antwort verändern würden.
+
+Ende nicht mit Angeboten wie „Soll ich noch …?" oder „Sag Bescheid".
+Nenne sinnvolle nächste Schritte als Fakten. Stelle Rückfragen nur,
+wenn du wirklich festhängst – nicht als Verabschiedung.`,
+    note: "Die Vorlage ist eine deutsche Kompakt-Fassung der PCWorld-Anweisung. Wichtige Angaben in der Antwort trotzdem selbst prüfen – die KI kann sich irren.",
+    sources: [
+      {
+        label:
+          "PCWorld – One prompt made ChatGPT, Claude, and Gemini stop acting like my buddy (27.10.2026)",
+        url: "https://www.pcworld.com/article/3270796/one-prompt-made-chatgpt-claude-and-gemini-stop-acting-like-my-buddy.html",
       },
     ],
   },
