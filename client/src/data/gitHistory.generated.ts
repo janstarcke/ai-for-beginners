@@ -11,16 +11,27 @@ export interface GitCommit {
   files: string[];
 }
 
-export const gitHistoryGeneratedAt = "2026-10-26T18:04:28.534Z";
+export const gitHistoryGeneratedAt = "2026-10-28T18:34:41.706Z";
 
 export const gitHistory: GitCommit[] = [
   {
-    "hash": "d48928c2e7f2edde8c53d9ff6a100f29596a416a",
-    "shortHash": "d48928c",
-    "date": "2026-10-26T19:03:52+01:00",
+    "hash": "53080e7d05c701577401c80fb5469d83ab081a8c",
+    "shortHash": "53080e7",
+    "date": "2026-10-28T19:34:17+01:00",
     "author": "janstarcke",
-    "subject": "feat(content): Consumer-Rubrik /ki-alltag wieder eingeführt — 4 Start-Karten, Auswahlregel neu",
+    "subject": "feat(content): /ki-alltag – 2 neue Karten: Anti-Buddy-Prompt + Kürbis-Porträt",
     "files": [
+      "client/src/data/kiAlltag.ts"
+    ]
+  },
+  {
+    "hash": "8d829d253ee0881388197ac050ff29de3e3af7d6",
+    "shortHash": "8d829d2",
+    "date": "2026-10-26T21:59:46+01:00",
+    "author": "janstarcke",
+    "subject": "Consumer-Rubrik /ki-alltag wieder eingeführt — 4 Start-Karten, Auswahlregel neu (#77)",
+    "files": [
+      "client/src/data/importHistory.ts",
       "client/src/data/kiAlltag.ts"
     ]
   },
