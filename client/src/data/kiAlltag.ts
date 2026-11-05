@@ -169,6 +169,55 @@ Variante ohne Foto, für einen klassischen Kürbis: „Ein fotorealistischer ges
     ],
   },
 
+  {
+    id: 7,
+    title:
+      "ChatGPT kann jetzt GIFs machen – und merkt sich deine Referenzbilder",
+    kind: "news",
+    tool: "ChatGPT",
+    date: "2026-11-04",
+    dateLabel: "04.11.2026",
+    what: "OpenAI hat am 4. November 2026 „ChatGPT Images 2.6\" veröffentlicht: ChatGPT erstellt jetzt animierte GIFs – aus einem Text oder aus einem hochgeladenen Foto – und man kann Referenzbilder (sich selbst, das Haustier, eine wiederkehrende Figur) einmal speichern und in neuen Bildern wiederverwenden, ohne sie jedes Mal neu hochzuladen. Dazu ist die Bilderstellung laut OpenAI etwa 50 Prozent schneller geworden. Das Update gilt für alle Tarife inklusive Free, auf Web, Desktop und Handy.",
+    why: "Bisher war jedes Bild ein Einzelstück: Wer dieselbe Person oder dasselbe Maskottchen in mehreren Bildern haben wollte, musste das Foto jedes Mal neu hochladen und hoffen, dass es ähnlich aussieht. Mit gespeicherten Referenzbildern bleibt die Figur über viele Bilder hinweg erkennbar. Und ein GIF ist oft der schnellere Weg als ein Video: eine winkende Katze für die Geburtstagskarte, ein Produktfoto, das sich einmal dreht, ein kleines „Danke“-GIF für die Familien-WhatsApp-Gruppe.",
+    steps: [
+      "ChatGPT (App oder Web) öffnen und einen neuen Chat starten.",
+      "Für ein GIF aus Text: kurze Szene beschreiben und dazu schreiben, dass es ein GIF in Endlosschleife sein soll.",
+      "Für ein GIF aus Foto: Foto hochladen und nur die Bewegung beschreiben – Gesicht und Details bleiben dabei unverändert.",
+      "Wenn das GIF da ist: öffnen, um die Abspielgeschwindigkeit anzupassen oder einzelne Bilder (Frames) zu prüfen und zu ändern, dann speichern oder teilen.",
+      "Für ein Referenzbild: klares Foto hochladen und ChatGPT bitten, es unter einem Namen zu speichern. In späteren Chats mit @Name im Prompt wieder aufrufen.",
+    ],
+    promptLabel: "Kopierfertige Vorlagen",
+    prompt: `GIF aus Text:
+Erstelle ein kurzes GIF in Endlosschleife: [z. B. eine Katze, die
+freundlich winkt]. Stil: [z. B. freundlicher Zeichentrick, warme
+Farben]. Die Bewegung soll langsam und ruhig sein.
+
+GIF aus Foto:
+Animiere dieses Foto zu einem kurzen GIF in Endlosschleife:
+[z. B. die Person winkt einmal kurz]. Gesicht, Kleidung und
+Hintergrund unverändert lassen.
+
+Referenzbild speichern:
+Speichere dieses Foto als Referenzbild unter dem Namen [z. B. Milo].
+
+Referenzbild später wiederverwenden:
+Erstelle ein Bild von @Milo, wie er [z. B. in einem herbstlichen
+Park auf einer Bank sitzt]. Gleiches Aussehen wie im Referenzbild.`,
+    note: "Die GIF-Funktion wird gestaffelt ausgerollt – sie ist also vielleicht noch nicht bei jedem Konto angekommen, einfach in den nächsten Tagen nochmal probieren. Ein fertiges GIF, das man selbst hochlädt, kann ChatGPT nicht bearbeiten – GIFs entstehen nur direkt in ChatGPT. Nur eigene Fotos (oder Fotos mit Einverständnis der abgebildeten Person) animieren und als Referenz speichern.",
+    sources: [
+      {
+        label:
+          "OpenAI Developer Community – Images, upgraded: introducing ChatGPT Images 2.6 (04.11.2026)",
+        url: "https://community.openai.com/t/images-upgraded-introducing-chatgpt-images-2-6/1412901/1",
+      },
+      {
+        label:
+          "Gadgets360 – OpenAI Introduces Images 2.6 With GIF Support and Faster API Models (05.11.2026)",
+        url: "https://www.gadgets360.com/ai/news/openai-images-2-6-update-gif-creation-chatgpt-new-api-models-12287035/amp",
+      },
+    ],
+  },
+
   /* ---------------------------------------------------------------- */
   /*  Praxis & Fundus — zeitlos, kein Datum                            */
   /* ---------------------------------------------------------------- */
@@ -282,6 +331,136 @@ wenn du wirklich festhängst – nicht als Verabschiedung.`,
         label:
           "PCWorld – One prompt made ChatGPT, Claude, and Gemini stop acting like my buddy (27.10.2026)",
         url: "https://www.pcworld.com/article/3270796/one-prompt-made-chatgpt-claude-and-gemini-stop-acting-like-my-buddy.html",
+      },
+    ],
+  },
+  {
+    id: 8,
+    title: "Claude lässt sein Gedächtnis umziehen: Memory-Import und -Export",
+    kind: "praxis",
+    tool: "Claude",
+    what: "Anthropic hat am 2. November 2026 eine eingebaute Möglichkeit eingeführt, das Gedächtnis (Memory) zwischen Claude und anderen KI-Anbietern umzuziehen: Man kann Erinnerungen aus einem anderen Dienst in Claude importieren – und sein Claude-Gedächtnis exportieren, als Sicherung oder für den Wechsel woandershin. Das gilt für Web und Desktop-App, in allen Tarifen inklusive Free.",
+    why: "Wer monatelang mit einem Chatbot gearbeitet hat, hat ihm viel beigebracht: wie man angesprochen werden will, welche Projekte laufen, was man mag und was nicht. Beim Wechsel zu einem anderen Assistenten war das bisher weg – man fing bei null an. Jetzt kann man diesen „Steckbrief“ mitnehmen. Und umgekehrt: Wer sein Claude-Gedächtnis einmal als Datei sichert, hat es in der Hand, statt es nur in der App zu wissen.",
+    steps: [
+      "Export beim alten Dienst: Dem bisherigen Chatbot (z. B. ChatGPT oder Gemini) die Vorlage unten schicken. Er listet alles auf, was er über dich gespeichert hat – als kopierbaren Text.",
+      "Vor dem Import prüfen: Die Liste einmal durchlesen und alles löschen, was nicht mit umziehen soll (z. B. Passwörter, Adressen, sehr private Details). Nur das bereinigte Ergebnis weitergeben.",
+      "Import in Claude: Den Import-Ablauf in Claude öffnen, den Text in das Textfeld einfügen und auf „Add to memory“ klicken. Claude zerlegt den Text in einzelne Gedächtnis-Einträge.",
+      "Nachprüfen: Danach in einem neuen Chat fragen: „Ich habe mein Gedächtnis aktualisiert. Was hast du über mich gelernt?“ Stimmt etwas nicht, direkt im Chat korrigieren oder unter Einstellungen → Dein Claude → Verwalten neben „Dein Gedächtnis“.",
+      "Export aus Claude: Unter Einstellungen → Dein Claude → Verwalten neben „Dein Gedächtnis“ siehst du, was Claude gespeichert hat. Oder im Chat fragen: „Schreib mir dein Gedächtnis über mich wortwörtlich heraus, genau wie es in deinem Gedächtnis steht.“ – und den Text als Datei speichern.",
+    ],
+    promptLabel: "Kopierfertige Vorlage – Export beim alten Dienst (deutsch)",
+    prompt: `Ich wechsle zu einem anderen Dienst und muss meine Daten exportieren.
+Liste alles auf, was du über mich gespeichert hast, und jeden Kontext,
+den du aus früheren Gesprächen über mich gelernt hast. Gib alles in
+einem einzigen Code-Block aus, damit ich es leicht kopieren kann.
+Formatiere jeden Eintrag so: [Datum, falls vorhanden] – Inhalt.
+Decke unbedingt ab – übernimm meine Worte möglichst wörtlich:
+- Anweisungen, die ich dir gegeben habe (Ton, Format, Stil, „mach
+  immer X", „mach nie Y")
+- Persönliche Angaben: Name, Ort, Beruf, Familie, Interessen
+- Projekte, Ziele und wiederkehrende Themen
+- Werkzeuge, Sprachen und Programme, die ich nutze
+- Vorlieben und Korrekturen, die ich an deinem Verhalten vorgenommen habe
+- Jeder andere gespeicherte Kontext, der oben nicht abgedeckt ist
+Fasse nichts zusammen, gruppiere nichts, lass nichts weg. Sage mir
+danach, ob das vollständig ist oder ob noch Einträge fehlen.`,
+    note: "Die Vorlage ist eine deutsche Fassung der Vorlage aus der Anthropic-Hilfe. Der Import ist experimentell, also immer mit der Nachfrage aus Schritt 4 kontrollieren, was wirklich angekommen ist. Claudes Gedächtnis ist vor allem auf Arbeitsthemen ausgelegt – rein private Details aus dem Import werden möglicherweise nicht übernommen. Veraltete Angaben (z. B. ein alter Job oder ein überholtes Projekt) nach dem Umzug einmal durchgehen und korrigieren.",
+    sources: [
+      {
+        label:
+          "Anthropic Hilfe – Import and export your memory from Claude (aktualisiert 02.11.2026)",
+        url: "https://support.claude.com/en/articles/12123587-import-and-export-your-memory-from-claude",
+      },
+      {
+        label:
+          "Konshus – Claude lets you move AI memories (03.11.2026)",
+        url: "https://konshus.ai/ai-memory-news/2026-11-03-claude-lets-you-move-ai-memories-keeping-them-trustworthy-is-harder",
+      },
+    ],
+  },
+  {
+    id: 9,
+    title:
+      "Ein Skill als Datei: einmal schreiben, in ChatGPT, Gemini und Claude nutzen",
+    kind: "praxis",
+    tool: "Allgemein",
+    what: "Ein Skill ist eine gespeicherte Arbeitsanweisung als Textdatei namens SKILL.md – zum Beispiel „Notizen ordnen“: Aus ungeordneten Notizen entstehen Aufgaben, Entscheidungen und offene Fragen. Dafür sind keine Programmierkenntnisse nötig: Man lässt sich den Skill per Prompt schreiben, prüft ihn und speichert ihn als Datei. In Gemini kann man eine fertige Skill-Datei seit dem Praxistest von XDA Developers (1. November 2026) sogar direkt hochladen, statt die Anleitung selbst neu zu tippen: Anpassen → Skills, als einzelne Datei, ganzen Ordner oder ZIP. Weil Claude und Gemini dasselbe Dateiformat nutzen, lässt sich dieselbe Datei in beiden – und in ChatGPT – weiterverwenden. Gemini löst Skills außerdem automatisch aus: Wenn die Beschreibung des Skills zur Aufgabe passt, schaltet Gemini ihn von selbst ein und zeigt seinen Namen im Denkprozess an. Der Auslöser wechselt dabei von / zu @.",
+    why: "Bislang musstest du jedem Assistenten bei jedem Anbieter neu erklären, wie er arbeiten soll. Mit einem Skill schreibst du die Anweisung einmal auf und nimmst sie mit. Das passt zum großen November-Thema: Auch Gemini ersetzt ab 17. November seine Gems durch Skills – die Idee „eigene Anweisung als wiederverwendbare Datei“ wird gerade zum Standard.",
+    steps: [
+      "Den gewohnten Assistenten bitten, einen Skill-Entwurf zu schreiben (Vorlage unten).",
+      "Den Entwurf prüfen: Steht genau drin, was der Skill tun soll – und was nicht?",
+      "Den Entwurf als Datei (SKILL.md) speichern. Der Skill-Name muss aus Kleinbuchstaben mit Bindestrichen bestehen (z. B. wochen-planer).",
+      "In Gemini: Anpassen → Skills, die Datei (oder Ordner/ZIP) hochladen. In ChatGPT oder Claude: die Datei importieren bzw. hochladen.",
+      "Die Beschreibung sorgfältig ausfüllen – sie ist der Auslöser: Steht dort „erstellt einen Wochenplan“, reicht später ein Prompt wie „Mach mir einen Wochenplan“, und Gemini aktiviert den Skill automatisch. Aufrufen geht auch von Hand: @Skill-Name im Chat.",
+      "Mit echten Notizen testen und das Ergebnis prüfen: Sind Aufgaben, Entscheidungen und offene Fragen sauber getrennt? Erst wenn der Test sitzt, dieselbe Datei im nächsten Assistenten verwenden.",
+    ],
+    promptLabel: "Kopierfertige Vorlage, um den Skill erstellen zu lassen",
+    prompt: `Erstelle mir einen Skill namens „Notizen ordnen" als Textdatei (SKILL.md).
+Der Skill soll aus ungeordneten Notizen genau drei Gruppen machen:
+1. Aufgaben – mit Verb am Anfang, z. B. „Anrufen: …"
+2. Entscheidungen – was wurde entschieden, von wem, bis wann?
+3. Offene Fragen – was ist noch unklar?
+Regeln: Nichts erfinden, nichts weglassen. Wenn etwas unklar ist, schreibe es unter „Offene Fragen" statt es zu raten.
+Schreibe den Skill so, dass ich ihn in ChatGPT, Gemini und Claude verwenden kann.
+Gib mir am Ende den kompletten Text der Datei aus, damit ich ihn speichern kann.`,
+    note: "Übertragen werden nur deine Arbeitsanweisungen – nicht automatisch deine bisherigen Chats oder persönlichen Erinnerungen. Änderungen synchronisieren sich auch nicht von selbst zwischen den Anbietern. Fremde Skills vor dem Übernehmen prüfen, besonders wenn sie zusätzliche Skripte oder Verbindungen zu anderen Diensten enthalten. Bis zu 100 Skills können gleichzeitig aktiv sein. Noch nicht alles geht: Skills funktionieren aktuell nicht mit Deep Research, Guided Learning, Canvas, Video- oder Musik-Erstellung. Frist: Gems werden am 17. November 2026 nur noch lesbar und am 17. Dezember 2026 endgültig gelöscht – wer eine Gem-Anleitung behalten will, sollte sie bis dahin als Text sichern.",
+    sources: [
+      {
+        label:
+          "Digitale Profis – Der wichtigste KI-Skill 2026 (01.11.2026)",
+        url: "https://tsecurity.de/de/4312056/ai-ki-nachrichten/der-wichtigste-ki-skill-2026-das-funktioniert-in-chatgpt-claude-gemini-und-fast-allen-chatbots/",
+      },
+      {
+        label:
+          "BlazeTrends – Gemini Replaces Gems With Skills on Nov. 17, Supports Claude SKILL.md Files (Basis: XDA Developers Hands-on, 01.11.2026)",
+        url: "https://blazetrends.com/gemini-replaces-gems-with-skills-on-nov-17-supports-claude-skillmd-files/",
+      },
+    ],
+  },
+  {
+    id: 10,
+    title: "Lass die KI deine eigene Antwort prüfen – zwei kleine Selbst-Checks",
+    kind: "praxis",
+    tool: "Allgemein",
+    what: "Zwei frische Vorlagen drehen den Spieß um: Statt die KI alles schreiben zu lassen, lässt man sie die eigene Arbeit prüfen. Das ist besonders nützlich beim Lernen und bei Texten, die man selbst geschrieben hat – die KI wird zum Korrekturleser und strengen Prüfer, nicht zum Ghostwriter.",
+    why: "Wer immer nur die fertige Antwort nimmt, lernt nichts – und merkt Fehler nicht. Wer die KI dagegen bittet, die eigene Antwort zu prüfen, muss selbst nachdenken und bekommt trotzdem ehrliches Feedback. Der Trick dabei: Ausdrücklich verbieten, dass die KI den Text einfach neu schreibt. Sonst bekommt man eine neue Version statt einer echten Prüfung.",
+    steps: [
+      "Zuerst selbst schreiben – auch wenn es holprig ist. Ein eigener Entwurf ist die Voraussetzung, sonst gibt es nichts zu prüfen.",
+      "Den Entwurf mit einer der beiden Vorlagen unten an ChatGPT, Claude oder Gemini schicken.",
+      "Beim Selbsttest: Die Kritik lesen, den Fehler selbst korrigieren und die neue Version nochmal zur Prüfung schicken – so entsteht eine echte Lernschleife.",
+      "Bei der Bewertung: Die Punktzahl nicht als objektive Note nehmen – sie ist die Einschätzung des Modells. Entscheidend ist die Begründung: Steht dort etwas Konkretes (z. B. „zu lang“, „kein Beispiel“), ist die Kritik brauchbar; steht dort nur Lob, um eine schärfere Prüfung bitten („Sei strenger: Was ist der größte Schwachpunkt?“).",
+    ],
+    promptLabel: "Kopierfertige Vorlagen",
+    prompt: `Selbsttest ohne Neuschreiben:
+Prüfe meine Antwort auf diese Frage und sag mir, was fehlt oder
+falsch ist – ohne sie für mich neu zu schreiben.
+
+Frage: [z. B. Was ist der Unterschied zwischen Zinsen und Tilgung?]
+Meine Antwort: [deine Antwort hier einfügen]
+
+Nenne mir danach 2 Dinge, die ich verbessern sollte, und stelle mir
+eine Nachfrage, mit der ich es selbst korrigieren kann.
+
+Entwurf bewerten und verbessern lassen:
+Bewerte diesen Entwurf von 1 bis 10 und verbessere ihn dann selbst
+auf eine 10. Schreibe zuerst die Punktzahl mit einer kurzen
+Begründung, dann die verbesserte Version.
+
+Entwurf: [z. B. deine E-Mail, dein Anschreiben, dein Text hier]
+Zielgruppe: [z. B. mein Chef / eine Kundin]`,
+    note: "Die Punktzahl ist die Einschätzung des Modells, keine objektive Note.",
+    unverified:
+      "Die 1-bis-10-Vorlage stammt aus einem Community-Video, nicht aus einer redaktionellen Quelle.",
+    sources: [
+      {
+        label:
+          "AI Journal News – How to Write Better ChatGPT Prompts: 15 Templates (04.11.2026)",
+        url: "https://www.aijournalnews.com/how-to-write-chatgpt-prompts/",
+      },
+      {
+        label:
+          "Facebook-Reel – 3 Prompts für bessere Antworten (Community, 03.11.2026)",
+        url: "https://www.facebook.com/reel/1084288967761885/",
       },
     ],
   },
