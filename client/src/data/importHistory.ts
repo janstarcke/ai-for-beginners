@@ -45,6 +45,24 @@ export interface ImportEntry {
  */
 export const importHistory: ImportEntry[] = [
   {
+    commit: "872e2bb",
+    title: "4 neue /ki-alltag-Karten vom 05.11.2026 (Tages-PR 1)",
+    type: "new",
+    categories: [],
+    newSkillIds: [],
+    extendedSkillIds: [],
+    sources: [
+      { kind: "manual", channel: "Tages-Recherche AI for Beginners (Chat), 05.11.2026" },
+      { kind: "web", channel: "OpenAI Developer Community", url: "https://community.openai.com/t/images-upgraded-introducing-chatgpt-images-2-6/1412901/1" },
+      { kind: "web", channel: "Anthropic Hilfe", url: "https://support.claude.com/en/articles/12123587-import-and-export-your-memory-from-claude" },
+      { kind: "web", channel: "Digitale Profis", url: "https://tsecurity.de/de/4312056/ai-ki-nachrichten/der-wichtigste-ki-skill-2026-das-funktioniert-in-chatgpt-claude-gemini-und-fast-allen-chatbots/" },
+      { kind: "web", channel: "BlazeTrends (XDA Hands-on)", url: "https://blazetrends.com/gemini-replaces-gems-with-skills-on-nov-17-supports-claude-skillmd-files/" },
+      { kind: "web", channel: "AI Journal News", url: "https://www.aijournalnews.com/how-to-write-chatgpt-prompts/" },
+    ],
+    notes:
+      "Erster Tages-PR nach der Regeländerung vom 05.11.2026 (Jan: Tages-PR statt Wochen-PR, weil News im Wochentakt veralten). Alle 4 Karten stammen aus der Tages-Recherche vom 05.11. und wurden vom User dort ausdrücklich in den Korb gelegt. Images 2.6 (#7, News, 04.11.2026) mit GIFs und Referenzbildern per @Name; Claude Memory-Import/Export (#8, Praxis) mit Export-Prompt, Bereinigungs-Schritt und Prüf-Frage; Skill als Datei (#9, Praxis) fasst den Skill-Punkt vom 03.11. (Digitale Profis) und den Gemini-Upload vom 05.11. in EINER Karte zusammen, statt zwei Skill-Karten; Selbst-Check-Prompts (#10, Praxis) mit der 1-bis-10-Vorlage aus einem Community-Video, als solches gekennzeichnet. Die Kürbis-Karte #5 bleibt unverändert – ihre Altern-Prüfung nach Halloween ist offen und entscheidet der User separat.",
+  },
+  {
     commit: "53080e7",
     title: "2 neue /ki-alltag-Karten: Anti-Buddy-Prompt + Kürbis-Porträt",
     type: "new",
