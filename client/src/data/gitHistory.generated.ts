@@ -11,16 +11,27 @@ export interface GitCommit {
   files: string[];
 }
 
-export const gitHistoryGeneratedAt = "2026-10-28T18:34:41.706Z";
+export const gitHistoryGeneratedAt = "2026-11-05T17:31:35.628Z";
 
 export const gitHistory: GitCommit[] = [
   {
-    "hash": "53080e7d05c701577401c80fb5469d83ab081a8c",
-    "shortHash": "53080e7",
-    "date": "2026-10-28T19:34:17+01:00",
+    "hash": "872e2bb653e1cec77185e992adc850c5aff441c6",
+    "shortHash": "872e2bb",
+    "date": "2026-11-05T18:30:58+01:00",
     "author": "janstarcke",
-    "subject": "feat(content): /ki-alltag – 2 neue Karten: Anti-Buddy-Prompt + Kürbis-Porträt",
+    "subject": "feat(content): /ki-alltag – 4 neue Karten vom 05.11.2026 (Tages-PR 1)",
     "files": [
+      "client/src/data/kiAlltag.ts"
+    ]
+  },
+  {
+    "hash": "2269e2dff8c104887e49c97279bf7335bba71cdd",
+    "shortHash": "2269e2d",
+    "date": "2026-10-28T19:37:07+01:00",
+    "author": "janstarcke",
+    "subject": "/ki-alltag: 2 neue Karten – Anti-Buddy-Prompt + Kürbis-Porträt (#78)",
+    "files": [
+      "client/src/data/importHistory.ts",
       "client/src/data/kiAlltag.ts"
     ]
   },
