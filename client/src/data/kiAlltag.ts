@@ -170,6 +170,38 @@ Variante ohne Foto, für einen klassischen Kürbis: „Ein fotorealistischer ges
   },
 
   {
+    id: 12,
+    title:
+      "Zwei Konten auf einem Handy: ChatGPT trennt jetzt Privat und Arbeit",
+    kind: "news",
+    tool: "ChatGPT",
+    date: "2026-10-30",
+    dateLabel: "30.10.2026",
+    what: "Seit dem 30. Oktober 2026 rollt OpenAI die Konto-Umschaltung für die ChatGPT-Apps auf iPhone und Android aus: Man kann zwei ChatGPT-Konten gleichzeitig auf einem Handy angemeldet lassen und zwischen ihnen wechseln, ohne sich jedes Mal ab- und wieder anzumelden. Im Web ging das schon länger, auf dem Handy war es bisher nur mit ständigem Ausloggen möglich. Das zweite Konto startet auf dem Free-Tarif und braucht kein eigenes Abo – ein bezahlter Tarif auf dem einen Konto gilt aber nicht automatisch für das andere.",
+    why: "Viele haben zwei Welten in einer App: ein privates Konto (Rezepte, Reisen, Lernfragen) und ein Arbeitskonto (E-Mails, Projekte, Firmen-Daten). Bisher vermischten sich Chats, Gedächtnis und Dateien – oder man musste ständig umständlich wechseln. Jetzt bleibt jede Welt sauber für sich: Das Arbeitskonto kennt nur Arbeits-Chats, das private nur private. Auch praktisch: Wer ein Konto mit der Familie teilt und eines für sich allein will, muss sich nicht mehr ständig abmelden.",
+    steps: [
+      "ChatGPT-App auf dem Handy aktualisieren (App Store / Google Play).",
+      "In der App die Einstellungen öffnen und auf „Konto wechseln“ tippen.",
+      "Auf „Konto hinzufügen“ tippen und dich mit dem zweiten Konto anmelden (oder ein neues Konto erstellen).",
+      "Zum Wechseln später einfach wieder zu „Einstellungen → Konto wechseln“ und das andere Konto antippen – ein Häkchen zeigt, welches gerade aktiv ist.",
+      "Falls „Konto wechseln“ in den Einstellungen fehlt: Der Rollout läuft schrittweise, dann hat das Feature dein Konto noch nicht erreicht – einfach in den nächsten Tagen nochmal schauen.",
+    ],
+    note: "Es können höchstens zwei Konten gleichzeitig angemeldet sein – für ein drittes muss man erst eines abmelden. Und: Wechseln ist nicht Zusammenlegen. Chats, Gedächtnis, Dateien, Einstellungen und Abos bleiben strikt pro Konto getrennt, nichts wandert von einem Konto ins andere. Auf dem Desktop kommt die Umschaltung laut OpenAI demnächst.",
+    sources: [
+      {
+        label:
+          "ShiftDelete – ChatGPT Account Switching Arrives on iPhone and Android (31.10.2026)",
+        url: "https://shiftdelete.net/en/chatgpt-account-switching",
+      },
+      {
+        label:
+          "MakeBetter – ChatGPT Account Switching: iPhone & Android Guide (01.11.2026)",
+        url: "https://www.makebetter.im/ai-news/chatgpt-switch-accounts-iphone-android-setup-limits",
+      },
+    ],
+  },
+
+  {
     id: 7,
     title:
       "ChatGPT kann jetzt GIFs machen – und merkt sich deine Referenzbilder",
@@ -177,7 +209,7 @@ Variante ohne Foto, für einen klassischen Kürbis: „Ein fotorealistischer ges
     tool: "ChatGPT",
     date: "2026-11-04",
     dateLabel: "04.11.2026",
-    what: "OpenAI hat am 4. November 2026 „ChatGPT Images 2.6\" veröffentlicht: ChatGPT erstellt jetzt animierte GIFs – aus einem Text oder aus einem hochgeladenen Foto – und man kann Referenzbilder (sich selbst, das Haustier, eine wiederkehrende Figur) einmal speichern und in neuen Bildern wiederverwenden, ohne sie jedes Mal neu hochzuladen. Dazu ist die Bilderstellung laut OpenAI etwa 50 Prozent schneller geworden. Das Update gilt für alle Tarife inklusive Free, auf Web, Desktop und Handy.",
+    what: "OpenAI hat am 4. November 2026 „ChatGPT Images 2.6“ veröffentlicht: ChatGPT erstellt jetzt animierte GIFs – aus einem Text oder aus einem hochgeladenen Foto – und man kann Referenzbilder (sich selbst, das Haustier, eine wiederkehrende Figur) einmal speichern und in neuen Bildern wiederverwenden, ohne sie jedes Mal neu hochzuladen. Dazu ist die Bilderstellung laut OpenAI etwa 50 Prozent schneller geworden. Das Update gilt für alle Tarife inklusive Free, auf Web, Desktop und Handy.",
     why: "Bisher war jedes Bild ein Einzelstück: Wer dieselbe Person oder dasselbe Maskottchen in mehreren Bildern haben wollte, musste das Foto jedes Mal neu hochladen und hoffen, dass es ähnlich aussieht. Mit gespeicherten Referenzbildern bleibt die Figur über viele Bilder hinweg erkennbar. Und ein GIF ist oft der schnellere Weg als ein Video: eine winkende Katze für die Geburtstagskarte, ein Produktfoto, das sich einmal dreht, ein kleines „Danke“-GIF für die Familien-WhatsApp-Gruppe.",
     steps: [
       "ChatGPT (App oder Web) öffnen und einen neuen Chat starten.",
@@ -214,6 +246,58 @@ Park auf einer Bank sitzt]. Gleiches Aussehen wie im Referenzbild.`,
         label:
           "Gadgets360 – OpenAI Introduces Images 2.6 With GIF Support and Faster API Models (05.11.2026)",
         url: "https://www.gadgets360.com/ai/news/openai-images-2-6-update-gif-creation-chatgpt-new-api-models-12287035/amp",
+      },
+    ],
+  },
+
+  {
+    id: 11,
+    title:
+      "Claude kann jetzt aufs Konto schauen – in Deutschland geht der Ausgaben-Check per CSV",
+    kind: "news",
+    tool: "Claude",
+    date: "2026-11-05",
+    dateLabel: "05.11.2026",
+    what: "Anthropic hat am 5. November 2026 „Personal Finance in Claude“ vorgestellt: Wer seine Bank- und Kreditkartenkonten verknüpft, kann Claude in einfachen Worten nach seinem Geld fragen – „Wohin ist mein Geld diesen Monat gegangen?“, „Gebe ich mehr aus, als ich verdiene?“ Claude antwortet dann in Alltagssprache, zeigt eine wöchentliche Ausgaben-Grafik, einen Kalender mit Fälligkeiten und ein kleines Zahlen-Dashboard. Die Verbindung läuft über Plaid (den Dienst, der auch viele Banking-Apps mit Banken verbindet), ist nur lesend – Claude kann kein Geld bewegen, keine Rechnung bezahlen und kein Abo kündigen – und umfasst bis zu 16 Konten mit bis zu zwei Jahren Transaktionen.",
+    why: "Die Idee dahinter ist für jeden interessant, auch wenn das Feature selbst in Deutschland noch nicht da ist: Man muss keine Tabellen mehr selbst bauen, um zu verstehen, wohin das Geld geht – man fragt einfach in normalen Sätzen. ChatGPT hat eine ähnliche Funktion („Finances“) seit Mai 2026, ebenfalls nur in den USA. Der deutsche Weg bis dahin: Man exportiert selbst einen Kontoauszug als CSV-Datei und lässt ihn von ChatGPT, Claude oder Gemini auswerten – mit der Vorlage unten geht das in zwei Minuten, ganz ohne Konto-Verknüpfung.",
+    steps: [
+      "Im Online-Banking den Kontoauszug der letzten 1–3 Monate als CSV-Datei herunterladen.",
+      "Vor dem Hochladen kurz bereinigen: Kontonummern und Empfänger-Namen, die dich stören, in der Datei löschen oder kürzen. Niemals Passwörter, PINs oder TANs in einen Chat schreiben – die gehören in keine KI.",
+      "Die CSV in einem temporären Chat hochladen (ChatGPT: temporärer Chat über das Menü oben; Gemini: temporärer Chat) – so landet die Datei nicht im Verlauf und nicht im Training.",
+      "Die Vorlage unten reinkopieren und abschicken.",
+      "Die Antwort prüfen: Bei jeder Zahl, die wichtig ist („Du hast 312 € für Essen ausgegeben“), nachfragen, welche Buchungen dahinter stecken – die KI kann sich verrechnen, Anthropic selbst warnt davor.",
+    ],
+    promptLabel: "Kopierfertige Vorlage – Ausgaben-Check mit eigener CSV",
+    prompt: `Ich habe meine Kontoauszüge der letzten [z. B. 3] Monate als CSV
+angehängt. Erstelle mir einen einfachen Ausgaben-Check in Alltagssprache:
+
+1. Die 5 größten Ausgabengruppen mit Betrag (z. B. Wohnen, Essen,
+   Abos, Freizeit) – als einfache Tabelle.
+2. Die 3 auffälligsten Einzelbuchungen, die ich mir ansehen sollte.
+3. Eine ehrliche Einschätzung in 2 Sätzen: Wo versickert Geld,
+   ohne dass es mir auffällt?
+4. Eine Frage, die ich mir selbst stellen sollte, bevor ich
+   nächsten Monat spare.
+
+Regeln: Erfinde keine Zahlen – nenne nur Beträge, die in der Datei
+stehen. Wenn eine Kategorie unklar ist, schreib „unklar" dazu,
+statt zu raten.`,
+    note: "Personal Finance ist eine Beta, die schrittweise ausgerollt wird – und nur für zahlende Claude-Nutzer (Pro, Max, Ultra) in den USA. In Deutschland erscheint die Funktion gar nicht, auch nicht mit VPN, und Anthropic nennt kein Datum für andere Länder. Die Anleitung oben ist die Sofort-Alternative, bis das Feature hier ankommt.",
+    sources: [
+      {
+        label:
+          "Anthropic Help Center – Release Notes: Personal Finance in Claude (05.11.2026)",
+        url: "https://support.claude.com/en/articles/12138966-release-notes?hubs-post-cta=fr-blog-plain",
+      },
+      {
+        label:
+          "dev.to – Claude Can Now Read Your Bank Account (05.11.2026)",
+        url: "https://dev.to/paullovelace/claude-can-now-read-your-bank-account-6-months-after-chatgpt-21m8",
+      },
+      {
+        label:
+          "PYMNTS – Anthropic Invites Banks to Help Shape New Personal Finance Offerings (05.11.2026)",
+        url: "https://www.pymnts.com/consumer-finance/2026/anthropic-invites-banks-to-help-shape-new-personal-finance-offerings/",
       },
     ],
   },
@@ -461,6 +545,86 @@ Zielgruppe: [z. B. mein Chef / eine Kundin]`,
         label:
           "Facebook-Reel – 3 Prompts für bessere Antworten (Community, 03.11.2026)",
         url: "https://www.facebook.com/reel/1084288967761885/",
+      },
+    ],
+  },
+  {
+    id: 13,
+    title:
+      "Aus der ersten Antwort mehr herausholen: der Vertiefungs-Prompt in 5 Schritten",
+    kind: "praxis",
+    tool: "Allgemein",
+    what: "Die erste KI-Antwort ist fast immer nur die oberflächliche Version. Statt eine längere Antwort zu verlangen, bittet man die KI in fünf Schritten, ihre eigene Antwort zu vertiefen: mehr Tiefe statt mehr Text, die Lücken benennen, konkrete Methoden verlangen, Prüfkriterien liefern – und am Ende den eigenen Prompt neu schreiben lassen. Den Tipp teilt laut einem Instagram-Post vom 5. November 2026 ein Lead-Ingenieur von Anthropic (dem Unternehmen hinter Claude). Das funktioniert in ChatGPT, Claude und Gemini gleich gut.",
+    why: "Der häufigste Anfängerfehler ist, die erste Antwort einfach zu übernehmen – sie klingt gut, bleibt aber oft allgemein („Erstelle einen Plan“, „Nutze Social Media“). Mit diesem einen Nachfolge-Prompt wird aus einer Allerwelts-Antwort ein konkreter Arbeitsplan mit Werkzeugen, Schritten und einer Möglichkeit, das Ergebnis zu überprüfen. Und man lernt nebenbei, was eine gute Anweisung ausmacht – weil die KI am Ende den verbesserten Prompt gleich mitliefert.",
+    steps: [
+      "Stelle deine Frage ganz normal – kurz und ohne lange Vorbereitung.",
+      "Wenn die Antwort da ist und dir zu oberflächlich vorkommt, kopiere die Vorlage unten in denselben Chat.",
+      "Lies vor allem Schritt 3 und 4 genau: Stehen dort konkrete Werkzeuge und prüfbare Kriterien, hat sich die Vertiefung gelohnt. Steht dort wieder nur Allgemeines, hake einmal nach: „Nenne mir ein konkretes Beispiel für Schritt 2.“",
+      "Den neu geschriebenen Prompt aus Schritt 5 kopieren und für die nächste, ähnliche Aufgabe wiederverwenden – so wird aus einem Trick eine Gewohnheit.",
+    ],
+    promptLabel: "Kopierfertige Vorlage – als Nachfolge-Prompt nach einer ersten Antwort",
+    prompt: `Deine Antwort ist ein guter Anfang, aber sie bleibt zu allgemein.
+Schärfe sie bitte in 5 Schritten nach:
+
+1. Tiefe statt Länge: Gib mir eine strategischere Antwort, keine
+   längere. Was ist der wichtigste Punkt, den ich zuerst angehen
+   sollte – und warum?
+2. Lücken finden: Was würde eine erfahrene Fachperson bei dieser
+   Aufgabe zusätzlich bedenken, was ich noch gar nicht bedacht habe?
+3. Konkrete Methoden: Nenne mir für jeden Schritt ein konkretes
+   Werkzeug, eine Technik oder einen Ablauf – keine allgemeinen
+   Tipps wie „sei kreativ" oder „plane gut".
+4. Prüfkriterien: Woran erkenne ich, ob das Ergebnis gut ist?
+   Gib mir 3 einfache Kriterien, an denen ich es selbst prüfen kann.
+5. Prompt neu schreiben: Schreibe danach meinen ursprünglichen
+   Prompt so um, dass er von Anfang an diese Tiefe liefert.
+   Ich will ihn für ähnliche Aufgaben wiederverwenden können.`,
+    note: "Die deutsche Vorlage ist eine eigene Adaption der fünf Schritte aus dem Post; der Ingenieur wird im Post nicht namentlich genannt.",
+    unverified:
+      "Tipp aus einem Community-Post, nicht aus einer offiziellen Anthropic-Anleitung.",
+    sources: [
+      {
+        label:
+          "Instagram @stephcarvajalino – Anthropic-Ingenieur teilt Prompt für bessere Claude-/ChatGPT-Ergebnisse (05.11.2026)",
+        url: "https://www.instagram.com/p/DfYgMcEFOrO/",
+      },
+    ],
+  },
+  {
+    id: 14,
+    title: "KI-Bilder: die 5 Fehler, die fast jeder Anfänger macht",
+    kind: "praxis",
+    tool: "Allgemein",
+    what: "Ein deutscher Instagram-Beitrag vom 5. November 2026 fasst die fünf häufigsten Anfängerfehler beim Bilder-Erstellen mit KI zusammen – mit dem schönen Beweis, dass derselbe Bildwunsch je nach Prompt völlig anders aussieht. Die Fehler: Prompt zu kurz, kein Licht angegeben, keinen Stil genannt, nach dem ersten Versuch aufgeben, keine Perspektive angegeben. Der Lieblingsfehler der Autorin: Sie schrieb „camera lying on the asphalt“ – und die KI malte einfach eine Kamera auf die Straße, statt aus Bodennähe zu fotografieren.",
+    why: "Bilder mit KI scheitern fast nie an der Technik, sondern an der Beschreibung. Wer die fünf Punkte einmal verinnerlicht, bekommt beim zweiten oder dritten Versuch Bilder, die aussehen wie geplant – statt nach dem ersten enttäuschenden Versuch aufzugeben. Die Bausteine funktionieren in ChatGPT, Gemini und jedem anderen Bild-Tool gleich: Motiv + Licht + Stil + Perspektive.",
+    steps: [
+      "Schreibe deinen Bildwunsch zuerst in einem Satz auf Deutsch: Was soll zu sehen sein, was passiert, wo spielt es?",
+      "Ergänze die drei Bausteine: Licht (z. B. „warmes Abendlicht“), Stil (z. B. „fotorealistisch“) und Perspektive (z. B. „von unten“ oder „Nahaufnahme“).",
+      "Schicke den Prompt an ChatGPT oder Gemini und vergleiche das Ergebnis mit deiner Vorstellung.",
+      "Gefällt dir etwas nicht, ändere genau ein Wort (z. B. das Licht) und schicke ihn nochmal – so lernst du, welcher Baustein was bewirkt.",
+      "Gute Prompts, die dir gefallen, in einer Notiz speichern – sie sind deine persönlichen Vorlagen fürs nächste Mal.",
+    ],
+    promptLabel: "Kopierfertige Vorlagen – zwei Beispiele aus dem Beitrag",
+    prompt: `Hund im Abendlicht (Motiv + Licht + Stil + Perspektive):
+Ein Golden Retriever mitten im Sprung, fängt einen roten Tennisball
+mit dem Maul, Wassertropfen spritzen, in einem Stadtpark bei
+Sonnenuntergang. Tief stehende goldene Sonne hinter dem Hund,
+leuchtender Rand um sein Fell, unscharfer Hintergrund. Von unten
+aus Bodennähe fotografiert, Sportfotografie, fotorealistisch.
+
+Kaffee-Stillleben (Stimmung durch Licht):
+Eine Keramik-Espressotasse auf einem rustikalen dunklen Eichentisch,
+dünne Dampfwolken steigen auf. Ein einzelner warmer Sonnenstrahl
+vom Fenster links lässt den Dampf leuchten, tiefe Schatten rechts.
+Makro-Aufnahme, zurückhaltende Food-Fotografie, fotorealistisch.`,
+    note: "Die 5 Fehler im Überblick: 1) zu kurzer Prompt, 2) kein Licht angegeben, 3) keinen Stil angegeben, 4) nach dem ersten Versuch aufgeben, 5) keine Perspektive angegeben. Die Beispiele stammen aus dem Beitrag; die Formel Motiv + Licht + Stil + Perspektive gilt für alle Bild-Tools.",
+    unverified:
+      "Praxis-Tipp aus einem kleinen Community-Account, nicht aus einer redaktionellen Quelle.",
+    sources: [
+      {
+        label:
+          "Instagram @machmalmitki – BILDER MIT KI: 5 FEHLER, DIE jeder ANFÄNGER MACHT (05.11.2026)",
+        url: "https://www.instagram.com/p/DfXo7wUjGJM/",
       },
     ],
   },
