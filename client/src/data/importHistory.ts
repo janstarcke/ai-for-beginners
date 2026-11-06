@@ -45,6 +45,23 @@ export interface ImportEntry {
  */
 export const importHistory: ImportEntry[] = [
   {
+    commit: "b11d1f6",
+    title: "4 neue /ki-alltag-Karten vom 06.11.2026 (Tages-PR 2)",
+    type: "new",
+    categories: [],
+    newSkillIds: [],
+    extendedSkillIds: [],
+    sources: [
+      { kind: "manual", channel: "Tages-Recherche AI for Beginners (Chat), 06.11.2026" },
+      { kind: "web", channel: "Anthropic Help Center", url: "https://support.claude.com/en/articles/12138966-release-notes?hubs-post-cta=fr-blog-plain" },
+      { kind: "web", channel: "ShiftDelete", url: "https://shiftdelete.net/en/chatgpt-account-switching" },
+      { kind: "web", channel: "Instagram @stephcarvajalino", url: "https://www.instagram.com/p/DfYgMcEFOrO/" },
+      { kind: "web", channel: "Instagram @machmalmitki", url: "https://www.instagram.com/p/DfXo7wUjGJM/" },
+    ],
+    notes:
+      "Zweiter Tages-PR nach der Regeländerung vom 05.11.2026 (Tages-PR statt Wochen-PR). Alle 4 Karten stammen aus der Tages-Recherche vom 06.11. und wurden vom User dort ausdrücklich in den Korb gelegt. Personal Finance (#11, News, 05.11.2026) mit der deutschen CSV-Alternative als Kern der Karte, weil das Feature in DE nicht verfügbar ist; Konto-Umschaltung (#12, News, 30.10.2026); Vertiefungs-Prompt (#13, Praxis) und 5 Bild-Fehler (#14, Praxis) als Community-Tipps gekennzeichnet, beide Instagram-Beiträge direkt geöffnet und bestätigt. Nebenbei ein typografischer Fehler in Karte #7 (Anführungszeichen) mit korrigiert.",
+  },
+  {
     commit: "872e2bb",
     title: "4 neue /ki-alltag-Karten vom 05.11.2026 (Tages-PR 1)",
     type: "new",
