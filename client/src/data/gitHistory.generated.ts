@@ -11,16 +11,27 @@ export interface GitCommit {
   files: string[];
 }
 
-export const gitHistoryGeneratedAt = "2026-11-05T17:31:35.628Z";
+export const gitHistoryGeneratedAt = "2026-11-06T20:17:36.224Z";
 
 export const gitHistory: GitCommit[] = [
   {
-    "hash": "872e2bb653e1cec77185e992adc850c5aff441c6",
-    "shortHash": "872e2bb",
-    "date": "2026-11-05T18:30:58+01:00",
+    "hash": "b11d1f618139298ec591142b0909bd4bb458a27f",
+    "shortHash": "b11d1f6",
+    "date": "2026-11-06T21:17:26+01:00",
     "author": "janstarcke",
-    "subject": "feat(content): /ki-alltag – 4 neue Karten vom 05.11.2026 (Tages-PR 1)",
+    "subject": "feat(content): /ki-alltag – 4 neue Karten vom 06.11.2026 (Tages-PR 2)",
     "files": [
+      "client/src/data/kiAlltag.ts"
+    ]
+  },
+  {
+    "hash": "6dc2923676118a1959e5c9565ac1c60a57ac6157",
+    "shortHash": "6dc2923",
+    "date": "2026-11-05T19:38:51+01:00",
+    "author": "janstarcke",
+    "subject": "/ki-alltag: 4 neue Karten vom 05.11.2026 (Tages-PR 1) (#79)",
+    "files": [
+      "client/src/data/importHistory.ts",
       "client/src/data/kiAlltag.ts"
     ]
   },
