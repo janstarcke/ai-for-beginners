@@ -99,6 +99,37 @@ export const kiAlltagItems: KiAlltagItem[] = [
   /*  News — datiert, mit Quelle                                       */
   /* ---------------------------------------------------------------- */
   {
+    id: 17,
+    title:
+      "ChatGPT spricht jetzt natürlicher: 13 neue Stimmen, auch auf Deutsch",
+    kind: "news",
+    tool: "ChatGPT",
+    date: "2026-10-15",
+    dateLabel: "15.10.2026",
+    what: "Seit dem 15. Oktober 2026 rollt OpenAI GPT-Live-1.1 in ChatGPT Voice aus, dazu die kleinere Variante GPT-Live-1.1 Quip. Das Versprechen: natürlichere Akzente in mehreren Sprachen und eine größere Auswahl an kurzen Ansagen, wenn die KI gerade sucht („Ich schau kurz nach …“), statt langer Pausen. Dazu kommen 13 neue Stimmen – je zwei für Französisch, Deutsch, Hindi, Japanisch, Koreanisch und Mexikanisches Spanisch sowie Bubbie auf Englisch. Nicht zu verwechseln mit der Juli-Meldung zu GPT Live 1.0 – 1.1 ist das Update vom 15. Oktober, das schrittweise an alle Nutzer ausgerollt wird.",
+    why: "Der Sprachmodus ist für viele der leichteste Einstieg in KI überhaupt – kein Tippen, einfach reden. Wer ihn fürs Sprachenlernen, zum Vorlesen oder zum freien Denken nutzt, merkt den Unterschied sofort: Eine Stimme, die natürlicher klingt, ist leichter zuzuhören – und man traut sich eher, selbst laut zu antworten.",
+    steps: [
+      "ChatGPT-App öffnen und auf das Wellen-Symbol (Sprachmodus) unten im Chat tippen.",
+      "Die Frage einfach aussprechen – zum Beispiel die Aussprache-Übung aus der Vorlage unten.",
+      "Laut antworten, sich korrigieren lassen und bei Bedarf um Wiederholung bitten: „Kannst du das noch einmal langsamer sagen?“",
+      "Noch nicht da? Der Rollout läuft gestaffelt – wenn die Stimme noch nach der alten klingt, in ein paar Tagen erneut probieren. Eine Einstellung muss man dafür nicht ändern.",
+    ],
+    promptLabel: "Kopierfertige Vorlage – Aussprache-Übung im Sprachmodus",
+    prompt: `Ich übe Englisch sprechen. Stell mir eine einfache Frage
+auf Englisch, warte auf meine Antwort und korrigiere dann
+freundlich meine Aussprache und meine Grammatik – aber nur
+einen Fehler auf einmal. Sprich langsam und deutlich.`,
+    note: "Das Update betrifft den Sprachmodus (Voice), nicht die Text-Antworten. Die kleinere Quip-Variante ist für schnelle, kurze Antworten gedacht – ChatGPT wählt sie selbst, umstellen muss man nichts.",
+    sources: [
+      {
+        label:
+          "ChatGPT Release Notes & Changelog – Eintrag GPT-Live-1.1 (15.10.2026)",
+        url: "https://releases.sh/openai/chatgpt",
+      },
+    ],
+  },
+
+  {
     id: 1,
     title:
       "Welche KI-App passt zu dir? Der Stand vom 25.10. – plus dein 10-Minuten-Selbsttest",
@@ -298,6 +329,85 @@ statt zu raten.`,
         label:
           "PYMNTS – Anthropic Invites Banks to Help Shape New Personal Finance Offerings (05.11.2026)",
         url: "https://www.pymnts.com/consumer-finance/2026/anthropic-invites-banks-to-help-shape-new-personal-finance-offerings/",
+      },
+    ],
+  },
+
+  {
+    id: 15,
+    title:
+      "Google Vids: 3 kostenlose KI-Videos pro Monat – jedes bis zu 15 Sekunden",
+    kind: "news",
+    tool: "Gemini",
+    date: "2026-11-05",
+    dateLabel: "05.11.2026",
+    what: "Google hat am 5. November 2026 Gemini Omni 1.2 Flash vorgestellt – und damit ein Gratis-Kontingent in Google Vids, dem Video-Tool im Browser: Wer ein Google-Konto hat (oder Google Workspace nutzt), kann in Vids bis zu drei KI-Videos pro Monat kostenlos erstellen, jedes bis zu 15 Sekunden lang. Das Vorgängermodell Omni 1.1 stoppte bei 10 Sekunden. Die Länge lässt sich in Sekunden-Schritten von 3 bis 15 frei wählen, und Figuren und Szenen bleiben laut Google über den Clip hinweg konsistenter als bisher. Auch neu: Einen Clip im Gespräch weiter bearbeiten („mach den Hintergrund abends, die Musik leiser“), statt jedes Mal von vorn anzufangen.",
+    why: "KI-Video war bisher fast immer ein Bezahl-Feature. Drei kurze Clips im Monat reichen, um es ohne Abo und ohne Installation auszuprobieren: ein Produktclip für den eigenen kleinen Laden, ein animiertes Geburtstagsgrüßchen, ein kurzer Erklärclip aus einem Foto. Der Einstieg ist bewusst simpel gehalten: Ein Satz als Beschreibung reicht, Vids macht den Rest.",
+    steps: [
+      "Im Browser vids.new öffnen und mit dem Google-Konto anmelden (am Computer, nicht am Handy – Erstellen geht nur auf dem Desktop).",
+      "Auf „Video erstellen“ bzw. „Mit KI erstellen“ klicken und den Clip in einem Satz beschreiben – zum Beispiel mit der Vorlage unten.",
+      "Die Länge wählen (3–15 Sekunden) und den Clip erzeugen lassen.",
+      "Gefällt etwas nicht, einfach im selben Chat weiterschreiben, zum Beispiel: „Mach das Licht wärmer und die Kamera langsamer.“ – Vids ändert nur diesen Punkt, statt neu zu würfeln.",
+      "Tipp: Ein eigenes Foto als Referenz hochladen (Produkt, Haustier, Ort) – das Motiv bleibt dann über den ganzen Clip gleich.",
+    ],
+    promptLabel: "Kopierfertige Vorlage – Produktclip in einem Satz",
+    prompt: `Ein gemütlicher Produktclip für meinen selbstgemachten
+Marmeladen-Stand auf dem Wochenmarkt: Ein Glas Erdbeermarmelade
+auf einem Holztisch im Morgenlicht, daneben frische Erdbeeren
+und ein Leinentuch. Die Kamera fährt langsam näher heran,
+warm und einladend, 15 Sekunden, querformatig.`,
+    note: "Drei Clips im Monat sind ein Probier-Kontingent, kein Content-Kalender – mehr gibt es erst mit einem bezahlten Google-AI-Plan. Jeder Clip trägt ein unsichtbares SynthID-Wasserzeichen, das ihn als KI-generiert kennzeichnet. Deutschland-Hinweis: Clips erzeugen funktioniert hier, das nachträgliche Bearbeiten von hochgeladenen Videos ist in der EU, der Schweiz und Großbritannien dagegen eingeschränkt – den Clip also gleich so erzeugen, wie man ihn haben will.",
+    sources: [
+      {
+        label:
+          "FoneArena – Google rolls out Gemini Omni 1.2 Flash with 15-second video generation (06.11.2026)",
+        url: "https://www.fonearena.com/blog/496530/google-gemini-omni-1-2-flash.html",
+      },
+      {
+        label:
+          "DataNorth – Google Vids: 3 free Gemini Omni 1.2 Flash videos a month (06.11.2026)",
+        url: "https://datanorth.ai/news/google-vids-3-free-ai-videos-monthly",
+      },
+    ],
+  },
+
+  {
+    id: 16,
+    title:
+      "Gemini wertet deine Google-Forms-Antworten aus – per Knopfdruck",
+    kind: "news",
+    tool: "Gemini",
+    date: "2026-11-05",
+    dateLabel: "05.11.2026",
+    what: "Google hat am 5. November 2026 „Actionable Insights“ für Google Forms angekündigt: Im Antworten-Tab des Formulars gibt es jetzt einen Button „Insights generieren“. Gemini liest dann alle Antworten, rechnet die Zahlen selbst mit Python nach (Anzahlen, Prozent, Vergleiche zwischen Fragen) und liefert drei Blöcke: eine kurze Zusammenfassung, eine vertiefte Analyse mit Zusammenhängen („Wer den Inhalt gut fand, fand das Tempo trotzdem zu schnell“) und konkrete nächste Schritte. Der Rollout läuft seit 2. November (Rapid Release) bzw. startet am 19. November (Scheduled Release) – es kann also bis zu zwei Wochen dauern, bis der Button auftaucht.",
+    why: "Wer schon einmal eine Umfrage ausgewertet hat – Vereinsfeedback, Anmeldung zum Kurs, Kundenbefragung –, kennt das Problem: Die Antworten liegen da, aber wer hat Zeit, sie alle zu lesen und zu zählen? Genau das nimmt der Button ab. Man bekommt nicht nur eine Zusammenfassung, sondern auch Vorschläge, was man als Nächstes tun könnte.",
+    steps: [
+      "Google Formular öffnen und oben auf den Tab „Antworten“ wechseln.",
+      "Den Bereich „Actionable Insights“ suchen und auf „Insights generieren“ klicken.",
+      "Die drei Blöcke lesen: Zusammenfassung, Analyse, nächste Schritte.",
+      "Die wichtigsten Zahlen gegen die Antworten selbst prüfen – Google warnt selbst, dass Gemini-Ausgaben ungenau sein können. Eine Zahl, auf die man eine Entscheidung stützt, kurz selbst nachzählen.",
+      "Nur die nächsten Schritte mitnehmen, die zu den Antworten passen – und im Zweifel direkt bei den Befragten nachfragen.",
+    ],
+    promptLabel: "Kostenlose Alternative – Auswertung per CSV-Export",
+    prompt: `Hier sind die Antworten auf meine Umfrage (CSV-Datei).
+1. Fasse die drei wichtigsten Ergebnisse in einfachen Worten zusammen.
+2. Nenne mir für jede Frage die häufigste Antwort und wie viele
+   Personen sie gewählt haben.
+3. Schlage mir drei konkrete nächste Schritte vor – und schreibe
+   dazu, auf welche Antworten sich jeder Schritt stützt.
+Antworte auf Deutsch und erfinde keine Zahlen, die nicht in
+der Datei stehen.`,
+    note: "Das Feature ist nicht im kostenlosen Privatkonto enthalten – es gilt für Google Workspace Business Standard und Plus, Enterprise und Education Plus sowie ausgewählte Google-AI-Pläne. Voraussetzung außerdem: mindestens 12 Antworten und 3 Fragen im Formular, und der Quiz-Modus muss aus sein. Wer kein passendes Abo hat, kann die Antworten trotzdem auswerten lassen: als Tabelle exportieren (Antworten-Tab → grünes Tabellen-Symbol) und die Datei mit der Vorlage unten in Gemini oder ChatGPT hochladen.",
+    sources: [
+      {
+        label:
+          "Google Workspace Updates – Get actionable insights with Gemini in Google Forms (05.11.2026)",
+        url: "https://workspaceupdates.googleblog.com/2026/11/get-actionable-insights-with-gemini-in-Google-Forms.html",
+      },
+      {
+        label:
+          "Money Making AI Hub – How Small Businesses Can Use Gemini Actionable Insights in Google Forms (06.11.2026)",
+        url: "https://www.moneymakingaihub.com/2026/11/06/how-small-businesses-can-use-gemini-actionable-insights-in-google-forms/",
       },
     ],
   },
@@ -625,6 +735,83 @@ Makro-Aufnahme, zurückhaltende Food-Fotografie, fotorealistisch.`,
         label:
           "Instagram @machmalmitki – BILDER MIT KI: 5 FEHLER, DIE jeder ANFÄNGER MACHT (05.11.2026)",
         url: "https://www.instagram.com/p/DfXo7wUjGJM/",
+      },
+    ],
+  },
+  {
+    id: 18,
+    title: "CRAFT: fünf Bausteine für fast jeden Prompt",
+    kind: "praxis",
+    tool: "Allgemein",
+    what: "CRAFT ist eine der einfachsten Prompt-Formeln überhaupt – fünf Bausteine, die man in fast jeden Prompt einbauen kann: Context (Zusammenhang), Role (Rolle), Action (Aufgabe), Format (Form) und Tone (Ton). Statt „Schreib mir einen Text“ zu tippen, gibt man der KI in einem Satz mit, wer sie sein soll, worum es geht, was sie tun soll, wie das Ergebnis aussehen soll und wie es klingen soll. Manche Quellen ersetzen den letzten Baustein durch „Target Audience“ (Zielgruppe) – die Version mit Ton ist für den Alltag die praktischere.",
+    why: "Der häufigste Grund für enttäuschende Antworten ist: Die KI weiß nicht, für wen und wozu sie schreibt. Mit CRAFT beantwortet man diese Fragen, bevor sie entstehen – und die Antworten werden auf Anhieb deutlich brauchbarer. Die Formel passt auf ChatGPT, Claude, Gemini und Copilot gleichermaßen.",
+    steps: [
+      "Context: Ein Satz zum Hintergrund – worum geht es, was ist schon passiert?",
+      "Role: Eine Rolle – „Du bist ein freundlicher Reiseführer“, „Du bist mein geduldiger Mathe-Lehrer“.",
+      "Action: Die Aufgabe in einem Satz – was genau soll die KI tun?",
+      "Format: Wie soll das Ergebnis aussehen? Liste, Tabelle, drei Absätze, maximal 100 Wörter?",
+      "Tone: Wie soll es klingen? Locker, sachlich, feierlich, einfach?",
+    ],
+    promptLabel: "Kopierfertige Vorlage – einfach die eckigen Klammern ausfüllen",
+    prompt: `Kontext: [Worum geht es? Was ist die Situation?]
+Rolle: Du bist [z. B. ein erfahrener Nachbarschafts-Organisator].
+Aufgabe: [Was soll die KI genau tun?]
+Format: [z. B. als kurze Einladung mit Uhrzeit, Ort und
+         einer Liste, was jeder mitbringen kann]
+Ton: [z. B. herzlich und locker, ohne Förmlichkeiten]
+
+Ausgefülltes Beispiel – Einladung zum Grillabend:
+Kontext: Wir veranstalten am Samstag einen Grillabend für
+unsere Straße, etwa 15 Nachbarn, Kinder sind willkommen.
+Rolle: Du bist ein erfahrener Nachbarschafts-Organisator.
+Aufgabe: Schreibe eine kurze Einladung für unsere
+WhatsApp-Gruppe.
+Format: Maximal 120 Wörter, mit Uhrzeit (18 Uhr), Ort
+(Garten hinter Haus 12) und einer kurzen Liste, was jeder
+mitbringen kann.
+Ton: Herzlich und locker, ohne Förmlichkeiten.`,
+    note: "Nicht jeder Prompt braucht alle fünf Bausteine. Für eine schnelle Frage reichen oft Rolle und Format – aber wenn die Antwort zweimal daneben lag, lohnt es sich, den Prompt einmal komplett nach CRAFT neu aufzuschreiben, statt immer weiter nachzubessern.",
+    sources: [
+      {
+        label:
+          "AI Prompt Library – ChatGPT Cheat Sheet: Prompt Formulas & Templates (CRAFT)",
+        url: "https://www.aipromptlibrary.app/blog/chatgpt-prompt-cheat-sheet",
+      },
+    ],
+  },
+  {
+    id: 19,
+    title: "Geschenkideen mit KI finden – in 10 Minuten, ohne endloses Scrollen",
+    kind: "praxis",
+    tool: "Allgemein",
+    what: "Ein praktischer Ablauf für die Weihnachtszeit (Threads, 8. November 2026): Statt stundenlang durch Onlineshops zu scrollen, sammelt man zuerst fünf Fakten über die Person, gibt sie der KI in einem strukturierten Prompt – und lässt sich fünf Geschenkideen vorschlagen. Danach verfeinern: günstigere Variante, persönlichere Variante, und zum Schluss gleich den Text für die Geschenkkarte dazu.",
+    why: "Genau das Problem, das viele bei der KI haben: Man weiß nicht, was man ihr sagen soll. Die fünf Fakten geben der Frage ein Gerüst – und die Antworten werden dadurch sofort persönlich statt generisch. Der Ablauf funktioniert in ChatGPT, Gemini und Claude gleich gut und dauert vom ersten Satz bis zur fertigen Ideenliste etwa zehn Minuten.",
+    steps: [
+      "Fünf Fakten über die Person aufschreiben: Interessen/Hobbys, Budget, Anlass und Datum, was sie schon besitzt, und was sie gar nicht mag.",
+      "Die Fakten in die Vorlage unten einfügen und abschicken.",
+      "Eine Idee auswählen und verfeinern: „Zeig mir eine günstigere Variante davon“ oder „Mach die Idee noch persönlicher“.",
+      "Gleich den Kartentext dazu schreiben lassen: „Schreib mir einen kurzen, herzlichen Text für die Geschenkkarte, höchstens vier Sätze.“",
+      "Wichtig: Die KI kennt keine aktuellen Preise und keinen Lagerbestand – Preis und Verfügbarkeit immer auf der Seite des Shops prüfen, bevor man bestellt.",
+    ],
+    promptLabel: "Kopierfertige Vorlage – fünf Fakten, fünf Ideen",
+    prompt: `Ich brauche fünf Geschenkideen für meine Mutter.
+Fakten über sie:
+- Sie ist Anfang 60, gärtnert gern und backt leidenschaftlich.
+- Budget: 30 Euro.
+- Anlass: Weihnachten, Geschenk wird am 20. Dezember gebraucht.
+- Sie besitzt schon: viele Backbücher und einen großen Garten.
+- Sie mag nicht: Technik-Gadgets und Deko ohne Nutzen.
+
+Gib mir fünf Ideen, jede mit einem Satz, warum sie zu ihr passt,
+und einem groben Preis. Keine Idee darf über dem Budget liegen.`,
+    note: "Die KI kennt keine aktuellen Preise und keinen Lagerbestand – Preis und Verfügbarkeit immer auf der Seite des Shops prüfen, bevor man bestellt.",
+    unverified:
+      "Ablauf aus einem kleinen Threads-Account, nicht aus einer redaktionellen Quelle.",
+    sources: [
+      {
+        label:
+          "Threads @openloopnews – Stuck on a gift? Get 5 ideas (08.11.2026)",
+        url: "https://www.threads.com/@openloopnews/post/DfgJ-MvDH8V",
       },
     ],
   },
