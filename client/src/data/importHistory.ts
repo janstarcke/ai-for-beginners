@@ -45,6 +45,25 @@ export interface ImportEntry {
  */
 export const importHistory: ImportEntry[] = [
   {
+    commit: "24582ac",
+    title: "5 neue /ki-alltag-Karten vom 09.11.2026 (Tages-PR 3)",
+    type: "new",
+    categories: [],
+    newSkillIds: [],
+    extendedSkillIds: [],
+    sources: [
+      { kind: "manual", channel: "Tages-Recherche AI for Beginners (Chat), 09.11.2026" },
+      { kind: "web", channel: "FoneArena (Google Omni 1.2 Flash)", url: "https://www.fonearena.com/blog/496530/google-gemini-omni-1-2-flash.html" },
+      { kind: "web", channel: "DataNorth (Google Vids Gratis-Kontingent)", url: "https://datanorth.ai/news/google-vids-3-free-ai-videos-monthly" },
+      { kind: "web", channel: "Google Workspace Updates", url: "https://workspaceupdates.googleblog.com/2026/11/get-actionable-insights-with-gemini-in-Google-Forms.html" },
+      { kind: "web", channel: "ChatGPT Release Notes (GPT-Live-1.1)", url: "https://releases.sh/openai/chatgpt" },
+      { kind: "web", channel: "AI Prompt Library (CRAFT)", url: "https://www.aipromptlibrary.app/blog/chatgpt-prompt-cheat-sheet" },
+      { kind: "web", channel: "Threads @openloopnews", url: "https://www.threads.com/@openloopnews/post/DfgJ-MvDH8V" },
+    ],
+    notes:
+      "Dritter Tages-PR nach der Regeländerung vom 05.11.2026 (Tages-PR statt Wochen-PR). Alle 5 Karten stammen aus der Tages-Recherche vom 09.11. und wurden vom User dort ausdrücklich in den Korb gelegt („genau alle punke aufnehmen“). Google Vids (#15, News, 05.11.2026) mit dem Gratis-Kontingent (3 Clips/Monat) als Kern – Anschluss an die Omni-1.2-Lieferung vom 07.11., die nur Ultra/Pro kannte; Gemini Actionable Insights in Forms (#16, News, 05.11.2026) nur für Bezahl-Pläne, mit kostenloser CSV-Alternative als Kern der Karte; ChatGPT Voice GPT-Live-1.1 (#17, News, 15.10.2026) ehrlich als Oktober-Update gerahmt mit Abgrenzung zu GPT Live 1.0 (Juli); CRAFT-Formel (#18, Praxis) seit 27.10. für einen späteren Lauf notiert, jetzt fällig; Geschenkideen (#19, Praxis) als Community-Tipp gekennzeichnet (kleiner Threads-Account). Datumskorrekturen aus der Prüfung: GPT-Live-1.1 ist vom 15.10. (nicht 04.11.), der Geschenkideen-Post vom 08.11. (nicht 09.11.).",
+  },
+  {
     commit: "b11d1f6",
     title: "4 neue /ki-alltag-Karten vom 06.11.2026 (Tages-PR 2)",
     type: "new",
